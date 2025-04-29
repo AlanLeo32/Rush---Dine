@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=5 format=3 uid="uid://b06ljh2ch6dgm"]
+
+[ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://FondoRestaurante.png" id="1_82aaw"]
+[ext_resource type="Script" uid="uid://48q3mwcmmijq" path="res://MovimientoJugador.gd" id="1_pgxyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgxyi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhhgg"]
+animations = []
 
 [node name="Noche" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_pgxyi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_pgxyi")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_dhhgg")
+animation = &""
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_82aaw")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
