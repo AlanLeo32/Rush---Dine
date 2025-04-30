@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://i5ycqiahul5l"]
 
-[ext_resource type="Texture2D" uid="uid://bs6blxd0qjuxx" path="res://FondoDia.png" id="1_bj1uy"]
+[ext_resource type="Texture2D" uid="uid://bs6blxd0qjuxx" path="res://Fondos/FondoDia.png" id="1_bj1uy"]
 [ext_resource type="Script" uid="uid://ilyfxnj55qam" path="res://ControlMenu.gd" id="1_gmcsc"]
 
 [node name="Menu principal" type="Node2D"]

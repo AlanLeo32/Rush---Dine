@@ -4,7 +4,7 @@ extends Node
 var nivel = 0
 var dinero = 0
 var reputacion = 0
-var dia= false
+var dia= true
 #Demas variables...
 
 
