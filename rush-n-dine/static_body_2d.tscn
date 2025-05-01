@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://4sjw6bo24kd"]
+
+[ext_resource type="Texture2D" uid="uid://cl2yhwwcm0gil" path="res://Sprites/FondoRestauranteParedCocina.png" id="1_yjt17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypqmy"]
+size = Vector2(422, 126)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.57391, 3.52326)
+texture = ExtResource("1_yjt17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(6, 118)
+shape = SubResource("RectangleShape2D_ypqmy")

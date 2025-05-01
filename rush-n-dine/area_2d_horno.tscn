@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhra5kg4ryedp"]
+
+[ext_resource type="Texture2D" uid="uid://dh44vtspg7g3t" path="res://Sprites/FondoRestauranteHorno.png" id="1_8h1tf"]
+[ext_resource type="Script" uid="uid://dpt00keghrftq" path="res://area_2d_horno.gd" id="1_er8rm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_er8rm"]
+size = Vector2(253, 246)
+
+[node name="Area2DHorno" type="Area2D"]
+position = Vector2(6, 8)
+script = ExtResource("1_er8rm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.53247, 4.00806)
+texture = ExtResource("1_8h1tf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_er8rm")
