@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://dliox8bx3c2k6"]
+
+[ext_resource type="Script" uid="uid://dgyje6mc2yndr" path="res://minigames/cooking/SkillCheck.gd" id="1_y1pqp"]
+[ext_resource type="Texture2D" uid="uid://c8las8ixkd4ed" path="res://data/bg-oven-2.png" id="2_ugpo5"]
+[ext_resource type="Script" uid="uid://b0chygfdoch7" path="res://minigames/cooking/bg_circle.gd" id="3_bm31c"]
+[ext_resource type="Texture2D" uid="uid://ctiprnl7j4cwh" path="res://data/ring-v3.png" id="3_ugpo5"]
+[ext_resource type="Texture2D" uid="uid://gtl0ljejbuod" path="res://data/aguja-2.png.png" id="5_ugpo5"]
+[ext_resource type="Texture2D" uid="uid://d1p6kxpyf7ylf" path="res://data/IDEAL-text.png" id="6_d05sy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugpo5"]
+size = Vector2(8.00003, 11.075)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 3.0
+offset_right = 146.0
+offset_bottom = 132.0
+script = ExtResource("1_y1pqp")
+
+[node name="BackgroundImg" type="TextureRect" parent="."]
+modulate = Color(0.248285, 0.240283, 0.227044, 1)
+layout_mode = 0
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 1131.0
+offset_bottom = 637.0
+texture = ExtResource("2_ugpo5")
+
+[node name="BgCircle" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 233.0
+offset_top = -1.5
+offset_right = 759.0
+offset_bottom = 523.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ugpo5")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_bm31c")
+
+[node name="Area1" type="Area2D" parent="BgCircle"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BgCircle/Area1"]
+polygon = PackedVector2Array(398, 427, 464, 335, 507, 338, 469, 396, 432, 440)
+
+[node name="Area2" type="Area2D" parent="BgCircle"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BgCircle/Area2"]
+polygon = PackedVector2Array(465, 334, 507, 337, 505, 222, 467, 222)
+
+[node name="Area3" type="Area2D" parent="BgCircle"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BgCircle/Area3"]
+polygon = PackedVector2Array(468, 221, 505, 221, 464, 119, 430, 147)
+
+[node name="Area4" type="Area2D" parent="BgCircle"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BgCircle/Area4"]
+polygon = PackedVector2Array(464, 119, 396, 58, 373, 87, 428, 145)
+
+[node name="Needle" type="Sprite2D" parent="."]
+position = Vector2(562, 331)
+scale = Vector2(0.566667, 0.56)
+texture = ExtResource("5_ugpo5")
+centered = false
+offset = Vector2(-294, -436)
+
+[node name="StaticBody2D" type="Area2D" parent="Needle"]
+position = Vector2(153, 286)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Needle/StaticBody2D"]
+position = Vector2(-154.765, -671.714)
+shape = SubResource("RectangleShape2D_ugpo5")
+
+[node name="CheckTimer" type="Timer" parent="."]
+
+[node name="IdealText" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 741.0
+offset_top = 71.0
+offset_right = 869.0
+offset_bottom = 181.0
+texture = ExtResource("6_d05sy")
+expand_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(567, 320)
