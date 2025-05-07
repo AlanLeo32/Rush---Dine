@@ -1,100 +1,227 @@
-[gd_scene load_steps=12 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=24 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="PackedScene" uid="uid://8o02db6e3bhw" path="res://character_body_cocinero_2d.tscn" id="2_dhhgg"]
 [ext_resource type="PackedScene" uid="uid://4sjw6bo24kd" path="res://static_body_2d.tscn" id="4_vcooc"]
+[ext_resource type="Texture2D" uid="uid://cl2yhwwcm0gil" path="res://Fondos/FondoRestauranteParedCocina.png" id="5_6nrwb"]
+[ext_resource type="Texture2D" uid="uid://ch80u2dnpkdgh" path="res://Fondos/Screenshot 2025-05-06 195821.png" id="6_8f3sa"]
 [ext_resource type="PackedScene" uid="uid://bhra5kg4ryedp" path="res://area_2d_horno.tscn" id="6_rfyed"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhhgg"]
-size = Vector2(360, 168.857)
+[ext_resource type="Texture2D" uid="uid://cewp60dr3fi37" path="res://Fondos/Screenshot 2025-05-06 202233.png" id="7_skj3d"]
+[ext_resource type="Texture2D" uid="uid://j22m5b0t1g0s" path="res://Fondos/Screenshot 2025-05-06 205045.png" id="8_x1ebg"]
+[ext_resource type="Texture2D" uid="uid://cdrsp7egx4moy" path="res://Sprites/Screenshot 2025-05-06 210054.png" id="9_cfkqm"]
+[ext_resource type="Script" uid="uid://cwt3qwpyo3id" path="res://InteractuarHorno.gd" id="9_rpgi2"]
+[ext_resource type="Script" uid="uid://cidvj1ug35cth" path="res://heladera.gd" id="9_txkm7"]
+[ext_resource type="Texture2D" uid="uid://2jks56s81rp0" path="res://Sprites/Screenshot 2025-05-06 211144.png" id="10_a5igk"]
+[ext_resource type="Script" uid="uid://cctlk7fjv254a" path="res://mesada.gd" id="11_txkm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
-size = Vector2(24.5714, 223.143)
+size = Vector2(24.5714, 118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nrwb"]
-size = Vector2(21.7143, 232)
+size = Vector2(21.7143, 118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfyed"]
-size = Vector2(28.2859, 914.857)
+size = Vector2(28.2859, 1011.14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f3sa"]
 size = Vector2(1018.86, 143.286)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skj3d"]
-size = Vector2(22.5714, 903.429)
+size = Vector2(22.5714, 997.715)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1ebg"]
-size = Vector2(1018.57, 25.1432)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfkqm"]
+size = Vector2(425, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5igk"]
+size = Vector2(1274, 222)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txkm7"]
+size = Vector2(3584, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpgi2"]
+size = Vector2(278, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lbuo"]
+size = Vector2(304, 182)
 
 [node name="Noche" type="Node2D"]
-position = Vector2(-2, 4)
+position = Vector2(-4, 5)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-80, -1031)
+[node name="Escenario" type="Sprite2D" parent="."]
+light_mask = 0
+visibility_layer = 4
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("1_82aaw")
 centered = false
+metadata/_edit_lock_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+[node name="Colision Paredes" type="StaticBody2D" parent="Escenario"]
+visible = false
 position = Vector2(342, 375.714)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-visible = false
-position = Vector2(168.857, 55.8571)
-shape = SubResource("RectangleShape2D_dhhgg")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-visible = false
-position = Vector2(-20.5715, 81.8571)
+[node name="Pared Izq Cocina" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(-21.1429, 136.429)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_vcooc")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-visible = false
-position = Vector2(360.857, 87.4286)
+[node name="Pared Der Cocina" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(360.286, 136.429)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_6nrwb")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-visible = false
-position = Vector2(677.286, 92.5714)
+[node name="Pared Der Restaurante" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(677.286, 140.714)
 shape = SubResource("RectangleShape2D_rfyed")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-visible = false
+[node name="Pared Trasera Restaurante" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
 position = Vector2(179.143, -307.071)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_8f3sa")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-visible = false
-position = Vector2(-332.143, 104)
+[node name="Pared Izq Restaurante" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(-332.143, 151.143)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_skj3d")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+[node name="ParedFrontalIzqCocina" parent="Escenario" instance=ExtResource("4_vcooc")]
+z_index = 2148
+y_sort_enabled = true
+position = Vector2(368.286, 613.714)
+scale = Vector2(0.285714, 0.285714)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="ParedFrontalDerCocina" type="StaticBody2D" parent="Escenario"]
+z_index = 2148
+y_sort_enabled = true
+position = Vector2(657.143, 613.714)
+scale = Vector2(0.285714, 0.285714)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Escenario/ParedFrontalDerCocina"]
+scale = Vector2(3.57391, 3.52326)
+texture = ExtResource("5_6nrwb")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/ParedFrontalDerCocina"]
 visible = false
-position = Vector2(170.429, 637.428)
-scale = Vector2(0.999999, 0.999999)
-shape = SubResource("RectangleShape2D_x1ebg")
+position = Vector2(-4.5, 118)
+shape = SubResource("RectangleShape2D_cfkqm")
+metadata/_edit_lock_ = true
+
+[node name="ParedTraseraCocina" type="StaticBody2D" parent="Escenario"]
+z_index = 1494
+position = Vector2(502.857, 426.857)
+scale = Vector2(0.285714, 0.285714)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Escenario/ParedTraseraCocina"]
+position = Vector2(33.5001, 16.25)
+scale = Vector2(1.04926, 1.05507)
+texture = ExtResource("6_8f3sa")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/ParedTraseraCocina"]
+position = Vector2(32, 203)
+shape = SubResource("RectangleShape2D_a5igk")
+metadata/_edit_lock_ = true
+
+[node name="Pared Inferior Restaurante" type="StaticBody2D" parent="Escenario"]
+z_index = 3500
+position = Vector2(168.286, 964.571)
+scale = Vector2(0.285714, 0.285714)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Escenario/Pared Inferior Restaurante"]
+position = Vector2(186, 17.0001)
+scale = Vector2(1.18434, 1.18012)
+texture = ExtResource("7_skj3d")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Escenario/Pared Inferior Restaurante"]
+position = Vector2(2221.71, 16.8673)
+scale = Vector2(0.762309, 0.763585)
+texture = ExtResource("8_x1ebg")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Pared Inferior Restaurante"]
+visible = false
+position = Vector2(1205, 156)
+shape = SubResource("RectangleShape2D_txkm7")
 
 [node name="CharacterBodyCocinero2D" parent="." instance=ExtResource("2_dhhgg")]
 y_sort_enabled = true
-position = Vector2(1634, 840)
-collision_mask = 1
+position = Vector2(1763, 1997)
+collision_mask = 4
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Horno" parent="." instance=ExtResource("6_rfyed")]
+light_mask = 0
+visibility_layer = 2
+z_index = 1679
+position = Vector2(1660, 1680)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("9_rpgi2")
 
-[node name="Heladera2D" type="Sprite2D" parent="."]
+[node name="Heladera" type="Area2D" parent="."]
+z_index = 1700
+position = Vector2(1334.44, 1570.5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("9_txkm7")
 
-[node name="Mesada2D" type="Sprite2D" parent="."]
+[node name="Heladera2D" type="Sprite2D" parent="Heladera"]
+scale = Vector2(0.679136, 0.674648)
+texture = ExtResource("9_cfkqm")
+metadata/_edit_lock_ = true
 
-[node name="Area2DHorno" parent="." instance=ExtResource("6_rfyed")]
-position = Vector2(1582, 655)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Heladera"]
+position = Vector2(-0.439941, 163.5)
+shape = SubResource("RectangleShape2D_rpgi2")
+metadata/_edit_lock_ = true
 
-[node name="StaticBody2ParedIzquierda" parent="." instance=ExtResource("4_vcooc")]
-z_index = 2
-y_sort_enabled = true
-position = Vector2(1210, 1116)
+[node name="Mesada" type="Area2D" parent="."]
+z_index = 1700
+position = Vector2(1959.5, 1652)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("11_txkm7")
 
-[connection signal="body_entered" from="Area2DHorno" to="Area2DHorno" method="_on_body_entered"]
+[node name="Mesada2D" type="Sprite2D" parent="Mesada"]
+scale = Vector2(0.607955, 0.60606)
+texture = ExtResource("10_a5igk")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesada"]
+position = Vector2(11.5, 67)
+shape = SubResource("RectangleShape2D_5lbuo")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Interactuar" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.772
+anchor_top = 0.7
+anchor_right = 0.772
+anchor_bottom = 0.7
+offset_left = -67.24
+offset_top = -69.0001
+offset_right = 66.76
+offset_bottom = 69.9999
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]

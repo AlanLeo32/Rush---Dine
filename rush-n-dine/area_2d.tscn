@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu5rtsmngsts8"]
 
-[ext_resource type="Texture2D" uid="uid://cl2yhwwcm0gil" path="res://Sprites/FondoRestauranteParedCocina.png" id="1_gf172"]
+[ext_resource type="Texture2D" uid="uid://cl2yhwwcm0gil" path="res://Fondos/FondoRestauranteParedCocina.png" id="1_gf172"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dl81w"]
 size = Vector2(411, 94)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl2yhwwcm0gil"
-path="res://.godot/imported/FondoRestauranteParedCocina.png-2579c74756aac9e57b34ef5e0fc88fb4.ctex"
+uid="uid://2jks56s81rp0"
+path="res://.godot/imported/Screenshot 2025-05-06 211144.png-7a1019ce32211171481d4909dc957fa6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/FondoRestauranteParedCocina.png"
-dest_files=["res://.godot/imported/FondoRestauranteParedCocina.png-2579c74756aac9e57b34ef5e0fc88fb4.ctex"]
+source_file="res://Sprites/Screenshot 2025-05-06 211144.png"
+dest_files=["res://.godot/imported/Screenshot 2025-05-06 211144.png-7a1019ce32211171481d4909dc957fa6.ctex"]
 
 [params]
 

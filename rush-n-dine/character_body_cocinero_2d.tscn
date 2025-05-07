@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://8o02db6e3bhw"]
+[gd_scene load_steps=21 format=3 uid="uid://8o02db6e3bhw"]
 
 [ext_resource type="Script" uid="uid://48q3mwcmmijq" path="res://MovimientoJugador.gd" id="1_77u7n"]
 [ext_resource type="Texture2D" uid="uid://ir3c0xvixyde" path="res://Sprites/Sprites Delante.png" id="2_fh1gg"]
@@ -142,6 +142,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgxyi"]
 size = Vector2(200, 114.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77u7n"]
+size = Vector2(200, 205)
+
 [node name="CharacterBodyCocinero2D" type="CharacterBody2D"]
 z_index = 1
 collision_mask = 2
@@ -159,4 +162,19 @@ position = Vector2(0, 148.25)
 shape = SubResource("RectangleShape2D_pgxyi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(354, 138)
+zoom = Vector2(0.75, 0.75)
+limit_left = 0
+limit_top = 0
+limit_right = 3575
+limit_bottom = 3575
+
+[node name="Interaccion" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaccion"]
+visible = false
+position = Vector2(1, 102.5)
+shape = SubResource("RectangleShape2D_77u7n")
+
+[connection signal="area_entered" from="Interaccion" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Interaccion" to="." method="_on_area_exited"]
