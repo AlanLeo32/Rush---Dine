@@ -2,6 +2,24 @@ extends CharacterBody2D
 
 @export var velocidad := 500.0
 @onready var anim = $AnimatedSprite2D
+@export var horno: NodePath
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		var horno_node = get_node(horno)
+		if horno_node.jugador_en_rango:
+			abrir_minijuego()
+
+func abrir_minijuego():
+	var minijuego = load("res://minigames/cooking/SkillCheck.tscn").instantiate()
+	
+	# Buscamos el UI desde el árbol global
+	var ui = get_tree().current_scene.get_node("CanvasLayer/UI/MinigameContainer")
+	# Opcional: limpiar el UI si ya hay algo cargado
+	ui.add_child(minijuego)
+	
+	get_tree().current_scene.add_child(minijuego)
+	self.set_process(false)  # opcional: desactiva movimiento del jugador
 
 func _physics_process(delta):
 	var direccion = Vector2.ZERO

@@ -63,8 +63,15 @@ func check_success():
 	var overlapping_areas = $Needle/StaticBody2D.get_overlapping_areas()
 	for area in overlapping_areas:
 		print("Tocando: ", area.name)
+	terminar_minijuego()
 	
 
+func terminar_minijuego():
+	set_process_input(false)
+	# Esperar 2 segundos antes de cerrar
+	await get_tree().create_timer(2.0).timeout
+	queue_free()  # cierra la escena del minijuego
+	get_tree().current_scene.get_node("Jugador").set_process(true)
 
 func _on_CheckTimer_timeout():
 	rotating = false

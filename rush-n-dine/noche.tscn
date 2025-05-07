@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=13 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="PackedScene" uid="uid://8o02db6e3bhw" path="res://character_body_cocinero_2d.tscn" id="2_dhhgg"]
 [ext_resource type="PackedScene" uid="uid://4sjw6bo24kd" path="res://static_body_2d.tscn" id="4_vcooc"]
+[ext_resource type="Texture2D" uid="uid://iq68hju7rvjd" path="res://data/marcoMG.png" id="5_6nrwb"]
 [ext_resource type="PackedScene" uid="uid://bhra5kg4ryedp" path="res://area_2d_horno.tscn" id="6_rfyed"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhhgg"]
@@ -27,7 +28,8 @@ size = Vector2(22.5714, 903.429)
 size = Vector2(1018.57, 25.1432)
 
 [node name="Noche" type="Node2D"]
-position = Vector2(-2, 4)
+position = Vector2(30, 310)
+scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-80, -1031)
@@ -78,10 +80,11 @@ position = Vector2(170.429, 637.428)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_x1ebg")
 
-[node name="CharacterBodyCocinero2D" parent="." instance=ExtResource("2_dhhgg")]
+[node name="Jugador" parent="." instance=ExtResource("2_dhhgg")]
 y_sort_enabled = true
 position = Vector2(1634, 840)
 collision_mask = 1
+horno = NodePath("../Area2DHorno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -96,5 +99,24 @@ position = Vector2(1582, 655)
 z_index = 2
 y_sort_enabled = true
 position = Vector2(1210, 1116)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MinigameContainer" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 480.0
+texture = ExtResource("5_6nrwb")
+stretch_mode = 3
 
 [connection signal="body_entered" from="Area2DHorno" to="Area2DHorno" method="_on_body_entered"]
