@@ -8,3 +8,15 @@ func _ready():
 	else:
 		fondo.texture = load("res://Fondos/FondoNoche.png")
 	
+
+
+func _on_boton_jugar_pressed() -> void:
+	get_tree().change_scene_to_file("res://noche.tscn")
+
+
+func _on_boton_configuracion_pressed() -> void:
+	get_tree().change_scene_to_file("res://pantalla_configuracion.tscn")
+
+
+func _on_boton_creditos_pressed() -> void:
+	get_tree().change_scene_to_file("res://pantalla_creditos.tscn")
