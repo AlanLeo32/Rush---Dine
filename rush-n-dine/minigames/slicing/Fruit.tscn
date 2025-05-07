@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bygnlsd842gpx"]
+
+[ext_resource type="Script" uid="uid://d2g3rtlu0b3kh" path="res://minigames/slicing/fruit.gd" id="1_uyhyr"]
+[ext_resource type="Texture2D" uid="uid://cbyj2kief8hyf" path="res://data/tomate.png" id="2_vh03f"]
+
+[node name="Fruit" type="RigidBody2D"]
+script = ExtResource("1_uyhyr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vh03f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(3, 7)
+polygon = PackedVector2Array(-78, -110, -161, -41, -201, 61, -141, 184, -27, 221, 113, 204, 191, 113, 175, -28, 74, -107)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
