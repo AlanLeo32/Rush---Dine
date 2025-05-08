@@ -52,7 +52,9 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_area_exited(area):
 	if interactuables_actuales.has(area):
 		interactuables_actuales.erase(area)
-
+	# Si el área saliente es el tacho y está abierto, lo cerramos
+		if area.name == "Tacho" and area.abierto:
+			area.interactuar()
 	if interactuables_actuales.is_empty():
 		objeto_actual = null
 		boton_interactuar.visible = false

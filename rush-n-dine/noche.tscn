@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=28 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="PackedScene" uid="uid://8o02db6e3bhw" path="res://character_body_cocinero_2d.tscn" id="2_dhhgg"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://cidvj1ug35cth" path="res://heladera.gd" id="9_txkm7"]
 [ext_resource type="Texture2D" uid="uid://2jks56s81rp0" path="res://Sprites/Screenshot 2025-05-06 211144.png" id="10_a5igk"]
 [ext_resource type="Script" uid="uid://cctlk7fjv254a" path="res://mesada.gd" id="11_txkm7"]
+[ext_resource type="Script" uid="uid://b5kucshdplq2e" path="res://tacho.gd" id="14_5lbuo"]
+[ext_resource type="Texture2D" uid="uid://y0qom7iku66k" path="res://Sprites/TachoCerrado.png" id="15_l2i0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
 size = Vector2(24.5714, 118)
@@ -44,8 +46,14 @@ size = Vector2(278, 180)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lbuo"]
 size = Vector2(304, 182)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2i0l"]
+size = Vector2(116, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh7h"]
+size = Vector2(116, 102.5)
+
 [node name="Noche" type="Node2D"]
-position = Vector2(-4, 5)
+position = Vector2(-37, 44)
 
 [node name="Escenario" type="Sprite2D" parent="."]
 light_mask = 0
@@ -206,12 +214,10 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mesada"]
 position = Vector2(11.5, 67)
 shape = SubResource("RectangleShape2D_5lbuo")
-metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Interactuar" type="Button" parent="CanvasLayer"]
-visible = false
 anchors_preset = -1
 anchor_left = 0.772
 anchor_top = 0.7
@@ -224,4 +230,33 @@ offset_bottom = 69.9999
 grow_horizontal = 0
 grow_vertical = 2
 
+[node name="Tacho" type="Area2D" parent="."]
+z_index = 1800
+position = Vector2(30, -72)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("14_5lbuo")
+
+[node name="Tacho2D" type="Sprite2D" parent="Tacho"]
+z_index = 1
+position = Vector2(2319, 1882)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_l2i0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tacho"]
+z_index = 1901
+position = Vector2(2318, 1913.5)
+shape = SubResource("RectangleShape2D_l2i0l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tacho"]
+position = Vector2(2319, 1915)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tacho/StaticBody2D"]
+z_index = 1901
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_iyh7h")
+
+[connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
