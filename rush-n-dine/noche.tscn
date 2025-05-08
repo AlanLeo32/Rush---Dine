@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=30 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="PackedScene" uid="uid://8o02db6e3bhw" path="res://character_body_cocinero_2d.tscn" id="2_dhhgg"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://cctlk7fjv254a" path="res://mesada.gd" id="11_txkm7"]
 [ext_resource type="Script" uid="uid://b5kucshdplq2e" path="res://tacho.gd" id="14_5lbuo"]
 [ext_resource type="Texture2D" uid="uid://y0qom7iku66k" path="res://Sprites/TachoCerrado.png" id="15_l2i0l"]
+[ext_resource type="Script" uid="uid://b327unn4ut4i2" path="res://BotonPausa.gd" id="16_lvlro"]
+[ext_resource type="Texture2D" uid="uid://cau2iartj02r2" path="res://Sprites/BotonPausa.png" id="17_1ji4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
 size = Vector2(24.5714, 118)
@@ -258,5 +260,17 @@ z_index = 1901
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_iyh7h")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 100
+script = ExtResource("16_lvlro")
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer2"]
+process_mode = 3
+offset_right = 40.0
+offset_bottom = 40.0
+action_mode = 0
+texture_normal = ExtResource("17_1ji4q")
+
 [connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
+[connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2" method="_on_texture_button_pressed"]

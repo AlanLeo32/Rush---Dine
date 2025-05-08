@@ -5,8 +5,13 @@ extends CharacterBody2D
 @onready var boton_interactuar := $"../CanvasLayer/Interactuar"
 var objeto_actual: Area2D = null
 var interactuables_actuales := []
+func _ready():
+	boton_interactuar.visible = false
 
 func _physics_process(delta):
+	# Si el juego está pausado, no procesamos el movimiento
+	if get_tree().paused:
+		return
 	var direccion = Vector2.ZERO
 	direccion.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direccion.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
