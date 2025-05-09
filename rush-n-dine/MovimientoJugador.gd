@@ -3,6 +3,11 @@ extends CharacterBody2D
 @export var velocidad := 500.0
 @onready var anim = $AnimatedSprite2D
 @onready var boton_interactuar := $"../CanvasLayer/Interactuar"
+
+var touch_start_position := Vector2.ZERO
+var dragging := false
+var direccion_joystick := Vector2.ZERO
+
 var objeto_actual: Area2D = null
 var interactuables_actuales := []
 func _ready():
@@ -12,9 +17,11 @@ func _physics_process(delta):
 	# Si el juego está pausado, no procesamos el movimiento
 	if get_tree().paused:
 		return
-	var direccion = Vector2.ZERO
-	direccion.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	direccion.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	#var direccion = Vector2.ZERO 
+	var direccion = direccion_joystick
+	#para mover con flechas
+	#direccion.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	#direccion.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
 	velocity = direccion.normalized() * velocidad
 	move_and_slide()
@@ -71,3 +78,52 @@ func _on_area_exited(area):
 func _on_interactuar_pressed() -> void:
 	if objeto_actual:
 		objeto_actual.interactuar()
+		
+#esta solo usar para simular deslizamiento con gesto con mouse
+func _unhandled_input(event):
+	if OS.has_feature("pc"):  # Solo en PC
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				touch_start_position = event.position
+				dragging = true
+			else:
+				dragging = false
+				direccion_joystick = Vector2.ZERO
+		elif event is InputEventMouseMotion and dragging:
+			var drag_vector = event.position - touch_start_position
+			if drag_vector.length() > 10:
+				direccion_joystick = drag_vector.normalized()
+			else:
+				direccion_joystick = Vector2.ZERO
+	else:
+		# Esto sigue siendo válido para móviles
+		if event is InputEventScreenTouch:
+			if event.pressed:
+				touch_start_position = event.position
+				dragging = true
+			else:
+				dragging = false
+				direccion_joystick = Vector2.ZERO
+
+		elif event is InputEventScreenDrag and dragging:
+			var drag_vector = event.position - touch_start_position
+			if drag_vector.length() > 10:
+				direccion_joystick = drag_vector.normalized()
+			else:
+				direccion_joystick = Vector2.ZERO
+#esta es la funcion que va para el cel
+#func _unhandled_input(event):
+#	if event is InputEventScreenTouch:
+#		if event.pressed:
+#			touch_start_position = event.position
+#			dragging = true
+#		else:
+#			dragging = false
+#			direccion_joystick = Vector2.ZERO
+#	
+#	elif event is InputEventScreenDrag and dragging:
+#		var drag_vector = event.position - touch_start_position
+#		if drag_vector.length() > 10:
+#			direccion_joystick = drag_vector.normalized()
+#		else:
+#			direccion_joystick = Vector2.ZERO
