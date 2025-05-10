@@ -1,7 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://i5ycqiahul5l"]
+[gd_scene load_steps=18 format=3 uid="uid://i5ycqiahul5l"]
 
 [ext_resource type="Texture2D" uid="uid://bs6blxd0qjuxx" path="res://Fondos/FondoDia.png" id="1_bj1uy"]
 [ext_resource type="Script" uid="uid://ilyfxnj55qam" path="res://ControlMenu.gd" id="1_gmcsc"]
+[ext_resource type="Texture2D" uid="uid://cxbgv7eff6px6" path="res://Sprites/SpriteJugar.png" id="3_fa1tu"]
+[ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="4_a6518"]
+[ext_resource type="Texture2D" uid="uid://brg76p06pjxb1" path="res://Sprites/SpriteCreditos.png" id="5_yxm4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fa1tu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fa1tu"]
+texture = ExtResource("3_fa1tu")
+region_rect = Rect2(289.909, 347.261, 947.535, 330.028)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxm4i"]
+texture = ExtResource("3_fa1tu")
+region_rect = Rect2(289.909, 347.261, 947.535, 330.028)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpioy"]
+texture = ExtResource("3_fa1tu")
+region_rect = Rect2(289.909, 347.261, 947.535, 330.028)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6518"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a6518"]
+texture = ExtResource("4_a6518")
+region_rect = Rect2(57.451, 399.988, 1418.55, 235.975)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b574n"]
+texture = ExtResource("4_a6518")
+region_rect = Rect2(57.451, 399.988, 1418.55, 235.975)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dcvsf"]
+texture = ExtResource("4_a6518")
+region_rect = Rect2(57.451, 399.988, 1418.55, 235.975)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxm4i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kcxxd"]
+texture = ExtResource("5_yxm4i")
+region_rect = Rect2(174.769, 381.041, 1185.93, 288.959)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_611wp"]
+texture = ExtResource("5_yxm4i")
+region_rect = Rect2(174.769, 381.041, 1185.93, 288.959)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_32uqj"]
+texture = ExtResource("5_yxm4i")
+region_rect = Rect2(174.769, 381.041, 1185.93, 288.959)
 
 [node name="Menu principal" type="Node2D"]
 script = ExtResource("1_gmcsc")
@@ -16,32 +61,51 @@ stretch_mode = 5
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 7
+custom_minimum_size = Vector2(882, 700)
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -441.0
-offset_top = -750.0
+offset_top = -350.0
 offset_right = 441.0
-offset_bottom = -50.0
+offset_bottom = 350.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 50
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="BotonJugar" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 200)
+custom_minimum_size = Vector2(882, 200)
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.68
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fa1tu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fa1tu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yxm4i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xpioy")
 
 [node name="BotonConfiguracion" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(882, 200)
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.76
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a6518")
+theme_override_styles/hover = SubResource("StyleBoxTexture_a6518")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b574n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dcvsf")
 
 [node name="BotonCreditos" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(882, 200)
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.86
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yxm4i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kcxxd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_611wp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_32uqj")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/BotonJugar" to="." method="_on_boton_jugar_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/BotonConfiguracion" to="." method="_on_boton_configuracion_pressed"]
