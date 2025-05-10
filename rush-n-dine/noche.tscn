@@ -264,13 +264,14 @@ shape = SubResource("RectangleShape2D_iyh7h")
 layer = 100
 script = ExtResource("16_lvlro")
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer2"]
+[node name="BotonPausa" type="TextureButton" parent="CanvasLayer2"]
 process_mode = 3
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(2, 2)
 action_mode = 0
 texture_normal = ExtResource("17_1ji4q")
 
 [connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
-[connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/BotonPausa" to="CanvasLayer2" method="_on_texture_button_pressed"]

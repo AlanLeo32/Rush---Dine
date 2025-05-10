@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var boton := $TextureButton
+@onready var boton := $BotonPausa
 
 var textura_pausa := preload("res://Sprites/BotonPausa.png")
 var textura_play := preload("res://Sprites/BotonDesapausar.png")
