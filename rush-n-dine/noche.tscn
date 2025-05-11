@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=39 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="PackedScene" uid="uid://8o02db6e3bhw" path="res://character_body_cocinero_2d.tscn" id="2_dhhgg"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://y0qom7iku66k" path="res://Sprites/TachoCerrado.png" id="15_l2i0l"]
 [ext_resource type="Script" uid="uid://b327unn4ut4i2" path="res://BotonPausa.gd" id="16_lvlro"]
 [ext_resource type="Texture2D" uid="uid://cau2iartj02r2" path="res://Sprites/BotonPausa.png" id="17_1ji4q"]
+[ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="18_lvlro"]
+[ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="18_nhjf1"]
+[ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="19_1ji4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
 size = Vector2(24.5714, 118)
@@ -53,6 +56,30 @@ size = Vector2(116, 103)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh7h"]
 size = Vector2(116, 102.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ji4q"]
+texture = ExtResource("18_lvlro")
+region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhjf1"]
+texture = ExtResource("18_lvlro")
+region_rect = Rect2(58.3948, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s073x"]
+texture = ExtResource("18_lvlro")
+region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upk0d"]
+texture = ExtResource("19_1ji4q")
+region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q1pc4"]
+texture = ExtResource("19_1ji4q")
+region_rect = Rect2(15.8994, 286.335, 992.201, 478.659)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfo2o"]
+texture = ExtResource("19_1ji4q")
+region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
 
 [node name="Noche" type="Node2D"]
 position = Vector2(-37, 44)
@@ -261,17 +288,80 @@ position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_iyh7h")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 100
 script = ExtResource("16_lvlro")
 
-[node name="BotonPausa" type="TextureButton" parent="CanvasLayer2"]
+[node name="LogicaPausa" type="Button" parent="CanvasLayer2"]
 process_mode = 3
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 48.0
+offset_bottom = 48.0
 scale = Vector2(2, 2)
+flat = true
+
+[node name="BotonPausa" type="TextureButton" parent="CanvasLayer2/LogicaPausa"]
+process_mode = 3
+z_index = 1
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 48.0
 action_mode = 0
 texture_normal = ExtResource("17_1ji4q")
+texture_pressed = ExtResource("18_nhjf1")
+
+[node name="fondoMenu" type="ColorRect" parent="CanvasLayer2"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="MenuPausa" type="Control" parent="CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 135.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/MenuPausa"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -441.0
+offset_top = -202.0
+offset_right = 441.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Configuracion" type="Button" parent="CanvasLayer2/MenuPausa/VBoxContainer"]
+custom_minimum_size = Vector2(882, 200)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ji4q")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nhjf1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_s073x")
+
+[node name="MenuPrincipal" type="Button" parent="CanvasLayer2/MenuPausa/VBoxContainer"]
+custom_minimum_size = Vector2(882, 200)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_upk0d")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q1pc4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kfo2o")
 
 [connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
-[connection signal="pressed" from="CanvasLayer2/BotonPausa" to="CanvasLayer2" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/LogicaPausa" to="CanvasLayer2" method="_on_logica_pausa_pressed"]
+[connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/Configuracion" to="CanvasLayer2" method="_on_configuracion_pressed"]
+[connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/MenuPrincipal" to="CanvasLayer2" method="_on_menu_principal_pressed"]
