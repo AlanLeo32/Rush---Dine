@@ -12,7 +12,6 @@ var textura_play := preload("res://Sprites/BotonDesapausar.png")
 
 
 func _ready():
-	menu_pausa.visible = false  # Asegura que el menú no se vea al inicio
 	# Asignamos la textura inicial
 	boton_config.disabled = false
 	boton_menu_principal.disabled = false

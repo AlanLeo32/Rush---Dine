@@ -1,0 +1,155 @@
+[gd_scene load_steps=11 format=3 uid="uid://va75bpyjwfou"]
+
+[ext_resource type="Texture2D" uid="uid://cxq8r5lj5nwdu" path="res://Fondos/FondoMenuSeleccion.png" id="1_brnmg"]
+[ext_resource type="Script" uid="uid://tf871v6xdxb1" path="res://menu_seleccion_recetas.gd" id="1_xq8p6"]
+[ext_resource type="Texture2D" uid="uid://u2b8gbnoddt4" path="res://Sprites/confirmar.webp" id="3_e61l0"]
+[ext_resource type="Texture2D" uid="uid://ppit8u5t0nde" path="res://Sprites/cancelar.webp" id="4_kvq2j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vpgmy"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_e61l0"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvq2j"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_c8y6r"]
+font_size = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq8p6"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_xq8p6"]
+font_size = 40
+font_color = Color(0.705666, 0.0161533, 0.227384, 1)
+
+[node name="MenuSeleccionRecetas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xq8p6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(-65, -22)
+scale = Vector2(1.44466, 1.08984)
+texture = ExtResource("1_brnmg")
+centered = false
+
+[node name="TituloMenu" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 71.0
+offset_right = 1144.0
+offset_bottom = 140.0
+text = "Menu Selección"
+label_settings = SubResource("LabelSettings_vpgmy")
+
+[node name="ScrollRecetas" type="ScrollContainer" parent="Panel"]
+offset_left = 360.0
+offset_top = 317.0
+offset_right = 1560.0
+offset_bottom = 517.0
+
+[node name="GridContainer" type="GridContainer" parent="Panel/ScrollRecetas"]
+layout_mode = 2
+columns = 10
+
+[node name="ScrollRecursos" type="ScrollContainer" parent="Panel"]
+offset_left = 660.0
+offset_top = 876.0
+offset_right = 1260.0
+offset_bottom = 976.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollRecursos"]
+layout_mode = 2
+
+[node name="ScrollSeleccionados" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 596.0
+offset_right = -360.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollSeleccionados"]
+layout_mode = 2
+
+[node name="Recetas" type="Label" parent="Panel"]
+offset_left = 331.0
+offset_top = 244.0
+offset_right = 462.0
+offset_bottom = 294.0
+text = "Recetas"
+label_settings = SubResource("LabelSettings_e61l0")
+
+[node name="Seleccionados" type="Label" parent="Panel"]
+offset_left = 343.0
+offset_top = 533.0
+offset_right = 581.0
+offset_bottom = 582.0
+text = "Seleccionados"
+label_settings = SubResource("LabelSettings_kvq2j")
+
+[node name="Recursos" type="Label" parent="Panel"]
+offset_left = 883.5
+offset_top = 801.0
+offset_right = 1036.5
+offset_bottom = 850.0
+text = "Recursos"
+label_settings = SubResource("LabelSettings_c8y6r")
+
+[node name="Aceptar" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 1274.0
+offset_top = 820.0
+offset_right = 1424.0
+offset_bottom = 970.0
+texture_normal = ExtResource("3_e61l0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Cancelar" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 818.0
+offset_right = 623.0
+offset_bottom = 968.0
+texture_normal = ExtResource("4_kvq2j")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ErrorPopup" type="PopupPanel" parent="Panel"]
+position = Vector2i(991, 700)
+size = Vector2i(700, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xq8p6")
+
+[node name="Label" type="Label" parent="Panel/ErrorPopup"]
+offset_right = 700.0
+offset_bottom = 100.0
+text = "¡Cantidad de recursos insuficiente!"
+label_settings = SubResource("LabelSettings_xq8p6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/Aceptar" to="." method="_on_aceptar_pressed"]
+[connection signal="pressed" from="Panel/Cancelar" to="." method="_on_cancelar_pressed"]

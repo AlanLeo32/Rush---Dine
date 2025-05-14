@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://di6cx036x2dwm"]
+
+[ext_resource type="Script" uid="uid://dt32mx566ghli" path="res://seleccionado_item.gd" id="1_1jses"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5m285"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqosu"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_m6lw1"]
+
+[node name="SeleccionadoItem" type="Button"]
+custom_minimum_size = Vector2(200, 200)
+script = ExtResource("1_1jses")
+
+[node name="CanvasLayer" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="ImagenSeleccion" type="TextureRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 110.0
+texture = SubResource("ViewportTexture_5m285")
+expand_mode = 1
+
+[node name="Nombre" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(180, 25)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 190.0
+offset_bottom = 145.0
+label_settings = SubResource("LabelSettings_xqosu")
+horizontal_alignment = 1
+
+[node name="ValorDisp" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 160.0
+offset_right = 100.0
+offset_bottom = 185.0
+
+[node name="Disp" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 160.0
+offset_right = 35.0
+offset_bottom = 185.0
+text = "Disp:"
+
+[node name="ValorAdd" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 160.0
+offset_right = 175.0
+offset_bottom = 185.0
+horizontal_alignment = 1
+
+[node name="Add" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 0
+offset_left = 110.0
+offset_top = 160.0
+offset_right = 145.0
+offset_bottom = 185.0
+text = "Add:"
+label_settings = SubResource("LabelSettings_m6lw1")
