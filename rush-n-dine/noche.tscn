@@ -1,6 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=47 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
+[ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
+[ext_resource type="PackedScene" uid="uid://dcn3t0kb2hd3h" path="res://cliente.tscn" id="2_5s16a"]
 [ext_resource type="PackedScene" uid="uid://8o02db6e3bhw" path="res://character_body_cocinero_2d.tscn" id="2_dhhgg"]
 [ext_resource type="PackedScene" uid="uid://4sjw6bo24kd" path="res://static_body_2d.tscn" id="4_vcooc"]
 [ext_resource type="Texture2D" uid="uid://cl2yhwwcm0gil" path="res://Fondos/FondoRestauranteParedCocina.png" id="5_6nrwb"]
@@ -21,6 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="18_nhjf1"]
 [ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="19_1ji4q"]
 [ext_resource type="PackedScene" uid="uid://va75bpyjwfou" path="res://MenuSeleccionRecetas.tscn" id="21_s073x"]
+[ext_resource type="Script" uid="uid://dffyn1jebwlx0" path="res://mesas.gd" id="22_upk0d"]
+[ext_resource type="Texture2D" uid="uid://b56fki7hb1lte" path="res://Sprites/SpriteMesa.png" id="23_sa3a0"]
+[ext_resource type="Texture2D" uid="uid://bmj5ljddx5uc0" path="res://Sprites/SpriteSilla.png" id="24_5s16a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
 size = Vector2(24.5714, 118)
@@ -82,7 +87,15 @@ region_rect = Rect2(15.8994, 286.335, 992.201, 478.659)
 texture = ExtResource("19_1ji4q")
 region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj8yk"]
+size = Vector2(475, 405.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s16a"]
+size = Vector2(115.5, 56.5)
+
 [node name="Noche" type="Node2D"]
+script = ExtResource("1_sa3a0")
+cliente_escena = ExtResource("2_5s16a")
 
 [node name="Escenario" type="Sprite2D" parent="."]
 light_mask = 0
@@ -363,6 +376,48 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_kfo2o")
 
 [node name="MenuSeleccionRecetas" parent="CanvasLayer2" instance=ExtResource("21_s073x")]
 visible = false
+
+[node name="Mesas" type="Node2D" parent="."]
+script = ExtResource("22_upk0d")
+
+[node name="Mesa1" type="StaticBody2D" parent="Mesas"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="SpriteMesa" type="Sprite2D" parent="Mesas/Mesa1"]
+z_index = 3
+position = Vector2(600, 2862)
+scale = Vector2(0.602905, 0.532226)
+texture = ExtResource("23_sa3a0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Mesa1"]
+z_index = 3
+position = Vector2(600.5, 2862.25)
+shape = SubResource("RectangleShape2D_hj8yk")
+
+[node name="PuntoSentado" type="Node2D" parent="Mesas/Mesa1"]
+position = Vector2(601, 2600)
+
+[node name="Silla" type="StaticBody2D" parent="Mesas"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="SpriteSilla" type="Sprite2D" parent="Mesas/Silla"]
+position = Vector2(601, 2662)
+scale = Vector2(0.44751, 0.436768)
+texture = ExtResource("24_5s16a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Silla"]
+position = Vector2(600.5, 2538)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_5s16a")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PuntoEntrada" type="Node2D" parent="."]
+position = Vector2(1752, 3411)
+scale = Vector2(1.175, 1.175)
 
 [connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
