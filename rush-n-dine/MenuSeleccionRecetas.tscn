@@ -61,22 +61,23 @@ text = "Menu Selección"
 label_settings = SubResource("LabelSettings_vpgmy")
 
 [node name="ScrollRecetas" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
 offset_left = 360.0
 offset_top = 317.0
 offset_right = 1560.0
 offset_bottom = 517.0
 
-[node name="GridContainer" type="GridContainer" parent="Panel/ScrollRecetas"]
+[node name="HBoxRecetas" type="HBoxContainer" parent="Panel/ScrollRecetas"]
 layout_mode = 2
-columns = 10
 
 [node name="ScrollRecursos" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
 offset_left = 660.0
 offset_top = 876.0
 offset_right = 1260.0
 offset_bottom = 976.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollRecursos"]
+[node name="HBoxRecursos" type="HBoxContainer" parent="Panel/ScrollRecursos"]
 layout_mode = 2
 
 [node name="ScrollSeleccionados" type="ScrollContainer" parent="Panel"]
@@ -91,10 +92,11 @@ offset_bottom = -284.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollSeleccionados"]
+[node name="HBoxSeleccionados" type="HBoxContainer" parent="Panel/ScrollSeleccionados"]
 layout_mode = 2
 
 [node name="Recetas" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 331.0
 offset_top = 244.0
 offset_right = 462.0
@@ -103,6 +105,7 @@ text = "Recetas"
 label_settings = SubResource("LabelSettings_e61l0")
 
 [node name="Seleccionados" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 343.0
 offset_top = 533.0
 offset_right = 581.0
@@ -111,6 +114,7 @@ text = "Seleccionados"
 label_settings = SubResource("LabelSettings_kvq2j")
 
 [node name="Recursos" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 883.5
 offset_top = 801.0
 offset_right = 1036.5

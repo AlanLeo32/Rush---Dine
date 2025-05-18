@@ -7,7 +7,7 @@ func _ready():
 	cargar_recursos()
 
 func cargar_recetas():
-	for child in $Panel/ScrollRecetas/GridContainer.get_children():
+	for child in $Panel/ScrollRecetas/HBoxRecetas.get_children():
 		child.queue_free()
 	seleccion_local = {}  # resetea selección local
 	for receta in Globales.recetas_desbloqueadas:
@@ -15,10 +15,10 @@ func cargar_recetas():
 		var receta_item = preload("res://RecetaItem.tscn").instantiate()
 		receta_item.set_data(receta, receta_data)
 		receta_item.connect("receta_seleccionada", Callable(self, "_on_receta_seleccionada"))
-		$Panel/ScrollRecetas/GridContainer.add_child(receta_item)
+		$Panel/ScrollRecetas/HBoxRecetas.add_child(receta_item)
 		
 func cargar_seleccionados():
-	for child in $Panel/ScrollSeleccionados/VBoxContainer.get_children():
+	for child in $Panel/ScrollSeleccionados/HBoxSeleccionados.get_children():
 		child.queue_free()
 	var receta_ids = []
 	receta_ids.append_array(NocheData.platos_seleccionables.keys())
@@ -37,10 +37,10 @@ func cargar_seleccionados():
 		seleccionado_item.connect("boton_resta", Callable(self, "_on_boton_resta"))
 		seleccionado_item.set_data(receta_id, receta, cantidad_noche, cantidad_local)
 		
-		$Panel/ScrollSeleccionados/VBoxContainer.add_child(seleccionado_item)
+		$Panel/ScrollSeleccionados/HBoxSeleccionados.add_child(seleccionado_item)
 
 func cargar_recursos():
-	for child in $Panel/ScrollRecursos/VBoxContainer.get_children():
+	for child in $Panel/ScrollRecursos/HBoxRecursos.get_children():
 		child.queue_free()
 	# Calcular costo total usado en seleccion_local
 	var costo_total = {}
@@ -59,7 +59,7 @@ func cargar_recursos():
 		var cantidad_usada = costo_total.get(recurso_id, 0)
 		var recurso_item = preload("res://RecursoItem.tscn").instantiate()
 		recurso_item.set_data(recurso_data, cantidad_disponible, cantidad_usada)
-		$Panel/ScrollRecursos/VBoxContainer.add_child(recurso_item)
+		$Panel/ScrollRecursos/HBoxRecursos.add_child(recurso_item)
 
 func _on_receta_seleccionada(receta_id):
 	if not seleccion_local.has(receta_id):
@@ -89,26 +89,37 @@ func _on_aceptar_pressed() -> void:
 			var cantidad_por_plato = receta["recursos_requeridos"][recurso_id]
 			if not recursos_necesarios.has(recurso_id):
 				recursos_necesarios[recurso_id] = 0
-				recursos_necesarios[recurso_id] += cantidad * cantidad_por_plato
+			recursos_necesarios[recurso_id] += cantidad * cantidad_por_plato
+
 	# Verificar stock suficiente
 	for recurso_id in recursos_necesarios.keys():
 		if recursos_necesarios[recurso_id] > Globales.recursos_disponibles[recurso_id]["cantidad"]:
 			$Panel/ErrorPopup.show()
-			return  # o podés mostrar un popup de error si querés
-	# Si todo está bien: aplicar cambios
-	# Descontar recursos globales
+			return
+
+	# Aplicar cambios
 	for recurso_id in recursos_necesarios.keys():
 		Globales.recursos_disponibles[recurso_id]["cantidad"] -= recursos_necesarios[recurso_id]
-	# Agregar platos seleccionados a la estructura de noche
+
 	for receta_id in seleccion_local.keys():
+		# platos_seleccionables
 		if NocheData.platos_seleccionables.has(receta_id):
 			NocheData.platos_seleccionables[receta_id] += seleccion_local[receta_id]
 		else:
 			NocheData.platos_seleccionables[receta_id] = seleccion_local[receta_id]
-	# Limpia selección local
+
+		# disponibles_cocinar
+		if NocheData.disponibles_cocinar.has(receta_id):
+			NocheData.disponibles_cocinar[receta_id] += seleccion_local[receta_id]
+		else:
+			NocheData.disponibles_cocinar[receta_id] = seleccion_local[receta_id]
+
+	# Limpiar selección local
 	seleccion_local.clear()
-	#cerrar menú
+
+	# Cerrar menú
 	_on_cancelar_pressed()
+
 
 
 
