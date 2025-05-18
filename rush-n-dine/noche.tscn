@@ -273,14 +273,13 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Tacho" type="Area2D" parent="."]
-z_index = 1800
+z_index = 1500
 position = Vector2(30, -72)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("14_5lbuo")
 
 [node name="Tacho2D" type="Sprite2D" parent="Tacho"]
-z_index = 1
 position = Vector2(2319, 1882)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("15_l2i0l")
