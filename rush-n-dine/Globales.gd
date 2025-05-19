@@ -7,6 +7,7 @@ var reputacion = 0
 var dia= true
 var recetas_desbloqueadas : Dictionary = {}
 var recursos_disponibles : Dictionary = {}
+var cant_colectables: int = 0
 
 	
 func _ready():

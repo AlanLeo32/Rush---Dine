@@ -1,0 +1,191 @@
+[gd_scene load_steps=9 format=3 uid="uid://bye2txg2lxd6c"]
+
+[ext_resource type="Texture2D" uid="uid://drhdb4fp4ne81" path="res://data/fondoRecoleccion.png" id="1_f0qy0"]
+[ext_resource type="Script" uid="uid://dg8murcfbrbm5" path="res://minigames/collect/recoleccion.gd" id="1_hr4pd"]
+[ext_resource type="PackedScene" uid="uid://bbl6hjrcult3q" path="res://minigames/collect/canasta_recoleccion.tscn" id="2_hr4pd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcuhn"]
+size = Vector2(124, 1115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am4uo"]
+size = Vector2(1958.5, 113)
+
+[sub_resource type="FontFile" id="FontFile_hr4pd"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+cache/0/22/0/ascent = 0.0
+cache/0/22/0/descent = 0.0
+cache/0/22/0/underline_position = 0.0
+cache/0/22/0/underline_thickness = 0.0
+cache/0/22/0/scale = 1.0
+cache/0/23/0/ascent = 0.0
+cache/0/23/0/descent = 0.0
+cache/0/23/0/underline_position = 0.0
+cache/0/23/0/underline_thickness = 0.0
+cache/0/23/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/26/0/ascent = 0.0
+cache/0/26/0/descent = 0.0
+cache/0/26/0/underline_position = 0.0
+cache/0/26/0/underline_thickness = 0.0
+cache/0/26/0/scale = 1.0
+cache/0/27/0/ascent = 0.0
+cache/0/27/0/descent = 0.0
+cache/0/27/0/underline_position = 0.0
+cache/0/27/0/underline_thickness = 0.0
+cache/0/27/0/scale = 1.0
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+cache/0/29/0/ascent = 0.0
+cache/0/29/0/descent = 0.0
+cache/0/29/0/underline_position = 0.0
+cache/0/29/0/underline_thickness = 0.0
+cache/0/29/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/31/0/ascent = 0.0
+cache/0/31/0/descent = 0.0
+cache/0/31/0/underline_position = 0.0
+cache/0/31/0/underline_thickness = 0.0
+cache/0/31/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/33/0/ascent = 0.0
+cache/0/33/0/descent = 0.0
+cache/0/33/0/underline_position = 0.0
+cache/0/33/0/underline_thickness = 0.0
+cache/0/33/0/scale = 1.0
+cache/0/34/0/ascent = 0.0
+cache/0/34/0/descent = 0.0
+cache/0/34/0/underline_position = 0.0
+cache/0/34/0/underline_thickness = 0.0
+cache/0/34/0/scale = 1.0
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+cache/0/36/0/ascent = 0.0
+cache/0/36/0/descent = 0.0
+cache/0/36/0/underline_position = 0.0
+cache/0/36/0/underline_thickness = 0.0
+cache/0/36/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_kb8lp"]
+line_spacing = 6.0
+paragraph_spacing = 2.0
+font = SubResource("FontFile_hr4pd")
+font_size = 36
+outline_size = 4
+shadow_size = 0
+shadow_color = Color(0.0885504, 0.0948093, 0.0854392, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hr4pd"]
+font_size = 100
+
+[node name="Recoleccion" type="Node2D"]
+script = ExtResource("1_hr4pd")
+
+[node name="Fondo" type="TextureRect" parent="."]
+offset_right = 1922.0
+offset_bottom = 1086.0
+texture = ExtResource("1_f0qy0")
+
+[node name="CanastaRecoleccion" parent="." instance=ExtResource("2_hr4pd")]
+position = Vector2(976, 999)
+
+[node name="Bordes" type="Node2D" parent="."]
+
+[node name="BordeIzquierdo" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/BordeIzquierdo"]
+position = Vector2(-64, 551)
+shape = SubResource("RectangleShape2D_gcuhn")
+
+[node name="BordeDerecho" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/BordeDerecho"]
+position = Vector2(1984, 547)
+shape = SubResource("RectangleShape2D_gcuhn")
+
+[node name="BordeInferior" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/BordeInferior"]
+position = Vector2(964, 1139)
+shape = SubResource("RectangleShape2D_am4uo")
+
+[node name="TimerColectableSpawn" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Colectables" type="Node2D" parent="."]
+
+[node name="CantidadLabel" type="Label" parent="."]
+offset_right = 135.0
+offset_bottom = 52.0
+text = "Cantidad: "
+label_settings = SubResource("LabelSettings_kb8lp")
+uppercase = true
+
+[node name="TimerMinijuego" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="TimeLeftLabel" type="Label" parent="."]
+offset_left = 1804.0
+offset_top = -13.0
+offset_right = 1920.0
+offset_bottom = 264.0
+text = "
+"
+label_settings = SubResource("LabelSettings_hr4pd")
+
+[connection signal="timeout" from="TimerColectableSpawn" to="." method="_on_timer_colectable_spawn_timeout"]
+[connection signal="timeout" from="TimerMinijuego" to="." method="_on_timer_minijuego_timeout"]
