@@ -64,10 +64,10 @@ label_settings = SubResource("LabelSettings_e61l0")
 
 [node name="Cancelar" type="TextureButton" parent="Panel"]
 layout_mode = 0
-offset_left = 1459.0
-offset_top = 51.0
-offset_right = 1609.0
-offset_bottom = 201.0
+offset_left = 1430.0
+offset_top = 114.0
+offset_right = 1580.0
+offset_bottom = 264.0
 texture_normal = ExtResource("4_23cjw")
 ignore_texture_size = true
 stretch_mode = 0
