@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7xh0a4xfi15m"]
+
+[ext_resource type="Script" uid="uid://ue65vrmrdo3i" path="res://minigames/slicing/slash.gd" id="1_71s7n"]
+
+[node name="Slash" type="Node2D"]
+script = ExtResource("1_71s7n")
