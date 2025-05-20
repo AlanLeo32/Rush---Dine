@@ -125,6 +125,10 @@ func _on_aceptar_pressed() -> void:
 
 func _on_cancelar_pressed() -> void:
 	seleccion_local= {}
+	visible = false
+	
+	
+func actualizar()-> void:
+	cargar_recetas()
 	cargar_seleccionados()
 	cargar_recursos()
-	visible = false

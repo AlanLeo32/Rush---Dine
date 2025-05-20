@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=48 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://dffyn1jebwlx0" path="res://mesas.gd" id="22_upk0d"]
 [ext_resource type="Texture2D" uid="uid://b56fki7hb1lte" path="res://Sprites/SpriteMesa.png" id="23_sa3a0"]
 [ext_resource type="Texture2D" uid="uid://bmj5ljddx5uc0" path="res://Sprites/SpriteSilla.png" id="24_5s16a"]
+[ext_resource type="PackedScene" uid="uid://bcr3blo5ymt85" path="res://MenuCocinar.tscn" id="24_hj8yk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
 size = Vector2(24.5714, 118)
@@ -374,6 +375,9 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_q1pc4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kfo2o")
 
 [node name="MenuSeleccionRecetas" parent="CanvasLayer2" instance=ExtResource("21_s073x")]
+visible = false
+
+[node name="MenuCocinar" parent="CanvasLayer2" instance=ExtResource("24_hj8yk")]
 visible = false
 
 [node name="Mesas" type="Node2D" parent="."]
