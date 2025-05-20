@@ -155,7 +155,6 @@ sprite_frames = SubResource("SpriteFrames_pgxyi")
 animation = &"Caminar Izquierda"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 light_mask = 2
 z_index = 1
 position = Vector2(0, 148.25)
