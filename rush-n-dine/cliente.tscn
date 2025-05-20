@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcn3t0kb2hd3h"]
+[gd_scene load_steps=17 format=3 uid="uid://dcn3t0kb2hd3h"]
 
 [ext_resource type="Script" uid="uid://dot4i08wxi76p" path="res://cliente.gd" id="1_hd6bx"]
 [ext_resource type="Texture2D" uid="uid://bp1ekkhk8yp2l" path="res://Sprites/SpriteCliente.png" id="2_mc5ak"]
@@ -115,10 +115,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd6bx"]
+size = Vector2(159, 223)
+
 [node name="Cliente" type="CharacterBody2D"]
+collision_mask = 8
 script = ExtResource("1_hd6bx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 3001
 scale = Vector2(1.13416, 1.17522)
 sprite_frames = SubResource("SpriteFrames_vo5fx")
 animation = &"caminar_derecha"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21.5, -20.5)
+shape = SubResource("RectangleShape2D_hd6bx")
