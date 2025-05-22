@@ -19,3 +19,10 @@ func obtener_mesa_libre() -> Node:
 			mesa["ocupada"] = true
 			return mesa["nodo"]
 	return null
+	
+func liberar_mesa(mesa_nodo: Node) -> void:
+	for mesa in mesas:
+		if mesa["nodo"] == mesa_nodo:
+			mesa["ocupada"] = false
+			print("Mesa liberada:", mesa_nodo.name)
+			return

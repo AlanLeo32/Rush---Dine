@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcn3t0kb2hd3h"]
+[gd_scene load_steps=22 format=3 uid="uid://dcn3t0kb2hd3h"]
 
 [ext_resource type="Script" uid="uid://dot4i08wxi76p" path="res://cliente.gd" id="1_hd6bx"]
 [ext_resource type="Texture2D" uid="uid://bp1ekkhk8yp2l" path="res://Sprites/SpriteCliente.png" id="2_mc5ak"]
+[ext_resource type="Texture2D" uid="uid://b1s38kutx7o1m" path="res://Sprites/NubePedido.png" id="3_mc5ak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47dcw"]
 atlas = ExtResource("2_mc5ak")
@@ -118,6 +119,45 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hd6bx"]
 size = Vector2(159, 223)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dffsu"]
+atlas = ExtResource("3_mc5ak")
+region = Rect2(682, 0, 341, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r68n"]
+atlas = ExtResource("3_mc5ak")
+region = Rect2(0, 0, 341, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elcv6"]
+atlas = ExtResource("3_mc5ak")
+region = Rect2(341, 0, 341, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mc5ak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dffsu")
+}],
+"loop": true,
+"name": &"finalizaEspera",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r68n")
+}],
+"loop": true,
+"name": &"iniciaEspera",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elcv6")
+}],
+"loop": true,
+"name": &"mitadEspera",
+"speed": 5.0
+}]
+
 [node name="Cliente" type="CharacterBody2D"]
 collision_mask = 8
 script = ExtResource("1_hd6bx")
@@ -131,3 +171,10 @@ animation = &"caminar_derecha"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(21.5, -20.5)
 shape = SubResource("RectangleShape2D_hd6bx")
+
+[node name="nubePedido" type="AnimatedSprite2D" parent="."]
+visible = false
+z_as_relative = false
+sprite_frames = SubResource("SpriteFrames_mc5ak")
+animation = &"finalizaEspera"
+offset = Vector2(70, -150)
