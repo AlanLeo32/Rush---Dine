@@ -132,3 +132,4 @@ func actualizar()-> void:
 	cargar_recetas()
 	cargar_seleccionados()
 	cargar_recursos()
+	

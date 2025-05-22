@@ -26,6 +26,5 @@ func _on_disponible_seleccionada(disp_id):
 
 func _on_cancelar_pressed() -> void:
 	visible = false
-
-func actualizar() -> void:
+func actualizar():
 	cargar_disponibles()

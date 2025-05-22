@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
-@export var speed: float = 500.0
+@export var speed: float = 300.0
 var target_position: Vector2
 var mesa_asignada: Node = null
 var sentado: bool = false
+var pedido_actual : String = ""
+
 
 func _physics_process(delta: float) -> void:
 	if sentado:
@@ -37,6 +39,7 @@ func posicionar_sentado() -> void:
 				z_index = 1
 				$AnimatedSprite2D.animation = "sentado"
 				$AnimatedSprite2D.play()
+				elegir_pedido()
 			else:
 				print("Error: 'PuntoSentado' es null")
 		else:
@@ -56,3 +59,60 @@ func asignar_mesa(mesa: Node) -> void:
 		target_position = punto.global_position  # Asignar también target_position
 	else:
 		print("Asignar mesa: mesa no tiene nodo 'PuntoSentado'")
+func elegir_pedido():
+	var disponibles = NocheData.disponibles_cocinar
+	
+	# Verificar si hay platos disponibles
+	if disponibles.is_empty():
+		pedido_actual = "agua"
+		Globales.reputacion -= 1
+		print("Cliente pidió agua. Reputación bajó a: ", Globales.reputacion)
+		return
+
+	# Armar lista de platos y sus pesos de popularidad
+	var platos_validos = []
+	var pesos = []
+	var suma_total = 0.0
+
+	for nombre_plato in disponibles.keys():
+		if Globales.recetas_desbloqueadas.has(nombre_plato):
+			var info = Globales.recetas_desbloqueadas[nombre_plato]
+			var popularidad = float(info["popularidad"])
+			if popularidad > 0:
+				platos_validos.append(nombre_plato)
+				pesos.append(popularidad)
+				suma_total += popularidad
+
+	# Si por alguna razón no hay platos con popularidad positiva
+	if platos_validos.size() == 0:
+		pedido_actual = "agua"
+		Globales.reputacion -= 1
+		print("Cliente pidió agua. Reputación bajó a: ", Globales.reputacion)
+		return
+
+	# Elegir aleatoriamente un plato según su popularidad
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+
+	var r = rng.randf_range(0, suma_total)
+	var acumulado = 0.0
+
+	for i in range(platos_validos.size()):
+		acumulado += pesos[i]
+		if r <= acumulado:
+			pedido_actual = platos_validos[i]
+			print("Cliente pidió: ", pedido_actual)
+			# Restar uno del disponible para cocinar
+			NocheData.disponibles_cocinar[pedido_actual] -= 1
+			# Si ya no queda, lo eliminamos del diccionario
+			if NocheData.disponibles_cocinar[pedido_actual] <= 0:
+				NocheData.disponibles_cocinar.erase(pedido_actual)
+			# Notificar al menú para actualizarse si está visible
+			# Notificar al menú cocinar que se actualice
+			#var menu = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas")
+			#if menu:
+			#	menu
+
+
+
+			return

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var cliente_escena: PackedScene
-@export var intervalo_min: float = 3.0
+@export var intervalo_min: float = 7.0
 @export var intervalo_max: float = 7.0
 
 var rng = RandomNumberGenerator.new()

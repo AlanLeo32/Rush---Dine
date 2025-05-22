@@ -6,7 +6,7 @@ var disp_id
 
 func set_data(id, receta_data,cantidad):
 	disp_id = id
-
+	print("Actualizando item: ", id, " cantidad: ", cantidad)  # <--- Agrega este print
 	# Imagen principal
 	$CanvasLayer/ImagenReceta.texture = receta_data["imagen"]
 
