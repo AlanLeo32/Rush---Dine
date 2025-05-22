@@ -103,7 +103,7 @@ func asignar_mesa(mesa: Node) -> void:
 	else:
 		print("Asignar mesa: mesa no tiene nodo 'PuntoSentado'")
 func elegir_pedido():
-	var disponibles = NocheData.disponibles_cocinar
+	var disponibles = NocheData.platos_seleccionables
 	
 	# Verificar si hay platos disponibles
 	if disponibles.is_empty():
@@ -146,16 +146,14 @@ func elegir_pedido():
 			pedido_actual = platos_validos[i]
 			print("Cliente pidió: ", pedido_actual)
 			# Restar uno del disponible para cocinar
-			NocheData.disponibles_cocinar[pedido_actual] -= 1
+			NocheData.platos_seleccionables[pedido_actual] -= 1
 			# Si ya no queda, lo eliminamos del diccionario
-			if NocheData.disponibles_cocinar[pedido_actual] <= 0:
-				NocheData.disponibles_cocinar.erase(pedido_actual)
-			# Notificar al menú para actualizarse si está visible
-			# Notificar al menú cocinar que se actualice
-			#var menu = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas")
-			#if menu:
-			#	menu
-
+			if NocheData.platos_seleccionables[pedido_actual] <= 0:
+				NocheData.platos_seleccionables.erase(pedido_actual)
+			# Refrescar el menú visual
+			var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas") # Ajusta si el nodo tiene otro nombre
+			if menu_seleccionable and menu_seleccionable.has_method("actualizar"):
+				menu_seleccionable.actualizar()
 			return
 func irse():
 	var gestor_mesas = get_tree().get_root().get_node("Noche/Mesas")  # Ajusta la ruta según tu escena
