@@ -11,6 +11,22 @@ func _ready():
 	$Timer.one_shot = true
 	$Timer.start()
 	$Timer.timeout.connect(_on_timer_timeout)
+	
+	#Logica para obtener resultados de minijuego
+	if Globales.resultado_minijuego.size() > 0:
+		procesar_resultado_minijuego(Globales.resultado_minijuego)
+		Globales.resultado_minijuego = {}  # lo limpiás para el siguiente minijuego
+
+func procesar_resultado_minijuego(resultado):
+	var puntaje = resultado.get("puntaje", 0)
+	var receta = resultado.get("receta", null)
+
+	print("¡Completaste el minijuego para:", receta.nombre)
+	print("Puntaje:", puntaje)
+
+	# Aca aplicar algo en base a los puntos
+
+	# También podrías actualizar alguna UI de resultados si tenés
 
 func _on_timer_timeout():
 	var gestor = $Mesas

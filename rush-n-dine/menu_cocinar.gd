@@ -22,7 +22,25 @@ func _on_disponible_seleccionada(disp_id):
 	NocheData.disponibles_cocinar[disp_id] -= 1
 	if NocheData.disponibles_cocinar[disp_id] <= 0:
 		NocheData.disponibles_cocinar.erase(disp_id)
+	
+	# Obtengo los datos de la receta
+	var receta_data = Globales.recetas_desbloqueadas[disp_id]
+	#Selecciono el minijuego
+	if receta_data.has("minijuegos") and receta_data["minijuegos"].size() > 0:
+		var lista = receta_data["minijuegos"].duplicate()
+		lista.shuffle()
+		var minijuego_path = lista[0]
+		
+		# Guardar datos si necesitás (por ejemplo, nombre de receta actual)
+		Globales.receta_actual = receta_data
+
+		# Cambiar a escena del minijuego
+		get_tree().change_scene_to_file(minijuego_path)
+	else:
+		push_error("La receta no tiene minijuegos definidos")
+	
 	visible = false
+
 
 func _on_cancelar_pressed() -> void:
 	visible = false

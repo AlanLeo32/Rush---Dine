@@ -7,6 +7,7 @@ var collision_shape: CollisionShape2D
 var dir: String
 var slice1
 var slice2
+var puntaje: int = 0
 
 func _ready():
 	line = Line2D.new()
@@ -54,10 +55,14 @@ func _process(delta):
 			if obj and obj.is_in_group("Fruta") and !obj.cortando():
 				obj.cortar()
 				print("Fruta cortada:", obj.name)
+				puntaje += 1
 				print('Direccion del corte: ' + dir)
 				elimina_fruta(obj)
 	else:
 		line.clear_points()
+
+func getPuntaje() -> int:
+	return puntaje
 
 func detectar_direccion(ult, pri) -> String:
 	var movX = ult[0] - pri[0]

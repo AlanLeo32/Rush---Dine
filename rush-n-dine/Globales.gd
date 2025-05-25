@@ -8,6 +8,8 @@ var dia= true
 var recetas_desbloqueadas : Dictionary = {}
 var recursos_disponibles : Dictionary = {}
 var cant_colectables: int = 0
+var receta_actual = null
+var resultado_minijuego = {}
 
 	
 func _ready():
@@ -23,7 +25,10 @@ func cargar_recetas_iniciales():
 			"popularidad": 8,
 			"recursos_requeridos": {
 				"pescado": 1,
-			}
+			},
+			"minijuegos": [
+				"res://minigames/slicing/main.tscn"
+			]
 		},
 		"pescado_asado2": {
 			"nombre": "Pescado Asado2",
@@ -32,7 +37,10 @@ func cargar_recetas_iniciales():
 			"popularidad": 8,
 			"recursos_requeridos": {
 				"pescado": 1,
-			}
+			},
+			"minijuegos": [
+				"res://minigames/slicing/main.tscn"
+			]
 		},
 				"pescado_asado3": {
 			"nombre": "Pescado Asado3",
@@ -41,7 +49,10 @@ func cargar_recetas_iniciales():
 			"popularidad": 8,
 			"recursos_requeridos": {
 				"pescado": 1,
-			}
+			},
+			"minijuegos": [
+				"res://minigames/slicing/main.tscn"
+			]
 		},
 				"pescado_asado4": {
 			"nombre": "Pescado Asado4",
