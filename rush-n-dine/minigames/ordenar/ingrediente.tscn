@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpfqfnnqheg7e"]
+
+[ext_resource type="Script" uid="uid://bb2rqn88wm5nv" path="res://minigames/ordenar/ingrediente.gd" id="1_rx0ly"]
+
+[node name="Ingrediente" type="TextureRect"]
+script = ExtResource("1_rx0ly")

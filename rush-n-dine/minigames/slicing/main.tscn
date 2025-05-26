@@ -37,7 +37,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(954, 532)
 
 [node name="MinigameTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 
