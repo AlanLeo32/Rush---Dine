@@ -52,10 +52,13 @@ func _process(delta):
 
 		for hit in result:
 			var obj := hit.get("collider") as Node
-			if obj and obj.is_in_group("Fruta") and !obj.cortando():
+			if obj and (obj.is_in_group("Fruta") or obj.is_in_group("Roca")) and !obj.cortando():
 				obj.cortar()
 				print("Fruta cortada:", obj.name)
-				puntaje += 1
+				if obj.is_in_group("Fruta"):
+					puntaje += 1
+				else:
+					puntaje -= 1
 				print('Direccion del corte: ' + dir)
 				elimina_fruta(obj)
 	else:
@@ -114,19 +117,3 @@ func elimina_fruta(obj):
 	await get_tree().create_timer(0.2).timeout
 	if is_instance_valid(obj):
 		obj.queue_free()
-
-#func update_collision_shape():
-#	if line.get_point_count() < 2:
-#		return
-#	var start = line.get_point_position(0)
-#	var end = line.get_point_position(line.get_point_count() - 1)
-#	var center = (start + end) / 2.0
-#	var length = start.distance_to(end)
-#	var angle = (end - start).angle()
-
-#	var shape = RectangleShape2D.new()
-#	shape.size = Vector2(length, 20)
-
-#	collision_shape.shape = shape
-#	slash_area.position = center
-#	slash_area.rotation = angle

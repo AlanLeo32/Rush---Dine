@@ -5,14 +5,19 @@ extends Node2D
 @onready var slash = $Slash
 
 const FRUIT_SCENE = preload("veggie.tscn")
+const ROCK_SCENE = preload("rock.tscn")
 
 func _ready():
 	print("Instancia escena main del slice")
 	spawn_timer.start()
 
 func _on_spawn_timer_timeout():
-	var fruit = FRUIT_SCENE.instantiate()
-	fruits_node.add_child(fruit)
+	var elem
+	if randf() < 0.5:
+		elem = FRUIT_SCENE.instantiate()
+	else:
+		elem = ROCK_SCENE.instantiate()
+	fruits_node.add_child(elem)
 	
 func _process(delta):
 	var tiempo_restante = int($MinigameTimer.time_left)
