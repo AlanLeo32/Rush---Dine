@@ -10,6 +10,17 @@ var direccion_joystick := Vector2.ZERO
 
 var objeto_actual: Area2D = null
 var interactuables_actuales := []
+var objeto_en_mano: Node = null
+
+func recibir_plato(plato: Node):
+	if objeto_en_mano == null:
+		objeto_en_mano = plato
+		var mano = get_node("Mano")
+		mano.add_child(plato)
+		plato.position = Vector2.ZERO  # Aparece en la mano
+		
+		print("Platillo recibido")
+
 func _ready():
 	boton_interactuar.visible = false
 
@@ -49,7 +60,11 @@ func _physics_process(delta):
 			anim.play("Parada Derecha")
 		elif actual == "Caminar Izquierda":
 			anim.play("Parada Izquierda")
-			
+	# Mostrar plato solo si está de frente
+	if objeto_en_mano:
+		var anim_actual = anim.animation
+		objeto_en_mano.visible = anim_actual in ["Caminar Adelante", "Parado Frente","Caminar Derecha","Parada Derecha","Caminar Izquierda","Parada Izquierda"]
+
 			
 func _process(_delta):
 	$AnimatedSprite2D.z_index = int(global_position.y)

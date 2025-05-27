@@ -92,6 +92,7 @@ region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
 size = Vector2(475, 389.5)
 
 [node name="Noche" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_sa3a0")
 cliente_escena = ExtResource("2_5s16a")
 
@@ -136,7 +137,6 @@ shape = SubResource("RectangleShape2D_skj3d")
 
 [node name="ParedFrontalIzqCocina" parent="Escenario" instance=ExtResource("4_vcooc")]
 z_index = 2148
-y_sort_enabled = true
 position = Vector2(368.286, 613.714)
 scale = Vector2(0.285714, 0.285714)
 collision_layer = 4
@@ -145,7 +145,6 @@ metadata/_edit_lock_ = true
 
 [node name="ParedFrontalDerCocina" type="StaticBody2D" parent="Escenario"]
 z_index = 2148
-y_sort_enabled = true
 position = Vector2(657.143, 613.714)
 scale = Vector2(0.285714, 0.285714)
 collision_layer = 4

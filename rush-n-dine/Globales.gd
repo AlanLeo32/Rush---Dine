@@ -61,7 +61,10 @@ func cargar_recetas_iniciales():
 			"popularidad": 8,
 			"recursos_requeridos": {
 				"pescado": 1,
-			}
+			},
+			"minijuegos": [
+				"res://minigames/slicing/main.tscn"
+			]
 		},
 				"pescado_asado5": {
 			"nombre": "Pescado Asado5",
@@ -70,7 +73,10 @@ func cargar_recetas_iniciales():
 			"popularidad": 8,
 			"recursos_requeridos": {
 				"pescado": 1,
-			}
+			},
+			"minijuegos": [
+				"res://minigames/slicing/main.tscn"
+			]
 		},
 				"pescado_asado6": {
 			"nombre": "Pescado Asado6",
@@ -79,7 +85,10 @@ func cargar_recetas_iniciales():
 			"popularidad": 8,
 			"recursos_requeridos": {
 				"pescado": 1,
-			}
+			},
+			"minijuegos": [
+				"res://minigames/slicing/main.tscn"
+			]
 		},
 				"pescado_asado7": {
 			"nombre": "Pescado Asado7",
@@ -88,7 +97,10 @@ func cargar_recetas_iniciales():
 			"popularidad": 8,
 			"recursos_requeridos": {
 				"pescado": 1,
-			}
+			},
+			"minijuegos": [
+				"res://minigames/slicing/main.tscn"
+			]
 		}
 	}
 	
