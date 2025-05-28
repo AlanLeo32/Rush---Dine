@@ -7,17 +7,14 @@ extends Control
 @onready var ideal_text = $IdealText
 
 var angle = 0.0
-var speed = 90.0  # grados por segundo
+var speed = 180.0  # grados por segundo
 var rotating = false
 var center = Vector2.ZERO
 #var radius = 100.0  # ajustá esto al tamaño de tu círculo
 var radius
 var color 
-var coordsCartel
-var coordsArea1 = Vector2(800, 436)
-var coordsArea2 = Vector2(818, 288)
-var coordsArea3 = Vector2(806, 167)
-var coordsArea4 = Vector2(741, 71)
+var coordsCartel = [Vector2(1336, 720), Vector2(1389, 483), Vector2(1376, 272), Vector2(1295, 127)]
+var pos_text = Vector2.ZERO
 var deltaGlobal = 0
 
 func _ready():
@@ -25,7 +22,10 @@ func _ready():
 	center = background.global_position + background.size * 0.5 + Vector2(50, 80)
 	#radius = min(background.size.x, background.size.y) * 0.5 - 0.0  # margen interior
 	radius = 0
-	ideal_text.set_global_position(coordsArea2)
+	#var coccion = Globales.receta_actual["coccion"]
+	var coccion = 1 # ESTO ESTA HARDCODEADO PARA PROBAR CORRIENDO SOLO ESTA ESCENA, USAR LA LINEA DE ARRIBA
+	pos_text = coordsCartel[coccion-1]
+	ideal_text.set_global_position(pos_text)
 	start_skill_check()
 	
 
@@ -59,11 +59,17 @@ func _input(event):
 			check_success()
 
 func check_success():
-	print(color)
+	var area_resultado
 	var overlapping_areas = $Needle/StaticBody2D.get_overlapping_areas()
 	for area in overlapping_areas:
 		print("Tocando: ", area.name)
-	terminar_minijuego()
+		area_resultado = int(area.name.substr(4))
+		print(area_resultado)
+	#terminar_minijuego()
+
+func calcular_puntaje():
+	var puntaje_final
+	#calcular en base a la lejania de la zona de coccion objetivo
 
 func terminar_minijuego():
 	print('fin minijuego skillcheck')

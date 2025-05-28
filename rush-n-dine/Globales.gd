@@ -46,7 +46,10 @@ func cargar_recetas_iniciales():
 			"minijuegos": [
 				"res://minigames/slicing/main.tscn",
 				"res://minigames/cooking/SkillCheck.tscn"
-			]
+			],
+			# El punto de coccion es necesario para
+			# el minijuego del horno (skillcheck)
+			"coccion": 2
 		},
 				"pescado_asado3": {
 			"nombre": "Pescado Asado3",
