@@ -14,11 +14,13 @@ var objeto_en_mano: Node = null
 
 func recibir_plato(plato: Node):
 	if objeto_en_mano == null:
-		objeto_en_mano = plato
+		
 		var mano = get_node("Mano")
 		mano.add_child(plato)
 		plato.position = Vector2.ZERO  # Aparece en la mano
-		
+		objeto_en_mano = mano.get_child(0)
+		print("mano zindex ",mano.z_index)
+		print("plato zindex ",mano.get_child(0).z_index)
 		print("Platillo recibido")
 
 func _ready():
@@ -67,7 +69,7 @@ func _physics_process(delta):
 
 			
 func _process(_delta):
-	$AnimatedSprite2D.z_index = int(global_position.y)
+	z_index = int(global_position.y)
 
 
 func _on_area_entered(area: Area2D) -> void:

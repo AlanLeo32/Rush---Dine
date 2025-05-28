@@ -45,7 +45,6 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("4_jj0o1")
 
 [node name="MinigameTimer" type="Timer" parent="."]
-wait_time = 15.0
 one_shot = true
 autostart = true
 

@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cctl4lh8gjpis" path="res://Sprites/pescadoQuemado.png" id="1_t6574"]
 
 [node name="PlatoQuemado" type="Node2D"]
-z_index = 1
 
 [node name="PlatoQuemado" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
