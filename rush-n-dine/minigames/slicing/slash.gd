@@ -57,8 +57,9 @@ func _process(delta):
 				print("Fruta cortada:", obj.name)
 				if obj.is_in_group("Fruta"):
 					puntaje += 1
-				else:
-					puntaje -= 1
+				else: 
+					if puntaje >= 0:
+						puntaje -= 1
 				print('Direccion del corte: ' + dir)
 				elimina_fruta(obj)
 	else:

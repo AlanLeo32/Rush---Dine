@@ -60,6 +60,7 @@ func terminar_minijuego():
 	#}
 	#Volver al juego principal
 	print('fin minijuego ordenar')
+	Globales.logica_siguiente_minijuego()
 	#get_tree().change_scene_to_file("res://noche.tscn")
 
 

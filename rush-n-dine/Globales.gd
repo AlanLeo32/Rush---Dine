@@ -9,7 +9,11 @@ var recetas_desbloqueadas : Dictionary = {}
 var recursos_disponibles : Dictionary = {}
 var cant_colectables: int = 0
 var receta_actual = null
-var resultado_minijuego = {}
+var resultado_minijuego = {
+	"puntaje" = 0,
+	"receta" = null
+}
+var pos_minijuego_actual: int = 0
 
 	
 func _ready():
@@ -27,7 +31,8 @@ func cargar_recetas_iniciales():
 				"pescado": 1,
 			},
 			"minijuegos": [
-				"res://minigames/slicing/main.tscn"
+				"res://minigames/slicing/main.tscn",
+				"res://minigames/ordenar/main.tscn"
 			]
 		},
 		"pescado_asado2": {
@@ -39,7 +44,8 @@ func cargar_recetas_iniciales():
 				"pescado": 1,
 			},
 			"minijuegos": [
-				"res://minigames/slicing/main.tscn"
+				"res://minigames/slicing/main.tscn",
+				"res://minigames/cooking/SkillCheck.tscn"
 			]
 		},
 				"pescado_asado3": {
@@ -111,3 +117,23 @@ func cargar_recursos_iniciales():
 		"pescado3": {"nombre": "Pescado3", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
 		"pescado4": {"nombre": "Pescado4", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
 	}
+
+
+# logica_siguiente_minijuego()
+# Esta funcion estandariza la logica de pasar al siguiente minijuego 
+# luego de que termina cada minijuego, para que no dependa del minijuego
+# en si, sino de los minijuegos que tiene cada receta.
+# Una vez que se terminan los minijuegos de esa receta, se vuelve a la noche.
+
+func logica_siguiente_minijuego():
+	var minijuegos = receta_actual["minijuegos"]
+	
+	if pos_minijuego_actual >= minijuegos.size():
+		print("No hay otro minijuego a continuacion, volviendo al restaurante...")
+		get_tree().change_scene_to_file("res://noche.tscn")
+		pos_minijuego_actual = 0
+	else:
+		print("Minijuego actual: ", minijuegos[pos_minijuego_actual])
+		var ruta_escena_minijuego = minijuegos[pos_minijuego_actual]
+		pos_minijuego_actual += 1
+		get_tree().change_scene_to_file(ruta_escena_minijuego)

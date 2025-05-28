@@ -27,15 +27,10 @@ func _on_disponible_seleccionada(disp_id):
 	var receta_data = Globales.recetas_desbloqueadas[disp_id]
 	#Selecciono el minijuego
 	if receta_data.has("minijuegos") and receta_data["minijuegos"].size() > 0:
-		var lista = receta_data["minijuegos"].duplicate()
-		lista.shuffle()
-		var minijuego_path = lista[0]
-		
-		# Guardar datos si necesitás (por ejemplo, nombre de receta actual)
 		Globales.receta_actual = receta_data
 
 		# Cambiar a escena del minijuego
-		get_tree().change_scene_to_file(minijuego_path)
+		Globales.logica_siguiente_minijuego()
 	else:
 		push_error("La receta no tiene minijuegos definidos")
 	

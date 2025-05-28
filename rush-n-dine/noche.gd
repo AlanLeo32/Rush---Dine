@@ -13,13 +13,13 @@ func _ready():
 	$Timer.timeout.connect(_on_timer_timeout)
 	
 	#Logica para obtener resultados de minijuego
-	if Globales.resultado_minijuego.size() > 0:
+	if Globales.resultado_minijuego["receta"]:
 		procesar_resultado_minijuego(Globales.resultado_minijuego)
 		Globales.resultado_minijuego = {}  # lo limpiás para el siguiente minijuego
 
 func procesar_resultado_minijuego(resultado):
-	var puntaje = resultado.get("puntaje", 0)
-	var receta = resultado.get("receta", null)
+	var puntaje = resultado["puntaje"]
+	var receta = resultado["receta"]
 
 	print("¡Completaste el minijuego para:", receta.nombre)
 	print("Puntaje:", puntaje)
