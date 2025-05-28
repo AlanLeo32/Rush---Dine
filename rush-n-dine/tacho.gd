@@ -6,8 +6,8 @@ var abierto := false
 func interactuar():
 	print("Usando el tacho...")
 	if abierto:
-		sprite.texture = preload("res://Sprites/tachoCerrado.png")
+		sprite.texture = preload("res://Sprites/TachoCerrado.png")
 		abierto = false
 	else:
-		sprite.texture = preload("res://sprites/tachoAbierto.png")
+		sprite.texture = preload("res://Sprites/TachoAbierto.png")
 		abierto = true
