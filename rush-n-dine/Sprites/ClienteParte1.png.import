@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1136uthfrair"
-path="res://.godot/imported/CocineroConManoLevantada.png-7bc6afa8a9cf6d4780abe11b2323107e.ctex"
+uid="uid://c2m66b0mvjytp"
+path="res://.godot/imported/ClienteParte1.png-38859a24332a79e6bdff82f0e96c3fe3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/CocineroConManoLevantada.png"
-dest_files=["res://.godot/imported/CocineroConManoLevantada.png-7bc6afa8a9cf6d4780abe11b2323107e.ctex"]
+source_file="res://Sprites/ClienteParte1.png"
+dest_files=["res://.godot/imported/ClienteParte1.png-38859a24332a79e6bdff82f0e96c3fe3.ctex"]
 
 [params]
 
