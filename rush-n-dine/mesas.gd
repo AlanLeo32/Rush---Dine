@@ -4,6 +4,7 @@ class_name GestorMesas
 
 var mesas : Array = []
 
+
 func _ready():
 	for nodo in get_children():
 		# Solo agregamos nodos que sean mesas, asumiendo que sus nombres contienen "Mesa"

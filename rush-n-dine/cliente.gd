@@ -10,12 +10,15 @@ var etapa_espera : int = 0
 var esperando_pedido: bool = false
 @export var punto_salida: NodePath
 var nube_pedido: AnimatedSprite2D = null
+var tiene_pedido
+var pedido_tomado := false   # false: esperando que lo atiendan, true: esperando que le sirvan
 
 func _ready():
 	# Ahora accedes directo al hijo nubePedido del cliente
 	nube_pedido = $nubePedido
 	nube_pedido.visible = false
-
+	add_to_group("clientes")  # ¡Clave!
+	print("Cliente agregado al grupo:", self)
 func _physics_process(delta: float) -> void:
 	if sentado:
 		velocity = Vector2.ZERO
@@ -50,8 +53,46 @@ func _physics_process(delta: float) -> void:
 					print("Cliente se enojó y se va")
 					esperando_pedido = false
 					nube_pedido.visible = false
+					nube_pedido.stop()
+					if not pedido_tomado:
+						print("Cliente se va porque no lo atendieron")
+					else:
+						print("Cliente se va porque no le sirvieron el plato")
+
+					Globales.reputacion -= 1
 					irse()
 
+func recibir_plato(plato: Node):
+	if not plato.has_method("get") or not plato.has("receta") or plato.get("receta") == null:
+		print("Error: el plato no tiene una receta asignada")
+		return
+	if plato.get("receta").nombre == pedido_actual:
+		print("Cliente recibió su pedido correcto")
+		Globales.reputacion += 1
+	else:
+		print("Cliente recibió el pedido incorrecto")
+		Globales.reputacion -= 1
+
+	esperando_pedido = false
+	nube_pedido.visible = false
+	nube_pedido.animation = ""
+	nube_pedido.stop()
+	await get_tree().create_timer(3.0).timeout
+	irse()
+func interactuar():
+	if tiene_pedido:
+		print("El cocinero toma el pedido.")
+		tiene_pedido = false
+		pedido_tomado = true
+
+		# Reiniciar ciclo de espera para recibir el plato
+		etapa_espera = 0
+		tiempo_espera = 0.0
+		esperando_pedido = true
+
+		nube_pedido.visible = true
+		nube_pedido.animation = "iniciaEspera"
+		nube_pedido.play()
 
 func actualizar_animacion(direction: Vector2) -> void:
 	if abs(direction.x) > abs(direction.y):
@@ -70,7 +111,7 @@ func posicionar_sentado() -> void:
 				$AnimatedSprite2D.animation = "sentado"
 				$AnimatedSprite2D.play()
 				elegir_pedido()
-
+				tiene_pedido = true
 				# Mostrar y posicionar nubePedido encima del cliente
 				nube_pedido.visible = true
 				# Como nubePedido es hijo, usamos position relativo, no global_position
@@ -79,7 +120,7 @@ func posicionar_sentado() -> void:
 
 				nube_pedido.animation = "iniciaEspera"
 				nube_pedido.play()
-
+				pedido_tomado = false
 				esperando_pedido = true
 				tiempo_espera = 0.0
 				etapa_espera = 0
@@ -165,6 +206,20 @@ func irse():
 	mesa_asignada = null
 	sentado = false
 	velocity = Vector2.ZERO
+	
+	# Devolver el pedido si el cliente se va sin recibirlo
+	if pedido_actual != "":
+		if tiene_pedido or pedido_tomado:
+			print("Cliente se fue sin su plato, devolviendo:", pedido_actual)
+			if NocheData.platos_seleccionables.has(pedido_actual):
+				NocheData.platos_seleccionables[pedido_actual] += 1
+			else:
+				NocheData.platos_seleccionables[pedido_actual] = 1  # Volver a agregarlo al stock
+
+			# Refrescar menú visual
+			var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas")
+			if menu_seleccionable and menu_seleccionable.has_method("actualizar"):
+				menu_seleccionable.actualizar()
 
 	# Ir al punto de salida
 	var salida = get_tree().get_root().get_node("Noche/PuntoEntrada")  # Ajusta la ruta si es necesario

@@ -8,7 +8,7 @@ var touch_start_position := Vector2.ZERO
 var dragging := false
 var direccion_joystick := Vector2.ZERO
 
-var objeto_actual: Area2D = null
+var objeto_actual: Node = null
 var interactuables_actuales := []
 var objeto_en_mano: Node = null
 
@@ -19,9 +19,12 @@ func recibir_plato(plato: Node):
 		mano.add_child(plato)
 		plato.position = Vector2.ZERO  # Aparece en la mano
 		objeto_en_mano = mano.get_child(0)
-		print("mano zindex ",mano.z_index)
-		print("plato zindex ",mano.get_child(0).z_index)
 		print("Platillo recibido")
+func entregar_plato_al_cliente():
+	if objeto_en_mano and objeto_actual and objeto_actual.has_method("recibir_plato"):
+		objeto_actual.recibir_plato(objeto_en_mano)
+		objeto_en_mano.queue_free()
+		objeto_en_mano = null
 
 func _ready():
 	boton_interactuar.visible = false
@@ -73,10 +76,25 @@ func _process(_delta):
 
 
 func _on_area_entered(area: Area2D) -> void:
+	print("Área detectada:", area.name)
 	if area.has_method("interactuar") and not interactuables_actuales.has(area):
 		interactuables_actuales.append(area)
 		objeto_actual = area  # tomamos el último ingresado
 		boton_interactuar.visible = true
+	elif area.name.begins_with("Mesa") and not interactuables_actuales.has(area):
+		var clientes = get_tree().get_nodes_in_group("clientes")
+		print("Clientes en grupo:", clientes)
+		for cliente in clientes:
+			print(cliente.mesa_asignada)
+			print(area)
+			print("TerminaPrintFOR")
+			if area.get_parent() == cliente.mesa_asignada and cliente.sentado and cliente.esperando_pedido:
+				print("Cliente detectado:", cliente)
+				interactuables_actuales.append(cliente)
+				objeto_actual = cliente
+				boton_interactuar.visible = true
+				break
+
 
 func _on_area_exited(area):
 	if interactuables_actuales.has(area):
@@ -84,6 +102,14 @@ func _on_area_exited(area):
 	# Si el área saliente es el tacho y está abierto, lo cerramos
 		if area.name == "Tacho" and area.abierto:
 			area.interactuar()
+	else:
+		# Si salimos de una mesa, hay que verificar si hay algún cliente relacionado
+		var clientes = get_tree().get_nodes_in_group("clientes")
+		for cliente in clientes:
+			if area.get_parent() == cliente.mesa_asignada:
+				if interactuables_actuales.has(cliente):
+					interactuables_actuales.erase(cliente)
+				break
 	if interactuables_actuales.is_empty():
 		objeto_actual = null
 		boton_interactuar.visible = false

@@ -26,6 +26,11 @@ func cargar_seleccionados():
 		if not receta_ids.has(id):
 				receta_ids.append(id)
 	for receta_id in receta_ids:
+		if receta_id == "agua":
+			continue  # Saltar receta ficticia
+		if not Globales.recetas_desbloqueadas.has(receta_id):
+			print("Advertencia: receta no encontrada:", receta_id)
+			continue
 		var receta = Globales.recetas_desbloqueadas[receta_id]
 		var cantidad_noche = 0
 		var cantidad_local = 0

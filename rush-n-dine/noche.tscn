@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=48 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -90,6 +90,9 @@ region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj8yk"]
 size = Vector2(475, 389.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxnie"]
+size = Vector2(476, 268.5)
 
 [node name="Noche" type="Node2D"]
 z_as_relative = false
@@ -383,18 +386,26 @@ y_sort_enabled = true
 collision_layer = 8
 collision_mask = 0
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Mesa1"]
+position = Vector2(600.5, 2932.5)
+shape = SubResource("RectangleShape2D_hj8yk")
+
 [node name="SpriteMesa" type="Sprite2D" parent="Mesas/Mesa1"]
 z_index = 20
 position = Vector2(600, 2862)
 scale = Vector2(0.602905, 0.532226)
 texture = ExtResource("23_sa3a0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Mesa1"]
-position = Vector2(600.5, 2932.5)
-shape = SubResource("RectangleShape2D_hj8yk")
-
 [node name="PuntoSentado" type="Node2D" parent="Mesas/Mesa1"]
 position = Vector2(601, 2600)
+
+[node name="Mesa1" type="Area2D" parent="Mesas/Mesa1"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShapeDeArea" type="CollisionShape2D" parent="Mesas/Mesa1/Mesa1"]
+position = Vector2(602, 2988.75)
+shape = SubResource("RectangleShape2D_uxnie")
 
 [node name="SpriteSilla" type="Sprite2D" parent="Mesas"]
 z_index = 3000
@@ -436,10 +447,8 @@ one_shot = true
 position = Vector2(1752, 3411)
 scale = Vector2(1.175, 1.175)
 
-[node name="Cliente" parent="." instance=ExtResource("2_5s16a")]
-visible = false
-z_index = 3001
-y_sort_enabled = true
+[node name="Clientes" type="Node2D" parent="."]
+position = Vector2(2, 4)
 
 [connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
