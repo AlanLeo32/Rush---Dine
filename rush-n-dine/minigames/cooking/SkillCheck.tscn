@@ -12,6 +12,7 @@ size = Vector2(8.00003, 11.075)
 
 [node name="Control" type="Control"]
 layout_mode = 3
+anchors_preset = 0
 offset_left = 12.0
 offset_top = 3.0
 offset_right = 213.0
