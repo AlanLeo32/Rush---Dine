@@ -141,6 +141,11 @@ func logica_siguiente_minijuego():
 	
 	if pos_minijuego_actual >= minijuegos.size():
 		print("No hay otro minijuego a continuacion, volviendo al restaurante...")
+		# Al terminar el minijuego
+		var noche = get_tree().get_root().get_node("Noche")
+		if noche:
+			noche.procesar_resultado_minijuego(Globales.resultado_minijuego)
+			Globales.resultado_minijuego = {}
 		pos_minijuego_actual = 0
 	else:
 		print("Minijuego actual: ", minijuegos[pos_minijuego_actual])

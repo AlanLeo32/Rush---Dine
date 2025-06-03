@@ -28,19 +28,21 @@ func procesar_resultado_minijuego(resultado):
 	print("¡Completaste el minijuego para:", receta["nombre"], "!")
 	print("Puntaje:", puntaje)
 	var cocinero = get_node_or_null("CharacterBodyCocinero2D")  # Ruta real a tu personaje
+	print("Buscando cocinero... Encontrado:", cocinero != null)
 	if cocinero:
 		var plato: Node
 		if puntaje >= 1:
+			print("Instanciando PlatoBueno")
 			plato = preload("res://Platos/PlatoBueno.tscn").instantiate()
 		else:
+			print("Instanciando PlatoQuemado")
 			plato = preload("res://Platos/PlatoQuemado.tscn").instantiate()
 		# Asignar la receta al plato
 		plato.receta = receta
-
 		# Puedes guardar la receta también si querés
 		print("Plato creado:", plato, "con receta:", receta)
 		cocinero.recibir_plato(plato)
-
+		print("Cocinero tiene método recibir_plato:", cocinero.has_method("recibir_plato"))
 	Globales.resultado_minijuego = {}  # Limpiar para el próximo
 	# Aca aplicar algo en base a los puntos
 
