@@ -63,10 +63,14 @@ func _physics_process(delta: float) -> void:
 					irse()
 
 func recibir_plato(plato: Node):
-	if not plato.has_method("get") or not plato.has("receta") or plato.get("receta") == null:
+	var receta = null
+	print("Plato recibido:", plato)
+	receta = plato.receta
+	print("Receta del plato recibido:", receta)
+	if receta == null:
 		print("Error: el plato no tiene una receta asignada")
 		return
-	if plato.get("receta").nombre == pedido_actual:
+	if receta["nombre"] == pedido_actual:
 		print("Cliente recibió su pedido correcto")
 		Globales.reputacion += 1
 	else:
@@ -111,6 +115,7 @@ func posicionar_sentado() -> void:
 				$AnimatedSprite2D.animation = "sentado"
 				$AnimatedSprite2D.play()
 				elegir_pedido()
+				print("Esperando que le entregues:", pedido_actual) # <-- Agrega esto si quieres
 				tiene_pedido = true
 				# Mostrar y posicionar nubePedido encima del cliente
 				nube_pedido.visible = true

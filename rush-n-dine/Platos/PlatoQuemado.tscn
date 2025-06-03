@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://vymlx23hh45n"]
+[gd_scene load_steps=3 format=3 uid="uid://vymlx23hh45n"]
 
+[ext_resource type="Script" uid="uid://c2d6nthpaag7e" path="res://Platos/plato.gd" id="1_edyeh"]
 [ext_resource type="Texture2D" uid="uid://cctl4lh8gjpis" path="res://Sprites/pescadoQuemado.png" id="1_t6574"]
 
 [node name="PlatoQuemado" type="Node2D"]
+script = ExtResource("1_edyeh")
 
 [node name="PlatoQuemado" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

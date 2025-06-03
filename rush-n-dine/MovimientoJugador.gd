@@ -14,7 +14,6 @@ var objeto_en_mano: Node = null
 
 func recibir_plato(plato: Node):
 	if objeto_en_mano == null:
-		
 		var mano = get_node("Mano")
 		mano.add_child(plato)
 		plato.position = Vector2.ZERO  # Aparece en la mano
@@ -22,6 +21,7 @@ func recibir_plato(plato: Node):
 		print("Platillo recibido")
 func entregar_plato_al_cliente():
 	if objeto_en_mano and objeto_actual and objeto_actual.has_method("recibir_plato"):
+		print("Entregando plato al cliente:", objeto_en_mano.get("receta"))
 		objeto_actual.recibir_plato(objeto_en_mano)
 		objeto_en_mano.queue_free()
 		objeto_en_mano = null
@@ -77,6 +77,7 @@ func _process(_delta):
 
 func _on_area_entered(area: Area2D) -> void:
 	print("Área detectada:", area.name)
+	print("Interactuables actuales:", interactuables_actuales)
 	if area.has_method("interactuar") and not interactuables_actuales.has(area):
 		interactuables_actuales.append(area)
 		objeto_actual = area  # tomamos el último ingresado
@@ -120,7 +121,11 @@ func _on_area_exited(area):
 
 func _on_interactuar_pressed() -> void:
 	if objeto_actual:
-		objeto_actual.interactuar()
+		# Si tengo un plato y el objeto actual es un cliente esperando pedido
+		if objeto_en_mano and objeto_actual.is_in_group("clientes") and objeto_actual.esperando_pedido:
+			entregar_plato_al_cliente()
+		else:
+			objeto_actual.interactuar()
 		
 #esta solo usar para simular deslizamiento con gesto con mouse
 func _unhandled_input(event):

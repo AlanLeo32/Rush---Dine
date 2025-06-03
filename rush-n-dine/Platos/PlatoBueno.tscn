@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt7goyglrf85k"]
+[gd_scene load_steps=3 format=3 uid="uid://bt7goyglrf85k"]
 
 [ext_resource type="Texture2D" uid="uid://ckdq1if3woicv" path="res://Sprites/PescadoCocinado.png" id="1_0dgj6"]
+[ext_resource type="Script" uid="uid://c2d6nthpaag7e" path="res://Platos/plato.gd" id="1_igf2r"]
 
 [node name="PlatoBueno" type="Node2D"]
+script = ExtResource("1_igf2r")
 
 [node name="PlatoBueno" type="Sprite2D" parent="."]
 position = Vector2(-2.99999, 3)
