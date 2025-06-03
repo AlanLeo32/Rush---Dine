@@ -70,7 +70,7 @@ func terminar_minijuego():
 	print('fin minijuego ordenar')
 	calcular_puntaje_final()
 	Globales.logica_siguiente_minijuego()
-	#get_tree().change_scene_to_file("res://noche.tscn")
+
 
 func calcular_puntaje_final():
 	var puntaje_total = 0
