@@ -5,13 +5,17 @@ extends Node2D
 @export var intervalo_max: float = 8.0
 
 var rng = RandomNumberGenerator.new()
+var bloquear_cocinero = false
 
+func is_minijuego_activo():
+	return bloquear_cocinero
+	
 func _ready():
 	$Timer.wait_time = rng.randf_range(intervalo_min, intervalo_max)
 	$Timer.one_shot = true
 	$Timer.start()
 	$Timer.timeout.connect(_on_timer_timeout)
-	
+	bloquear_cocinero = false
 	#Logica para obtener resultados de minijuego
 	if Globales.resultado_minijuego["receta"]:
 		procesar_resultado_minijuego(Globales.resultado_minijuego)

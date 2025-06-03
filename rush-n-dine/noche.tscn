@@ -450,6 +450,24 @@ scale = Vector2(1.175, 1.175)
 [node name="Clientes" type="Node2D" parent="."]
 position = Vector2(2, 4)
 
+[node name="OverlayMinijuegos" type="CanvasLayer" parent="."]
+
+[node name="FondoOscuro" type="ColorRect" parent="OverlayMinijuegos"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="ContenedorMinijuego" type="Control" parent="OverlayMinijuegos"]
+layout_mode = 3
+anchors_preset = 0
+
 [connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
 [connection signal="pressed" from="CanvasLayer2/LogicaPausa" to="CanvasLayer2" method="_on_logica_pausa_pressed"]

@@ -30,6 +30,11 @@ func _ready():
 	boton_interactuar.visible = false
 
 func _physics_process(delta):
+	var noche = get_tree().get_root().get_node("Noche")
+	print("bloquear_cocinero:", noche.is_minijuego_activo())
+	if noche and noche.has_method("is_minijuego_activo") and noche.is_minijuego_activo():
+		velocity = Vector2.ZERO
+		return
 	# Si el juego está pausado, no procesamos el movimiento
 	if get_tree().paused:
 		return

@@ -141,10 +141,28 @@ func logica_siguiente_minijuego():
 	
 	if pos_minijuego_actual >= minijuegos.size():
 		print("No hay otro minijuego a continuacion, volviendo al restaurante...")
-		get_tree().change_scene_to_file("res://noche.tscn")
 		pos_minijuego_actual = 0
 	else:
 		print("Minijuego actual: ", minijuegos[pos_minijuego_actual])
 		var ruta_escena_minijuego = minijuegos[pos_minijuego_actual]
 		pos_minijuego_actual += 1
-		get_tree().change_scene_to_file(ruta_escena_minijuego)
+
+		var noche = get_tree().get_root().get_node("Noche")
+		if noche and noche.has_node("OverlayMinijuegos/ContenedorMinijuego"):
+			var overlay = noche.get_node("OverlayMinijuegos")
+			var contenedor = overlay.get_node("ContenedorMinijuego")
+			var fondo = overlay.get_node("FondoOscuro")
+			# Limpiar overlay anterior
+			for child in contenedor.get_children():
+				child.queue_free()
+			# Instanciar minijuego
+			var minijuego_scene = load(ruta_escena_minijuego)
+			var minijuego_instance = minijuego_scene.instantiate()
+			contenedor.add_child(minijuego_instance)
+			# Mostrar overlay
+			fondo.visible = true
+			contenedor.visible = true
+			# Bloquear movimiento cocinero
+			noche.set("bloquear_cocinero", true)
+		else:
+			print("No se encontró el overlay para minijuegos")

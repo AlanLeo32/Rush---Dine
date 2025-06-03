@@ -40,7 +40,15 @@ func terminar_minijuego():
 		"puntaje": puntaje_final + puntaje_anterior,
 		"receta": Globales.receta_actual
 	}
-	
+	# Oculta el overlay y desbloquea el cocinero
+	var noche = get_tree().get_root().get_node("Noche")
+	if noche and noche.has_node("OverlayMinijuegos"):
+		var overlay = noche.get_node("OverlayMinijuegos")
+		overlay.get_node("FondoOscuro").visible = false
+		overlay.get_node("ContenedorMinijuego").visible = false
+		noche.set("bloquear_cocinero", false)   
+	# Si el minijuego debe eliminarse:
+	queue_free()
 	Globales.logica_siguiente_minijuego()
 
 
