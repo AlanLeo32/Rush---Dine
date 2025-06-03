@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpnimw6d0xleo"]
 
 [ext_resource type="Script" uid="uid://gwn8dpvh0u7" path="res://minigames/slicing/rock.gd" id="1_l4yp7"]
-[ext_resource type="Texture2D" uid="uid://2g1fpcx4gkou" path="res://Sprites/piedra.png" id="2_l4yp7"]
+[ext_resource type="Texture2D" uid="uid://vw6c706uciwv" path="res://Sprites/veggies/piedra.png" id="2_l4yp7"]
 
 [node name="Rock" type="RigidBody2D"]
 script = ExtResource("1_l4yp7")

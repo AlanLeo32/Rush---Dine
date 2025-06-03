@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmcdngihgk664"]
 
-[ext_resource type="Texture2D" uid="uid://cwx71rcys7tfm" path="res://Sprites/tomate.png" id="1_0gnnk"]
 [ext_resource type="Script" uid="uid://d2g3rtlu0b3kh" path="res://minigames/slicing/fruit.gd" id="1_fjhxc"]
+[ext_resource type="Texture2D" uid="uid://i3oqh2r2omt1" path="res://Sprites/pepino.png" id="2_fjhxc"]
 
 [node name="Veggie" type="RigidBody2D"]
 script = ExtResource("1_fjhxc")
@@ -9,9 +9,14 @@ script = ExtResource("1_fjhxc")
 [node name="FullSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
 scale = Vector2(0.361962, 0.354273)
-texture = ExtResource("1_0gnnk")
+texture = ExtResource("2_fjhxc")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="tomate" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.36278, 0.336222)
 polygon = PackedVector2Array(-78, -110, -161, -41, -201, 61, -141, 184, -27, 221, 113, 204, 191, 113, 175, -28, 74, -107)
+disabled = true
+
+[node name="pepino" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-28, -70, -9, -91, 14, -91, 35, -69, 37, -5, 18, 33, -4, 49, -31, 51, -46, 36, -46, 16, -24, -20)
+disabled = true

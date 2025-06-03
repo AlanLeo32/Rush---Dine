@@ -3,18 +3,25 @@ extends Node2D
 @onready var spawn_timer = $SpawnTimer
 @onready var fruits_node = $Veggies
 @onready var slash = $Slash
+var ings
+var aux
 
-const FRUIT_SCENE = preload("veggie.tscn")
+const VEGETAL_SCENE = preload("veggie.tscn")
 const ROCK_SCENE = preload("rock.tscn")
 
 func _ready():
 	print("Instancia escena main del slice")
+	#aca habria que hacer la logica que elige los INGREDIENTES del PLATO a CORTAR
+	ings = ['tomate', 'pepino'] #plato pescado
 	spawn_timer.start()
+	aux = 0
 
 func _on_spawn_timer_timeout():
 	var elem
 	if randf() < 0.75:
-		elem = FRUIT_SCENE.instantiate()
+		elem = VEGETAL_SCENE.instantiate()
+		elem.setVegetal(ings[aux%len(ings)]) #itera entre los elementos de la lista de ingredientes
+		aux+=1
 	else:
 		elem = ROCK_SCENE.instantiate()
 	fruits_node.add_child(elem)
