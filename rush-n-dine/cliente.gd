@@ -10,6 +10,7 @@ var etapa_espera : int = 0
 var esperando_pedido: bool = false
 @export var punto_salida: NodePath
 var nube_pedido: AnimatedSprite2D = null
+
 var tiene_pedido
 var pedido_tomado := false   # false: esperando que lo atiendan, true: esperando que le sirvan
 
@@ -63,15 +64,14 @@ func _physics_process(delta: float) -> void:
 					irse()
 
 func recibir_plato(plato: Node):
-	var receta = null
+	
 	print("Plato recibido:", plato)
-	receta = plato.receta
-	print("Receta del plato recibido:", receta)
-	if receta == null:
-		print("Error: el plato no tiene una receta asignada")
-		return
-	if receta["nombre"] == pedido_actual:
+	var clave_plato = plato.clave if "clave" in plato else ""
+	print("Comparando clave del plato:", clave_plato, "con pedido_actual:", pedido_actual)
+	if clave_plato == pedido_actual:
 		print("Cliente recibió su pedido correcto")
+		$AnimatedSprite2D.animation = "Comiendo"
+		$AnimatedSprite2D.play()
 		Globales.reputacion += 1
 	else:
 		print("Cliente recibió el pedido incorrecto")
@@ -79,7 +79,7 @@ func recibir_plato(plato: Node):
 
 	esperando_pedido = false
 	nube_pedido.visible = false
-	nube_pedido.animation = ""
+	#nube_pedido.animation = ""
 	nube_pedido.stop()
 	await get_tree().create_timer(3.0).timeout
 	irse()

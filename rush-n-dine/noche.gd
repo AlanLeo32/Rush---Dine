@@ -39,6 +39,12 @@ func procesar_resultado_minijuego(resultado):
 			plato = preload("res://Platos/PlatoQuemado.tscn").instantiate()
 		# Asignar la receta al plato
 		plato.receta = receta
+		plato.clave = ""  # <-- agregá esto
+		# Buscá la clave correspondiente a la receta
+		for clave in Globales.recetas_desbloqueadas.keys():
+			if Globales.recetas_desbloqueadas[clave] == receta:
+				plato.clave = clave
+				break
 		# Puedes guardar la receta también si querés
 		print("Plato creado:", plato, "con receta:", receta)
 		cocinero.recibir_plato(plato)
