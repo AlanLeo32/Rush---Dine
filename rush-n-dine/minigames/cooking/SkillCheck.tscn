@@ -94,3 +94,7 @@ offset_right = 1504.0
 offset_bottom = 861.0
 texture = ExtResource("6_d05sy")
 expand_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(986, 528)
+zoom = Vector2(0.8, 0.8)

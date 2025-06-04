@@ -45,7 +45,7 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("4_jj0o1")
 
 [node name="MinigameTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
@@ -64,5 +64,9 @@ offset_top = 403.0
 offset_right = 1714.0
 offset_bottom = 794.0
 label_settings = SubResource("LabelSettings_jj0o1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(958, 548)
+zoom = Vector2(0.8, 0.8)
 
 [connection signal="timeout" from="MinigameTimer" to="." method="_on_minigame_timer_timeout"]
