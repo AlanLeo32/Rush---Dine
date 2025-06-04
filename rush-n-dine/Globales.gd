@@ -138,36 +138,44 @@ func cargar_recursos_iniciales():
 
 func logica_siguiente_minijuego():
 	var minijuegos = receta_actual["minijuegos"]
-	
 	if pos_minijuego_actual >= minijuegos.size():
 		print("No hay otro minijuego a continuacion, volviendo al restaurante...")
-		# Al terminar el minijuego
 		var noche = get_tree().get_root().get_node("Noche")
 		if noche:
+			# Volver a la cámara del jugador
+			var camara_jugador = noche.get_node("CharacterBodyCocinero2D/Camera2D")
+			if camara_jugador:
+				camara_jugador.make_current()
+			# Mostrar el botón de interactuar
+			if noche.has_node("CanvasLayer/Interactuar"):
+				noche.get_node("CanvasLayer/Interactuar").visible = true
 			noche.procesar_resultado_minijuego(Globales.resultado_minijuego)
 			Globales.resultado_minijuego = {}
+			noche.set("bloquear_cocinero", false)
 		pos_minijuego_actual = 0
 	else:
 		print("Minijuego actual: ", minijuegos[pos_minijuego_actual])
 		var ruta_escena_minijuego = minijuegos[pos_minijuego_actual]
 		pos_minijuego_actual += 1
-
 		var noche = get_tree().get_root().get_node("Noche")
-		if noche and noche.has_node("OverlayMinijuegos/ContenedorMinijuego"):
-			var overlay = noche.get_node("OverlayMinijuegos")
-			var contenedor = overlay.get_node("ContenedorMinijuego")
-			var fondo = overlay.get_node("FondoOscuro")
-			# Limpiar overlay anterior
-			for child in contenedor.get_children():
+		if noche and noche.has_node("ContenedorMinijuegos"):
+			var anchor = noche.get_node("ContenedorMinijuegos")
+			# Limpiar minijuegos anteriores
+			for child in anchor.get_children():
 				child.queue_free()
 			# Instanciar minijuego
 			var minijuego_scene = load(ruta_escena_minijuego)
 			var minijuego_instance = minijuego_scene.instantiate()
-			contenedor.add_child(minijuego_instance)
-			# Mostrar overlay
-			fondo.visible = true
-			contenedor.visible = true
+			minijuego_instance.position = Vector2.ZERO 
+			anchor.add_child(minijuego_instance)
+			# Activar cámara del minijuego
+			var camara_minijuego = minijuego_instance.get_node_or_null("Camera2D")
+			if camara_minijuego:
+				camara_minijuego.make_current()
+			# Ocultar el botón de interactuar
+			if noche.has_node("CanvasLayer/Interactuar"):
+				noche.get_node("CanvasLayer/Interactuar").visible = false
 			# Bloquear movimiento cocinero
 			noche.set("bloquear_cocinero", true)
 		else:
-			print("No se encontró el overlay para minijuegos")
+			print("No se encontró el nodo ContenedorMinijuegos")

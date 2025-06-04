@@ -34,7 +34,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Slash" parent="." instance=ExtResource("2_ee107")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(954, 532)
+position = Vector2(953, 518)
 
 [node name="MinigameTimer" type="Timer" parent="."]
 wait_time = 14.0

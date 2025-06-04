@@ -31,35 +31,41 @@ func _ready():
 
 func _process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var pos = get_viewport().get_mouse_position()
-		line.add_point(pos)
-		var length = line.get_point_count()
-		if length > 2:
-			dir = ''
-			var ult = line.get_point_position(length-1)
-			var pri = line.get_point_position(0)
-			dir = detectar_direccion(ult, pri)
-			
-			if length > 5:
-				line.remove_point(0)
-		#update_collision_shape()
-		var space = get_world_2d().direct_space_state
+		var node = self
+		var cam = null
+		while node and not cam:
+			cam = node.get_node_or_null("Camera2D")
+			node = node.get_parent()
+		if cam:
+			var pos = cam.get_global_mouse_position()
+			line.add_point(to_local(pos))
+			var length = line.get_point_count()
+			if length > 2:
+				dir = ''
+				var ult = line.get_point_position(length-1)
+				var pri = line.get_point_position(0)
+				dir = detectar_direccion(ult, pri)
+				if length > 5:
+					line.remove_point(0)
+			#update_collision_shape()
+			var space = get_world_2d().direct_space_state
 
-		var params = PhysicsPointQueryParameters2D.new()
-		params.position = pos
+			var params = PhysicsPointQueryParameters2D.new()
+			params.position = pos
 
-		var result = space.intersect_point(params, 32)
+			var result = space.intersect_point(params, 32)
 
-		for hit in result:
-			var obj := hit.get("collider") as Node
-			if obj and (obj.is_in_group("Fruta") or obj.is_in_group("Roca")) and !obj.cortando():
-				obj.cortar()
-				print("Fruta cortada:", obj.name)
-				if obj.is_in_group("Fruta"):
-					puntaje += 1
-				else: 
-					if puntaje >= 0:
-						puntaje -= 1
+			for hit in result:
+				var obj := hit.get("collider") as Node
+				print("Colisiona con:", obj)  # <-- Agregá este print acá
+				if obj and (obj.is_in_group("Fruta") or obj.is_in_group("Roca")) and !obj.cortando():
+					obj.cortar()
+					print("Fruta cortada:", obj.name)
+					if obj.is_in_group("Fruta"):
+						puntaje += 1
+					else: 
+						if puntaje >= 0:
+							puntaje -= 1
 				print('Direccion del corte: ' + dir)
 				elimina_fruta(obj)
 	else:

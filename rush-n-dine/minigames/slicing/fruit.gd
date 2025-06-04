@@ -6,7 +6,7 @@ var cortandose = false
 func _ready():
 	var impulse
 	var ejex = randi_range(100, 1800)
-	global_position = Vector2(ejex, 800)
+	position = Vector2(ejex, 800)
 	if ejex>900:
 		impulse = Vector2(randf_range(-400, -700), randf_range(-920, -740))
 		add_constant_torque(-10000)
@@ -16,8 +16,18 @@ func _ready():
 	#print(impulse)
 	apply_impulse(impulse)
 	add_to_group("Fruta")
-	#$Area2D.connect("area_entered", _on_area_entered)
 
+	# Buscar la cámara del minijuego subiendo hasta el nodo Main
+	var main = get_parent()
+	while main and not main.has_node("Camera2D"):
+		main = main.get_parent()
+	var cam = null
+	if main:
+		cam = main.get_node_or_null("Camera2D")
+	if cam:
+		print("Fruta global:", global_position, " - Cámara global:", cam.global_position)
+	else:
+		print("Fruta global:", global_position, " - Cámara del minijuego NO encontrada")
 func setVegetal(png):
 	$FullSprite.texture = load("res://Sprites/veggies/" + png + '.png')
 	var colision = get_node_or_null(png)

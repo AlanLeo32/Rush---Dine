@@ -6,7 +6,7 @@ var cortandose = false
 func _ready():
 	var impulse
 	var ejex = randi_range(100, 1800)
-	global_position = Vector2(ejex, 800)
+	position = Vector2(ejex, 800)
 	if ejex>900:
 		impulse = Vector2(randf_range(-400, -700), randf_range(-920, -740))
 	else:

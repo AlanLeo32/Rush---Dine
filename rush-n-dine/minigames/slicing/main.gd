@@ -24,6 +24,10 @@ func _on_spawn_timer_timeout():
 		aux+=1
 	else:
 		elem = ROCK_SCENE.instantiate()
+	var x_local = randi_range(700, 1200)
+	var y_local = 600
+	elem.position = Vector2(x_local, y_local)
+	print("Spawnea en:", elem.position)
 	fruits_node.add_child(elem)
 	
 func _process(delta):
