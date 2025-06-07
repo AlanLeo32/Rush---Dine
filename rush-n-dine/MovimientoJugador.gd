@@ -128,6 +128,23 @@ func _on_interactuar_pressed() -> void:
 		# Si tengo un plato y el objeto actual es un cliente esperando pedido
 		if objeto_en_mano and objeto_actual.is_in_group("clientes") and objeto_actual.esperando_pedido:
 			entregar_plato_al_cliente()
+		  # Si tengo un plato y el objeto actual es el tacho
+		elif objeto_en_mano and objeto_actual.name == "Tacho":
+		# Eliminar el plato de la mano
+			var clave_plato = objeto_en_mano.clave if "clave" in objeto_en_mano else ""
+			print("Tirando plato:", clave_plato)
+			objeto_en_mano.queue_free()
+			objeto_en_mano = null
+			# Sacar de la lista de disponibles para elegir
+			if clave_plato != "" and NocheData.platos_seleccionables.has(clave_plato):
+				NocheData.platos_seleccionables[clave_plato] -= 1
+				if NocheData.platos_seleccionables[clave_plato] <= 0:
+					NocheData.platos_seleccionables.erase(clave_plato)
+				# Refrescar menú visual si existe
+				var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas")
+				if menu_seleccionable and menu_seleccionable.has_method("actualizar"):
+					menu_seleccionable.actualizar()
+			objeto_actual.interactuar()
 		else:
 			objeto_actual.interactuar()
 		

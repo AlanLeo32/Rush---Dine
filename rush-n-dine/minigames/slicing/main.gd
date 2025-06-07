@@ -37,9 +37,13 @@ func _process(delta):
 
 func terminar_minijuego():
 	var puntaje_final = slash.getPuntaje()
-	var puntaje_anterior = Globales.resultado_minijuego["puntaje"]
 	# ACTUALIZO el resultado, ya que no puedo saber
 	# Si hubo otro minijuego antes de este o no
+	if not Globales.resultado_minijuego.has("puntaje"):
+		Globales.resultado_minijuego["puntaje"] = 0
+	if not Globales.resultado_minijuego.has("receta"):
+		Globales.resultado_minijuego["receta"] = Globales.receta_actual
+	var puntaje_anterior = Globales.resultado_minijuego["puntaje"]
 	print("Termina minijuego. Puntaje:", puntaje_final, "Puntaje anterior:", puntaje_anterior)
 	Globales.resultado_minijuego = {
 		"puntaje": puntaje_final + puntaje_anterior,

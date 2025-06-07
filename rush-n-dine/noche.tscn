@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=49 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -92,7 +92,10 @@ region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
 size = Vector2(475, 389.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxnie"]
-size = Vector2(476, 268.5)
+size = Vector2(477, 268.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hmx4"]
+size = Vector2(476, 273)
 
 [node name="Noche" type="Node2D"]
 z_as_relative = false
@@ -404,7 +407,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShapeDeArea" type="CollisionShape2D" parent="Mesas/Mesa1/Mesa1"]
-position = Vector2(602, 2988.75)
+position = Vector2(601.5, 2988.75)
 shape = SubResource("RectangleShape2D_uxnie")
 
 [node name="SpriteSilla" type="Sprite2D" parent="Mesas"]
@@ -432,6 +435,14 @@ shape = SubResource("RectangleShape2D_hj8yk")
 
 [node name="PuntoSentado" type="Node2D" parent="Mesas/Mesa2"]
 position = Vector2(2894, 2602)
+
+[node name="Mesa2" type="Area2D" parent="Mesas/Mesa2"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Mesa2/Mesa2"]
+position = Vector2(2897, 2982.5)
+shape = SubResource("RectangleShape2D_0hmx4")
 
 [node name="SpriteSilla2" type="Sprite2D" parent="Mesas"]
 z_index = 3000

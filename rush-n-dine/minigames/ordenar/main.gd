@@ -95,6 +95,10 @@ func calcular_puntaje_final():
 			elif distancia < 100:
 				puntaje_total += 5
 		
+		if not Globales.resultado_minijuego.has("puntaje"):
+			Globales.resultado_minijuego["puntaje"] = 0
+		if not Globales.resultado_minijuego.has("receta"):
+			Globales.resultado_minijuego["receta"] = Globales.receta_actual
 		var puntaje_anterior = Globales.resultado_minijuego["puntaje"]
 		# ACTUALIZO el resultado, ya que no puedo saber
 		# Si hubo otro minijuego antes de este o no
