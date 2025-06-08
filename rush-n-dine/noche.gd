@@ -50,6 +50,8 @@ func procesar_resultado_minijuego(resultado):
 		cocinero.recibir_plato(plato)
 		print("Cocinero tiene método recibir_plato:", cocinero.has_method("recibir_plato"))
 	Globales.resultado_minijuego = {}  # Limpiar para el próximo
+	Globales.receta_actual = null      # <--- AGREGÁ ESTA LÍNEA
+	Globales.pos_minijuego_actual = 0  # <--- AGREGÁ ESTA LÍNEA
 	# Aca aplicar algo en base a los puntos
 
 	# También podrías actualizar alguna UI de resultados si tenés

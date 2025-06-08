@@ -137,6 +137,9 @@ func cargar_recursos_iniciales():
 # Una vez que se terminan los minijuegos de esa receta, se vuelve a la noche.
 
 func logica_siguiente_minijuego():
+	if receta_actual == null:
+		print("No hay receta actual, no se puede avanzar al siguiente minijuego.")
+		return
 	var minijuegos = receta_actual["minijuegos"]
 	if pos_minijuego_actual >= minijuegos.size():
 		print("No hay otro minijuego a continuacion, volviendo al restaurante...")

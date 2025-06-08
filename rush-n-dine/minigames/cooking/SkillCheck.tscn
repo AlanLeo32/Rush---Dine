@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dliox8bx3c2k6"]
+[gd_scene load_steps=9 format=3 uid="uid://dliox8bx3c2k6"]
 
 [ext_resource type="Script" uid="uid://dgyje6mc2yndr" path="res://minigames/cooking/SkillCheck.gd" id="1_y1pqp"]
 [ext_resource type="Texture2D" uid="uid://c8las8ixkd4ed" path="res://data/bg-oven-2.png" id="2_ugpo5"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugpo5"]
 size = Vector2(8.00003, 11.075)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ugpo5"]
+font_size = 80
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -84,8 +87,6 @@ position = Vector2(153, 286)
 position = Vector2(-154.765, -671.714)
 shape = SubResource("RectangleShape2D_ugpo5")
 
-[node name="CheckTimer" type="Timer" parent="."]
-
 [node name="IdealText" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 1336.0
@@ -98,3 +99,18 @@ expand_mode = 1
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(986, 528)
 zoom = Vector2(0.8, 0.8)
+
+[node name="Minijuego_timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="TimeLeftLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1797.0
+offset_top = 7.0
+offset_right = 1889.0
+offset_bottom = 84.0
+label_settings = SubResource("LabelSettings_ugpo5")
+
+[connection signal="timeout" from="Minijuego_timer" to="." method="_on_minijuego_timer_timeout"]

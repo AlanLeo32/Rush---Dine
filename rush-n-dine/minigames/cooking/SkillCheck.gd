@@ -6,8 +6,8 @@ extends Control
 @onready var success_zone = $SuccessZone
 @onready var ideal_text = $IdealText
 
-var angle = 0.0
-var speed = 10.0 # grados por segundo
+var angle = 0
+var speed = 30.0 # grados por segundo
 var rotating = false
 var center = Vector2.ZERO
 #var radius = 100.0  # ajustá esto al tamaño de tu círculo
@@ -16,21 +16,24 @@ var color
 var coordsCartel = [Vector2(1336, 720), Vector2(1389, 483), Vector2(1376, 272), Vector2(1295, 127)]
 var pos_text = Vector2.ZERO
 var deltaGlobal = 0
+var coccion
 
 func _ready():
 	#center = background.global_position + background.size * 0.5
 	center = background.global_position + background.size * 0.5 + Vector2(50, 80)
 	#radius = min(background.size.x, background.size.y) * 0.5 - 0.0  # margen interior
 	radius = 0
-	#var coccion = Globales.receta_actual["coccion"]
-	var coccion = 1 # ESTO ESTA HARDCODEADO PARA PROBAR CORRIENDO SOLO ESTA ESCENA, USAR LA LINEA DE ARRIBA
+	#coccion = 1 # ESTO ESTA HARDCODEADO PARA PROBAR CORRIENDO SOLO ESTA ESCENA, USAR LA LINEA DE ABAJO
+	coccion = Globales.receta_actual["coccion"]
 	pos_text = coordsCartel[coccion-1]
 	ideal_text.set_global_position(pos_text)
 	start_skill_check()
 	
 
 func _process(delta):
+	$TimeLeftLabel.text = str(int($Minijuego_timer.time_left))
 	deltaGlobal = deltaGlobal + delta
+	speed += delta * 50
 	if (rotating) and (deltaGlobal > 0.16):
 		angle += speed * (delta * 5)
 		angle = fmod(angle, 360.0)
@@ -44,12 +47,12 @@ func update_needle_position():
 	var angle_rad = -deg_to_rad(angle)
 	#var needle_pos = (center + Vector2(cos(angle_rad), sin(angle_rad)) * radius)
 	#needle.global_position = needle_pos - needle.size * 0.5
-	needle.rotation = (angle_rad + PI / 2 + deg_to_rad(15)) # 15 = +15 grados clockwise
+	#needle.rotation = (angle_rad + PI / 2 + deg_to_rad(15)) # 15 = +15 grados clockwise
+	needle.rotation = angle_rad
 
 func start_skill_check():
-	angle = randf_range(0, 360)
+	angle = 0
 	rotating = true
-	check_timer.start(5.0)
 
 func _input(event):
 	#if event.is_action_pressed("ui_accept") and rotating:
@@ -65,16 +68,43 @@ func check_success():
 		print("Tocando: ", area.name)
 		area_resultado = int(area.name.substr(4))
 		print(area_resultado)
-	#terminar_minijuego()
+	calcular_puntaje(area_resultado)
 
-func calcular_puntaje():
+func calcular_puntaje(area_resultado):
 	var puntaje_final
 	#calcular en base a la lejania de la zona de coccion objetivo
+	if !area_resultado:
+		area_resultado = 0
+	var diferencia = abs(coccion - area_resultado)
+
+	if diferencia == 0:
+		puntaje_final = 5
+	elif diferencia == 1:
+		puntaje_final = 3
+	else:
+		puntaje_final = 1
+	
+	
+	if not Globales.resultado_minijuego.has("puntaje"):
+		Globales.resultado_minijuego["puntaje"] = 0
+	if not Globales.resultado_minijuego.has("receta"):
+		Globales.resultado_minijuego["receta"] = Globales.receta_actual
+	var puntaje_anterior = Globales.resultado_minijuego["puntaje"]
+	Globales.resultado_minijuego = {
+		"puntaje": puntaje_final + puntaje_anterior,
+		"receta": Globales.receta_actual
+	}
+	terminar_minijuego()
+	
 
 func terminar_minijuego():
 	print('fin minijuego skillcheck')
 	Globales.logica_siguiente_minijuego()
 
-func _on_CheckTimer_timeout():
+
+
+func _on_minijuego_timer_timeout() -> void:
 	rotating = false
+	print("¡Tiempo terminado!")
+	
 	check_success()
