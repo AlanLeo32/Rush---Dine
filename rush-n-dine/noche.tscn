@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=50 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -87,6 +87,9 @@ region_rect = Rect2(15.8994, 286.335, 992.201, 478.659)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfo2o"]
 texture = ExtResource("19_1ji4q")
 region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hj8yk"]
+font_size = 50
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj8yk"]
 size = Vector2(475, 389.5)
@@ -379,6 +382,14 @@ visible = false
 
 [node name="MenuCocinar" parent="CanvasLayer2" instance=ExtResource("24_hj8yk")]
 visible = false
+
+[node name="RelojLabel" type="Label" parent="CanvasLayer2"]
+offset_left = 1211.0
+offset_top = 3.0
+offset_right = 1431.0
+offset_bottom = 109.0
+text = "A"
+label_settings = SubResource("LabelSettings_hj8yk")
 
 [node name="Mesas" type="Node2D" parent="."]
 script = ExtResource("22_upk0d")
