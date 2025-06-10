@@ -1,3 +1,506 @@
-[gd_scene format=3 uid="uid://bt6d2t3q6005t"]
+[gd_scene load_steps=53 format=3 uid="uid://bt6d2t3q6005t"]
+
+[ext_resource type="Script" uid="uid://hmb1g6d6n756" path="res://dia.gd" id="1_3woqc"]
+[ext_resource type="PackedScene" uid="uid://4sjw6bo24kd" path="res://static_body_2d.tscn" id="2_3woqc"]
+[ext_resource type="Texture2D" uid="uid://pxvmudyt31q3" path="res://Fondos/FondoRestauranteDia.png" id="2_bjx4o"]
+[ext_resource type="Texture2D" uid="uid://cl2yhwwcm0gil" path="res://Fondos/FondoRestauranteParedCocina.png" id="3_i6qaw"]
+[ext_resource type="Texture2D" uid="uid://ch80u2dnpkdgh" path="res://Fondos/Screenshot 2025-05-06 195821.png" id="4_bjx4o"]
+[ext_resource type="Texture2D" uid="uid://cewp60dr3fi37" path="res://Fondos/Screenshot 2025-05-06 202233.png" id="5_olxfl"]
+[ext_resource type="Texture2D" uid="uid://j22m5b0t1g0s" path="res://Fondos/Screenshot 2025-05-06 205045.png" id="6_x5upn"]
+[ext_resource type="PackedScene" uid="uid://8o02db6e3bhw" path="res://character_body_cocinero_2d.tscn" id="7_oxsx1"]
+[ext_resource type="PackedScene" uid="uid://bhra5kg4ryedp" path="res://area_2d_horno.tscn" id="8_j6j1s"]
+[ext_resource type="Script" uid="uid://cwt3qwpyo3id" path="res://InteractuarHorno.gd" id="9_56c3g"]
+[ext_resource type="Script" uid="uid://cidvj1ug35cth" path="res://heladera.gd" id="10_idv6b"]
+[ext_resource type="Texture2D" uid="uid://cdrsp7egx4moy" path="res://Sprites/Screenshot 2025-05-06 210054.png" id="11_5pxgs"]
+[ext_resource type="Script" uid="uid://cctlk7fjv254a" path="res://mesada.gd" id="12_wvhed"]
+[ext_resource type="Texture2D" uid="uid://2jks56s81rp0" path="res://Sprites/Screenshot 2025-05-06 211144.png" id="13_80xi4"]
+[ext_resource type="Script" uid="uid://b5kucshdplq2e" path="res://tacho.gd" id="14_gx5qj"]
+[ext_resource type="Texture2D" uid="uid://y0qom7iku66k" path="res://Sprites/TachoCerrado.png" id="15_mffy1"]
+[ext_resource type="Script" uid="uid://b327unn4ut4i2" path="res://BotonPausa.gd" id="16_ecvog"]
+[ext_resource type="Texture2D" uid="uid://cau2iartj02r2" path="res://Sprites/BotonPausa.png" id="17_7frda"]
+[ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="18_3hbe4"]
+[ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="19_2j1cc"]
+[ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="20_oo0xe"]
+[ext_resource type="PackedScene" uid="uid://va75bpyjwfou" path="res://MenuSeleccionRecetas.tscn" id="21_wqrwg"]
+[ext_resource type="PackedScene" uid="uid://bcr3blo5ymt85" path="res://MenuCocinar.tscn" id="22_aadpm"]
+[ext_resource type="Script" uid="uid://dffyn1jebwlx0" path="res://mesas.gd" id="23_5vrvr"]
+[ext_resource type="PackedScene" uid="uid://ccg1i7s101gn4" path="res://menu_seleccion_recurso.tscn" id="24_i6qaw"]
+[ext_resource type="Texture2D" uid="uid://b56fki7hb1lte" path="res://Sprites/SpriteMesa.png" id="24_nyb5b"]
+[ext_resource type="Texture2D" uid="uid://bmj5ljddx5uc0" path="res://Sprites/SpriteSilla.png" id="25_fstoh"]
+[ext_resource type="Texture2D" uid="uid://bkci6f1nfnj7h" path="res://Fondos/puerta.png" id="28_olxfl"]
+[ext_resource type="Script" uid="uid://08kesc4euwx4" path="res://puerta_recursos.gd" id="28_x5upn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
+size = Vector2(24.5714, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nrwb"]
+size = Vector2(21.7143, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfyed"]
+size = Vector2(28.2859, 1011.14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f3sa"]
+size = Vector2(1018.86, 143.286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skj3d"]
+size = Vector2(22.5714, 997.715)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfkqm"]
+size = Vector2(425, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5igk"]
+size = Vector2(1274, 222)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txkm7"]
+size = Vector2(3584, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpgi2"]
+size = Vector2(278, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lbuo"]
+size = Vector2(304, 182)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2i0l"]
+size = Vector2(116, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh7h"]
+size = Vector2(116, 102.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ji4q"]
+texture = ExtResource("19_2j1cc")
+region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhjf1"]
+texture = ExtResource("19_2j1cc")
+region_rect = Rect2(58.3948, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s073x"]
+texture = ExtResource("19_2j1cc")
+region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upk0d"]
+texture = ExtResource("20_oo0xe")
+region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q1pc4"]
+texture = ExtResource("20_oo0xe")
+region_rect = Rect2(15.8994, 286.335, 992.201, 478.659)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfo2o"]
+texture = ExtResource("20_oo0xe")
+region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hj8yk"]
+font_size = 50
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj8yk"]
+size = Vector2(475, 389.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxnie"]
+size = Vector2(477, 268.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hmx4"]
+size = Vector2(476, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5upn"]
+size = Vector2(270.5, 266)
 
 [node name="Dia" type="Node2D"]
+z_as_relative = false
+script = ExtResource("1_3woqc")
+
+[node name="Escenario" type="Sprite2D" parent="."]
+light_mask = 0
+visibility_layer = 4
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_bjx4o")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Colision Paredes" type="StaticBody2D" parent="Escenario"]
+visible = false
+position = Vector2(342, 375.714)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="Pared Izq Cocina" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(-21.1429, 136.429)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_vcooc")
+
+[node name="Pared Der Cocina" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(360.286, 136.429)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_6nrwb")
+
+[node name="Pared Der Restaurante" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(677.286, 140.714)
+shape = SubResource("RectangleShape2D_rfyed")
+
+[node name="Pared Trasera Restaurante" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(179.143, -307.071)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_8f3sa")
+
+[node name="Pared Izq Restaurante" type="CollisionShape2D" parent="Escenario/Colision Paredes"]
+position = Vector2(-332.143, 151.143)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_skj3d")
+
+[node name="ParedFrontalIzqCocina" parent="Escenario" instance=ExtResource("2_3woqc")]
+z_index = 2148
+position = Vector2(368.286, 613.714)
+scale = Vector2(0.285714, 0.285714)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="ParedFrontalDerCocina" type="StaticBody2D" parent="Escenario"]
+z_index = 2148
+position = Vector2(657.143, 613.714)
+scale = Vector2(0.285714, 0.285714)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Escenario/ParedFrontalDerCocina"]
+scale = Vector2(3.57391, 3.52326)
+texture = ExtResource("3_i6qaw")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/ParedFrontalDerCocina"]
+position = Vector2(-4.5, 118)
+shape = SubResource("RectangleShape2D_cfkqm")
+metadata/_edit_lock_ = true
+
+[node name="ParedTraseraCocina" type="StaticBody2D" parent="Escenario"]
+z_index = 1494
+position = Vector2(502.857, 426.857)
+scale = Vector2(0.285714, 0.285714)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Escenario/ParedTraseraCocina"]
+position = Vector2(33.5001, 16.25)
+scale = Vector2(1.04926, 1.05507)
+texture = ExtResource("4_bjx4o")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/ParedTraseraCocina"]
+position = Vector2(32, 203)
+shape = SubResource("RectangleShape2D_a5igk")
+metadata/_edit_lock_ = true
+
+[node name="Pared Inferior Restaurante" type="StaticBody2D" parent="Escenario"]
+z_index = 3500
+position = Vector2(168.286, 964.571)
+scale = Vector2(0.285714, 0.285714)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Escenario/Pared Inferior Restaurante"]
+position = Vector2(186, 17.0001)
+scale = Vector2(1.18434, 1.18012)
+texture = ExtResource("5_olxfl")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Escenario/Pared Inferior Restaurante"]
+position = Vector2(2221.71, 16.8673)
+scale = Vector2(0.762309, 0.763585)
+texture = ExtResource("6_x5upn")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Pared Inferior Restaurante"]
+visible = false
+position = Vector2(1205, 156)
+shape = SubResource("RectangleShape2D_txkm7")
+
+[node name="CharacterBodyCocinero2D" parent="." instance=ExtResource("7_oxsx1")]
+position = Vector2(1763, 1997)
+collision_mask = 12
+metadata/_edit_lock_ = true
+
+[node name="Horno" parent="." instance=ExtResource("8_j6j1s")]
+light_mask = 0
+visibility_layer = 2
+z_index = 1679
+position = Vector2(1660, 1680)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("9_56c3g")
+
+[node name="Heladera" type="Area2D" parent="."]
+z_index = 1700
+position = Vector2(1334.44, 1570.5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("10_idv6b")
+
+[node name="Heladera2D" type="Sprite2D" parent="Heladera"]
+scale = Vector2(0.679136, 0.674648)
+texture = ExtResource("11_5pxgs")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Heladera"]
+position = Vector2(-0.439941, 163.5)
+shape = SubResource("RectangleShape2D_rpgi2")
+metadata/_edit_lock_ = true
+
+[node name="Mesada" type="Area2D" parent="."]
+z_index = 1700
+position = Vector2(1959.5, 1652)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("12_wvhed")
+
+[node name="Mesada2D" type="Sprite2D" parent="Mesada"]
+scale = Vector2(0.607955, 0.60606)
+texture = ExtResource("13_80xi4")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesada"]
+position = Vector2(11.5, 67)
+shape = SubResource("RectangleShape2D_5lbuo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Interactuar" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.772
+anchor_top = 0.7
+anchor_right = 0.772
+anchor_bottom = 0.7
+offset_left = -67.24
+offset_top = -69.0001
+offset_right = 66.76
+offset_bottom = 69.9999
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Tacho" type="Area2D" parent="."]
+z_index = 1500
+position = Vector2(30, -72)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("14_gx5qj")
+
+[node name="Tacho2D" type="Sprite2D" parent="Tacho"]
+position = Vector2(2319, 1882)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_mffy1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tacho"]
+z_index = 1901
+position = Vector2(2318, 1913.5)
+shape = SubResource("RectangleShape2D_l2i0l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tacho"]
+position = Vector2(2319, 1915)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tacho/StaticBody2D"]
+z_index = 1901
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_iyh7h")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 100
+script = ExtResource("16_ecvog")
+
+[node name="LogicaPausa" type="Button" parent="CanvasLayer2"]
+process_mode = 3
+offset_right = 48.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+flat = true
+
+[node name="BotonPausa" type="TextureButton" parent="CanvasLayer2/LogicaPausa"]
+process_mode = 3
+z_index = 1
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 48.0
+action_mode = 0
+texture_normal = ExtResource("17_7frda")
+texture_pressed = ExtResource("18_3hbe4")
+
+[node name="fondoMenu" type="ColorRect" parent="CanvasLayer2"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="MenuPausa" type="Control" parent="CanvasLayer2"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 135.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/MenuPausa"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -441.0
+offset_top = -202.0
+offset_right = 441.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Configuracion" type="Button" parent="CanvasLayer2/MenuPausa/VBoxContainer"]
+custom_minimum_size = Vector2(882, 200)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ji4q")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nhjf1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_s073x")
+
+[node name="MenuPrincipal" type="Button" parent="CanvasLayer2/MenuPausa/VBoxContainer"]
+custom_minimum_size = Vector2(882, 200)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_upk0d")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q1pc4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kfo2o")
+
+[node name="MenuSeleccionRecetas" parent="CanvasLayer2" instance=ExtResource("21_wqrwg")]
+visible = false
+
+[node name="MenuCocinar" parent="CanvasLayer2" instance=ExtResource("22_aadpm")]
+visible = false
+
+[node name="RelojLabel" type="Label" parent="CanvasLayer2"]
+offset_left = 1606.0
+offset_top = 15.0
+offset_right = 1826.0
+offset_bottom = 126.0
+text = "A"
+label_settings = SubResource("LabelSettings_hj8yk")
+
+[node name="PopupCartel" type="AcceptDialog" parent="CanvasLayer2"]
+
+[node name="MenuSeleccionRecurso" parent="CanvasLayer2" instance=ExtResource("24_i6qaw")]
+visible = false
+offset_left = -83.0
+offset_top = -15.0
+offset_right = -83.0
+offset_bottom = -15.0
+
+[node name="Mesas" type="Node2D" parent="."]
+script = ExtResource("23_5vrvr")
+
+[node name="Mesa1" type="StaticBody2D" parent="Mesas"]
+z_index = 3003
+y_sort_enabled = true
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Mesa1"]
+position = Vector2(600.5, 2932.5)
+shape = SubResource("RectangleShape2D_hj8yk")
+
+[node name="SpriteMesa" type="Sprite2D" parent="Mesas/Mesa1"]
+z_index = 20
+position = Vector2(600, 2862)
+scale = Vector2(0.602905, 0.532226)
+texture = ExtResource("24_nyb5b")
+
+[node name="PuntoSentado" type="Node2D" parent="Mesas/Mesa1"]
+position = Vector2(601, 2600)
+
+[node name="Mesa1" type="Area2D" parent="Mesas/Mesa1"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShapeDeArea" type="CollisionShape2D" parent="Mesas/Mesa1/Mesa1"]
+position = Vector2(601.5, 2988.75)
+shape = SubResource("RectangleShape2D_uxnie")
+
+[node name="SpriteSilla" type="Sprite2D" parent="Mesas"]
+z_index = 3000
+y_sort_enabled = true
+position = Vector2(601, 2662)
+scale = Vector2(0.44751, 0.436768)
+texture = ExtResource("25_fstoh")
+
+[node name="Mesa2" type="StaticBody2D" parent="Mesas"]
+z_index = 3003
+y_sort_enabled = true
+collision_layer = 8
+collision_mask = 0
+
+[node name="SpriteMesa" type="Sprite2D" parent="Mesas/Mesa2"]
+z_index = 20
+position = Vector2(2898, 2862)
+scale = Vector2(0.602905, 0.532226)
+texture = ExtResource("24_nyb5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Mesa2"]
+position = Vector2(2898, 2926.25)
+shape = SubResource("RectangleShape2D_hj8yk")
+
+[node name="PuntoSentado" type="Node2D" parent="Mesas/Mesa2"]
+position = Vector2(2894, 2602)
+
+[node name="Mesa2" type="Area2D" parent="Mesas/Mesa2"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Mesa2/Mesa2"]
+position = Vector2(2897, 2982.5)
+shape = SubResource("RectangleShape2D_0hmx4")
+
+[node name="SpriteSilla2" type="Sprite2D" parent="Mesas"]
+z_index = 3000
+y_sort_enabled = true
+position = Vector2(2893, 2659)
+scale = Vector2(0.44751, 0.436768)
+texture = ExtResource("25_fstoh")
+
+[node name="PuntoEntrada" type="Node2D" parent="."]
+position = Vector2(1752, 3411)
+scale = Vector2(1.175, 1.175)
+
+[node name="Clientes" type="Node2D" parent="."]
+position = Vector2(2, 4)
+
+[node name="ContenedorMinijuegos" type="Node2D" parent="."]
+position = Vector2(6510, 0)
+
+[node name="PuertaRecursos" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("28_x5upn")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuertaRecursos"]
+position = Vector2(202, 328.5)
+scale = Vector2(4.84746, 5.1194)
+texture = ExtResource("28_olxfl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuertaRecursos"]
+position = Vector2(208.75, 442)
+shape = SubResource("RectangleShape2D_x5upn")
+
+[connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
+[connection signal="pressed" from="CanvasLayer2/LogicaPausa" to="CanvasLayer2" method="_on_logica_pausa_pressed"]
+[connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/Configuracion" to="CanvasLayer2" method="_on_configuracion_pressed"]
+[connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/MenuPrincipal" to="CanvasLayer2" method="_on_menu_principal_pressed"]

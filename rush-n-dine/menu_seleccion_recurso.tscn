@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccg1i7s101gn4"]
+
+[ext_resource type="Script" uid="uid://dwu71v60jqlqm" path="res://menu_seleccion_recurso.gd" id="1_jfech"]
+[ext_resource type="Texture2D" uid="uid://cxq8r5lj5nwdu" path="res://Fondos/FondoMenuSeleccion.png" id="2_iiapx"]
+[ext_resource type="Texture2D" uid="uid://dgpk47o6fc43a" path="res://Sprites/pescado-naranja384.png" id="3_timac"]
+[ext_resource type="Texture2D" uid="uid://1qo5376b2vfy" path="res://Sprites/tomate384.png" id="4_vsq5o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yjgic"]
+font_size = 40
+
+[node name="MenuSeleccionRecurso" type="Panel"]
+script = ExtResource("1_jfech")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 2
+position = Vector2(1118, 563)
+scale = Vector2(1.13411, 1.00781)
+texture = ExtResource("2_iiapx")
+
+[node name="LabelTitulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 136.0
+offset_right = 1260.0
+offset_bottom = 199.0
+text = "Selecciona un recurso"
+label_settings = SubResource("LabelSettings_yjgic")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 285.0
+offset_right = 1509.0
+offset_bottom = 899.0
+tooltip_text = "
+"
+alignment = 1
+
+[node name="ButtonPescar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_timac")
+flat = true
+icon_alignment = 1
+
+[node name="ButtonRecolectar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_vsq5o")
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/ButtonPescar" to="." method="_on_button_pescar_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonRecolectar" to="." method="_on_button_recolectar_pressed"]
