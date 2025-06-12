@@ -377,10 +377,10 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_upk0d")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_q1pc4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kfo2o")
 
-[node name="MenuSeleccionRecetas" parent="CanvasLayer2" instance=ExtResource("21_s073x")]
+[node name="MenuSeleccionRecetas" parent="CanvasLayer2" groups=["MenuSeleccionarRecetas"] instance=ExtResource("21_s073x")]
 visible = false
 
-[node name="MenuCocinar" parent="CanvasLayer2" instance=ExtResource("24_hj8yk")]
+[node name="MenuCocinar" parent="CanvasLayer2" groups=["MenuCocinar"] instance=ExtResource("24_hj8yk")]
 visible = false
 
 [node name="RelojLabel" type="Label" parent="CanvasLayer2"]
