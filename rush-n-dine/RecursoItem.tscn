@@ -1,42 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4qxdvm0ntrv7"]
+[gd_scene load_steps=7 format=3 uid="uid://b4qxdvm0ntrv7"]
 
 [ext_resource type="Script" uid="uid://nv2htxdxvn3x" path="res://recurso_item.gd" id="1_rhiqc"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jww2w"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_8btoq"]
+font_size = 28
+
 [sub_resource type="LabelSettings" id="LabelSettings_rhiqc"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_0m3dq"]
+font_size = 28
 
 [sub_resource type="LabelSettings" id="LabelSettings_1jcyn"]
+font_size = 28
 
 [node name="RecursoItem" type="Panel"]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(290, 190)
+offset_right = 300.0
+offset_bottom = 200.0
+mouse_filter = 2
 script = ExtResource("1_rhiqc")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(290, 190)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 200.0
+mouse_filter = 2
 
 [node name="ImagenRecurso" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
-offset_left = 15.0
-offset_top = 12.5
-offset_right = 90.0
-offset_bottom = 87.5
+offset_left = 8.0
+offset_top = 23.0
+offset_right = 158.0
+offset_bottom = 173.0
+mouse_filter = 2
 texture = SubResource("ViewportTexture_jww2w")
 expand_mode = 1
 
 [node name="ValorDisp" type="Label" parent="."]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 0
-offset_left = 147.0
-offset_top = 18.0
-offset_right = 192.0
-offset_bottom = 43.0
+offset_left = 229.0
+offset_top = 35.0
+offset_right = 289.0
+offset_bottom = 79.0
+text = "200"
+label_settings = SubResource("LabelSettings_8btoq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Disp" type="Label" parent="."]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 0
-offset_left = 100.0
-offset_top = 18.0
-offset_right = 139.0
-offset_bottom = 43.0
+offset_left = 161.0
+offset_top = 36.0
+offset_right = 228.0
+offset_bottom = 75.0
 text = "Disp:"
 label_settings = SubResource("LabelSettings_rhiqc")
 horizontal_alignment = 1
@@ -44,18 +67,20 @@ horizontal_alignment = 1
 [node name="ValorCosto" type="Label" parent="."]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 0
-offset_left = 147.0
-offset_top = 58.0
-offset_right = 192.0
-offset_bottom = 83.0
+offset_left = 231.0
+offset_top = 124.0
+offset_right = 291.0
+offset_bottom = 168.0
+text = "200"
+label_settings = SubResource("LabelSettings_0m3dq")
 horizontal_alignment = 1
 
 [node name="Costo" type="Label" parent="."]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 0
-offset_left = 100.0
-offset_top = 58.0
-offset_right = 139.0
-offset_bottom = 83.0
+offset_left = 162.0
+offset_top = 125.0
+offset_right = 232.0
+offset_bottom = 166.0
 text = "Cost:"
 label_settings = SubResource("LabelSettings_1jcyn")

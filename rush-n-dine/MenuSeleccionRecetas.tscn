@@ -9,13 +9,13 @@
 font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_e61l0"]
-font_size = 35
+font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_kvq2j"]
-font_size = 35
+font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_c8y6r"]
-font_size = 35
+font_size = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq8p6"]
 bg_color = Color(1, 1, 1, 1)
@@ -62,63 +62,60 @@ label_settings = SubResource("LabelSettings_vpgmy")
 
 [node name="ScrollRecetas" type="ScrollContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 360.0
-offset_top = 317.0
-offset_right = 1560.0
-offset_bottom = 517.0
+offset_left = 319.0
+offset_top = 315.0
+offset_right = 919.0
+offset_bottom = 715.0
 
-[node name="HBoxRecetas" type="HBoxContainer" parent="Panel/ScrollRecetas"]
+[node name="HBoxRecetas" type="GridContainer" parent="Panel/ScrollRecetas"]
 layout_mode = 2
+columns = 2
 
 [node name="ScrollRecursos" type="ScrollContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 660.0
-offset_top = 876.0
-offset_right = 1260.0
-offset_bottom = 976.0
+offset_left = 648.0
+offset_top = 773.0
+offset_right = 1248.0
+offset_bottom = 973.0
 
 [node name="HBoxRecursos" type="HBoxContainer" parent="Panel/ScrollRecursos"]
 layout_mode = 2
 
 [node name="ScrollSeleccionados" type="ScrollContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 360.0
-offset_top = 596.0
-offset_right = -360.0
-offset_bottom = -284.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 977.0
+offset_top = 315.0
+offset_right = 1577.0
+offset_bottom = 715.0
 
-[node name="HBoxSeleccionados" type="HBoxContainer" parent="Panel/ScrollSeleccionados"]
+[node name="HBoxSeleccionados" type="GridContainer" parent="Panel/ScrollSeleccionados"]
 layout_mode = 2
+columns = 2
 
 [node name="Recetas" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 331.0
-offset_top = 244.0
-offset_right = 462.0
-offset_bottom = 294.0
+offset_left = 552.0
+offset_top = 258.0
+offset_right = 683.0
+offset_bottom = 308.0
 text = "Recetas"
 label_settings = SubResource("LabelSettings_e61l0")
 
 [node name="Seleccionados" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 343.0
-offset_top = 533.0
-offset_right = 581.0
-offset_bottom = 582.0
+offset_left = 1154.0
+offset_top = 258.0
+offset_right = 1392.0
+offset_bottom = 308.0
 text = "Seleccionados"
 label_settings = SubResource("LabelSettings_kvq2j")
 
 [node name="Recursos" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 883.5
-offset_top = 801.0
-offset_right = 1036.5
-offset_bottom = 850.0
+offset_left = 873.0
+offset_top = 721.0
+offset_right = 1026.0
+offset_bottom = 770.0
 text = "Recursos"
 label_settings = SubResource("LabelSettings_c8y6r")
 
