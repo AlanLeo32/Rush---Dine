@@ -44,21 +44,21 @@ label_settings = SubResource("LabelSettings_vpgmy")
 
 [node name="ScrollDisponibles" type="ScrollContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 322.0
-offset_top = 313.0
-offset_right = 1572.0
-offset_bottom = 868.0
+offset_left = 349.0
+offset_top = 282.0
+offset_right = 1549.0
+offset_bottom = 882.0
 
 [node name="HBoxDisponibles" type="GridContainer" parent="Panel/ScrollDisponibles"]
 layout_mode = 2
-columns = 6
+columns = 4
 
 [node name="Recetas" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 331.0
-offset_top = 244.0
-offset_right = 462.0
-offset_bottom = 294.0
+offset_left = 330.0
+offset_top = 228.0
+offset_right = 746.0
+offset_bottom = 278.0
 text = "Disponibles para cocinar"
 label_settings = SubResource("LabelSettings_e61l0")
 

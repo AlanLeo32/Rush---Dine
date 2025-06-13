@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctnosrvfppngs"]
+[gd_scene load_steps=10 format=3 uid="uid://ctnosrvfppngs"]
 
 [ext_resource type="Script" uid="uid://bdyn7ce7oqqno" path="res://disponible_item.gd" id="1_fvx4m"]
 [ext_resource type="Texture2D" uid="uid://dunx2m0gix16a" path="res://Sprites/Popularidad.webp" id="2_ku61x"]
@@ -7,86 +7,125 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_rfx5r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6wyvw"]
-font_size = 12
+font_size = 28
 
-[node name="DisponibleItem" type="Button"]
-custom_minimum_size = Vector2(200, 200)
-offset_right = 200.0
+[sub_resource type="LabelSettings" id="LabelSettings_fvx4m"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_ku61x"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_sufha"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_ld20u"]
+font_size = 28
+
+[node name="DisponibleItem" type="Control"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
 offset_bottom = 200.0
+mouse_filter = 1
 script = ExtResource("1_fvx4m")
 
 [node name="CanvasLayer" type="Panel" parent="."]
 layout_mode = 0
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 200.0
+mouse_filter = 1
 
 [node name="ImagenReceta" type="TextureRect" parent="CanvasLayer"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 0
-offset_left = 50.0
+offset_left = 9.0
 offset_top = 10.0
-offset_right = 150.0
-offset_bottom = 110.0
+offset_right = 159.0
+offset_bottom = 160.0
 texture = SubResource("ViewportTexture_rfx5r")
 expand_mode = 1
 
 [node name="Nombre" type="Label" parent="CanvasLayer"]
 custom_minimum_size = Vector2(180, 25)
 layout_mode = 0
-offset_left = 10.0
-offset_top = 120.0
-offset_right = 190.0
-offset_bottom = 145.0
+offset_left = 13.0
+offset_top = 160.0
+offset_right = 289.0
+offset_bottom = 199.0
+mouse_filter = 1
 label_settings = SubResource("LabelSettings_6wyvw")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Popularidad" type="Label" parent="CanvasLayer"]
 custom_minimum_size = Vector2(28, 25)
 layout_mode = 0
-offset_left = 95.0
-offset_top = 160.0
-offset_right = 123.0
-offset_bottom = 185.0
+offset_left = 230.0
+offset_top = 69.0
+offset_right = 294.0
+offset_bottom = 108.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_fvx4m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ImagenPopularidad" type="TextureRect" parent="CanvasLayer"]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
-offset_left = 70.0
-offset_top = 160.0
-offset_right = 95.0
-offset_bottom = 185.0
+offset_left = 171.0
+offset_top = 66.0
+offset_right = 211.0
+offset_bottom = 106.0
 texture = ExtResource("2_ku61x")
 expand_mode = 1
 
 [node name="Precio" type="Label" parent="CanvasLayer"]
 custom_minimum_size = Vector2(30, 25)
 layout_mode = 0
-offset_left = 31.0
-offset_top = 160.0
-offset_right = 61.0
-offset_bottom = 185.0
+offset_left = 232.0
+offset_top = 14.0
+offset_right = 296.0
+offset_bottom = 53.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_ku61x")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ImagenPrecio" type="TextureRect" parent="CanvasLayer"]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
-offset_left = 10.0
-offset_top = 160.0
-offset_right = 35.0
-offset_bottom = 185.0
+offset_left = 169.0
+offset_top = 14.0
+offset_right = 209.0
+offset_bottom = 54.0
 texture = ExtResource("3_sufha")
 expand_mode = 1
 
 [node name="Cantidad" type="Label" parent="CanvasLayer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 0
-offset_left = 169.0
-offset_top = 160.0
-offset_right = 194.0
-offset_bottom = 185.0
+offset_left = 232.0
+offset_top = 124.0
+offset_right = 296.0
+offset_bottom = 163.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_sufha")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LbCantidad" type="Label" parent="CanvasLayer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 0
-offset_left = 126.0
-offset_top = 160.0
-offset_right = 162.0
-offset_bottom = 185.0
+offset_left = 161.0
+offset_top = 122.0
+offset_right = 231.0
+offset_bottom = 161.0
+mouse_filter = 1
 text = "Cant:"
+label_settings = SubResource("LabelSettings_ld20u")
