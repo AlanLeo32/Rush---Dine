@@ -13,18 +13,26 @@ var interactuables_actuales := []
 var objeto_en_mano: Node = null
 
 func recibir_plato(plato: Node):
-	if objeto_en_mano == null:
-		var mano = get_node("Mano")
-		mano.add_child(plato)
-		plato.position = Vector2.ZERO  # Aparece en la mano
-		objeto_en_mano = mano.get_child(0)
-		print("Platillo recibido")
+	if objeto_en_mano != null:
+		NocheData.platillos_mesada.append(objeto_en_mano)
+		dejar_plato_mesada()
+	var mano = get_node("Mano")
+	mano.add_child(plato)
+	plato.position = Vector2.ZERO  # Aparece en la mano
+	objeto_en_mano = mano.get_child(0)
+	print("Platillo recibido")
+
 func entregar_plato_al_cliente():
 	if objeto_en_mano and objeto_actual and objeto_actual.has_method("recibir_plato"):
 		print("Entregando plato al cliente:", objeto_en_mano.get("receta"))
 		objeto_actual.recibir_plato(objeto_en_mano)
 		objeto_en_mano.queue_free()
 		objeto_en_mano = null
+		objeto_en_mano.get_parent().remove_child(objeto_en_mano)
+
+func dejar_plato_mesada():
+	objeto_en_mano.get_parent().remove_child(objeto_en_mano)
+	objeto_en_mano = null
 
 func _ready():
 	boton_interactuar.visible = false
@@ -136,14 +144,12 @@ func _on_interactuar_pressed() -> void:
 			objeto_en_mano.queue_free()
 			objeto_en_mano = null
 			# Sacar de la lista de disponibles para elegir
-			if clave_plato != "" and NocheData.platos_seleccionables.has(clave_plato):
-				NocheData.platos_seleccionables[clave_plato] -= 1
-				if NocheData.platos_seleccionables[clave_plato] <= 0:
-					NocheData.platos_seleccionables.erase(clave_plato)
-				# Refrescar menú visual si existe
-				var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas")
-				if menu_seleccionable and menu_seleccionable.has_method("actualizar"):
-					menu_seleccionable.actualizar()
+			if clave_plato != "":
+				if NocheData.platos_seleccionables.has(clave_plato):
+					NocheData.platos_seleccionables[clave_plato] -= 1
+				else:
+					NocheData.platos_seleccionables[clave_plato]= -1
+	
 			objeto_actual.interactuar()
 		else:
 			objeto_actual.interactuar()

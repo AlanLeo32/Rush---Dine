@@ -192,10 +192,10 @@ func elegir_pedido():
 			pedido_actual = platos_validos[i]
 			print("Cliente pidió: ", pedido_actual)
 			# Restar uno del disponible para cocinar
-			NocheData.platos_seleccionables[pedido_actual] -= 1
-			# Si ya no queda, lo eliminamos del diccionario
-			if NocheData.platos_seleccionables[pedido_actual] <= 0:
-				NocheData.platos_seleccionables.erase(pedido_actual)
+			if NocheData.platos_seleccionables.has(pedido_actual):
+				NocheData.platos_seleccionables[pedido_actual] -= 1
+			else:
+				NocheData.platos_seleccionables[pedido_actual] = -1
 			# Refrescar el menú visual
 			var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas") # Ajusta si el nodo tiene otro nombre
 			if menu_seleccionable and menu_seleccionable.has_method("actualizar"):

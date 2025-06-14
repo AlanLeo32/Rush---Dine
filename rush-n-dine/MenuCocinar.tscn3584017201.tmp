@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcr3blo5ymt85"]
+
+[ext_resource type="Script" uid="uid://c48yyw13d306x" path="res://menu_cocinar.gd" id="1_hbnsb"]
+[ext_resource type="Texture2D" uid="uid://cxq8r5lj5nwdu" path="res://Fondos/FondoMenuSeleccion.png" id="2_1bgvu"]
+[ext_resource type="Texture2D" uid="uid://ppit8u5t0nde" path="res://Sprites/cancelar.webp" id="4_23cjw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vpgmy"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_e61l0"]
+font_size = 35
+
+[node name="MenuSeleccionRecetas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hbnsb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(-65, -22)
+scale = Vector2(1.44466, 1.08984)
+texture = ExtResource("2_1bgvu")
+centered = false
+
+[node name="TituloMenu" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 69.0
+offset_right = 1112.0
+offset_bottom = 138.0
+text = "Menu Cocina"
+label_settings = SubResource("LabelSettings_vpgmy")
+
+[node name="ScrollDisponibles" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 282.0
+offset_right = 1549.0
+offset_bottom = 882.0
+
+[node name="HBoxDisponibles" type="GridContainer" parent="Panel/ScrollDisponibles"]
+layout_mode = 2
+columns = 4
+
+[node name="Recetas" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 228.0
+offset_right = 746.0
+offset_bottom = 278.0
+text = "Disponibles para cocinar"
+label_settings = SubResource("LabelSettings_e61l0")
+
+[node name="Cancelar" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 1430.0
+offset_top = 114.0
+offset_right = 1580.0
+offset_bottom = 264.0
+texture_normal = ExtResource("4_23cjw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="Panel/Cancelar" to="." method="_on_cancelar_pressed"]

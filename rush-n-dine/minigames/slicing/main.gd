@@ -39,15 +39,15 @@ func terminar_minijuego():
 	var puntaje_final = slash.getPuntaje()
 	# ACTUALIZO el resultado, ya que no puedo saber
 	# Si hubo otro minijuego antes de este o no
-	if not Globales.resultado_minijuego.has("puntaje"):
-		Globales.resultado_minijuego["puntaje"] = 0
-	if not Globales.resultado_minijuego.has("receta"):
-		Globales.resultado_minijuego["receta"] = Globales.receta_actual
-	var puntaje_anterior = Globales.resultado_minijuego["puntaje"]
+	if not ManejoMinijuegos.resultado_minijuego.has("puntaje"):
+		ManejoMinijuegos.resultado_minijuego["puntaje"] = 0
+	if not ManejoMinijuegos.resultado_minijuego.has("receta"):
+		ManejoMinijuegos.resultado_minijuego["receta"] = ManejoMinijuegos.receta_actual
+	var puntaje_anterior = ManejoMinijuegos.resultado_minijuego["puntaje"]
 	print("Termina minijuego. Puntaje:", puntaje_final, "Puntaje anterior:", puntaje_anterior)
-	Globales.resultado_minijuego = {
+	ManejoMinijuegos.resultado_minijuego = {
 		"puntaje": puntaje_final + puntaje_anterior,
-		"receta": Globales.receta_actual
+		"receta": ManejoMinijuegos.receta_actual
 	}
 	# Oculta el overlay y desbloquea el cocinero
 	var noche = get_tree().get_root().get_node("Noche")
@@ -60,7 +60,7 @@ func terminar_minijuego():
 
 	# Si el minijuego debe eliminarse:
 	queue_free()
-	Globales.logica_siguiente_minijuego()
+	ManejoMinijuegos.logica_siguiente_minijuego()
 
 
 func _on_minigame_timer_timeout() -> void:

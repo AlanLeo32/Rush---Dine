@@ -19,9 +19,9 @@ func _ready():
 	$Timer.timeout.connect(_on_timer_timeout)
 	bloquear_cocinero = false
 	#Logica para obtener resultados de minijuego
-	if Globales.resultado_minijuego["receta"]:
+	if ManejoMinijuegos.resultado_minijuego["receta"]:
 		procesar_resultado_minijuego(Globales.resultado_minijuego)
-		Globales.resultado_minijuego = {}  # lo limpiás para el siguiente minijuego
+		ManejoMinijuegos.resultado_minijuego = {}  # lo limpiás para el siguiente minijuego*
 	tiempo_restante = duracion_noche
 	set_process(true)
 
@@ -53,9 +53,9 @@ func procesar_resultado_minijuego(resultado):
 		print("Plato creado:", plato, "con receta:", receta)
 		cocinero.recibir_plato(plato)
 		print("Cocinero tiene método recibir_plato:", cocinero.has_method("recibir_plato"))
-	Globales.resultado_minijuego = {}  # Limpiar para el próximo
-	Globales.receta_actual = null      # <--- AGREGÁ ESTA LÍNEA
-	Globales.pos_minijuego_actual = 0  # <--- AGREGÁ ESTA LÍNEA
+	ManejoMinijuegos.resultado_minijuego = {}  # Limpiar para el próximo
+	ManejoMinijuegos.receta_actual = null      # <--- AGREGÁ ESTA LÍNEA
+	ManejoMinijuegos.pos_minijuego_actual = 0  # <--- AGREGÁ ESTA LÍNEA
 	# Aca aplicar algo en base a los puntos
 
 	# También podrías actualizar alguna UI de resultados si tenés
@@ -93,7 +93,6 @@ func _process(delta):
 
 		$CanvasLayer2/RelojLabel.text = "Hora: %02d:%02d" % [horas, minutos]
 		$CanvasLayer2/RelojLabel.visible = true
-		print("Hora: %02d:%02d" % [horas, minutos])
 	else:
 		# Oculta el reloj si hay minijuego activo
 		$CanvasLayer2/RelojLabel.visible = false

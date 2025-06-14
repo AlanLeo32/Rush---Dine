@@ -9,7 +9,6 @@ func _ready():
 func cargar_recetas():
 	for child in $Panel/ScrollRecetas/HBoxRecetas.get_children():
 		child.queue_free()
-	seleccion_local = {}  # resetea selección local
 	for receta in Globales.recetas_desbloqueadas:
 		var receta_data = Globales.recetas_desbloqueadas[receta]
 		var receta_item = preload("res://RecetaItem.tscn").instantiate()
@@ -26,11 +25,6 @@ func cargar_seleccionados():
 		if not receta_ids.has(id):
 				receta_ids.append(id)
 	for receta_id in receta_ids:
-		if receta_id == "agua":
-			continue  # Saltar receta ficticia
-		if not Globales.recetas_desbloqueadas.has(receta_id):
-			print("Advertencia: receta no encontrada:", receta_id)
-			continue
 		var receta = Globales.recetas_desbloqueadas[receta_id]
 		var cantidad_noche = 0
 		var cantidad_local = 0
@@ -38,11 +32,13 @@ func cargar_seleccionados():
 			cantidad_noche = NocheData.platos_seleccionables[receta_id]
 		if seleccion_local.has(receta_id):
 			cantidad_local = seleccion_local[receta_id]
-		var seleccionado_item = preload("res://SeleccionadoItem.tscn").instantiate()
-		seleccionado_item.connect("boton_resta", Callable(self, "_on_boton_resta"))
-		seleccionado_item.set_data(receta_id, receta, cantidad_noche, cantidad_local)
-		
-		$Panel/ScrollSeleccionados/HBoxSeleccionados.add_child(seleccionado_item)
+		if cantidad_noche > 0 or cantidad_local > 0:
+			var seleccionado_item = preload("res://SeleccionadoItem.tscn").instantiate()
+			seleccionado_item.connect("boton_resta", Callable(self, "_on_boton_resta"))
+			seleccionado_item.set_data(receta_id, receta, cantidad_noche, cantidad_local)
+			$Panel/ScrollSeleccionados/HBoxSeleccionados.add_child(seleccionado_item)
+		elif cantidad_noche == 0:
+			NocheData.platos_seleccionables.erase(receta_id)
 
 func cargar_recursos():
 	for child in $Panel/ScrollRecursos/HBoxRecursos.get_children():

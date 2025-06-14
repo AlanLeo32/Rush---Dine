@@ -392,7 +392,7 @@ offset_bottom = 109.0
 text = "A"
 label_settings = SubResource("LabelSettings_hj8yk")
 
-[node name="MenuMesada" parent="CanvasLayer2" instance=ExtResource("25_uxnie")]
+[node name="Control" parent="CanvasLayer2" instance=ExtResource("25_uxnie")]
 visible = false
 
 [node name="Mesas" type="Node2D" parent="."]

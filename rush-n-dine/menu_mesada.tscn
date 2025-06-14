@@ -1,0 +1,155 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvfyli57qjb0d"]
+
+[ext_resource type="Script" uid="uid://2wsje13p672p" path="res://menu_mesada.gd" id="1_fd587"]
+[ext_resource type="Texture2D" uid="uid://cxq8r5lj5nwdu" path="res://Fondos/FondoMenuSeleccion.png" id="1_vd73d"]
+[ext_resource type="Script" uid="uid://dv54qqbgrd1ec" path="res://boton_plato_actual.gd" id="2_0dfoi"]
+[ext_resource type="Texture2D" uid="uid://ppit8u5t0nde" path="res://Sprites/cancelar.webp" id="4_drdjw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0dfoi"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_fd587"]
+font_size = 40
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vd73d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_drdjw"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_r3kuf"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ltw2"]
+font_size = 28
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fd587")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1880.0
+offset_bottom = 1040.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(-65, -22)
+scale = Vector2(1.44466, 1.08984)
+texture = ExtResource("1_vd73d")
+centered = false
+
+[node name="TituloMenu" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 71.0
+offset_right = 1144.0
+offset_bottom = 140.0
+text = "Mesada"
+label_settings = SubResource("LabelSettings_0dfoi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollMesada" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 309.0
+offset_right = 1544.0
+offset_bottom = 709.0
+
+[node name="HBoxMesada" type="GridContainer" parent="Panel/ScrollMesada"]
+layout_mode = 2
+columns = 4
+
+[node name="AlmacenadosText" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 246.0
+offset_right = 610.0
+offset_bottom = 301.0
+text = "Almacenados:"
+label_settings = SubResource("LabelSettings_fd587")
+
+[node name="BotonPlatoActual" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 0
+offset_left = 800.0
+offset_top = 778.0
+offset_right = 1100.0
+offset_bottom = 978.0
+script = ExtResource("2_0dfoi")
+
+[node name="CanvasLayer" type="Panel" parent="Panel/BotonPlatoActual"]
+visible = false
+layout_mode = 0
+mouse_filter = 1
+
+[node name="ImagenReceta" type="TextureRect" parent="Panel/BotonPlatoActual/CanvasLayer"]
+custom_minimum_size = Vector2(150, 15)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 159.0
+offset_bottom = 161.0
+texture = SubResource("ViewportTexture_vd73d")
+expand_mode = 1
+
+[node name="Nombre" type="Label" parent="Panel/BotonPlatoActual/CanvasLayer"]
+custom_minimum_size = Vector2(180, 25)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 159.0
+offset_right = 283.0
+offset_bottom = 198.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_drdjw")
+horizontal_alignment = 1
+
+[node name="Estado" type="Label" parent="Panel/BotonPlatoActual/CanvasLayer"]
+custom_minimum_size = Vector2(30, 25)
+layout_mode = 0
+offset_left = 179.0
+offset_top = 94.0
+offset_right = 269.0
+offset_bottom = 133.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_r3kuf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Panel/BotonPlatoActual/CanvasLayer"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 47.0
+offset_right = 269.0
+offset_bottom = 86.0
+text = "Estado"
+label_settings = SubResource("LabelSettings_1ltw2")
+
+[node name="Cancelar" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 818.0
+offset_right = 623.0
+offset_bottom = 968.0
+texture_normal = ExtResource("4_drdjw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PlatilloActualText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 722.0
+offset_right = 1104.0
+offset_bottom = 777.0
+text = "Platillo en mano"
+label_settings = SubResource("LabelSettings_fd587")
+
+[connection signal="pressed" from="Panel/BotonPlatoActual" to="." method="_on_boton_plato_actual_pressed"]
+[connection signal="pressed" from="Panel/Cancelar" to="." method="_on_cancelar_pressed"]

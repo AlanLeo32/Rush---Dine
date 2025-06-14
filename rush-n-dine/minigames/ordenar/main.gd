@@ -69,14 +69,14 @@ func terminar_minijuego():
 	#Volver al juego principal
 	print('fin minijuego ordenar')
 	calcular_puntaje_final()
-	Globales.logica_siguiente_minijuego()
+	ManejoMinijuegos.logica_siguiente_minijuego()
 
 
 func calcular_puntaje_final():
 	var puntaje_total = 0
 	var ingredientes_colocados = nodo_ing.get_children()
-	Globales.receta_actual = Globales.recetas_desbloqueadas["pescado_asado1"]
-	var posiciones_ideales_pescado = Globales.receta_actual["ubi_ing"] # devuelve diccionario con "lechuga": Vector2(292.1, 174.9),
+	ManejoMinijuegos.receta_actual = Globales.recetas_desbloqueadas["pescado_asado1"]
+	var posiciones_ideales_pescado = ManejoMinijuegos.receta_actual["ubi_ing"] # devuelve diccionario con "lechuga": Vector2(292.1, 174.9),
 
 	for ingrediente_node in ingredientes_colocados:
 		var posicion_ingrediente_colocado = ingrediente_node.global_position 
@@ -95,16 +95,16 @@ func calcular_puntaje_final():
 			elif distancia < 100:
 				puntaje_total += 5
 		
-		if not Globales.resultado_minijuego.has("puntaje"):
-			Globales.resultado_minijuego["puntaje"] = 0
-		if not Globales.resultado_minijuego.has("receta"):
-			Globales.resultado_minijuego["receta"] = Globales.receta_actual
-		var puntaje_anterior = Globales.resultado_minijuego["puntaje"]
+		if not ManejoMinijuegos.resultado_minijuego.has("puntaje"):
+			ManejoMinijuegos.resultado_minijuego["puntaje"] = 0
+		if not ManejoMinijuegos.resultado_minijuego.has("receta"):
+			ManejoMinijuegos.resultado_minijuego["receta"] = ManejoMinijuegos.receta_actual
+		var puntaje_anterior = ManejoMinijuegos.resultado_minijuego["puntaje"]
 		# ACTUALIZO el resultado, ya que no puedo saber
 		# Si hubo otro minijuego antes de este o no
-		Globales.resultado_minijuego = {
+		ManejoMinijuegos.resultado_minijuego = {
 			"puntaje": puntaje_total + puntaje_anterior,
-			"receta": Globales.receta_actual
+			"receta": ManejoMinijuegos.receta_actual
 		}
 	   
 	

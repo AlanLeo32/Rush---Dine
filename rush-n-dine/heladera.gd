@@ -8,5 +8,5 @@ func interactuar():
 		popup.popup_centered()
 	else:
 		var menu = get_tree().get_nodes_in_group("MenuSeleccionarRecetas")[0]
-		menu.visible = true
 		menu.actualizar()
+		menu.visible = true

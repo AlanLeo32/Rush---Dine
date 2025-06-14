@@ -1,9 +1,7 @@
 extends Control
 
-
 func _ready():
 	cargar_disponibles()
-
 
 func cargar_disponibles():
 	for child in $Panel/ScrollDisponibles/HBoxDisponibles.get_children():
@@ -17,7 +15,6 @@ func cargar_disponibles():
 		$Panel/ScrollDisponibles/HBoxDisponibles.add_child(receta_item)
 
 func _on_disponible_seleccionada(disp_id):
-	# seleccionar un random de los minijuegos de la receta seleccionada.
 	print("Se gasta: ", disp_id)
 	NocheData.disponibles_cocinar[disp_id] -= 1
 	if NocheData.disponibles_cocinar[disp_id] <= 0:
@@ -27,10 +24,10 @@ func _on_disponible_seleccionada(disp_id):
 	var receta_data = Globales.recetas_desbloqueadas[disp_id]
 	#Selecciono el minijuego
 	if receta_data.has("minijuegos") and receta_data["minijuegos"].size() > 0:
-		Globales.receta_actual = receta_data
+		ManejoMinijuegos.receta_actual = receta_data
 
 		# Cambiar a escena del minijuego
-		Globales.logica_siguiente_minijuego()
+		ManejoMinijuegos.logica_siguiente_minijuego()
 	else:
 		push_error("La receta no tiene minijuegos definidos")
 	

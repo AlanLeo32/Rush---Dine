@@ -24,7 +24,7 @@ func _ready():
 	#radius = min(background.size.x, background.size.y) * 0.5 - 0.0  # margen interior
 	radius = 0
 	#coccion = 1 # ESTO ESTA HARDCODEADO PARA PROBAR CORRIENDO SOLO ESTA ESCENA, USAR LA LINEA DE ABAJO
-	coccion = Globales.receta_actual["coccion"]
+	coccion = ManejoMinijuegos.receta_actual["coccion"]
 	pos_text = coordsCartel[coccion-1]
 	ideal_text.set_global_position(pos_text)
 	start_skill_check()
@@ -85,21 +85,21 @@ func calcular_puntaje(area_resultado):
 		puntaje_final = 1
 	
 	
-	if not Globales.resultado_minijuego.has("puntaje"):
-		Globales.resultado_minijuego["puntaje"] = 0
-	if not Globales.resultado_minijuego.has("receta"):
-		Globales.resultado_minijuego["receta"] = Globales.receta_actual
-	var puntaje_anterior = Globales.resultado_minijuego["puntaje"]
-	Globales.resultado_minijuego = {
+	if not ManejoMinijuegos.resultado_minijuego.has("puntaje"):
+		ManejoMinijuegos.resultado_minijuego["puntaje"] = 0
+	if not ManejoMinijuegos.resultado_minijuego.has("receta"):
+		ManejoMinijuegos.resultado_minijuego["receta"] = ManejoMinijuegos.receta_actual
+	var puntaje_anterior = ManejoMinijuegos.resultado_minijuego["puntaje"]
+	ManejoMinijuegos.resultado_minijuego = {
 		"puntaje": puntaje_final + puntaje_anterior,
-		"receta": Globales.receta_actual
+		"receta": ManejoMinijuegos.receta_actual
 	}
 	terminar_minijuego()
 	
 
 func terminar_minijuego():
 	print('fin minijuego skillcheck')
-	Globales.logica_siguiente_minijuego()
+	ManejoMinijuegos.logica_siguiente_minijuego()
 
 
 

@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfis4k514dcxv"]
+
+[ext_resource type="Script" uid="uid://qnbyframowl6" path="res://mesada_item.gd" id="1_stk02"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rv6tk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ysbp"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_kw0yv"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_bvrv8"]
+font_size = 28
+
+[node name="MesadaItem" type="Control"]
+custom_minimum_size = Vector2(290, 200)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_stk02")
+
+[node name="CanvasLayer" type="Panel" parent="."]
+layout_mode = 0
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 200.0
+mouse_filter = 1
+
+[node name="ImagenReceta" type="TextureRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 15)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 159.0
+offset_bottom = 161.0
+texture = SubResource("ViewportTexture_rv6tk")
+expand_mode = 1
+
+[node name="Nombre" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(180, 25)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 159.0
+offset_right = 283.0
+offset_bottom = 198.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_6ysbp")
+horizontal_alignment = 1
+
+[node name="Estado" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(30, 25)
+layout_mode = 0
+offset_left = 179.0
+offset_top = 94.0
+offset_right = 269.0
+offset_bottom = 133.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_kw0yv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 47.0
+offset_right = 269.0
+offset_bottom = 86.0
+mouse_filter = 1
+text = "Estado"
+label_settings = SubResource("LabelSettings_bvrv8")
