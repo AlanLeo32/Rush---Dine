@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=55 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="18_nhjf1"]
 [ext_resource type="Script" uid="uid://bx46tre684s0p" path="res://panel_2.gd" id="19_0hmx4"]
 [ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="19_1ji4q"]
+[ext_resource type="Texture2D" uid="uid://con3rfwn5whpt" path="res://Sprites/Reloj.png" id="19_elcv6"]
+[ext_resource type="Texture2D" uid="uid://bkss5s6sccl3e" path="res://Sprites/AgujaTiempo.png" id="20_47dcw"]
 [ext_resource type="PackedScene" uid="uid://va75bpyjwfou" path="res://MenuSeleccionRecetas.tscn" id="21_s073x"]
 [ext_resource type="Script" uid="uid://dffyn1jebwlx0" path="res://mesas.gd" id="22_upk0d"]
 [ext_resource type="Texture2D" uid="uid://b56fki7hb1lte" path="res://Sprites/SpriteMesa.png" id="23_sa3a0"]
@@ -68,9 +70,6 @@ size = Vector2(116, 102.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxnie"]
 bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.537255)
-
-[sub_resource type="LabelSettings" id="LabelSettings_hj8yk"]
-font_size = 100
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ubrrc"]
 
@@ -271,7 +270,7 @@ shape = SubResource("RectangleShape2D_5lbuo")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Interactuar" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -320,18 +319,35 @@ offset_right = 2195.0
 offset_bottom = 200.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uxnie")
 
-[node name="RelojLabel" type="Label" parent="CanvasLayer2"]
+[node name="Reloj" type="TextureRect" parent="CanvasLayer2"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -260.0
-offset_top = -1.0
-offset_bottom = 199.0
+offset_left = -208.0
+offset_top = -3.0
+offset_right = 816.0
+offset_bottom = 1021.0
 grow_horizontal = 0
-text = "20:00"
-label_settings = SubResource("LabelSettings_hj8yk")
-horizontal_alignment = 1
-vertical_alignment = 1
+scale = Vector2(0.203613, 0.202148)
+texture = ExtResource("19_elcv6")
+
+[node name="Aguja" type="TextureRect" parent="CanvasLayer2/Reloj"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.679
+offset_top = -482.319
+offset_right = 200.321
+offset_bottom = 166.681
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.16246
+pivot_offset = Vector2(197.7, 482.3)
+texture = ExtResource("20_47dcw")
+expand_mode = 1
 
 [node name="Panel2" type="Panel" parent="CanvasLayer2"]
 anchors_preset = 5
@@ -347,6 +363,7 @@ script = ExtResource("19_0hmx4")
 [node name="ImagenReceta" type="TextureRect" parent="CanvasLayer2/Panel2"]
 visible = false
 custom_minimum_size = Vector2(175, 175)
+layout_mode = 0
 offset_left = -2.0
 offset_top = 1.0
 offset_right = 173.0

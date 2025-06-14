@@ -27,8 +27,8 @@ func entregar_plato_al_cliente():
 		print("Entregando plato al cliente:", objeto_en_mano.get("receta"))
 		objeto_actual.recibir_plato(objeto_en_mano)
 		objeto_en_mano.queue_free()
+		objeto_en_mano.get_parent().remove_child(objeto_en_mano)		
 		objeto_en_mano = null
-		objeto_en_mano.get_parent().remove_child(objeto_en_mano)
 
 func dejar_plato_mesada():
 	objeto_en_mano.get_parent().remove_child(objeto_en_mano)

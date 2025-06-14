@@ -78,27 +78,32 @@ func _on_timer_timeout():
 		$Timer.start()
 
 func _process(delta):
-	# Solo avanza el tiempo si no hay minijuego activo
+	var aguja = $CanvasLayer2/Reloj/Aguja
 	if tiempo_restante > 0 and not bloquear_cocinero:
+		$CanvasLayer2/Reloj.visible = true
 		tiempo_restante -= delta
 
-		# Simular el avance desde las 18:00 (1080 minutos) hasta las 24:00 (1440 minutos)
-		var minutos_inicio = 18 * 60
+		# Tiempo ficticio (en minutos) desde 20:00 (1200) a 24:00 (1440)
+		var minutos_inicio = 20 * 60
 		var minutos_fin = 24 * 60
-		var minutos_totales = minutos_fin - minutos_inicio
+		var minutos_totales = minutos_fin - minutos_inicio  # 240
+
 		var proporcion = (duracion_noche - tiempo_restante) / duracion_noche
 		var minutos_actuales = minutos_inicio + int(minutos_totales * proporcion)
 		var horas = int(minutos_actuales / 60)
 		var minutos = int(minutos_actuales % 60)
 
-		$CanvasLayer2/RelojLabel.text = " %02d:%02d " % [horas, minutos]
-		$CanvasLayer2/RelojLabel.visible = true
+		# Reloj analógico (aguja va de 240° a 360°)
+		var progreso_aguja = clamp(proporcion, 0.0, 1.0)
+		var angulo_aguja = lerp(deg_to_rad(240), deg_to_rad(360), progreso_aguja)
+		aguja.rotation = angulo_aguja
+
 	else:
-		# Oculta el reloj si hay minijuego activo
-		$CanvasLayer2/RelojLabel.visible = false
+		$CanvasLayer2/Reloj.visible = false
 
 	if tiempo_restante <= 0:
 		finalizar_noche()
+
 
 func finalizar_noche():
 	print("¡La noche terminó!")
