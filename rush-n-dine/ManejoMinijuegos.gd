@@ -30,6 +30,9 @@ func logica_siguiente_minijuego():
 			# Mostrar el botón de interactuar
 			if noche.has_node("CanvasLayer/Interactuar"):
 				noche.get_node("CanvasLayer/Interactuar").visible = true
+			if noche.has_node("CanvasLayer2"):
+				noche.get_node("CanvasLayer2/Panel").visible = true
+				noche.get_node("CanvasLayer2/Panel2").visible = true
 			noche.procesar_resultado_minijuego(ManejoMinijuegos.resultado_minijuego)
 			ManejoMinijuegos.resultado_minijuego = {}
 			noche.set("bloquear_cocinero", false)
@@ -56,6 +59,9 @@ func logica_siguiente_minijuego():
 			# Ocultar el botón de interactuar
 			if noche.has_node("CanvasLayer/Interactuar"):
 				noche.get_node("CanvasLayer/Interactuar").visible = false
+			if noche.has_node("CanvasLayer2"):
+				noche.get_node("CanvasLayer2/Panel").visible = false
+				noche.get_node("CanvasLayer2/Panel2").visible = false
 			# Bloquear movimiento cocinero
 			noche.set("bloquear_cocinero", true)
 		else:

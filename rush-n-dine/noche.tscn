@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=54 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cau2iartj02r2" path="res://Sprites/BotonPausa.png" id="17_1ji4q"]
 [ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="18_lvlro"]
 [ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="18_nhjf1"]
+[ext_resource type="Script" uid="uid://bx46tre684s0p" path="res://panel_2.gd" id="19_0hmx4"]
 [ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="19_1ji4q"]
 [ext_resource type="PackedScene" uid="uid://va75bpyjwfou" path="res://MenuSeleccionRecetas.tscn" id="21_s073x"]
 [ext_resource type="Script" uid="uid://dffyn1jebwlx0" path="res://mesas.gd" id="22_upk0d"]
@@ -65,6 +66,14 @@ size = Vector2(116, 103)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh7h"]
 size = Vector2(116, 102.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxnie"]
+bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.537255)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hj8yk"]
+font_size = 100
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ubrrc"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ji4q"]
 texture = ExtResource("18_lvlro")
 region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
@@ -88,9 +97,6 @@ region_rect = Rect2(15.8994, 286.335, 992.201, 478.659)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfo2o"]
 texture = ExtResource("19_1ji4q")
 region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
-
-[sub_resource type="LabelSettings" id="LabelSettings_hj8yk"]
-font_size = 50
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj8yk"]
 size = Vector2(475, 389.5)
@@ -266,14 +272,14 @@ shape = SubResource("RectangleShape2D_5lbuo")
 
 [node name="Interactuar" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.772
-anchor_top = 0.7
-anchor_right = 0.772
-anchor_bottom = 0.7
-offset_left = -67.24
-offset_top = -69.0001
-offset_right = 66.76
-offset_bottom = 69.9999
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.672
+offset_top = -295.8
+offset_right = -239.672
+offset_bottom = -156.8
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -309,22 +315,53 @@ process_mode = 3
 layer = 100
 script = ExtResource("16_lvlro")
 
-[node name="LogicaPausa" type="Button" parent="CanvasLayer2"]
-process_mode = 3
-offset_right = 48.0
-offset_bottom = 48.0
-scale = Vector2(2, 2)
-flat = true
+[node name="Panel" type="Panel" parent="CanvasLayer2"]
+offset_right = 2195.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uxnie")
 
-[node name="BotonPausa" type="TextureButton" parent="CanvasLayer2/LogicaPausa"]
-process_mode = 3
-z_index = 1
-layout_mode = 1
-offset_right = 48.0
-offset_bottom = 48.0
-action_mode = 0
-texture_normal = ExtResource("17_1ji4q")
-texture_pressed = ExtResource("18_nhjf1")
+[node name="RelojLabel" type="Label" parent="CanvasLayer2"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = -1.0
+offset_bottom = 199.0
+grow_horizontal = 0
+text = "20:00"
+label_settings = SubResource("LabelSettings_hj8yk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CanvasLayer2"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 188.0
+grow_horizontal = 2
+script = ExtResource("19_0hmx4")
+
+[node name="ImagenReceta" type="TextureRect" parent="CanvasLayer2/Panel2"]
+visible = false
+custom_minimum_size = Vector2(175, 175)
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 173.0
+offset_bottom = 176.0
+texture = SubResource("ViewportTexture_ubrrc")
+expand_mode = 1
+
+[node name="MenuSeleccionRecetas" parent="CanvasLayer2" groups=["MenuSeleccionarRecetas"] instance=ExtResource("21_s073x")]
+visible = false
+
+[node name="MenuCocinar" parent="CanvasLayer2" groups=["MenuCocinar"] instance=ExtResource("24_hj8yk")]
+visible = false
+
+[node name="MenuMesada" parent="CanvasLayer2" instance=ExtResource("25_uxnie")]
+visible = false
 
 [node name="fondoMenu" type="ColorRect" parent="CanvasLayer2"]
 visible = false
@@ -378,22 +415,25 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_upk0d")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_q1pc4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kfo2o")
 
-[node name="MenuSeleccionRecetas" parent="CanvasLayer2" groups=["MenuSeleccionarRecetas"] instance=ExtResource("21_s073x")]
-visible = false
+[node name="LogicaPausa" type="Button" parent="CanvasLayer2"]
+process_mode = 3
+offset_right = 75.0
+offset_bottom = 75.0
+scale = Vector2(2, 2)
+flat = true
 
-[node name="MenuCocinar" parent="CanvasLayer2" groups=["MenuCocinar"] instance=ExtResource("24_hj8yk")]
-visible = false
-
-[node name="RelojLabel" type="Label" parent="CanvasLayer2"]
-offset_left = 1211.0
-offset_top = 3.0
-offset_right = 1431.0
-offset_bottom = 109.0
-text = "A"
-label_settings = SubResource("LabelSettings_hj8yk")
-
-[node name="MenuMesada" parent="CanvasLayer2" instance=ExtResource("25_uxnie")]
-visible = false
+[node name="BotonPausa" type="TextureButton" parent="CanvasLayer2/LogicaPausa"]
+process_mode = 3
+z_index = 1
+layout_mode = 1
+offset_left = 13.5
+offset_top = 12.0
+offset_right = 88.5
+offset_bottom = 87.0
+action_mode = 0
+texture_normal = ExtResource("17_1ji4q")
+texture_pressed = ExtResource("18_nhjf1")
+stretch_mode = 5
 
 [node name="Mesas" type="Node2D" parent="."]
 script = ExtResource("22_upk0d")
@@ -481,6 +521,6 @@ position = Vector2(6510, 0)
 
 [connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
-[connection signal="pressed" from="CanvasLayer2/LogicaPausa" to="CanvasLayer2" method="_on_logica_pausa_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/Configuracion" to="CanvasLayer2" method="_on_configuracion_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/MenuPrincipal" to="CanvasLayer2" method="_on_menu_principal_pressed"]
+[connection signal="pressed" from="CanvasLayer2/LogicaPausa" to="CanvasLayer2" method="_on_logica_pausa_pressed"]

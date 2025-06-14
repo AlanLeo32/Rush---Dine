@@ -91,7 +91,7 @@ func _process(delta):
 		var horas = int(minutos_actuales / 60)
 		var minutos = int(minutos_actuales % 60)
 
-		$CanvasLayer2/RelojLabel.text = "Hora: %02d:%02d" % [horas, minutos]
+		$CanvasLayer2/RelojLabel.text = " %02d:%02d " % [horas, minutos]
 		$CanvasLayer2/RelojLabel.visible = true
 	else:
 		# Oculta el reloj si hay minijuego activo
