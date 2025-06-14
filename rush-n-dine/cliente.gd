@@ -148,23 +148,18 @@ func asignar_mesa(mesa: Node) -> void:
 		target_position = punto.global_position  # Asignar también target_position
 	else:
 		print("Asignar mesa: mesa no tiene nodo 'PuntoSentado'")
+		
 func elegir_pedido():
 	var disponibles = NocheData.platos_seleccionables
-	
-	# Verificar si hay platos disponibles
-	if disponibles.is_empty():
-		pedido_actual = "agua"
-		Globales.reputacion -= 1
-		print("Cliente pidió agua. Reputación bajó a: ", Globales.reputacion)
-		return
 
-	# Armar lista de platos y sus pesos de popularidad
+	# Crear una lista filtrada de platos realmente disponibles (cantidad > 0 y popularidad > 0)
 	var platos_validos = []
 	var pesos = []
 	var suma_total = 0.0
 
 	for nombre_plato in disponibles.keys():
-		if Globales.recetas_desbloqueadas.has(nombre_plato):
+		var cantidad = disponibles[nombre_plato]
+		if cantidad > 0 and Globales.recetas_desbloqueadas.has(nombre_plato):
 			var info = Globales.recetas_desbloqueadas[nombre_plato]
 			var popularidad = float(info["popularidad"])
 			if popularidad > 0:
@@ -172,17 +167,16 @@ func elegir_pedido():
 				pesos.append(popularidad)
 				suma_total += popularidad
 
-	# Si por alguna razón no hay platos con popularidad positiva
+	# Si no hay platos realmente disponibles
 	if platos_validos.size() == 0:
 		pedido_actual = "agua"
 		Globales.reputacion -= 1
-		print("Cliente pidió agua. Reputación bajó a: ", Globales.reputacion)
+		print("Cliente pidió agua. Reputación bajó a:", Globales.reputacion)
 		return
 
-	# Elegir aleatoriamente un plato según su popularidad
+	# Sorteo ponderado
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-
 	var r = rng.randf_range(0, suma_total)
 	var acumulado = 0.0
 
@@ -190,17 +184,16 @@ func elegir_pedido():
 		acumulado += pesos[i]
 		if r <= acumulado:
 			pedido_actual = platos_validos[i]
-			print("Cliente pidió: ", pedido_actual)
-			# Restar uno del disponible para cocinar
-			if NocheData.platos_seleccionables.has(pedido_actual):
-				NocheData.platos_seleccionables[pedido_actual] -= 1
-			else:
-				NocheData.platos_seleccionables[pedido_actual] = -1
-			# Refrescar el menú visual
-			var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas") # Ajusta si el nodo tiene otro nombre
-			if menu_seleccionable and menu_seleccionable.has_method("actualizar"):
-				menu_seleccionable.actualizar()
-			return
+			print("Cliente pidió:", pedido_actual)
+			NocheData.platos_seleccionables[pedido_actual] -= 1
+			break
+
+	# Refrescar menú visual
+	var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas")
+	if menu_seleccionable and menu_seleccionable.has_method("actualizar"):
+		menu_seleccionable.actualizar()
+
+		
 func irse():
 	var gestor_mesas = get_tree().get_root().get_node("Noche/Mesas")  # Ajusta la ruta según tu escena
 	if gestor_mesas and mesa_asignada:
@@ -213,7 +206,7 @@ func irse():
 	velocity = Vector2.ZERO
 	
 	# Devolver el pedido si el cliente se va sin recibirlo
-	if pedido_actual != "":
+	if pedido_actual != "" && pedido_actual != "agua":
 		if tiene_pedido or pedido_tomado:
 			print("Cliente se fue sin su plato, devolviendo:", pedido_actual)
 			if NocheData.platos_seleccionables.has(pedido_actual):
