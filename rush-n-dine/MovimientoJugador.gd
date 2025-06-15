@@ -27,7 +27,7 @@ func entregar_plato_al_cliente():
 		print("Entregando plato al cliente:", objeto_en_mano.get("receta"))
 		objeto_actual.recibir_plato(objeto_en_mano)
 		objeto_en_mano.queue_free()
-		objeto_en_mano.get_parent().remove_child(objeto_en_mano)		
+		objeto_en_mano.get_parent().remove_child(objeto_en_mano)
 		objeto_en_mano = null
 
 func dejar_plato_mesada():
@@ -101,7 +101,7 @@ func _on_area_entered(area: Area2D) -> void:
 			print(cliente.mesa_asignada)
 			print(area)
 			print("TerminaPrintFOR")
-			if area.get_parent() == cliente.mesa_asignada and cliente.sentado and cliente.esperando_pedido:
+			if area.get_parent() == cliente.mesa_asignada and cliente.sentado and (cliente.esperando_pedido or cliente.esperando_atencion):
 				print("Cliente detectado:", cliente)
 				interactuables_actuales.append(cliente)
 				objeto_actual = cliente
@@ -137,6 +137,8 @@ func _on_interactuar_pressed() -> void:
 		if objeto_en_mano and objeto_actual.is_in_group("clientes") and objeto_actual.esperando_pedido:
 			entregar_plato_al_cliente()
 		  # Si tengo un plato y el objeto actual es el tacho
+		elif objeto_actual.is_in_group("clientes") and objeto_actual.esperando_atencion:
+			objeto_actual.atendido()
 		elif objeto_en_mano and objeto_actual.name == "Tacho":
 		# Eliminar el plato de la mano
 			var clave_plato = objeto_en_mano.clave if "clave" in objeto_en_mano else ""
@@ -149,9 +151,7 @@ func _on_interactuar_pressed() -> void:
 					NocheData.platos_seleccionables[clave_plato] -= 1
 				else:
 					NocheData.platos_seleccionables[clave_plato]= -1
-	
-			objeto_actual.interactuar()
-		else:
+		elif objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar()
 		
 #esta solo usar para simular deslizamiento con gesto con mouse

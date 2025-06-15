@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dcn3t0kb2hd3h"]
+[gd_scene load_steps=25 format=3 uid="uid://dcn3t0kb2hd3h"]
 
 [ext_resource type="Script" uid="uid://dot4i08wxi76p" path="res://cliente.gd" id="1_hd6bx"]
 [ext_resource type="Texture2D" uid="uid://cfge2c2l4xgo6" path="res://Sprites/ClienteParte2.png" id="2_vo5fx"]
@@ -141,15 +141,15 @@ size = Vector2(159, 223)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dffsu"]
 atlas = ExtResource("3_mc5ak")
-region = Rect2(696, 0, 271, 1000)
+region = Rect2(682, 0, 341, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6r68n"]
 atlas = ExtResource("3_mc5ak")
-region = Rect2(78, 0, 271, 1000)
+region = Rect2(0, 0, 341, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fpges"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_elcv6"]
 atlas = ExtResource("3_mc5ak")
-region = Rect2(387, 0, 271, 1000)
+region = Rect2(341, 0, 341, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mc5ak"]
 animations = [{
@@ -171,22 +171,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fpges")
+"texture": SubResource("AtlasTexture_elcv6")
 }],
 "loop": true,
 "name": &"mitadEspera",
 "speed": 5.0
 }]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vo5fx"]
-
 [node name="Cliente" type="CharacterBody2D"]
-z_index = 1
-y_sort_enabled = true
 collision_mask = 8
 script = ExtResource("1_hd6bx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 3001
 position = Vector2(-8.18713, 33.0423)
 scale = Vector2(1.08614, 1.02118)
 sprite_frames = SubResource("SpriteFrames_vo5fx")
@@ -197,20 +194,12 @@ position = Vector2(21.5, -20.5)
 shape = SubResource("RectangleShape2D_hd6bx")
 
 [node name="nubePedido" type="AnimatedSprite2D" parent="."]
-z_index = 4096
-position = Vector2(2, -17)
-scale = Vector2(1.16605, 1.08)
+visible = false
+z_as_relative = false
+position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_mc5ak")
 animation = &"mitadEspera"
 centered = false
 offset = Vector2(10, -800)
-
-[node name="TextureRect" type="TextureRect" parent="nubePedido"]
-offset_left = 73.7532
-offset_top = -362.037
-offset_right = 203.753
-offset_bottom = -232.037
-texture = SubResource("ViewportTexture_vo5fx")
-expand_mode = 1
 
 [node name="AgenteNavegacion" type="NavigationAgent2D" parent="."]

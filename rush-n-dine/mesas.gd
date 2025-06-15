@@ -20,6 +20,13 @@ func obtener_mesa_libre() -> Node:
 			mesa["ocupada"] = true
 			return mesa["nodo"]
 	return null
+
+func hay_mesa_libre() -> bool:
+	for mesa in mesas:
+		if not mesa["ocupada"]:
+			return true
+	return false
+
 	
 func liberar_mesa(mesa_nodo: Node) -> void:
 	for mesa in mesas:

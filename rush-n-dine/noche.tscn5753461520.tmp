@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=55 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -105,11 +105,6 @@ size = Vector2(477, 268.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hmx4"]
 size = Vector2(476, 273)
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_elcv6"]
-vertices = PackedVector2Array(249.078, 2669.13, 266.906, 684.977, 3320.93, 681.008, 3308.06, 2695.97, 1961.26, 2691.97, 1595.1, 2687.13, 1938.26, 3564.86, 1586.1, 3560.13)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 4, 6, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1576, 3570, 1585, 2697, 239, 2679, 257, 675, 3331, 671, 3318, 2706, 1971, 2702, 1948, 3575)])
 
 [node name="Noche" type="Node2D"]
 z_as_relative = false
@@ -461,7 +456,8 @@ stretch_mode = 5
 script = ExtResource("22_upk0d")
 
 [node name="Mesa1" type="StaticBody2D" parent="Mesas"]
-z_index = 3000
+z_index = 3003
+y_sort_enabled = true
 collision_layer = 8
 collision_mask = 0
 
@@ -470,6 +466,7 @@ position = Vector2(600.5, 2932.5)
 shape = SubResource("RectangleShape2D_hj8yk")
 
 [node name="SpriteMesa" type="Sprite2D" parent="Mesas/Mesa1"]
+z_index = 20
 position = Vector2(600, 2862)
 scale = Vector2(0.602905, 0.532226)
 texture = ExtResource("23_sa3a0")
@@ -486,17 +483,20 @@ position = Vector2(601.5, 2988.75)
 shape = SubResource("RectangleShape2D_uxnie")
 
 [node name="SpriteSilla" type="Sprite2D" parent="Mesas"]
-z_index = 2600
+z_index = 3000
+y_sort_enabled = true
 position = Vector2(601, 2662)
 scale = Vector2(0.44751, 0.436768)
 texture = ExtResource("24_5s16a")
 
 [node name="Mesa2" type="StaticBody2D" parent="Mesas"]
-z_index = 3000
+z_index = 3003
+y_sort_enabled = true
 collision_layer = 8
 collision_mask = 0
 
 [node name="SpriteMesa" type="Sprite2D" parent="Mesas/Mesa2"]
+z_index = 20
 position = Vector2(2898, 2862)
 scale = Vector2(0.602905, 0.532226)
 texture = ExtResource("23_sa3a0")
@@ -517,7 +517,8 @@ position = Vector2(2897, 2982.5)
 shape = SubResource("RectangleShape2D_0hmx4")
 
 [node name="SpriteSilla2" type="Sprite2D" parent="Mesas"]
-z_index = 2600
+z_index = 3000
+y_sort_enabled = true
 position = Vector2(2893, 2659)
 scale = Vector2(0.44751, 0.436768)
 texture = ExtResource("24_5s16a")
@@ -534,9 +535,6 @@ position = Vector2(2, 4)
 
 [node name="ContenedorMinijuegos" type="Node2D" parent="."]
 position = Vector2(6510, 0)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_elcv6")
 
 [connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]

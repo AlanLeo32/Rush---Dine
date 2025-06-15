@@ -3,7 +3,9 @@ extends Node
 # Variables globales del jugador
 var nivel = 0
 var dinero = 0
-var reputacion = 0
+
+var reputacion_categoria = "S"
+var reputacion_progreso = 50 #cuando llega a 100 pasa a siguiente categoria y este vuelve 0
 var dia= true
 var recetas_desbloqueadas : Dictionary = {}
 var recursos_disponibles : Dictionary = {}

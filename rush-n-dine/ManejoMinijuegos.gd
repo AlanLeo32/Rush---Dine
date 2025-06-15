@@ -36,6 +36,7 @@ func logica_siguiente_minijuego():
 			noche.procesar_resultado_minijuego(ManejoMinijuegos.resultado_minijuego)
 			ManejoMinijuegos.resultado_minijuego = {}
 			noche.set("bloquear_cocinero", false)
+			noche.get_node("TimerClientes").set_paused(false)
 		pos_minijuego_actual = 0
 	else:
 		print("Minijuego actual: ", minijuegos[pos_minijuego_actual])
@@ -64,5 +65,6 @@ func logica_siguiente_minijuego():
 				noche.get_node("CanvasLayer2/Panel2").visible = false
 			# Bloquear movimiento cocinero
 			noche.set("bloquear_cocinero", true)
+			noche.get_node("TimerClientes").set_paused(true)
 		else:
 			print("No se encontró el nodo ContenedorMinijuegos")
