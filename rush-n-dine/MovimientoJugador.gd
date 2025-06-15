@@ -24,10 +24,7 @@ func recibir_plato(plato: Node):
 
 func entregar_plato_al_cliente():
 	if objeto_en_mano and objeto_actual and objeto_actual.has_method("recibir_plato"):
-		print("pedido_actual  ", objeto_actual.pedido_actual)
-		print("pedido_actual  ", objeto_actual.pedido_actual)
 		if objeto_actual.pedido_actual == objeto_en_mano.clave:
-			print("Entregando plato al cliente:", objeto_en_mano.get("receta"))
 			objeto_actual.recibir_plato(objeto_en_mano)
 			objeto_en_mano.queue_free()
 			objeto_en_mano.get_parent().remove_child(objeto_en_mano)
@@ -93,25 +90,26 @@ func _process(_delta):
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("Área detectada:", area.name)
-	print("Interactuables actuales:", interactuables_actuales)
-	if area.has_method("interactuar") and not interactuables_actuales.has(area):
+	var gestor_mesas = get_tree().get_root().get_node("Noche/Mesas")
+	if area.name.begins_with("Mesa") and not interactuables_actuales.has(area):
+		if area.get_parent().sucia:
+			interactuables_actuales.append(area)
+			objeto_actual = area  # tomamos el último ingresado
+			boton_interactuar.visible = true
+		elif  gestor_mesas.esta_mesa_ocupada(area.get_parent()):
+			var clientes = get_tree().get_nodes_in_group("clientes")
+			print("Clientes en grupo:", clientes)
+			for cliente in clientes:
+				if area.get_parent() == cliente.mesa_asignada and cliente.sentado and (cliente.esperando_pedido or cliente.esperando_atencion):
+					interactuables_actuales.append(cliente)
+					objeto_actual = cliente
+					boton_interactuar.visible = true
+					break
+	elif area.has_method("interactuar") and not interactuables_actuales.has(area):
 		interactuables_actuales.append(area)
 		objeto_actual = area  # tomamos el último ingresado
 		boton_interactuar.visible = true
-	elif area.name.begins_with("Mesa") and not interactuables_actuales.has(area):
-		var clientes = get_tree().get_nodes_in_group("clientes")
-		print("Clientes en grupo:", clientes)
-		for cliente in clientes:
-			print(cliente.mesa_asignada)
-			print(area)
-			print("TerminaPrintFOR")
-			if area.get_parent() == cliente.mesa_asignada and cliente.sentado and (cliente.esperando_pedido or cliente.esperando_atencion):
-				print("Cliente detectado:", cliente)
-				interactuables_actuales.append(cliente)
-				objeto_actual = cliente
-				boton_interactuar.visible = true
-				break
+	
 
 
 func _on_area_exited(area):
@@ -158,7 +156,6 @@ func _on_interactuar_pressed() -> void:
 		elif objeto_en_mano and objeto_actual.name == "Tacho":
 		# Eliminar el plato de la mano
 			var clave_plato = objeto_en_mano.clave if "clave" in objeto_en_mano else ""
-			print("Tirando plato:", clave_plato)
 			objeto_en_mano.queue_free()
 			objeto_en_mano = null
 			# Sacar de la lista de disponibles para elegir
@@ -169,6 +166,8 @@ func _on_interactuar_pressed() -> void:
 					NocheData.platos_seleccionables[clave_plato]= -1
 		elif objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar()
+		elif objeto_actual.get_parent().has_method("interactuar"):
+			objeto_actual.get_parent().interactuar()
 		
 #esta solo usar para simular deslizamiento con gesto con mouse
 func _unhandled_input(event):

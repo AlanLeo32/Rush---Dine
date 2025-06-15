@@ -194,16 +194,30 @@ func asignar_mesa(mesa: Node) -> void:
 	else:
 		print("Asignar mesa: mesa no tiene nodo 'PuntoSentado'")
 
-
 func recibir_plato(plato: Node):
 	print("Cliente recibió su pedido correcto")
+	
+	# Obtener el sprite del nodo que recibió
+	var sprite_origen := plato.get_node("Sprite")
+	# Obtener el Sprite de la mesa asignada
+	var sprite_destino := mesa_asignada.get_node("Plato")
+	# Copiar la textura
+	sprite_destino.texture = sprite_origen.texture
+	sprite_destino.scale = Vector2(0.25, 0.25)
+	# Asegurarse que esté visible
+	sprite_destino.visible = true
+	
 	$AnimatedSprite2D.animation = "Comiendo"
 	$AnimatedSprite2D.play()
 	NocheData.atenciones_completas +=1
+	if pedido_actual!="agua":
+		NocheData.dinero_ganado+= plato.receta["precio"]
 	esperando_pedido = false
 	nube_pedido.visible = false
 	nube_pedido.stop()
 	await get_tree().create_timer(3.0).timeout
+	sprite_destino.texture = load("res://Sprites/plato.png")
+	sprite_destino.scale = Vector2(0.5, 0.4)
 	irse()
 
 func atendido():
@@ -268,16 +282,11 @@ func elegir_pedido():
 		menu_seleccionable.actualizar()
 
 func irse():
-	var gestor_mesas = get_tree().get_root().get_node("Noche/Mesas")  # Ajusta la ruta según tu escena
-	if gestor_mesas and mesa_asignada:
-		gestor_mesas.liberar_mesa(mesa_asignada)
-
-
+	mesa_asignada.esperar_limpieza()
 	# Liberar y resetear estado
 	mesa_asignada = null
 	sentado = false
 	velocity = Vector2.ZERO
-
 
 	# Ir al punto de salida
 	var salida = get_tree().get_root().get_node("Noche/PuntoEntrada")  # Ajusta la ruta si es necesario

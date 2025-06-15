@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=57 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://bmj5ljddx5uc0" path="res://Sprites/SpriteSilla.png" id="24_5s16a"]
 [ext_resource type="PackedScene" uid="uid://bcr3blo5ymt85" path="res://MenuCocinar.tscn" id="24_hj8yk"]
 [ext_resource type="PackedScene" uid="uid://dvfyli57qjb0d" path="res://menu_mesada.tscn" id="25_uxnie"]
+[ext_resource type="Script" uid="uid://cd1ccuogqotin" path="res://mesa.gd" id="30_47dcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
 size = Vector2(24.5714, 118)
@@ -256,19 +257,19 @@ position = Vector2(-0.439941, 163.5)
 shape = SubResource("RectangleShape2D_rpgi2")
 metadata/_edit_lock_ = true
 
-[node name="Mesada" type="Area2D" parent="."]
+[node name="Almacenamiento" type="Area2D" parent="."]
 z_index = 1700
 position = Vector2(1959.5, 1652)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("11_txkm7")
 
-[node name="Mesada2D" type="Sprite2D" parent="Mesada"]
+[node name="Mesada2D" type="Sprite2D" parent="Almacenamiento"]
 scale = Vector2(0.607955, 0.60606)
 texture = ExtResource("10_a5igk")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesada"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Almacenamiento"]
 position = Vector2(11.5, 67)
 shape = SubResource("RectangleShape2D_5lbuo")
 
@@ -464,6 +465,12 @@ script = ExtResource("22_upk0d")
 z_index = 3000
 collision_layer = 8
 collision_mask = 0
+script = ExtResource("30_47dcw")
+
+[node name="Plato" type="Sprite2D" parent="Mesas/Mesa1"]
+z_index = 4000
+position = Vector2(595, 2734)
+scale = Vector2(0.37561, 0.292683)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mesas/Mesa1"]
 position = Vector2(600.5, 2932.5)
@@ -495,6 +502,12 @@ texture = ExtResource("24_5s16a")
 z_index = 3000
 collision_layer = 8
 collision_mask = 0
+script = ExtResource("30_47dcw")
+
+[node name="Plato" type="Sprite2D" parent="Mesas/Mesa2"]
+z_index = 4000
+position = Vector2(2893, 2737)
+scale = Vector2(0.37561, 0.292683)
 
 [node name="SpriteMesa" type="Sprite2D" parent="Mesas/Mesa2"]
 position = Vector2(2898, 2862)
@@ -542,7 +555,7 @@ position = Vector2(6510, 0)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_elcv6")
 
-[connection signal="body_entered" from="Mesada" to="Tacho" method="_on_mesada_body_entered"]
+[connection signal="body_entered" from="Almacenamiento" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/Configuracion" to="CanvasLayer2" method="_on_configuracion_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/MenuPrincipal" to="CanvasLayer2" method="_on_menu_principal_pressed"]
