@@ -24,11 +24,16 @@ func recibir_plato(plato: Node):
 
 func entregar_plato_al_cliente():
 	if objeto_en_mano and objeto_actual and objeto_actual.has_method("recibir_plato"):
-		print("Entregando plato al cliente:", objeto_en_mano.get("receta"))
-		objeto_actual.recibir_plato(objeto_en_mano)
-		objeto_en_mano.queue_free()
-		objeto_en_mano.get_parent().remove_child(objeto_en_mano)
-		objeto_en_mano = null
+		print("pedido_actual  ", objeto_actual.pedido_actual)
+		print("pedido_actual  ", objeto_actual.pedido_actual)
+		if objeto_actual.pedido_actual == objeto_en_mano.clave:
+			print("Entregando plato al cliente:", objeto_en_mano.get("receta"))
+			objeto_actual.recibir_plato(objeto_en_mano)
+			objeto_en_mano.queue_free()
+			objeto_en_mano.get_parent().remove_child(objeto_en_mano)
+			objeto_en_mano = null
+		else:
+			NocheData.pedidoserroneos+=1
 
 func dejar_plato_mesada():
 	objeto_en_mano.get_parent().remove_child(objeto_en_mano)
@@ -127,7 +132,18 @@ func _on_area_exited(area):
 		objeto_actual = null
 		boton_interactuar.visible = false
 	else:
-		objeto_actual = interactuables_actuales[-1]  # tomá el último que queda
+		# Elimina referencias inválidas antes de usarlas
+		while not interactuables_actuales.is_empty():
+			var candidato = interactuables_actuales[-1]
+			if is_instance_valid(candidato):
+				objeto_actual = candidato
+				break
+			else:
+				interactuables_actuales.pop_back()
+
+		if interactuables_actuales.is_empty():
+			objeto_actual = null
+			boton_interactuar.visible = false
 
 
 

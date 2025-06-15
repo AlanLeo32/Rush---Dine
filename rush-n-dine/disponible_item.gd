@@ -9,13 +9,16 @@ var threshold := 10
 
 func set_data(id, receta_data, cantidad):
 	disp_id = id
-	print("Actualizando item: ", id, " cantidad: ", cantidad)
-
 	$CanvasLayer/ImagenReceta.texture = receta_data["imagen"]
 	$CanvasLayer/Nombre.text = receta_data["nombre"]
-	$CanvasLayer/Precio.text = str(receta_data["precio"])
-	$CanvasLayer/Popularidad.text = str(receta_data["popularidad"])
-	$CanvasLayer/Cantidad.text = str(cantidad)
+	if id!="agua":
+		$CanvasLayer/Precio.text = str(receta_data["precio"])
+		$CanvasLayer/Popularidad.text = str(receta_data["popularidad"])
+		$CanvasLayer/Cantidad.text = str(cantidad)
+	else:
+		$CanvasLayer/LbCantidad.visible = false
+		$CanvasLayer/ImagenPrecio.visible = false
+		$CanvasLayer/ImagenPopularidad.visible = false
 
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

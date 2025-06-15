@@ -79,7 +79,6 @@ func _process(_delta):
 		nube_pedido.rotation = 0  # podés usar dir.angle() si querés que apunte
 
 
-
 func _ready():
 	# Ahora accedes directo al hijo nubePedido del cliente
 	nube_pedido = $nubePedido
@@ -135,6 +134,19 @@ func _physics_process(delta: float) -> void:
 							print("Cliente se va porque no lo atendieron")
 						else:
 							print("Cliente se va porque no le sirvieron el plato")
+						NocheData.atenciones_incompletas += 1
+						# Devolver el pedido si el cliente se va sin recibirlo
+						if pedido_actual != "agua":
+							print("Cliente se fue sin su plato, devolviendo:", pedido_actual)
+							if NocheData.platos_seleccionables.has(pedido_actual):
+								NocheData.platos_seleccionables[pedido_actual] += 1
+							else:
+								NocheData.platos_seleccionables[pedido_actual] = 1  # Volver a agregarlo al stock
+
+							# Refrescar menú visual
+							var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas")
+							if menu_seleccionable and menu_seleccionable.has_method("actualizar"):
+								menu_seleccionable.actualizar()
 						irse()
 
 func actualizar_animacion(direction: Vector2) -> void:
@@ -157,7 +169,6 @@ func posicionar_sentado() -> void:
 				print("Esperando que le entregues:", pedido_actual) # <-- Agrega esto si quieres
 				# Esperar antes de mostrar el pedido
 				await get_tree().create_timer(5).timeout
-
 				# Mostrar nube y comenzar ciclo
 				imagen_nube.texture = icono_exclamacion
 				nube_pedido.visible = true
@@ -185,21 +196,12 @@ func asignar_mesa(mesa: Node) -> void:
 
 
 func recibir_plato(plato: Node):
-	print("Plato recibido:", plato)
-	var clave_plato = plato.clave if "clave" in plato else ""
-	print("Comparando clave del plato:", clave_plato, "con pedido_actual:", pedido_actual)
-	if clave_plato == pedido_actual:
-		print("Cliente recibió su pedido correcto")
-		$AnimatedSprite2D.animation = "Comiendo"
-		$AnimatedSprite2D.play()
-		#Globales.reputacion += 1
-	else:
-		print("Cliente recibió el pedido incorrecto")
-		#Globales.reputacion -= 1
-
+	print("Cliente recibió su pedido correcto")
+	$AnimatedSprite2D.animation = "Comiendo"
+	$AnimatedSprite2D.play()
+	NocheData.atenciones_completas +=1
 	esperando_pedido = false
 	nube_pedido.visible = false
-	#nube_pedido.animation = ""
 	nube_pedido.stop()
 	await get_tree().create_timer(3.0).timeout
 	irse()
@@ -225,7 +227,6 @@ func atendido():
 
 func elegir_pedido():
 	var disponibles = NocheData.platos_seleccionables
-
 	# Crear una lista filtrada de platos realmente disponibles (cantidad > 0 y popularidad > 0)
 	var platos_validos = []
 	var pesos = []
@@ -244,8 +245,7 @@ func elegir_pedido():
 	# Si no hay platos realmente disponibles
 	if platos_validos.size() == 0:
 		pedido_actual = "agua"
-		#Globales.reputacion -= 1
-		#print("Cliente pidió agua. Reputación bajó a:", Globales.reputacion)
+		NocheData.aguas_servidas+=1
 		return
 
 	# Sorteo ponderado
@@ -277,19 +277,7 @@ func irse():
 	mesa_asignada = null
 	sentado = false
 	velocity = Vector2.ZERO
-	
-	# Devolver el pedido si el cliente se va sin recibirlo
-	if pedido_actual != "" && pedido_actual != "agua":
-		print("Cliente se fue sin su plato, devolviendo:", pedido_actual)
-		if NocheData.platos_seleccionables.has(pedido_actual):
-			NocheData.platos_seleccionables[pedido_actual] += 1
-		else:
-			NocheData.platos_seleccionables[pedido_actual] = 1  # Volver a agregarlo al stock
 
-		# Refrescar menú visual
-		var menu_seleccionable = get_tree().get_root().get_node("Noche/CanvasLayer2/MenuSeleccionRecetas")
-		if menu_seleccionable and menu_seleccionable.has_method("actualizar"):
-			menu_seleccionable.actualizar()
 
 	# Ir al punto de salida
 	var salida = get_tree().get_root().get_node("Noche/PuntoEntrada")  # Ajusta la ruta si es necesario

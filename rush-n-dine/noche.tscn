@@ -508,6 +508,10 @@ shape = SubResource("RectangleShape2D_hj8yk")
 [node name="PuntoSentado" type="Node2D" parent="Mesas/Mesa2"]
 position = Vector2(2894, 2602)
 
+[node name="PlatoSucio" type="Sprite2D" parent="Mesas/Mesa2"]
+
+[node name="PlatoLimpio" type="Sprite2D" parent="Mesas/Mesa2"]
+
 [node name="Mesa2" type="Area2D" parent="Mesas/Mesa2"]
 collision_layer = 2
 collision_mask = 0

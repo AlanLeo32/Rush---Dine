@@ -33,6 +33,9 @@ func logica_siguiente_minijuego():
 			if noche.has_node("CanvasLayer2"):
 				noche.get_node("CanvasLayer2/Panel").visible = true
 				noche.get_node("CanvasLayer2/Panel2").visible = true
+				for cliente in get_tree().get_nodes_in_group("clientes"):
+					if is_instance_valid(cliente) and cliente.has_method("show"):
+						cliente.show()
 			noche.procesar_resultado_minijuego(ManejoMinijuegos.resultado_minijuego)
 			ManejoMinijuegos.resultado_minijuego = {}
 			noche.set("bloquear_cocinero", false)
@@ -63,6 +66,9 @@ func logica_siguiente_minijuego():
 			if noche.has_node("CanvasLayer2"):
 				noche.get_node("CanvasLayer2/Panel").visible = false
 				noche.get_node("CanvasLayer2/Panel2").visible = false
+				for cliente in get_tree().get_nodes_in_group("clientes"):
+					if is_instance_valid(cliente) and cliente.has_method("hide"):
+						cliente.hide() 
 			# Bloquear movimiento cocinero
 			noche.set("bloquear_cocinero", true)
 			noche.get_node("TimerClientes").set_paused(true)
