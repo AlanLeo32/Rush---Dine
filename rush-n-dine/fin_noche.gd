@@ -13,49 +13,51 @@ var costo_apertura_por_mesas := {
 # Factores que afectan reputación por nivel (pesos por evento)
 # Se espera que todos los valores sumen a un rango lógico (-100 a 100)
 var factores_reputacion := {
-	"1": {
-		"atendidos": 5,
-		"aguas_servidas": -3,
-		"no_atendidos": -8,
-		"entregas_erroneas": -12
-	},
-	"2": {
-		"atendidos": 4,
-		"aguas_servidas": -2,
-		"no_atendidos": -6,
-		"entregas_erroneas": -10
-	},
-	"3": {
-		"atendidos": 3,
-		"aguas_servidas": -2,
-		"no_atendidos": -5,
-		"entregas_erroneas": -8
-	},
-	"4": {
-		"atendidos": 2,
-		"aguas_servidas": -1,
-		"no_atendidos": -4,
-		"entregas_erroneas": -6
-	},
-	"5": {
-		"atendidos": 1,
-		"aguas_servidas": -1,
-		"no_atendidos": -2,
-		"entregas_erroneas": -4
+	"7": {
+		"atendidos": 5.0,
+		"aguas_servidas": -1.0,
+		"no_atendidos": -4.0,
+		"entregas_erroneas": -6.0
 	},
 	"6": {
-		"atendidos": 1,
-		"aguas_servidas": -1,
-		"no_atendidos": -2,
-		"entregas_erroneas": -4
+		"atendidos": 4.5,
+		"aguas_servidas": -0.9,
+		"no_atendidos": -3.6,
+		"entregas_erroneas": -5.4
 	},
-	"7": {
-		"atendidos": 1,
-		"aguas_servidas": -1,
-		"no_atendidos": -2,
-		"entregas_erroneas": -4
-	}	
+	"5": {
+		"atendidos": 4.0,
+		"aguas_servidas": -0.8,
+		"no_atendidos": -3.2,
+		"entregas_erroneas": -4.8
+	},
+	"4": {
+		"atendidos": 3.5,
+		"aguas_servidas": -0.7,
+		"no_atendidos": -2.8,
+		"entregas_erroneas": -4.2
+	},
+	"3": {
+		"atendidos": 3.0,
+		"aguas_servidas": -0.6,
+		"no_atendidos": -2.4,
+		"entregas_erroneas": -3.6
+	},
+	"2": {
+		"atendidos": 2.5,
+		"aguas_servidas": -0.5,
+		"no_atendidos": -2.0,
+		"entregas_erroneas": -3.0
+	},
+	"1": {
+		"atendidos": 2.0,
+		"aguas_servidas": -0.4,
+		"no_atendidos": -1.6,
+		"entregas_erroneas": -2.4
+	}
 }
+
+
 
 
 func _ready():
