@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbuw7ala81bnn"]
+
+[ext_resource type="Texture2D" uid="uid://uj6ik6tusqaq" path="res://Box_Orange_Square.png" id="1_hsmb5"]
+[ext_resource type="Script" uid="uid://0io2xv4ugq6d" path="res://fishing_game.gd" id="1_onr0m"]
+[ext_resource type="Texture2D" uid="uid://d4gsg4ej7xsxh" path="res://SlimSlider_Base.png" id="2_ggkbf"]
+[ext_resource type="PackedScene" uid="uid://7qnod3wl4rgd" path="res://Fish.tscn" id="3_ggkbf"]
+[ext_resource type="PackedScene" uid="uid://cmqdvorkg7i3i" path="res://target.tscn" id="4_d3cdb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d3cdb"]
+texture = ExtResource("1_hsmb5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_onr0m"]
+texture = ExtResource("2_ggkbf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_se3x6"]
+bg_color = Color(0.318676, 0.631876, 0.855022, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Fisihing_game" type="CanvasLayer"]
+process_mode = 3
+
+[node name="FishingGame" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_onr0m")
+
+[node name="PanelContainer" type="PanelContainer" parent="FishingGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_d3cdb")
+
+[node name="MarginContainer" type="MarginContainer" parent="FishingGame/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FishingGame/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FishingGame/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CatchBar" type="ProgressBar" parent="FishingGame/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_onr0m")
+show_percentage = false
+
+[node name="aquaContainer" type="PanelContainer" parent="FishingGame/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_se3x6")
+
+[node name="TimeoutTimer" type="Timer" parent="FishingGame/PanelContainer/MarginContainer/VBoxContainer"]
+wait_time = 10.0
+one_shot = true
+
+[node name="TimerLabel" type="Label" parent="FishingGame/PanelContainer/MarginContainer/VBoxContainer/TimeoutTimer"]
+offset_left = 1027.0
+offset_top = 14.0
+offset_right = 1141.0
+offset_bottom = 61.0
+
+[node name="Fish" parent="." instance=ExtResource("3_ggkbf")]
+position = Vector2(554, 352)
+
+[node name="Target" parent="." instance=ExtResource("4_d3cdb")]
+position = Vector2(552, 352)
+
+[connection signal="timeout" from="FishingGame/PanelContainer/MarginContainer/VBoxContainer/TimeoutTimer" to="FishingGame" method="_on_timeout_timer_timeout"]
+[connection signal="target_entered" from="Target" to="FishingGame" method="_on_target_target_entered"]
+[connection signal="target_exited" from="Target" to="FishingGame" method="_on_target_target_exited"]

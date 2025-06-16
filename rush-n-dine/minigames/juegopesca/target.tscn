@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmqdvorkg7i3i"]
+
+[ext_resource type="Script" uid="uid://phomauxdo3c1" path="res://target.gd" id="1_e1yvt"]
+[ext_resource type="Texture2D" uid="uid://bdevnok7x70k2" path="res://crosshair026.png" id="2_5ebp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqips"]
+size = Vector2(45, 45)
+
+[node name="Target" type="Area2D"]
+script = ExtResource("1_e1yvt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5ebp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uqips")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
