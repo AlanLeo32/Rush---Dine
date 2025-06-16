@@ -168,6 +168,7 @@ func calcular_reputacion() -> void:
 
 
 func _on_texture_button_pressed() -> void:
+	Globales.dia=true
 	if Globales.dinero>=0:
 		Globales.guardar_estado()
 		print("Ruta de guardado real: ", OS.get_user_data_dir())
@@ -175,7 +176,6 @@ func _on_texture_button_pressed() -> void:
 		get_tree().change_scene_to_file("res://dia.tscn")
 	else:
 		$TextureRect/PanelAdvertencia.show()
-	Globales.dia=true
 
 
 
