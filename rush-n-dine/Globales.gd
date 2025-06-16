@@ -9,6 +9,7 @@ var reputacion_progreso = 50 #cuando llega a 100 pasa a siguiente categoria y es
 var dia= true
 var recetas_desbloqueadas : Dictionary = {}
 var recursos_disponibles : Dictionary = {}
+var mesas:= 2
 
 	
 func _ready():

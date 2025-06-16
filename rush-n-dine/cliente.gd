@@ -47,8 +47,8 @@ func _process(_delta):
 	var margen_y: float = -90
 
 	# Verificación de visibilidad con márgenes ajustados
-	var visible := screen_coords.x >= margen_x and screen_coords.x <= screen_size.x - margen_x and \
-				   screen_coords.y >= margen_y and screen_coords.y <= screen_size.y - margen_y
+	var visible := screen_coords.x >= margen_x and screen_coords.x <= screen_size.x - 250 and \
+				   screen_coords.y >= margen_y+300 and screen_coords.y <= screen_size.y
 
 	if visible:
 		# Cliente dentro de cámara → globo sobre la cabeza
@@ -69,9 +69,9 @@ func _process(_delta):
 		var borde_pantalla: Vector2 = screen_center + dir * escalar
 
 		# Clamp manual para evitar desbordes en cualquier dirección
-		var margen_fijo_x: float = 300.0  # margen más amplio para el borde derecho
+		var margen_fijo_x: float = 250.0  # margen más amplio para el borde derecho
 		borde_pantalla.x = clamp(borde_pantalla.x, margen_x, screen_size.x - margen_fijo_x)
-		borde_pantalla.y = clamp(borde_pantalla.y, margen_y, screen_size.y - margen_y)
+		borde_pantalla.y = clamp(borde_pantalla.y, margen_y+400, screen_size.y - margen_y)
 
 		# Convertimos de pantalla a mundo
 		var world_coords: Vector2 = transform.affine_inverse() * borde_pantalla

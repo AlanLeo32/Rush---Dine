@@ -8,12 +8,30 @@ var mesas : Array = []
 func _ready():
 	randomize()
 	for nodo in get_children():
-		# Solo agregamos nodos que sean mesas, asumiendo que sus nombres contienen "Mesa"
 		if nodo.name.begins_with("Mesa"):
+			nodo.visible = false  # Ocultar visualmente
+
+			# Desactivar colisión (si existe)
+			var col := nodo.get_node_or_null("CollisionShape2D")
+			if col:
+				col.disabled = true
+
+	# Mostrar solo las mesas activas según Globales.mesas
+	for i in range(1, Globales.mesas + 1):
+		var mesa := get_node_or_null("Mesa%d" % i)
+		if mesa:
+			mesa.visible = true  # Mostrar visualmente
+
+			# Reactivar colisión
+			var col := mesa.get_node_or_null("CollisionShape2D")
+			if col:
+				col.disabled = false
+
 			mesas.append({
-				"nodo": nodo,
+				"nodo": mesa,
 				"ocupada": false
 			})
+
 
 func obtener_mesa_libre() -> Node:
 	var mesas_libres := []
