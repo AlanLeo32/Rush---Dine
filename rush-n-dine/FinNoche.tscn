@@ -1,0 +1,327 @@
+[gd_scene load_steps=12 format=3 uid="uid://gomivhyxfycl"]
+
+[ext_resource type="Script" uid="uid://psxo5j4x21mr" path="res://fin_noche.gd" id="1_pcgb3"]
+[ext_resource type="Texture2D" uid="uid://b0a0ecm570cu1" path="res://Fondos/Fondo_ResultadosNoche.png" id="1_wg5k1"]
+[ext_resource type="Texture2D" uid="uid://c1lvfe6plxgu0" path="res://Sprites/BotonPasoADia.png" id="3_e5kb4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb86j"]
+bg_color = Color(1, 1, 0.866667, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rnwki"]
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xxs3"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_omfun"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g67w4"]
+font_size = 40
+font_color = Color(0.214712, 0.757336, 0.313491, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fp8tx"]
+font_size = 40
+font_color = Color(1, 0.117482, 0.270968, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcgb3"]
+bg_color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e5kb4"]
+font_size = 40
+
+[node name="FinNoche" type="Node2D"]
+script = ExtResource("1_pcgb3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1344.0
+offset_bottom = 756.0
+texture = ExtResource("1_wg5k1")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -585.0
+offset_top = 106.0
+offset_right = 583.0
+offset_bottom = 976.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eb86j")
+
+[node name="Titulo" type="Label" parent="TextureRect/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -230.0
+offset_top = 9.0
+offset_right = 232.0
+offset_bottom = 119.0
+grow_horizontal = 2
+text = "RESULTADO"
+label_settings = SubResource("LabelSettings_rnwki")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelDinero" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 80.0
+offset_right = 363.0
+offset_bottom = 163.0
+text = "Dinero"
+label_settings = SubResource("LabelSettings_8xxs3")
+
+[node name="CantDinero" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 165.0
+offset_right = 361.0
+offset_bottom = 248.0
+label_settings = SubResource("LabelSettings_8xxs3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelReputacion" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 89.0
+offset_right = 1060.0
+offset_bottom = 172.0
+text = "Reputación"
+label_settings = SubResource("LabelSettings_8xxs3")
+
+[node name="CantReputacion" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 165.0
+offset_right = 1060.0
+offset_bottom = 248.0
+label_settings = SubResource("LabelSettings_8xxs3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGanancia" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 250.0
+offset_right = 243.0
+offset_bottom = 305.0
+text = "Ganancia"
+label_settings = SubResource("LabelSettings_omfun")
+vertical_alignment = 1
+
+[node name="LabelCosto" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 400.0
+offset_right = 353.0
+offset_bottom = 455.0
+text = "Costo Apertura"
+label_settings = SubResource("LabelSettings_omfun")
+vertical_alignment = 1
+
+[node name="CantGanancia" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 250.0
+offset_right = 550.0
+offset_bottom = 305.0
+label_settings = SubResource("LabelSettings_g67w4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CantCosto" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 400.0
+offset_right = 550.0
+offset_bottom = 455.0
+label_settings = SubResource("LabelSettings_fp8tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelClientesAtendidos" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 250.0
+offset_right = 967.0
+offset_bottom = 305.0
+text = "Clientes atendidos"
+label_settings = SubResource("LabelSettings_omfun")
+vertical_alignment = 1
+
+[node name="LabelClientesAtendidos2" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 400.0
+offset_right = 967.0
+offset_bottom = 455.0
+text = "Clientes no atendidos"
+label_settings = SubResource("LabelSettings_omfun")
+vertical_alignment = 1
+
+[node name="LabelAgua" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 325.0
+offset_right = 967.0
+offset_bottom = 380.0
+text = "Aguas servidas"
+label_settings = SubResource("LabelSettings_omfun")
+vertical_alignment = 1
+
+[node name="LabelClientesAtendidos4" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 475.0
+offset_right = 967.0
+offset_bottom = 530.0
+text = "Entregas erroneas"
+label_settings = SubResource("LabelSettings_omfun")
+vertical_alignment = 1
+
+[node name="CantAtendidos" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 1041.0
+offset_top = 250.0
+offset_right = 1151.0
+offset_bottom = 305.0
+label_settings = SubResource("LabelSettings_g67w4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CantAguas" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 1041.0
+offset_top = 325.0
+offset_right = 1151.0
+offset_bottom = 380.0
+label_settings = SubResource("LabelSettings_fp8tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CantNoAtendidos" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 1041.0
+offset_top = 400.0
+offset_right = 1151.0
+offset_bottom = 455.0
+label_settings = SubResource("LabelSettings_fp8tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CantEntregasErroneas" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 1041.0
+offset_top = 475.0
+offset_right = 1151.0
+offset_bottom = 530.0
+label_settings = SubResource("LabelSettings_fp8tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelTotal" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 550.0
+offset_right = 353.0
+offset_bottom = 605.0
+text = "Total"
+label_settings = SubResource("LabelSettings_omfun")
+vertical_alignment = 1
+
+[node name="LabelTotal2" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 550.0
+offset_right = 903.0
+offset_bottom = 605.0
+text = "Total"
+label_settings = SubResource("LabelSettings_omfun")
+vertical_alignment = 1
+
+[node name="CantDineroTotal" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 611.0
+offset_right = 363.0
+offset_bottom = 694.0
+label_settings = SubResource("LabelSettings_8xxs3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CantReputacionTotal" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 611.0
+offset_right = 1060.0
+offset_bottom = 694.0
+label_settings = SubResource("LabelSettings_8xxs3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -293.0
+offset_top = -164.0
+offset_right = 297.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("3_e5kb4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PanelAdvertencia" type="Panel" parent="TextureRect"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 551.0
+offset_top = 358.0
+offset_right = 1370.0
+offset_bottom = 699.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcgb3")
+
+[node name="LabelAdvertencia" type="Label" parent="TextureRect/PanelAdvertencia"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 61.0
+offset_right = 754.0
+offset_bottom = 179.0
+text = "Te has quedado sin dinero
+Debes ver un video para continuar"
+label_settings = SubResource("LabelSettings_e5kb4")
+horizontal_alignment = 1
+
+[node name="BotonConfirmaAdd" type="Button" parent="TextureRect/PanelAdvertencia"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 223.0
+offset_right = 509.0
+offset_bottom = 313.0
+
+[node name="LabelOk" type="Label" parent="TextureRect/PanelAdvertencia"]
+layout_mode = 0
+offset_left = 387.0
+offset_top = 242.0
+offset_right = 444.0
+offset_bottom = 297.0
+text = "OK"
+label_settings = SubResource("LabelSettings_e5kb4")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="TextureRect/Panel/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureRect/PanelAdvertencia/BotonConfirmaAdd" to="." method="_on_boton_confirma_add_pressed"]

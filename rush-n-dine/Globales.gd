@@ -1,20 +1,30 @@
 extends Node
 
+var estado_de_carga := false
+
 # Variables globales del jugador
 var nivel = 0
 var dinero = 0
 
-var reputacion_categoria = "S"
-var reputacion_progreso = 50 #cuando llega a 100 pasa a siguiente categoria y este vuelve 0
-var dia= true
+var reputacion_categoria = "D"
+var reputacion_progreso = 0 #cuando llega a 100 pasa a siguiente categoria y este vuelve 0
+var dia= false
 var recetas_desbloqueadas : Dictionary = {}
 var recursos_disponibles : Dictionary = {}
-var mesas:= 2
+var mesas:= 7
 
 	
 func _ready():
-	cargar_recetas_iniciales()
-	cargar_recursos_iniciales()
+	if FileAccess.file_exists("user://save_game.json"):
+		print("carga")
+		cargar_estado()
+	else:
+		print("default")
+		cargar_recetas_iniciales()
+		cargar_recursos_iniciales()
+	estado_de_carga = true
+
+
 
 func cargar_recetas_iniciales():
 	recetas_desbloqueadas = {
@@ -116,7 +126,7 @@ func cargar_recetas_iniciales():
 			]
 		}
 	}
-	
+
 func cargar_recursos_iniciales():
 	recursos_disponibles = {
 		"pescado": {"nombre": "Pescado", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
@@ -124,3 +134,82 @@ func cargar_recursos_iniciales():
 		"pescado3": {"nombre": "Pescado3", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
 		"pescado4": {"nombre": "Pescado4", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
 	}
+
+func guardar_estado():
+	var save_data := {
+		"nivel": nivel,
+		"dinero": dinero,
+		"reputacion_categoria": reputacion_categoria,
+		"reputacion_progreso": reputacion_progreso,
+		"dia": dia,
+		"mesas": mesas,
+		"recetas_desbloqueadas": {},  # serializadas sin imágenes
+		"recursos_disponibles": {}    # idem
+	}
+	
+	for nombre in recetas_desbloqueadas.keys():
+		var r = recetas_desbloqueadas[nombre]
+		save_data["recetas_desbloqueadas"][nombre] = {
+			"nombre": r["nombre"],
+			"imagen_path": r["imagen"].resource_path,
+			"precio": r["precio"],
+			"popularidad": r["popularidad"],
+			"recursos_requeridos": r["recursos_requeridos"],
+			"minijuegos": r["minijuegos"],
+			"ubi_ing": r.has("ubi_ing") if r.has("ubi_ing") else null,
+			"coccion": r.has("coccion") if r.has("coccion") else null
+		}
+
+	for nombre in recursos_disponibles.keys():
+		var rr = recursos_disponibles[nombre]
+		save_data["recursos_disponibles"][nombre] = {
+			"nombre": rr["nombre"],
+			"cantidad": rr["cantidad"],
+			"imagen_path": rr["imagen"].resource_path
+		}
+	print("guarda")
+	var file := FileAccess.open("user://save_game.json", FileAccess.WRITE)
+	file.store_string(JSON.stringify(save_data))
+	file.close()
+	
+	
+func cargar_estado():
+	if  FileAccess.file_exists("user://save_game.json"):
+		var file := FileAccess.open("user://save_game.json", FileAccess.READ)
+		var contenido := file.get_as_text()
+		file.close()
+
+		var data = JSON.parse_string(contenido)
+		if typeof(data) != TYPE_DICTIONARY:
+			print("Error al cargar archivo de guardado.")
+			return
+
+		nivel = data.get("nivel", 0)
+		dinero = data.get("dinero", 0)
+		reputacion_categoria = data.get("reputacion_categoria", "D")
+		reputacion_progreso = data.get("reputacion_progreso", 0)
+		dia = data.get("dia", true)
+		mesas = data.get("mesas", 2)
+
+		recetas_desbloqueadas.clear()
+		for nombre in data["recetas_desbloqueadas"]:
+			var r = data["recetas_desbloqueadas"][nombre]
+			recetas_desbloqueadas[nombre] = {
+				"nombre": r["nombre"],
+				"imagen": load(r["imagen_path"]),
+				"precio": r["precio"],
+				"popularidad": r["popularidad"],
+				"recursos_requeridos": r["recursos_requeridos"],
+				"minijuegos": r["minijuegos"],
+				"ubi_ing": r.get("ubi_ing", null),
+				"coccion": r.get("coccion", null)
+			}
+
+		recursos_disponibles.clear()
+		for nombre in data["recursos_disponibles"]:
+			var rr = data["recursos_disponibles"][nombre]
+			recursos_disponibles[nombre] = {
+				"nombre": rr["nombre"],
+				"cantidad": rr["cantidad"],
+				"imagen": load(rr["imagen_path"])
+			}

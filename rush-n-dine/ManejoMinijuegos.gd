@@ -74,3 +74,14 @@ func logica_siguiente_minijuego():
 			noche.get_node("TimerClientes").set_paused(true)
 		else:
 			print("No se encontró el nodo ContenedorMinijuegos")
+
+
+func resetear():
+	cant_colectables = 0
+	receta_actual = null
+	pos_minijuego_actual = 0
+
+	resultado_minijuego = {
+		"puntaje": 0,
+		"receta": null
+	}

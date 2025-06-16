@@ -1,6 +1,6 @@
 extends Node
 @export var cliente_escena: PackedScene
-@export var duracion_noche: float = 240.0  # duración total en segundos (4 minutos reales)
+@export var duracion_noche: float = 5.0  # duración total en segundos (4 minutos reales)
 
 var rng = RandomNumberGenerator.new()
 var bloquear_cocinero = false
@@ -24,7 +24,9 @@ func _ready():
 
 	# Conectar el timer solo una vez
 	$TimerClientes.timeout.connect(_on_timer_timeout)
-
+	#reseteo de valores para comenzar la noche:
+	NocheData.resetear()
+	ManejoMinijuegos.resetear()
 
 func _process(delta):
 	var aguja = $CanvasLayer2/Reloj/Aguja
@@ -67,10 +69,6 @@ func _on_timer_timeout():
 		add_child(cliente)
 		cliente.asignar_mesa(mesa_libre)
 
-func finalizar_noche():
-	print("¡La noche terminó!")
-	get_tree().change_scene_to_file("res://ControlMenu.tscn")
-
 func procesar_resultado_minijuego(resultado):
 	var puntaje = resultado["puntaje"]
 	var receta = resultado["receta"]
@@ -98,3 +96,8 @@ func procesar_resultado_minijuego(resultado):
 	ManejoMinijuegos.resultado_minijuego = {}
 	ManejoMinijuegos.receta_actual = null
 	ManejoMinijuegos.pos_minijuego_actual = 0
+
+
+func finalizar_noche():
+	print("¡La noche terminó!")
+	get_tree().change_scene_to_file("res://FinNoche.tscn")

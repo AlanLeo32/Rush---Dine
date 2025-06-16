@@ -11,7 +11,10 @@ func _ready():
 
 
 func _on_boton_jugar_pressed() -> void:
-	get_tree().change_scene_to_file("res://noche.tscn")
+	if Globales.dia:
+		get_tree().change_scene_to_file("res://dia.tscn")
+	else:
+		get_tree().change_scene_to_file("res://noche.tscn")
 
 
 func _on_boton_configuracion_pressed() -> void:
