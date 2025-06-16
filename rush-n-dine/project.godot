@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Globales="*res://Globales.gd"
 NocheData="*res://nocheData.gd"
 ManejoMinijuegos="*res://ManejoMinijuegos.gd"
+DiaData="*res://DiaData.gd"
 
 [display]
 

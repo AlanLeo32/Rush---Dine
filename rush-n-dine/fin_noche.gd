@@ -171,9 +171,7 @@ func _on_texture_button_pressed() -> void:
 	Globales.dia=true
 	if Globales.dinero>=0:
 		Globales.guardar_estado()
-		print("Ruta de guardado real: ", OS.get_user_data_dir())
-		print("Guardado: ", FileAccess.file_exists("user://save_game.json"))
-		get_tree().change_scene_to_file("res://dia.tscn")
+		get_tree().change_scene_to_file("res://MenuDia.tscn")
 	else:
 		$TextureRect/PanelAdvertencia.show()
 
@@ -184,4 +182,4 @@ func _on_boton_confirma_add_pressed() -> void:
 	Globales.dinero=0 #Se deja el dinero en balance 0
 	Globales.guardar_estado()
 	#y luego se pasa al dia
-	get_tree().change_scene_to_file("res://dia.tscn")
+	get_tree().change_scene_to_file("res://MenuDia.tscn")
