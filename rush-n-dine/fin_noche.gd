@@ -65,6 +65,7 @@ func _ready():
 
 
 func mostrar_resultado():
+	var pesos: Dictionary = factores_reputacion.get(str(Globales.mesas), {})
 	# Mostrar título
 	$TextureRect/Panel/Titulo.show()
 	await get_tree().create_timer(0.5).timeout
@@ -94,25 +95,25 @@ func mostrar_resultado():
 	await get_tree().create_timer(0.3).timeout
 
 	$TextureRect/Panel/LabelClientesAtendidos.show()
-	$TextureRect/Panel/CantAtendidos.text = str(NocheData.atenciones_completas)
+	$TextureRect/Panel/CantAtendidos.text = str(NocheData.atenciones_completas) +"x" + str(pesos.get("atendidos", 0))
 	$TextureRect/Panel/CantAtendidos.show()
 
 	await get_tree().create_timer(0.3).timeout
 
 	$TextureRect/Panel/LabelAgua.show()
-	$TextureRect/Panel/CantAguas.text = str(NocheData.aguas_servidas)
+	$TextureRect/Panel/CantAguas.text = str(NocheData.aguas_servidas)+"x" + str(pesos.get("aguas_servidas", 0))
 	$TextureRect/Panel/CantAguas.show()
 
 	await get_tree().create_timer(0.3).timeout
 
 	$TextureRect/Panel/LabelClientesAtendidos2.show()
-	$TextureRect/Panel/CantNoAtendidos.text = str(NocheData.atenciones_incompletas)
+	$TextureRect/Panel/CantNoAtendidos.text = str(NocheData.atenciones_incompletas) +"x" + str(pesos.get("no_atendidos", 0))
 	$TextureRect/Panel/CantNoAtendidos.show()
 
 	await get_tree().create_timer(0.3).timeout
 
 	$TextureRect/Panel/LabelClientesAtendidos4.show()
-	$TextureRect/Panel/CantEntregasErroneas.text = str(NocheData.pedidoserroneos)
+	$TextureRect/Panel/CantEntregasErroneas.text = str(NocheData.pedidoserroneos)+"x" + str(pesos.get("entregas_erroneas", 0))
 	$TextureRect/Panel/CantEntregasErroneas.show()
 
 	await get_tree().create_timer(0.3).timeout
