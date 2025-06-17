@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=61 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="18_nhjf1"]
 [ext_resource type="Script" uid="uid://bx46tre684s0p" path="res://panel_2.gd" id="19_0hmx4"]
 [ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="19_1ji4q"]
+[ext_resource type="Script" uid="uid://d1r8st8o7qswa" path="res://panel.gd" id="19_2d8lx"]
 [ext_resource type="Texture2D" uid="uid://con3rfwn5whpt" path="res://Sprites/Reloj.png" id="19_elcv6"]
 [ext_resource type="Texture2D" uid="uid://bkss5s6sccl3e" path="res://Sprites/AgujaTiempo.png" id="20_47dcw"]
 [ext_resource type="PackedScene" uid="uid://va75bpyjwfou" path="res://MenuSeleccionRecetas.tscn" id="21_s073x"]
@@ -71,6 +72,18 @@ size = Vector2(116, 102.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxnie"]
 bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.537255)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7577o"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_roqkp"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_kjpu2"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_8hesr"]
+font_size = 50
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ubrrc"]
 
@@ -321,6 +334,71 @@ script = ExtResource("16_lvlro")
 offset_right = 2195.0
 offset_bottom = 200.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uxnie")
+script = ExtResource("19_2d8lx")
+
+[node name="LbAtenciones" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -663.5
+offset_top = -100.0
+offset_right = -295.5
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_7577o")
+vertical_alignment = 1
+
+[node name="LbNoAtencion" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.5
+offset_top = 14.0
+offset_right = -291.5
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_roqkp")
+vertical_alignment = 1
+
+[node name="LbAgua" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.5
+offset_top = 14.0
+offset_right = 587.5
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_kjpu2")
+vertical_alignment = 1
+
+[node name="LbErrorPlatillo" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.5
+offset_top = -97.0
+offset_right = 588.5
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_8hesr")
+vertical_alignment = 1
 
 [node name="Reloj" type="TextureRect" parent="CanvasLayer2"]
 anchors_preset = 1
@@ -357,9 +435,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -87.0
-offset_top = 13.0
+offset_top = 12.0
 offset_right = 88.0
-offset_bottom = 188.0
+offset_bottom = 187.0
 grow_horizontal = 2
 script = ExtResource("19_0hmx4")
 

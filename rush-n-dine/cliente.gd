@@ -127,13 +127,8 @@ func _physics_process(delta: float) -> void:
 						nube_pedido.play()
 					3:
 						print("Cliente se enojó y se va")
-						esperando_pedido = false
 						nube_pedido.visible = false
 						nube_pedido.stop()
-						if  esperando_atencion:
-							print("Cliente se va porque no lo atendieron")
-						else:
-							print("Cliente se va porque no le sirvieron el plato")
 						NocheData.atenciones_incompletas += 1
 						# Devolver el pedido si el cliente se va sin recibirlo
 						if pedido_actual != "agua":
@@ -234,6 +229,7 @@ func atendido():
 			imagen_nube.texture = Globales.recetas_desbloqueadas.get(pedido_actual)["imagen"]
 		else:
 			imagen_nube.texture = imagen_agua
+			NocheData.aguas_servidas+=1
 		nube_pedido.visible = true
 		nube_pedido.animation = "iniciaEspera"
 		nube_pedido.play()
@@ -259,7 +255,6 @@ func elegir_pedido():
 	# Si no hay platos realmente disponibles
 	if platos_validos.size() == 0:
 		pedido_actual = "agua"
-		NocheData.aguas_servidas+=1
 		return
 
 	# Sorteo ponderado
