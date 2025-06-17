@@ -33,4 +33,5 @@ func _on_texture_rect_pressed() -> void:
 	Globales.reputacion_progreso = 0 #cuando llega a 100 pasa a siguiente categoria y este vuelve 0
 	Globales.dia= true
 	Globales.mesas= 1
+	DiaData.dia_iniciado=false
 	$Fondo.texture = load("res://Fondos/FondoDia.png")

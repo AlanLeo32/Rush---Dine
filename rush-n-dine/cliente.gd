@@ -282,7 +282,11 @@ func elegir_pedido():
 		menu_seleccionable.actualizar()
 
 func irse():
-	mesa_asignada.esperar_limpieza()
+	if esperando_pedido or esperando_atencion:
+		var gestor_mesas = get_tree().get_root().get_node("Noche/Mesas")  # Ajusta la ruta según tu escena
+		gestor_mesas.liberar_mesa(mesa_asignada)
+	else:
+		mesa_asignada.esperar_limpieza()
 	# Liberar y resetear estado
 	mesa_asignada = null
 	sentado = false

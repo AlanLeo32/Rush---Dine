@@ -139,8 +139,8 @@ func guardar_estado():
 		"reputacion_progreso": reputacion_progreso,
 		"dia": dia,
 		"mesas": mesas,
-		"recetas_desbloqueadas": {},  # serializadas sin imágenes
-		"recursos_disponibles": {}    # idem
+		"recetas_desbloqueadas": {},
+		"recursos_disponibles": {}
 	}
 	
 	for nombre in recetas_desbloqueadas.keys():
@@ -152,8 +152,8 @@ func guardar_estado():
 			"popularidad": r["popularidad"],
 			"recursos_requeridos": r["recursos_requeridos"],
 			"minijuegos": r["minijuegos"],
-			"ubi_ing": r.has("ubi_ing") if r.has("ubi_ing") else null,
-			"coccion": r.has("coccion") if r.has("coccion") else null
+			"ubi_ing": r.get("ubi_ing", null),
+			"coccion": r.get("coccion", null)
 		}
 
 	for nombre in recursos_disponibles.keys():
@@ -163,13 +163,32 @@ func guardar_estado():
 			"cantidad": rr["cantidad"],
 			"imagen_path": rr["imagen"].resource_path
 		}
+	
 	var file := FileAccess.open("user://save_game.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_data))
 	file.close()
-	
-	
+
+func parsear_diccionario_de_vector2(dic: Dictionary) -> Dictionary:
+	var nuevo_dic := {}
+	for k in dic.keys():
+		var s = dic[k]
+		if typeof(s) == TYPE_STRING and s.begins_with("(") and s.ends_with(")"):
+			s = s.substr(1, s.length() - 2)  # elimina "(" y ")"
+			var partes = s.split(",")
+			if partes.size() == 2:
+				var x = partes[0].to_float()
+				var y = partes[1].to_float()
+				nuevo_dic[k] = Vector2(x, y)
+			else:
+				nuevo_dic[k] = s
+		else:
+			nuevo_dic[k] = s
+	return nuevo_dic
+
+
+
 func cargar_estado():
-	if  FileAccess.file_exists("user://save_game.json"):
+	if FileAccess.file_exists("user://save_game.json"):
 		var file := FileAccess.open("user://save_game.json", FileAccess.READ)
 		var contenido := file.get_as_text()
 		file.close()
@@ -188,6 +207,7 @@ func cargar_estado():
 		recetas_desbloqueadas.clear()
 		for nombre in data["recetas_desbloqueadas"]:
 			var r = data["recetas_desbloqueadas"][nombre]
+			var ubi_raw = r.get("ubi_ing", null)
 			recetas_desbloqueadas[nombre] = {
 				"nombre": r["nombre"],
 				"imagen": load(r["imagen_path"]),
@@ -195,7 +215,7 @@ func cargar_estado():
 				"popularidad": r["popularidad"],
 				"recursos_requeridos": r["recursos_requeridos"],
 				"minijuegos": r["minijuegos"],
-				"ubi_ing": r.get("ubi_ing", null),
+				"ubi_ing": parsear_diccionario_de_vector2(ubi_raw) if ubi_raw != null else null,
 				"coccion": r.get("coccion", null)
 			}
 

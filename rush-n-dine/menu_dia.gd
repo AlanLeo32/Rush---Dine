@@ -24,9 +24,6 @@ descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 	nodo.actualizar_sector(150, angulo_fin)
 	nodo._draw()
 	var rotacion_en_grados : int = (cantidad_acciones[Globales.mesas - 1]-DiaData.acciones_disponibles)* 60.0
-	print(cantidad_acciones[Globales.mesas - 1])
-	print(DiaData.acciones_disponibles)
-	print(rotacion_en_grados)
 	var rotacion_en_radianes := deg_to_rad(240+rotacion_en_grados)
 	$TextureRect/Panel/Reloj/Aguja.rotation = rotacion_en_radianes
 	cargar_recursos()
@@ -35,23 +32,23 @@ descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 
 func _on_boton_tienda_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	_ready()
-	#cambio de escena minijuego
+	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
+	_ready() #cuando se conecte el minijuego sacar esto...
 
 func _on_boton_ruleta_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	_ready()
-	#cambio de escena minijuego
+	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
+	_ready() #cuando se conecte el minijuego sacar esto...
 
 func _on_boton_cosecha_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	_ready()
-	#cambio de escena minijuego
+	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
+	_ready() #cuando se conecte el minijuego sacar esto...
 
 func _on_boton_pesca_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	_ready()
-	#cambio de escena minijuego
+	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
+	_ready() #cuando se conecte el minijuego sacar esto...
 
 func _on_boton_abrir_pressed() -> void:
 	DiaData.dia_iniciado=false

@@ -81,6 +81,7 @@ func procesar_resultado_minijuego(resultado):
 			plato = preload("res://Platos/PlatoBueno.tscn").instantiate()
 		else:
 			plato = preload("res://Platos/PlatoQuemado.tscn").instantiate()
+			plato.entregaerronea=true
 
 		plato.receta = receta
 		plato.clave = ""

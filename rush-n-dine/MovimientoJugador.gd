@@ -25,6 +25,8 @@ func recibir_plato(plato: Node):
 func entregar_plato_al_cliente():
 	if objeto_en_mano and objeto_actual and objeto_actual.has_method("recibir_plato"):
 		if objeto_actual.pedido_actual == objeto_en_mano.clave:
+			if objeto_en_mano.entregaerronea:
+				NocheData.pedidoserroneos+=1
 			objeto_actual.recibir_plato(objeto_en_mano)
 			objeto_en_mano.queue_free()
 			objeto_en_mano.get_parent().remove_child(objeto_en_mano)
