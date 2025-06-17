@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cxq8r5lj5nwdu" path="res://Fondos/FondoMenuSeleccion.png" id="1_brnmg"]
 [ext_resource type="Script" uid="uid://tf871v6xdxb1" path="res://menu_seleccion_recetas.gd" id="1_xq8p6"]
 [ext_resource type="Texture2D" uid="uid://u2b8gbnoddt4" path="res://Sprites/confirmar.webp" id="3_e61l0"]
-[ext_resource type="Texture2D" uid="uid://ppit8u5t0nde" path="res://Sprites/cancelar.webp" id="4_kvq2j"]
+[ext_resource type="Texture2D" uid="uid://8wff15gmvtph" path="res://Sprites/Cruz.png" id="4_e61l0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpgmy"]
 font_size = 50
@@ -131,11 +131,11 @@ stretch_mode = 5
 
 [node name="Cancelar" type="TextureButton" parent="Panel"]
 layout_mode = 0
-offset_left = 473.0
-offset_top = 818.0
-offset_right = 623.0
-offset_bottom = 968.0
-texture_normal = ExtResource("4_kvq2j")
+offset_left = 487.0
+offset_top = 842.0
+offset_right = 600.0
+offset_bottom = 957.0
+texture_normal = ExtResource("4_e61l0")
 ignore_texture_size = true
 stretch_mode = 0
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://dvfyli57qjb0d"]
 
-[ext_resource type="Script" uid="uid://2wsje13p672p" path="res://menu_mesada.gd" id="1_fd587"]
-[ext_resource type="Texture2D" uid="uid://cxq8r5lj5nwdu" path="res://Fondos/FondoMenuSeleccion.png" id="1_vd73d"]
-[ext_resource type="Script" uid="uid://dv54qqbgrd1ec" path="res://boton_plato_actual.gd" id="2_0dfoi"]
-[ext_resource type="Texture2D" uid="uid://ppit8u5t0nde" path="res://Sprites/cancelar.webp" id="4_drdjw"]
+[ext_resource type="Script" uid="uid://2wsje13p672p" path="res://menu_mesada.gd" id="1_myp1m"]
+[ext_resource type="Texture2D" uid="uid://cxq8r5lj5nwdu" path="res://Fondos/FondoMenuSeleccion.png" id="2_pdvkv"]
+[ext_resource type="Script" uid="uid://dv54qqbgrd1ec" path="res://boton_plato_actual.gd" id="3_r1d70"]
+[ext_resource type="Texture2D" uid="uid://8wff15gmvtph" path="res://Sprites/Cruz.png" id="4_cakrc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0dfoi"]
 font_size = 50
@@ -27,7 +27,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_fd587")
+script = ExtResource("1_myp1m")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -42,7 +42,7 @@ grow_vertical = 2
 [node name="Sprite2D" type="Sprite2D" parent="Panel"]
 position = Vector2(-65, -22)
 scale = Vector2(1.44466, 1.08984)
-texture = ExtResource("1_vd73d")
+texture = ExtResource("2_pdvkv")
 centered = false
 
 [node name="TituloMenu" type="Label" parent="Panel"]
@@ -83,7 +83,7 @@ offset_left = 800.0
 offset_top = 778.0
 offset_right = 1100.0
 offset_bottom = 978.0
-script = ExtResource("2_0dfoi")
+script = ExtResource("3_r1d70")
 
 [node name="CanvasLayer" type="Panel" parent="Panel/BotonPlatoActual"]
 visible = false
@@ -134,11 +134,11 @@ label_settings = SubResource("LabelSettings_1ltw2")
 
 [node name="Cancelar" type="TextureButton" parent="Panel"]
 layout_mode = 0
-offset_left = 473.0
-offset_top = 818.0
-offset_right = 623.0
-offset_bottom = 968.0
-texture_normal = ExtResource("4_drdjw")
+offset_left = 1453.0
+offset_top = 153.0
+offset_right = 1549.0
+offset_bottom = 252.0
+texture_normal = ExtResource("4_cakrc")
 ignore_texture_size = true
 stretch_mode = 0
 
