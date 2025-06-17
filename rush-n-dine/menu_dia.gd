@@ -42,7 +42,8 @@ func _on_boton_ruleta_pressed() -> void:
 func _on_boton_cosecha_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
 	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
-	_ready() #cuando se conecte el minijuego sacar esto...
+	ManejoMinijuegos.minijuego_verdura_random()
+	#_ready() #cuando se conecte el minijuego sacar esto...
 
 func _on_boton_pesca_pressed() -> void:
 	DiaData.acciones_disponibles -= 1

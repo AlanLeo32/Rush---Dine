@@ -24,7 +24,7 @@ expand_mode = 1
 [node name="Hud" parent="." instance=ExtResource("3_nk2ye")]
 
 [node name="MoveTimer" type="Timer" parent="."]
-wait_time = 0.135
+wait_time = 0.1
 
 [node name="Food" type="Sprite2D" parent="."]
 texture = ExtResource("5_nk2ye")

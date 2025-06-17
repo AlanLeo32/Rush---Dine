@@ -1,6 +1,6 @@
 extends Node2D
 
-
+signal recolectado
 
 var velocity = Vector2.ZERO
 var speed: int # píxeles por segundo cuadrado
@@ -27,5 +27,5 @@ func _process(delta):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		Globales.cant_colectables += 1
-	queue_free()
+		emit_signal("recolectado")
+		queue_free()

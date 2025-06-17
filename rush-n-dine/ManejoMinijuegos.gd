@@ -85,3 +85,29 @@ func resetear():
 		"puntaje": 0,
 		"receta": null
 	}
+
+func actualizar_recursos(recurso, cantidad):
+	print(Globales.recursos_disponibles)
+	if recurso in Globales.recursos_disponibles:
+		Globales.recursos_disponibles[recurso]["cantidad"] += cantidad
+		print("Recurso actualizado: ", recurso, " Cantidad: ", Globales.recursos_disponibles[recurso]["cantidad"])
+	else:
+		print("Recurso no encontrado: ", recurso)
+
+func volver_a_dia():
+	get_tree().change_scene_to_file("res://MenuDia.tscn")
+
+func minijuego_snake():
+	get_tree().change_scene_to_file("res://minigames/snake/main.tscn")
+
+func minijuego_recolectar():
+	get_tree().change_scene_to_file("res://minigames/collect/recoleccion.tscn")
+
+func minijuego_pescado():
+	get_tree().change_scene_to_file("res://minigames/juegopesca/juegopesca.tscn")
+
+func minijuego_verdura_random():
+	if randi() % 2 == 0:
+		minijuego_snake()
+	else:
+		minijuego_recolectar()
