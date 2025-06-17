@@ -169,6 +169,7 @@ func calcular_reputacion() -> void:
 
 func _on_texture_button_pressed() -> void:
 	Globales.dia=true
+	DiaData.dia_iniciado=false
 	if Globales.dinero>=0:
 		Globales.guardar_estado()
 		get_tree().change_scene_to_file("res://MenuDia.tscn")

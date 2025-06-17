@@ -8,7 +8,7 @@ var dinero = 0
 
 var reputacion_categoria = "D"
 var reputacion_progreso = 0 #cuando llega a 100 pasa a siguiente categoria y este vuelve 0
-var dia= false
+var dia= true
 var recetas_desbloqueadas : Dictionary = {}
 var recursos_disponibles : Dictionary = {}
 var mesas:= 1
@@ -16,10 +16,8 @@ var mesas:= 1
 	
 func _ready():
 	if FileAccess.file_exists("user://save_game.json"):
-		print("carga")
 		cargar_estado()
 	else:
-		print("default")
 		cargar_recetas_iniciales()
 		cargar_recursos_iniciales()
 	estado_de_carga = true
@@ -167,7 +165,6 @@ func guardar_estado():
 			"cantidad": rr["cantidad"],
 			"imagen_path": rr["imagen"].resource_path
 		}
-	print("guarda")
 	var file := FileAccess.open("user://save_game.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_data))
 	file.close()

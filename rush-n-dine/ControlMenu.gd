@@ -23,3 +23,15 @@ func _on_boton_configuracion_pressed() -> void:
 
 func _on_boton_creditos_pressed() -> void:
 	get_tree().change_scene_to_file("res://pantalla_creditos.tscn")
+
+
+func _on_texture_rect_pressed() -> void:
+	Globales.cargar_recetas_iniciales()
+	Globales.cargar_recursos_iniciales()
+	Globales.nivel = 0
+	Globales.dinero = 0
+	Globales.reputacion_categoria = "D"
+	Globales.reputacion_progreso = 0 #cuando llega a 100 pasa a siguiente categoria y este vuelve 0
+	Globales.dia= true
+	Globales.mesas= 1
+	$Fondo.texture = load("res://Fondos/FondoDia.png")

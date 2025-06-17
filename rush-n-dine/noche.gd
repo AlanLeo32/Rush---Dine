@@ -1,6 +1,6 @@
 extends Node
 @export var cliente_escena: PackedScene
-@export var duracion_noche: float = 240.0  # duración total en segundos (4 minutos reales)
+@export var duracion_noche: float =240.0  # duración total en segundos (4 minutos reales)
 
 var rng = RandomNumberGenerator.new()
 var bloquear_cocinero = false
