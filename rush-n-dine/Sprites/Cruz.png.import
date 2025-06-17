@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df7tvoki828ii"
-path="res://.godot/imported/cancelar.webp-e7ca17d045b3849a1ba59de5ea1b7dac.ctex"
+uid="uid://8wff15gmvtph"
+path="res://.godot/imported/Cruz.png-fe9c041bf4d6f6414898b505ff529309.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cancelar.webp"
-dest_files=["res://.godot/imported/cancelar.webp-e7ca17d045b3849a1ba59de5ea1b7dac.ctex"]
+source_file="res://Sprites/Cruz.png"
+dest_files=["res://.godot/imported/Cruz.png-fe9c041bf4d6f6414898b505ff529309.ctex"]
 
 [params]
 

@@ -1,0 +1,427 @@
+[gd_scene load_steps=24 format=3 uid="uid://cewp3uhc0y4fy"]
+
+[ext_resource type="Texture2D" uid="uid://dww2jq1qi67d6" path="res://Fondos/FondoMenuDia.png" id="1_apavg"]
+[ext_resource type="Script" uid="uid://befj38fotnjgt" path="res://menu_dia.gd" id="1_q6w18"]
+[ext_resource type="Texture2D" uid="uid://bf4tragvqwphs" path="res://Sprites/RelojDia.png" id="3_43cuw"]
+[ext_resource type="Texture2D" uid="uid://bkss5s6sccl3e" path="res://Sprites/AgujaTiempo.png" id="4_43cuw"]
+[ext_resource type="Script" uid="uid://3x1rqkqq7v0g" path="res://relojDia.gd" id="4_dowal"]
+[ext_resource type="Texture2D" uid="uid://cau2iartj02r2" path="res://Sprites/BotonPausa.png" id="5_dowal"]
+[ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="6_fxrog"]
+[ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="7_4t7rl"]
+[ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="8_jcr2j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q6w18"]
+font_size = 100
+font_color = Color(0.794382, 0.779994, 0.730847, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6w18"]
+bg_color = Color(0.0392157, 0.341176, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwk34"]
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_y35mh"]
+font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwk34"]
+bg_color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0pe5q"]
+font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xehjw"]
+bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.537255)
+
+[sub_resource type="LabelSettings" id="LabelSettings_43cuw"]
+font_size = 60
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q06ed"]
+texture = ExtResource("7_4t7rl")
+region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6vlw"]
+texture = ExtResource("7_4t7rl")
+region_rect = Rect2(58.3948, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3mjl"]
+texture = ExtResource("7_4t7rl")
+region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dhwnv"]
+texture = ExtResource("8_jcr2j")
+region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ln22i"]
+texture = ExtResource("8_jcr2j")
+region_rect = Rect2(15.8994, 286.335, 992.201, 478.659)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tieem"]
+texture = ExtResource("8_jcr2j")
+region_rect = Rect2(15.899, 286.335, 992.201, 478.659)
+
+[node name="MenuDia" type="Node2D"]
+script = ExtResource("1_q6w18")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_apavg")
+expand_mode = 1
+
+[node name="BotonPesca" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 140.0
+offset_right = 939.0
+offset_bottom = 334.0
+
+[node name="Label" type="Label" parent="TextureRect/BotonPesca"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -75.0
+offset_right = 250.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PESCA"
+label_settings = SubResource("LabelSettings_q6w18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonCosecha" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 350.0
+offset_right = 939.0
+offset_bottom = 544.0
+
+[node name="Label" type="Label" parent="TextureRect/BotonCosecha"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -75.0
+offset_right = 250.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "COSECHA"
+label_settings = SubResource("LabelSettings_q6w18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonMinijuego3" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 140.0
+offset_right = 1619.0
+offset_bottom = 334.0
+
+[node name="Label" type="Label" parent="TextureRect/BotonMinijuego3"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -75.0
+offset_right = 250.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Minijuego 3"
+label_settings = SubResource("LabelSettings_q6w18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonTienda" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 350.0
+offset_right = 1619.0
+offset_bottom = 544.0
+
+[node name="Label" type="Label" parent="TextureRect/BotonTienda"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -75.0
+offset_right = 250.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TIENDA"
+label_settings = SubResource("LabelSettings_q6w18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelAdvertencia" type="Panel" parent="TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 325.0
+offset_top = 126.0
+offset_right = 1616.0
+offset_bottom = 551.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q6w18")
+
+[node name="LabelAdvertencia" type="Label" parent="TextureRect/PanelAdvertencia"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 82.0
+offset_right = 1247.0
+offset_bottom = 200.0
+text = "Te has quedado sin tiempo de día"
+label_settings = SubResource("LabelSettings_iwk34")
+horizontal_alignment = 1
+
+[node name="BotonAbrir" type="Button" parent="TextureRect/PanelAdvertencia"]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 223.0
+offset_right = 562.0
+offset_bottom = 353.0
+
+[node name="LabelOk" type="Label" parent="TextureRect/PanelAdvertencia/BotonAbrir"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 13.0
+offset_right = 287.0
+offset_bottom = 109.0
+text = "Abrir"
+label_settings = SubResource("LabelSettings_iwk34")
+horizontal_alignment = 1
+
+[node name="BotonNoAbrir" type="Button" parent="TextureRect/PanelAdvertencia"]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 224.0
+offset_right = 1076.0
+offset_bottom = 354.0
+
+[node name="LabelOk" type="Label" parent="TextureRect/PanelAdvertencia/BotonNoAbrir"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 14.0
+offset_right = 311.0
+offset_bottom = 110.0
+text = "No abrir"
+label_settings = SubResource("LabelSettings_iwk34")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TextureRect/PanelAdvertencia/BotonNoAbrir"]
+layout_mode = 0
+offset_left = -156.0
+offset_top = 117.0
+offset_right = 530.0
+offset_bottom = 220.0
+text = "Evitaras abrir el restaurante esta noche
+descontara de tu dinero: $"
+label_settings = SubResource("LabelSettings_y35mh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelAdvertencia2" type="Panel" parent="TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 557.0
+offset_top = 166.0
+offset_right = 1376.0
+offset_bottom = 507.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iwk34")
+
+[node name="LabelAdvertencia" type="Label" parent="TextureRect/PanelAdvertencia2"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 56.0
+offset_right = 773.0
+offset_bottom = 174.0
+text = "Te has quedado sin dinero
+Debes ver un anuncio para continuar"
+label_settings = SubResource("LabelSettings_0pe5q")
+horizontal_alignment = 1
+
+[node name="BotonConfirmaAdd" type="Button" parent="TextureRect/PanelAdvertencia2"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 223.0
+offset_right = 509.0
+offset_bottom = 313.0
+
+[node name="LabelOk" type="Label" parent="TextureRect/PanelAdvertencia2"]
+layout_mode = 0
+offset_left = 387.0
+offset_top = 242.0
+offset_right = 444.0
+offset_bottom = 297.0
+text = "OK"
+label_settings = SubResource("LabelSettings_0pe5q")
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="TextureRect"]
+layout_mode = 0
+offset_top = 880.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xehjw")
+
+[node name="ScrollRecursos" type="ScrollContainer" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 789.0
+offset_right = 1191.0
+offset_bottom = 210.0
+
+[node name="HBoxRecursos" type="HBoxContainer" parent="TextureRect/Panel/ScrollRecursos"]
+layout_mode = 2
+alignment = 1
+
+[node name="Reloj" type="TextureRect" parent="TextureRect/Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -208.0
+offset_top = -3.0
+offset_right = 816.0
+offset_bottom = 1021.0
+grow_horizontal = 0
+scale = Vector2(0.203613, 0.202148)
+texture = ExtResource("3_43cuw")
+
+[node name="Aguja" type="TextureRect" parent="TextureRect/Panel/Reloj"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.679
+offset_top = -482.319
+offset_right = 200.321
+offset_bottom = 166.681
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.16246
+pivot_offset = Vector2(197.7, 482.3)
+texture = ExtResource("4_43cuw")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/Panel/Reloj"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_dowal")
+
+[node name="CantidadDinero" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 34.0
+offset_right = 522.0
+offset_bottom = 161.0
+label_settings = SubResource("LabelSettings_43cuw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LogicaPausa" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(2, 2)
+
+[node name="MenuPausa" type="Control" parent="LogicaPausa"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 135.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="LogicaPausa/MenuPausa"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -140.0
+offset_right = 963.0
+offset_bottom = 408.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LogicaPausa/MenuPausa"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 193.5
+offset_top = 4.49998
+offset_right = 1075.5
+offset_bottom = 408.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+mouse_filter = 0
+
+[node name="Configuracion" type="Button" parent="LogicaPausa/MenuPausa/VBoxContainer"]
+custom_minimum_size = Vector2(882, 200)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_q06ed")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l6vlw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_p3mjl")
+
+[node name="MenuPrincipal" type="Button" parent="LogicaPausa/MenuPausa/VBoxContainer"]
+custom_minimum_size = Vector2(882, 200)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_dhwnv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ln22i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tieem")
+
+[node name="BotonPausa" type="TextureButton" parent="LogicaPausa"]
+process_mode = 3
+z_index = 1
+layout_mode = 1
+offset_left = 13.5
+offset_top = 12.0
+offset_right = 88.5
+offset_bottom = 87.0
+action_mode = 0
+texture_normal = ExtResource("5_dowal")
+texture_pressed = ExtResource("6_fxrog")
+stretch_mode = 5
+
+[connection signal="pressed" from="TextureRect/BotonPesca" to="." method="_on_boton_pesca_pressed"]
+[connection signal="pressed" from="TextureRect/BotonCosecha" to="." method="_on_boton_cosecha_pressed"]
+[connection signal="pressed" from="TextureRect/BotonMinijuego3" to="." method="_on_boton_ruleta_pressed"]
+[connection signal="pressed" from="TextureRect/BotonTienda" to="." method="_on_boton_tienda_pressed"]
+[connection signal="pressed" from="TextureRect/PanelAdvertencia/BotonAbrir" to="." method="_on_boton_abrir_pressed"]
+[connection signal="pressed" from="TextureRect/PanelAdvertencia/BotonNoAbrir" to="." method="_on_boton_no_abrir_pressed"]
+[connection signal="pressed" from="TextureRect/PanelAdvertencia2/BotonConfirmaAdd" to="." method="_on_boton_confirma_add_pressed"]
+[connection signal="pressed" from="LogicaPausa/MenuPausa/VBoxContainer/Configuracion" to="." method="_on_configuracion_pressed"]
+[connection signal="pressed" from="LogicaPausa/MenuPausa/VBoxContainer/MenuPrincipal" to="." method="_on_menu_principal_pressed"]
+[connection signal="pressed" from="LogicaPausa/BotonPausa" to="." method="_on_boton_pausa_pressed"]
