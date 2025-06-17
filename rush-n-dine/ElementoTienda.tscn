@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgrvqdkni4yt0"]
+
+[ext_resource type="Script" uid="uid://cw5q3bnitino5" path="res://elemento_tienda.gd" id="1_yishy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6p8wo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_idkow"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_nd21m"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_j6fc6"]
+font_size = 50
+
+[node name="ElementoTienda" type="Control"]
+custom_minimum_size = Vector2(475, 330)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yishy")
+
+[node name="CanvasLayer" type="Panel" parent="."]
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(475, 330)
+layout_mode = 0
+offset_right = 475.0
+offset_bottom = 330.0
+mouse_filter = 1
+
+[node name="ImagenSeleccion" type="TextureRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 109.0
+offset_top = 11.0
+offset_right = 359.0
+offset_bottom = 261.0
+texture = SubResource("ViewportTexture_6p8wo")
+expand_mode = 1
+
+[node name="Nombre" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(180, 25)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 261.0
+offset_right = 475.0
+offset_bottom = 330.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_idkow")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Precio" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 0
+offset_left = 358.0
+offset_top = 5.0
+offset_right = 476.0
+offset_bottom = 74.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_nd21m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Disp" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 0
+offset_left = -3.0
+offset_top = 6.0
+offset_right = 111.0
+offset_bottom = 75.0
+mouse_filter = 1
+label_settings = SubResource("LabelSettings_j6fc6")

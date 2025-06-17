@@ -17,7 +17,6 @@ func _ready():
 descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 		
 	var nodo = get_node("TextureRect/Panel/Reloj/ColorRect")
-	var hora_inicio := 8
 	var horas_a_pintar: int = cantidad_acciones[Globales.mesas - 1] * 2
 	var angulo_inicio := 150
 	var angulo_fin := 150+ (horas_a_pintar) * 30.0
@@ -31,8 +30,7 @@ descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 
 func _on_boton_tienda_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
-	_ready() #cuando se conecte el minijuego sacar esto...
+	get_tree().change_scene_to_file("res://Tienda.tscn")
 
 func _on_boton_ruleta_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
@@ -57,6 +55,9 @@ func _on_boton_abrir_pressed() -> void:
 
 func _on_boton_no_abrir_pressed() -> void:
 	Globales.dinero-=costo_apertura_por_mesas[Globales.mesas-1]
+	if DiaData.mejoranivel:
+		Globales.mesas+=1
+		DiaData.mejoranivel=false
 	if Globales.dinero>=0:
 		Globales.guardar_estado()
 		DiaData.acciones_disponibles = cantidad_acciones[Globales.mesas-1]

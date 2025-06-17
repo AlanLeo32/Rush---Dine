@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvmc2xpnvh6ct"]
+[gd_scene load_steps=8 format=3 uid="uid://cvmc2xpnvh6ct"]
 
 [ext_resource type="Texture2D" uid="uid://b77rhmmb47ieh" path="res://Fondos/FondoTienda.png" id="1_l7we4"]
 [ext_resource type="Script" uid="uid://ylljombijnpj" path="res://tienda.gd" id="1_uxwke"]
@@ -13,17 +13,6 @@ font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_prnr6"]
 font_size = 50
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxwke"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_gpjk8"]
-font_size = 40
-font_color = Color(0.705666, 0.0161533, 0.227384, 1)
 
 [node name="Tienda" type="Node2D"]
 script = ExtResource("1_uxwke")
@@ -84,16 +73,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -743.5
+offset_left = -698.5
 offset_top = -265.5
-offset_right = 743.5
+offset_right = 727.5
 offset_bottom = 400.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="TextureRect/Panel/Panel/ScrollContainer"]
 layout_mode = 2
-columns = 3
+columns = 5
 
 [node name="Saldo" type="Label" parent="TextureRect/Panel/Panel"]
 layout_mode = 1
@@ -118,19 +107,5 @@ offset_bottom = 130.0
 texture_normal = ExtResource("3_eg8s3")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="ErrorPopup" type="PopupPanel" parent="TextureRect/Panel"]
-auto_translate_mode = 1
-position = Vector2i(30, 50)
-size = Vector2i(700, 100)
-theme_override_styles/panel = SubResource("StyleBoxFlat_uxwke")
-
-[node name="Label" type="Label" parent="TextureRect/Panel/ErrorPopup"]
-offset_right = 700.0
-offset_bottom = 100.0
-text = "¡Cantidad de recursos insuficiente!"
-label_settings = SubResource("LabelSettings_gpjk8")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="TextureRect/Panel/Panel/Cancelar" to="." method="_on_cancelar_pressed"]
