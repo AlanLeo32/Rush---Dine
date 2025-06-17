@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=62 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://bcr3blo5ymt85" path="res://MenuCocinar.tscn" id="24_hj8yk"]
 [ext_resource type="PackedScene" uid="uid://dvfyli57qjb0d" path="res://menu_mesada.tscn" id="25_uxnie"]
 [ext_resource type="Script" uid="uid://cd1ccuogqotin" path="res://mesa.gd" id="30_47dcw"]
+[ext_resource type="AudioStream" uid="uid://bwr3cvxpy51ey" path="res://Musica/synth-chill-vibes-1-159059.mp3" id="34_7577o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcooc"]
 size = Vector2(24.5714, 118)
@@ -845,6 +846,11 @@ position = Vector2(6510, 0)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_47dcw")
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_7577o")
+autoplay = true
+parameters/looping = true
 
 [connection signal="body_entered" from="Almacenamiento" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
