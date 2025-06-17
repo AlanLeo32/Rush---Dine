@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cewp3uhc0y4fy"]
+[gd_scene load_steps=24 format=3 uid="uid://cewp3uhc0y4fy"]
 
 [ext_resource type="Texture2D" uid="uid://dww2jq1qi67d6" path="res://Fondos/FondoMenuDia.png" id="1_apavg"]
 [ext_resource type="Script" uid="uid://befj38fotnjgt" path="res://menu_dia.gd" id="1_q6w18"]
@@ -31,6 +31,9 @@ font_size = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xehjw"]
 bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.537255)
+
+[sub_resource type="LabelSettings" id="LabelSettings_43cuw"]
+font_size = 60
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q06ed"]
 texture = ExtResource("7_4t7rl")
@@ -246,12 +249,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_iwk34")
 
 [node name="LabelAdvertencia" type="Label" parent="TextureRect/PanelAdvertencia2"]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 61.0
-offset_right = 754.0
-offset_bottom = 179.0
+offset_left = 58.0
+offset_top = 56.0
+offset_right = 773.0
+offset_bottom = 174.0
 text = "Te has quedado sin dinero
-Debes ver un video para continuar"
+Debes ver un anuncio para continuar"
 label_settings = SubResource("LabelSettings_0pe5q")
 horizontal_alignment = 1
 
@@ -278,6 +281,16 @@ offset_top = 880.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xehjw")
+
+[node name="ScrollRecursos" type="ScrollContainer" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 789.0
+offset_right = 1191.0
+offset_bottom = 210.0
+
+[node name="HBoxRecursos" type="HBoxContainer" parent="TextureRect/Panel/ScrollRecursos"]
+layout_mode = 2
+alignment = 1
 
 [node name="Reloj" type="TextureRect" parent="TextureRect/Panel"]
 z_index = 1
@@ -324,6 +337,16 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_dowal")
+
+[node name="CantidadDinero" type="Label" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 34.0
+offset_right = 522.0
+offset_bottom = 161.0
+label_settings = SubResource("LabelSettings_43cuw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LogicaPausa" type="Control" parent="."]
 process_mode = 3

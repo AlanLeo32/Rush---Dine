@@ -28,7 +28,6 @@ func _on_boton_creditos_pressed() -> void:
 func _on_texture_rect_pressed() -> void:
 	Globales.cargar_recetas_iniciales()
 	Globales.cargar_recursos_iniciales()
-	Globales.nivel = 0
 	Globales.dinero = 0
 	Globales.reputacion_categoria = "D"
 	Globales.reputacion_progreso = 0 #cuando llega a 100 pasa a siguiente categoria y este vuelve 0

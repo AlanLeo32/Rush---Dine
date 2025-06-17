@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy0of87vx1ihg"]
+
+[ext_resource type="Script" uid="uid://bqsb0xiyhcv8l" path="res://recurso_item_dia.gd" id="1_j3kl2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jww2w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8btoq"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhiqc"]
+font_size = 28
+
+[node name="RecursoItem" type="Panel"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 200.0
+offset_bottom = 200.0
+mouse_filter = 2
+script = ExtResource("1_j3kl2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+mouse_filter = 2
+
+[node name="ImagenRecurso" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 7.0
+offset_right = 176.0
+offset_bottom = 157.0
+mouse_filter = 2
+texture = SubResource("ViewportTexture_jww2w")
+expand_mode = 1
+
+[node name="ValorDisp" type="Label" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 157.0
+offset_right = 169.0
+offset_bottom = 201.0
+label_settings = SubResource("LabelSettings_8btoq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Disp" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 158.0
+offset_right = 106.0
+offset_bottom = 197.0
+text = "Disp:"
+label_settings = SubResource("LabelSettings_rhiqc")
+horizontal_alignment = 1

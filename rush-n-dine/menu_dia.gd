@@ -23,13 +23,14 @@ descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 	var angulo_fin := 150+ (horas_a_pintar) * 30.0
 	nodo.actualizar_sector(150, angulo_fin)
 	nodo._draw()
-	
 	var rotacion_en_grados : int = (cantidad_acciones[Globales.mesas - 1]-DiaData.acciones_disponibles)* 60.0
 	print(cantidad_acciones[Globales.mesas - 1])
 	print(DiaData.acciones_disponibles)
 	print(rotacion_en_grados)
 	var rotacion_en_radianes := deg_to_rad(240+rotacion_en_grados)
 	$TextureRect/Panel/Reloj/Aguja.rotation = rotacion_en_radianes
+	cargar_recursos()
+	$TextureRect/Panel/CantidadDinero.text= "Dinero: $"+ str(Globales.dinero)
 
 
 func _on_boton_tienda_pressed() -> void:
@@ -104,3 +105,16 @@ func _on_configuracion_pressed() -> void:
 
 func _on_menu_principal_pressed() -> void:
 	get_tree().change_scene_to_file("res://menu_principal.tscn")
+
+
+
+func cargar_recursos():
+	for child in $TextureRect/Panel/ScrollRecursos/HBoxRecursos.get_children():
+		child.queue_free()
+	# Mostrar recursos
+	for recurso_id in Globales.recursos_disponibles.keys():
+		var recurso_data = Globales.recursos_disponibles[recurso_id]
+		var cantidad_disponible = recurso_data["cantidad"]
+		var recurso_item = preload("res://RecursoItemDia.tscn").instantiate()
+		recurso_item.set_data(recurso_data, cantidad_disponible)
+		$TextureRect/Panel/ScrollRecursos/HBoxRecursos.add_child(recurso_item)

@@ -3,7 +3,6 @@ extends Node
 var estado_de_carga := false
 
 # Variables globales del jugador
-var nivel = 0
 var dinero = 0
 
 var reputacion_categoria = "D"
@@ -135,7 +134,6 @@ func cargar_recursos_iniciales():
 
 func guardar_estado():
 	var save_data := {
-		"nivel": nivel,
 		"dinero": dinero,
 		"reputacion_categoria": reputacion_categoria,
 		"reputacion_progreso": reputacion_progreso,
@@ -181,7 +179,6 @@ func cargar_estado():
 			print("Error al cargar archivo de guardado.")
 			return
 
-		nivel = data.get("nivel", 0)
 		dinero = data.get("dinero", 0)
 		reputacion_categoria = data.get("reputacion_categoria", "D")
 		reputacion_progreso = data.get("reputacion_progreso", 0)
