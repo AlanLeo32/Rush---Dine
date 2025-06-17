@@ -1,7 +1,5 @@
 extends Node2D
 
-var mejoranivel:bool=false
-
 var items_tienda := {
 	"sillas": {
 		"Mesa": {
@@ -73,13 +71,12 @@ func generar_items():
 		for clave in items_tienda[tipo]:
 			var datos = items_tienda[tipo][clave]
 			# Filtrado por nivel
-			if Globales.mesas >= datos.nivel_requerido and not(tipo=="sillas" and mejoranivel):
+			if Globales.mesas >= datos.nivel_requerido and not(tipo=="sillas" and (DiaData.mejoranivel or Globales.mesas>=7)):
 				var boton = BotonTienda.instantiate()
 				boton.set_data(tipo,clave, datos)
 				contenedor_tienda.add_child(boton)
 
 func _on_cancelar_pressed() -> void:
-	DiaData.mejoranivel=mejoranivel
 	get_tree().change_scene_to_file("res://MenuDia.tscn")
 
 

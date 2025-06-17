@@ -18,6 +18,8 @@ func set_data(tipoi,nombrei, productoi):
 	$CanvasLayer/Nombre.text= nombre
 	if (tipo=="recursos"):
 		$CanvasLayer/Nombre.text+= " x "+str(producto.datos.cantidad[Globales.mesas-1])
+	elif (tipo=="sillas"):
+		$CanvasLayer/Nombre.text+=" "+ str(Globales.mesas+1)
 	if  producto.precio is Array:
 		$CanvasLayer/Precio.text="$"+str(producto.precio[Globales.mesas-1])
 	else:
@@ -42,7 +44,7 @@ func _gui_input(event):
 					Globales.dinero-=costo
 					match tipo:
 						"sillas":
-							tienda.mejoranivel=true
+							DiaData.mejoranivel=true
 						"recetas":
 							Globales.recetas_desbloqueadas[producto.datos.nombre] = producto.datos
 						"recursos":

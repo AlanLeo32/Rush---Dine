@@ -40,8 +40,7 @@ func _on_boton_ruleta_pressed() -> void:
 func _on_boton_cosecha_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
 	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
-	ManejoMinijuegos.minijuego_verdura_random()
-	#_ready() #cuando se conecte el minijuego sacar esto...
+	_ready() #cuando se conecte el minijuego sacar esto...
 
 func _on_boton_pesca_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
@@ -50,6 +49,9 @@ func _on_boton_pesca_pressed() -> void:
 
 func _on_boton_abrir_pressed() -> void:
 	DiaData.dia_iniciado=false
+	if DiaData.mejoranivel:
+		Globales.mesas+=1
+		DiaData.mejoranivel=false
 	Globales.dia=false
 	Globales.guardar_estado()
 	get_tree().change_scene_to_file("res://noche.tscn")
