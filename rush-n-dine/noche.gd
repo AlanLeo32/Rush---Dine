@@ -93,6 +93,7 @@ func procesar_resultado_minijuego(resultado):
 		else:
 			plato.clave = "agua"
 		cocinero.recibir_plato(plato)
+		ManejoMinijuegos.resultado_minijuego = {}
 
 	ManejoMinijuegos.resultado_minijuego = {}
 	ManejoMinijuegos.receta_actual = null

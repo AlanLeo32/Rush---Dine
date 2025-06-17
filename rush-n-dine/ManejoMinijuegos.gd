@@ -21,25 +21,9 @@ func logica_siguiente_minijuego():
 	var minijuegos = receta_actual["minijuegos"]
 	if pos_minijuego_actual >= minijuegos.size():
 		print("No hay otro minijuego a continuacion, volviendo al restaurante...")
-		var noche = get_tree().get_root().get_node("Noche")
-		if noche:
-			# Volver a la cámara del jugador
-			var camara_jugador = noche.get_node("CharacterBodyCocinero2D/Camera2D")
-			if camara_jugador:
-				camara_jugador.make_current()
-			# Mostrar el botón de interactuar
-			if noche.has_node("CanvasLayer/Interactuar"):
-				noche.get_node("CanvasLayer/Interactuar").visible = true
-			if noche.has_node("CanvasLayer2"):
-				noche.get_node("CanvasLayer2/Panel").visible = true
-				noche.get_node("CanvasLayer2/Panel2").visible = true
-				for cliente in get_tree().get_nodes_in_group("clientes"):
-					if is_instance_valid(cliente) and cliente.has_method("show"):
-						cliente.show()
-			noche.procesar_resultado_minijuego(ManejoMinijuegos.resultado_minijuego)
-			ManejoMinijuegos.resultado_minijuego = {}
-			noche.set("bloquear_cocinero", false)
-			noche.get_node("TimerClientes").set_paused(false)
+		var sumaPuntaje = resultado_minijuego["puntaje"]
+		resultado_minijuego["puntaje"] = int(sumaPuntaje/minijuegos.size())
+		secuenciaFinal()
 		pos_minijuego_actual = 0
 	else:
 		print("Minijuego actual: ", minijuegos[pos_minijuego_actual])
@@ -75,6 +59,29 @@ func logica_siguiente_minijuego():
 		else:
 			print("No se encontró el nodo ContenedorMinijuegos")
 
+func secuenciaFinal():
+	#posible mini pantalla con puntuacion
+	cambioNoche()
+
+func cambioNoche():
+	var noche = get_tree().get_root().get_node("Noche")
+	if noche:
+		# Volver a la cámara del jugador
+		var camara_jugador = noche.get_node("CharacterBodyCocinero2D/Camera2D")
+		if camara_jugador:
+			camara_jugador.make_current()
+		# Mostrar el botón de interactuar
+		if noche.has_node("CanvasLayer/Interactuar"):
+			noche.get_node("CanvasLayer/Interactuar").visible = true
+		if noche.has_node("CanvasLayer2"):
+			noche.get_node("CanvasLayer2/Panel").visible = true
+			noche.get_node("CanvasLayer2/Panel2").visible = true
+			for cliente in get_tree().get_nodes_in_group("clientes"):
+				if is_instance_valid(cliente) and cliente.has_method("show"):
+					cliente.show()
+		noche.procesar_resultado_minijuego(ManejoMinijuegos.resultado_minijuego)
+		noche.set("bloquear_cocinero", false)
+		noche.get_node("TimerClientes").set_paused(false)
 
 func resetear():
 	cant_colectables = 0

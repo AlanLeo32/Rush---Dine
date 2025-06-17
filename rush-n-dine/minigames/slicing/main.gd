@@ -4,7 +4,7 @@ extends Node2D
 @onready var fruits_node = $Veggies
 @onready var slash = $Slash
 var ings
-var aux
+var cant
 
 const VEGETAL_SCENE = preload("veggie.tscn")
 const ROCK_SCENE = preload("rock.tscn")
@@ -14,14 +14,14 @@ func _ready():
 	#aca habria que hacer la logica que elige los INGREDIENTES del PLATO a CORTAR
 	ings = ['tomate', 'pepino'] #plato pescado
 	spawn_timer.start()
-	aux = 0
+	cant = 0
 
 func _on_spawn_timer_timeout():
 	var elem
 	if randf() < 0.75:
 		elem = VEGETAL_SCENE.instantiate()
-		elem.setVegetal(ings[aux%len(ings)]) #itera entre los elementos de la lista de ingredientes
-		aux+=1
+		elem.setVegetal(ings[cant%len(ings)]) #itera entre los elementos de la lista de ingredientes
+		cant+=1
 	else:
 		elem = ROCK_SCENE.instantiate()
 	var x_local = randi_range(700, 1200)
@@ -36,7 +36,21 @@ func _process(delta):
 
 
 func terminar_minijuego():
-	var puntaje_final = slash.getPuntaje()
+	var puntos: float
+	print("CANT DE FRUTAS Q APARECIERON: ",cant, "CANT DE CORTADAS: ", slash.getPuntaje())
+	if cant > 0:
+		puntos = float(slash.getPuntaje()+1) / cant
+		print("PUNTOS", puntos)
+	else:
+		puntos = 1 - slash.getPuntaje()
+		
+	var puntaje_final = int(puntos * 5)
+	if puntaje_final < 0:
+		puntaje_final = 0
+	elif puntaje_final > 5:
+		puntaje_final = 5
+	
+	print("puntaje de cortar: " , puntaje_final)
 	# ACTUALIZO el resultado, ya que no puedo saber
 	# Si hubo otro minijuego antes de este o no
 	if not ManejoMinijuegos.resultado_minijuego.has("puntaje"):

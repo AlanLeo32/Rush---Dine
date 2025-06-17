@@ -60,10 +60,11 @@ func _process(delta):
 				print("Colisiona con:", obj)  # <-- Agregá este print acá
 				if obj and (obj.is_in_group("Fruta") or obj.is_in_group("Roca")) and !obj.cortando():
 					obj.cortar()
-					print("Fruta cortada:", obj.name)
 					if obj.is_in_group("Fruta"):
+						print("Fruta cortada")
 						puntaje += 1
-					else: 
+					else:
+						print("piedra cortada") 
 						if puntaje >= 0:
 							puntaje -= 1
 				print('Direccion del corte: ' + dir)
