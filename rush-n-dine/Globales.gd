@@ -127,7 +127,7 @@ func cargar_recetas_iniciales():
 func cargar_recursos_iniciales():
 	recursos_disponibles = {
 		"pescado": {"nombre": "Pescado", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
-		"pescado2": {"nombre": "Pescado", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
+		"verdura": {"nombre": "Verdura", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
 		"pescado3": {"nombre": "Pescado3", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
 		"pescado4": {"nombre": "Pescado4", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
 	}

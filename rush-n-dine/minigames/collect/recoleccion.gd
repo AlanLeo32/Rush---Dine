@@ -3,22 +3,54 @@ extends Node2D
 var colectable_scene: PackedScene = load("res://minigames/collect/colectable.tscn")
 var cant_colectables: int = 0
 
+@onready var canasta = $CanastaRecoleccion
+
 func _on_timer_colectable_spawn_timeout() -> void:
 	var colectable = colectable_scene.instantiate()
-	
+	colectable.connect("recolectado", Callable(self, "_on_colectable_recolectado"))
 	$Colectables.add_child(colectable)
 
 
 func _process(delta):
 	var tiempo_restante = int($TimerMinijuego.time_left)
-	$CantidadLabel.text = "Cantidad: %d" % Globales.cant_colectables
+	$CantidadLabel.text = "Cantidad: %d" % cant_colectables
 	$TimeLeftLabel.text = "%d" % tiempo_restante
 
 
 func _on_timer_minijuego_timeout() -> void:
-	# Ejemplo: cambiar de escena
-	#get_tree().change_scene_to_file("res://escenas/MenuPrincipal.tscn")
+	terminar_minijuego()
+	
+func terminar_minijuego():
+	print("Juego recolección terminado")
+	# Detener timers, pausar si es necesario, etc.
+	if has_node("TimerMinijuego"):
+		$TimerMinijuego.stop()
+	get_tree().paused = true
 
-	# O si querés mostrar un mensaje final antes:
-	# $GameOverLabel.visible = true
-	set_process(false)  # detener la lógica del juego
+	# Calcula la cantidad de recursos recolectados 
+	var cant_recurso
+	if cant_colectables > 0:
+		cant_recurso = int(cant_colectables/2)
+	else:
+		cant_recurso = 0
+	var recurso = "verdura" 
+
+	ManejoMinijuegos.actualizar_recursos(recurso, cant_recurso)
+	ManejoMinijuegos.volver_a_dia()
+
+func _unhandled_input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		var screen_size = get_viewport().size
+		if event.position.x < screen_size.x / 2:
+			canasta.mover_izquierda()
+		else:
+			canasta.mover_derecha()
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var screen_size = get_viewport().size
+		if event.position.x < screen_size.x / 2:
+			canasta.mover_izquierda()
+		else:
+			canasta.mover_derecha()
+
+func _on_colectable_recolectado():
+	cant_colectables += 1

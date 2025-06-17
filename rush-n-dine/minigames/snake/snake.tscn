@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2f3r062nvxil"]
 
-[ext_resource type="Texture2D" uid="uid://dr2drbjni7l78" path="res://Sprites/apple65px.png" id="1_qumpe"]
+[ext_resource type="Texture2D" uid="uid://b8fvjmsxa6cq8" path="res://Sprites/tomate64px.png" id="1_qumpe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8ckh"]
 bg_color = Color(0.487059, 0.439056, 0.150494, 1)

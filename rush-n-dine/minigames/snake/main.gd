@@ -81,33 +81,33 @@ func add_segment(pos):
 	snake.append(SnakeSegment)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	move_snake()
-	
-func move_snake():
-	if can_move:
-		#update movement from keypresses
-		if Input.is_action_just_pressed("move_down") and move_direction != up:
-			move_direction = down
-			can_move = false
-			if not game_started:
-				start_game()
-		if Input.is_action_just_pressed("move_up") and move_direction != down:
-			move_direction = up
-			can_move = false
-			if not game_started:
-				start_game()
-		if Input.is_action_just_pressed("move_left") and move_direction != right:
-			move_direction = left
-			can_move = false
-			if not game_started:
-				start_game()
-		if Input.is_action_just_pressed("move_right") and move_direction != left:
-			move_direction = right
-			can_move = false
-			if not game_started:
-				start_game()
-
+#func _process(delta):
+#	move_snake()
+#	
+#func move_snake():
+#	if can_move:
+#		#update movement from keypresses
+#		if Input.is_action_just_pressed("move_down") and move_direction != up:
+#			move_direction = down
+#			can_move = false
+#			if not game_started:
+#				start_game()
+#		if Input.is_action_just_pressed("move_up") and move_direction != down:
+#			move_direction = up
+#			can_move = false
+#			if not game_started:
+#				start_game()
+#		if Input.is_action_just_pressed("move_left") and move_direction != right:
+#			move_direction = left
+#			can_move = false
+#			if not game_started:
+#				start_game()
+#		if Input.is_action_just_pressed("move_right") and move_direction != left:
+#			move_direction = right
+#			can_move = false
+#			if not game_started:
+#				start_game()
+#
 func start_game():
 	game_started = true
 	$MoveTimer.start()
@@ -161,7 +161,64 @@ func end_game():
 	$MoveTimer.stop()
 	game_started = false
 	get_tree().paused = true
+	var cant_recursos = int(score / 5)
+	var recurso = "verdura"
+	ManejoMinijuegos.actualizar_recursos(recurso, cant_recursos)
+	ManejoMinijuegos.volver_a_dia()
+	
 
 
 func _on_game_over_menu_restart():
 	new_game()
+
+var touch_start_position := Vector2.ZERO
+var dragging := false
+
+func _unhandled_input(event):
+	# PC: Mouse
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			touch_start_position = event.position
+			dragging = true
+			if not game_started:
+				start_game()
+		else:
+			dragging = false
+	elif event is InputEventMouseMotion and dragging:
+		var drag_vector = event.position - touch_start_position
+		if drag_vector.length() > 10:
+			var dir = drag_vector.normalized()
+			if abs(dir.x) > abs(dir.y):
+				if dir.x > 0 and move_direction != Vector2.LEFT:
+					move_direction = Vector2.RIGHT
+				elif dir.x < 0 and move_direction != Vector2.RIGHT:
+					move_direction = Vector2.LEFT
+			else:
+				if dir.y > 0 and move_direction != Vector2.UP:
+					move_direction = Vector2.DOWN
+				elif dir.y < 0 and move_direction != Vector2.DOWN:
+					move_direction = Vector2.UP
+
+	# Móvil: Touch
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_start_position = event.position
+			dragging = true
+			if not game_started:
+				start_game()
+		else:
+			dragging = false
+	elif event is InputEventScreenDrag and dragging:
+		var drag_vector = event.position - touch_start_position
+		if drag_vector.length() > 10:
+			var dir = drag_vector.normalized()
+			if abs(dir.x) > abs(dir.y):
+				if dir.x > 0 and move_direction != Vector2.LEFT:
+					move_direction = Vector2.RIGHT
+				elif dir.x < 0 and move_direction != Vector2.RIGHT:
+					move_direction = Vector2.LEFT
+			else:
+				if dir.y > 0 and move_direction != Vector2.UP:
+					move_direction = Vector2.DOWN
+				elif dir.y < 0 and move_direction != Vector2.DOWN:
+					move_direction = Vector2.UP
