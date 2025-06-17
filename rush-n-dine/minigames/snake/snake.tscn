@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2f3r062nvxil"]
+
+[ext_resource type="Texture2D" uid="uid://dr2drbjni7l78" path="res://Sprites/apple65px.png" id="1_qumpe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8ckh"]
+bg_color = Color(0.487059, 0.439056, 0.150494, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="Panel" type="Panel"]
+offset_right = 77.0
+offset_bottom = 77.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v8ckh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(38, 36)
+texture = ExtResource("1_qumpe")

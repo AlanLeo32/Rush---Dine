@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw1qbqu28inua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyvuk"]
+bg_color = Color(0.225893, 0.12273, 0.0392124, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wyvuk"]
+font_size = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rf1r0"]
+bg_color = Color(0.227451, 0.121569, 0.0392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fan27"]
+bg_color = Color(0.227451, 0.121569, 0.0392157, 1)
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="ScorePanel" type="Panel" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wyvuk")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -61.5
+offset_top = 8.0
+offset_right = 61.5
+offset_bottom = 53.0
+grow_horizontal = 2
+text = "PUNTAJE: 0"
+label_settings = SubResource("LabelSettings_wyvuk")
+
+[node name="IzqPanel" type="Panel" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 51.0
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rf1r0")
+
+[node name="DerPanel" type="Panel" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fan27")
+
+[node name="BottomPanel" type="Panel" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -74.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wyvuk")
