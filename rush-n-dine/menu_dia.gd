@@ -22,6 +22,7 @@ descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 	var angulo_inicio := 150
 	var angulo_fin := 150+ (horas_a_pintar) * 30.0
 	nodo.actualizar_sector(150, angulo_fin)
+	nodo._draw()
 	var rotacion_en_grados : int = (cantidad_acciones[Globales.mesas - 1]-DiaData.acciones_disponibles)* 60.0
 	var rotacion_en_radianes := deg_to_rad(240+rotacion_en_grados)
 	$TextureRect/Panel/Reloj/Aguja.rotation = rotacion_en_radianes

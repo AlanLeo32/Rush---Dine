@@ -27,4 +27,3 @@ func _draw():
 func actualizar_sector(nuevo_inicio: float, nuevo_fin: float) -> void:
 	angulo_inicio = nuevo_inicio
 	angulo_fin = nuevo_fin
-	queue_redraw()

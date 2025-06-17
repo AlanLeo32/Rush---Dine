@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b77rhmmb47ieh"
-path="res://.godot/imported/FondoTienda.png-aac59fbf34b55cefb824663f60b9b48e.ctex"
+uid="uid://ppit8u5t0nde"
+path="res://.godot/imported/cancelar.webp-409be649209c02cfd018ca6ba1898d2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fondos/FondoTienda.png"
-dest_files=["res://.godot/imported/FondoTienda.png-aac59fbf34b55cefb824663f60b9b48e.ctex"]
+source_file="res://Sprites/cancelar.webp"
+dest_files=["res://.godot/imported/cancelar.webp-409be649209c02cfd018ca6ba1898d2d.ctex"]
 
 [params]
 
