@@ -32,7 +32,6 @@ func terminar_minijuego():
 	# Detener timers, pausar si es necesario, etc.
 	if has_node("TimerMinijuego"):
 		$TimerMinijuego.stop()
-	get_tree().paused = true
 
 	# Calcula la cantidad de recursos recolectados 
 	var cant_recurso

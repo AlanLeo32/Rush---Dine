@@ -160,7 +160,6 @@ func end_game():
 	print("Juego snake terminado")
 	$MoveTimer.stop()
 	game_started = false
-	get_tree().paused = true
 	var cant_recursos = int(score / 5)
 	var recurso = "verdura"
 	ManejoMinijuegos.actualizar_recursos(recurso, cant_recursos)
