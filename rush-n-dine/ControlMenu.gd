@@ -35,3 +35,6 @@ func _on_texture_rect_pressed() -> void:
 	Globales.mesas= 1
 	DiaData.dia_iniciado=false
 	$Fondo.texture = load("res://Fondos/FondoDia.png")
+	var path := "user://save_game.json"
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(path)
