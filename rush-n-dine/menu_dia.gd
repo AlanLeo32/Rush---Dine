@@ -30,21 +30,19 @@ descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 
 func _on_boton_tienda_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	get_tree().change_scene_to_file("res://Tienda.tscn")
+	ManejoMinijuegos.abre_tienda()
 
 func _on_boton_ruleta_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	get_tree().change_scene_to_file("res://minigames/ruleta/RuletaScene.tscn")
+	ManejoMinijuegos.minijuego_ruleta()
 
 func _on_boton_cosecha_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
-	_ready() #cuando se conecte el minijuego sacar esto...
+	ManejoMinijuegos.minijuego_verdura_random()
 
 func _on_boton_pesca_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
-	_ready() #cuando se conecte el minijuego sacar esto...
+	ManejoMinijuegos.minijuego_pescado()
 
 func _on_boton_abrir_pressed() -> void:
 	DiaData.dia_iniciado=false

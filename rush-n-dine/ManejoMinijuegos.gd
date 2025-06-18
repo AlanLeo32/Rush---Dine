@@ -106,6 +106,12 @@ func volver_a_dia():
 
 func minijuego_snake():
 	get_tree().change_scene_to_file("res://minigames/snake/main.tscn")
+	
+func minijuego_ruleta():
+	get_tree().change_scene_to_file("res://minigames/ruleta/RuletaScene.tscn")
+	
+func abre_tienda():
+	get_tree().change_scene_to_file("res://Tienda.tscn")
 
 func minijuego_recolectar():
 	get_tree().change_scene_to_file("res://minigames/collect/recoleccion.tscn")
