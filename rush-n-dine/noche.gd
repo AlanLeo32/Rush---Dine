@@ -85,11 +85,13 @@ func procesar_resultado_minijuego(resultado):
 
 		plato.receta = receta
 		plato.clave = ""
+		
 		if receta["nombre"] != "Agua":
 			for clave in Globales.recetas_desbloqueadas.keys():
 				if Globales.recetas_desbloqueadas[clave] == receta:
 					plato.clave = clave
 					break
+			plato.precio = plato.receta["precio"] * 0.25 * puntaje
 		else:
 			plato.clave = "agua"
 		cocinero.recibir_plato(plato)

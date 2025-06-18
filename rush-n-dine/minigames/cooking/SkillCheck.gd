@@ -13,7 +13,7 @@ var center = Vector2.ZERO
 #var radius = 100.0  # ajustá esto al tamaño de tu círculo
 var radius
 var color 
-var coordsCartel = [Vector2(1336, 720), Vector2(1389, 483), Vector2(1376, 272), Vector2(1295, 127)]
+var coordsCartel = [Vector2(1336+6510, 720), Vector2(1389+6510, 483), Vector2(1376+6510, 272), Vector2(1295+6510, 127)]
 var pos_text = Vector2.ZERO
 var deltaGlobal = 0
 var coccion

@@ -57,14 +57,14 @@ func _process(delta):
 
 			for hit in result:
 				var obj := hit.get("collider") as Node
-				print("Colisiona con:", obj)  # <-- Agregá este print acá
+				#print("Colisiona con:", obj)  # <-- Agregá este print acá
 				if obj and (obj.is_in_group("Fruta") or obj.is_in_group("Roca")) and !obj.cortando():
 					obj.cortar()
 					if obj.is_in_group("Fruta"):
-						print("Fruta cortada")
+						#print("Fruta cortada")
 						puntaje += 1
 					else:
-						print("piedra cortada") 
+						#print("piedra cortada") 
 						if puntaje >= 0:
 							puntaje -= 1
 				print('Direccion del corte: ' + dir)

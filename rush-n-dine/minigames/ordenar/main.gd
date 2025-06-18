@@ -154,9 +154,9 @@ func calcular_distancia(posicion_ingrediente_colocado,nombre_ingrediente, posici
 	if !ing_repetible.has(nombre_ingrediente):
 		posicion_ideal = posiciones_ideales_pescado.get(nombre_ingrediente, null)  
 		mejor_dist = posicion_ideal.distance_to(posicion_ingrediente_colocado)
-		print("NOMBRE ING: ", nombre_ingrediente, "POS_IDEAL: ", posicion_ideal, "POS REAL: ", posicion_ingrediente_colocado)
+		#print("NOMBRE ING: ", nombre_ingrediente, "POS_IDEAL: ", posicion_ideal, "POS REAL: ", posicion_ingrediente_colocado)
 	else:
-		print("entralelse")
+		#print("entralelse")
 		mejor_dist = 99999
 		for repe in ing_repetible:
 			posicion_ideal = posiciones_ideales_pescado.get(repe, null)

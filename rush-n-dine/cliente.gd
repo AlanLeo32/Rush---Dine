@@ -206,7 +206,8 @@ func recibir_plato(plato: Node):
 	$AnimatedSprite2D.play()
 	NocheData.atenciones_completas +=1
 	if pedido_actual!="agua":
-		NocheData.dinero_ganado+= plato.receta["precio"]
+		NocheData.dinero_ganado+= plato.precio
+		print("a casa platita", plato.precio)
 	esperando_pedido = false
 	nube_pedido.visible = false
 	nube_pedido.stop()

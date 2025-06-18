@@ -39,13 +39,13 @@ func _gui_input(event: InputEvent):
 				dragging = true
 				drag_offset = get_global_mouse_position() - global_position
 				z_index = 10 # Para que esté por encima al arrastrar
-				print(ingredient_type + " picked up")
+				#print(ingredient_type + " picked up")
 			else:
 				if dragging:
 					dragging = false
 					z_index = 1 # Volver a su z-index normal o el que corresponda
 					emit_signal("dropped", self, global_position)
-					print(ingredient_type + " dropped at " + str(global_position))
+					#print(ingredient_type + " dropped at " + str(global_position))
 
 	if event is InputEventMouseMotion and dragging:
 		global_position = get_global_mouse_position() - drag_offset

@@ -20,7 +20,7 @@ func recibir_plato(plato: Node):
 	mano.add_child(plato)
 	plato.position = Vector2.ZERO  # Aparece en la mano
 	objeto_en_mano = mano.get_child(0)
-	print("Platillo recibido")
+	print("Platillo recibido, con precio: ", plato.precio)
 
 func entregar_plato_al_cliente():
 	if objeto_en_mano and objeto_actual and objeto_actual.has_method("recibir_plato"):

@@ -27,7 +27,7 @@ func _on_spawn_timer_timeout():
 	var x_local = randi_range(700, 1200)
 	var y_local = 600
 	elem.position = Vector2(x_local, y_local)
-	print("Spawnea en:", elem.position)
+	#print("Spawnea en:", elem.position)
 	fruits_node.add_child(elem)
 	
 func _process(delta):
@@ -37,10 +37,8 @@ func _process(delta):
 
 func terminar_minijuego():
 	var puntos: float
-	print("CANT DE FRUTAS Q APARECIERON: ",cant, "CANT DE CORTADAS: ", slash.getPuntaje())
 	if cant > 0:
 		puntos = float(slash.getPuntaje()+1) / cant
-		print("PUNTOS", puntos)
 	else:
 		puntos = 1 - slash.getPuntaje()
 		
