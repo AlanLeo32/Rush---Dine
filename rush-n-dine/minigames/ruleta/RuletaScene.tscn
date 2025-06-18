@@ -1,0 +1,443 @@
+[gd_scene load_steps=15 format=3 uid="uid://bqkfxom7xichn"]
+
+[ext_resource type="Texture2D" uid="uid://ci4r3nlhhpc11" path="res://minigames/ruleta/manilla.png" id="1"]
+[ext_resource type="Script" uid="uid://cdepvevgohc0v" path="res://minigames/ruleta/RuletaScene.gd" id="1_ho83d"]
+[ext_resource type="Texture2D" uid="uid://o45uc2eal4xj" path="res://minigames/ruleta/ruleta.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://s0gw0vlvb71w" path="res://minigames/ruleta/FondoRuleta.png" id="2_xliai"]
+[ext_resource type="Texture2D" uid="uid://8wff15gmvtph" path="res://Sprites/Cruz.png" id="5_mtkjg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ho83d"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_xliai"]
+font_size = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xliai"]
+bg_color = Color(0, 0, 0, 0.819608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mtkjg"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_07kn7"]
+font_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtkjg"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0hfa"]
+font_size = 40
+font_color = Color(0.705666, 0.0161533, 0.227384, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07kn7"]
+bg_color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y501d"]
+font_size = 60
+
+[node name="RuletaScene" type="Node2D"]
+script = ExtResource("1_ho83d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_xliai")
+
+[node name="SpriteRuleta" type="Sprite2D" parent="."]
+position = Vector2(928, 527)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2")
+
+[node name="1" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="SpriteRuleta/1"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(640, 48, 736, 144, 520, 272, 520, 264)
+disabled = true
+
+[node name="1" type="Label" parent="SpriteRuleta/1"]
+offset_left = 189.0
+offset_top = -244.0
+offset_right = 275.0
+offset_bottom = -175.0
+rotation = 0.84823
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="2" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="SpriteRuleta/2"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(784, 288, 752, 168, 528, 288, 536, 288)
+disabled = true
+
+[node name="2" type="Label" parent="SpriteRuleta/2"]
+offset_left = 289.0
+offset_top = -115.0
+offset_right = 375.0
+offset_bottom = -46.0
+rotation = 1.35787
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="3" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="SpriteRuleta/3"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(784, 304, 752, 440, 528, 312, 536, 304)
+disabled = true
+
+[node name="3" type="Label" parent="SpriteRuleta/3"]
+offset_left = 309.0
+offset_top = 39.0
+offset_right = 395.0
+offset_bottom = 108.0
+rotation = 1.8675
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="4" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="SpriteRuleta/4"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(736, 456, 648, 544, 512, 328, 520, 328)
+disabled = true
+
+[node name="4" type="Label" parent="SpriteRuleta/4"]
+offset_left = 245.0
+offset_top = 182.0
+offset_right = 331.0
+offset_bottom = 251.0
+rotation = 2.37714
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="5" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="SpriteRuleta/5"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(624, 560, 496, 592, 496, 344, 504, 344)
+disabled = true
+
+[node name="5" type="Label" parent="SpriteRuleta/5"]
+offset_left = 113.0
+offset_top = 281.0
+offset_right = 199.0
+offset_bottom = 350.0
+rotation = 2.88677
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="6" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="SpriteRuleta/6"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(480, 592, 352, 560, 472, 344, 480, 344)
+disabled = true
+
+[node name="6" type="Label" parent="SpriteRuleta/6"]
+offset_left = -43.0
+offset_top = 306.0
+offset_right = 43.0
+offset_bottom = 375.0
+rotation = 3.44877
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="7" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="SpriteRuleta/7"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(336, 544, 248, 448, 456, 328, 456, 336)
+disabled = true
+
+[node name="7" type="Label" parent="SpriteRuleta/7"]
+offset_left = -181.0
+offset_top = 235.0
+offset_right = -95.0
+offset_bottom = 304.0
+rotation = 3.90605
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="8" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="SpriteRuleta/8"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(232, 440, 200, 312, 448, 304, 448, 312)
+disabled = true
+
+[node name="8" type="Label" parent="SpriteRuleta/8"]
+offset_left = -279.0
+offset_top = 115.0
+offset_right = -193.0
+offset_bottom = 184.0
+rotation = 4.41568
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="9" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="SpriteRuleta/9"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(192, 288, 232, 160, 456, 288)
+disabled = true
+
+[node name="9" type="Label" parent="SpriteRuleta/9"]
+offset_left = -299.0
+offset_top = -39.0
+offset_right = -213.0
+offset_bottom = 30.0
+rotation = -1.35787
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+metadata/_edit_use_anchors_ = true
+
+[node name="10" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="SpriteRuleta/10"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(240, 144, 336, 48, 464, 264, 456, 272)
+disabled = true
+
+[node name="10" type="Label" parent="SpriteRuleta/10"]
+offset_left = -244.0
+offset_top = -181.0
+offset_right = -158.0
+offset_bottom = -112.0
+rotation = -0.84823
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="11" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="SpriteRuleta/11"]
+position = Vector2(-489, -300)
+polygon = PackedVector2Array(352, 40, 480, 8, 480, 256, 472, 256)
+disabled = true
+
+[node name="11" type="Label" parent="SpriteRuleta/11"]
+offset_left = -120.0
+offset_top = -279.0
+offset_right = -34.0
+offset_bottom = -210.0
+rotation = -0.315905
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="12" type="Area2D" parent="SpriteRuleta"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpriteRuleta/12"]
+polygon = PackedVector2Array(7, -300, 143, -260, 15, -36, 7, -36)
+disabled = true
+
+[node name="12" type="Label" parent="SpriteRuleta/12"]
+offset_left = 43.0
+offset_top = -312.0
+offset_right = 129.0
+offset_bottom = -243.0
+rotation = 0.340339
+label_settings = SubResource("LabelSettings_ho83d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AreaManecilla" type="Area2D" parent="."]
+position = Vector2(926, 57)
+
+[node name="SpriteManecilla" type="Sprite2D" parent="AreaManecilla"]
+position = Vector2(1, 6)
+texture = ExtResource("1")
+offset = Vector2(0, 80)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaManecilla"]
+position = Vector2(0, 6)
+polygon = PackedVector2Array(0, -5, 8, -5, 8.00003, 28.795, 8, 171, 0, 171)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Saldo" type="Label" parent="."]
+offset_left = 35.0
+offset_top = 32.0
+offset_right = 488.0
+offset_bottom = 128.0
+label_settings = SubResource("LabelSettings_xliai")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1419.0
+offset_top = 269.0
+offset_right = 1811.0
+offset_bottom = 660.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xliai")
+
+[node name="Apuesta" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -49.5
+offset_right = 144.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_mtkjg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button+" type="Button" parent="Panel"]
+layout_mode = 0
+offset_right = 394.0
+offset_bottom = 137.0
+
+[node name="Label" type="Label" parent="Panel/Button+"]
+layout_mode = 0
+offset_right = 390.0
+offset_bottom = 137.0
+text = "+"
+label_settings = SubResource("LabelSettings_07kn7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button-" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -137.0
+offset_right = 394.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel/Button-"]
+layout_mode = 0
+offset_right = 390.0
+offset_bottom = 137.0
+text = "-"
+label_settings = SubResource("LabelSettings_07kn7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonInicia" type="Button" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1415.0
+offset_top = 710.0
+offset_right = 1809.0
+offset_bottom = 847.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="BotonInicia"]
+layout_mode = 0
+offset_right = 390.0
+offset_bottom = 137.0
+text = "START"
+label_settings = SubResource("LabelSettings_07kn7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ErrorPopup" type="PopupPanel" parent="."]
+auto_translate_mode = 1
+position = Vector2i(1388, 865)
+size = Vector2i(447, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mtkjg")
+
+[node name="Label" type="Label" parent="ErrorPopup"]
+offset_right = 447.0
+offset_bottom = 100.0
+text = "SALDO INSUFICIENTE"
+label_settings = SubResource("LabelSettings_f0hfa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cancelar" type="TextureButton" parent="."]
+offset_left = 1741.0
+offset_top = 30.0
+offset_right = 1835.0
+offset_bottom = 123.0
+texture_normal = ExtResource("5_mtkjg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PanelNotificacion" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 525.0
+offset_top = 303.0
+offset_right = 1344.0
+offset_bottom = 644.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_07kn7")
+
+[node name="LabelResultado" type="Label" parent="PanelNotificacion"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 818.0
+offset_bottom = 192.0
+label_settings = SubResource("LabelSettings_y501d")
+horizontal_alignment = 1
+
+[node name="BotonConfirma" type="Button" parent="PanelNotificacion"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 223.0
+offset_right = 509.0
+offset_bottom = 313.0
+
+[node name="LabelOk" type="Label" parent="PanelNotificacion"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 223.0
+offset_right = 509.0
+offset_bottom = 313.0
+text = "OK"
+label_settings = SubResource("LabelSettings_y501d")
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="AreaManecilla" to="." method="_on_AreaManecilla_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="button_down" from="Panel/Button+" to="." method="_on_button_button_downSUMA"]
+[connection signal="button_up" from="Panel/Button+" to="." method="_on_button_button_upSUMA"]
+[connection signal="button_down" from="Panel/Button-" to="." method="_on_button_button_downRESTA"]
+[connection signal="button_up" from="Panel/Button-" to="." method="_on_button_button_upRESTA"]
+[connection signal="pressed" from="BotonInicia" to="." method="_on_boton_inicia_pressed"]
+[connection signal="pressed" from="Cancelar" to="." method="_on_cancelar_pressed"]
+[connection signal="pressed" from="PanelNotificacion/BotonConfirma" to="." method="_on_boton_confirma_pressed"]

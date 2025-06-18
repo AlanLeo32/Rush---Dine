@@ -34,8 +34,7 @@ func _on_boton_tienda_pressed() -> void:
 
 func _on_boton_ruleta_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
-	#cambio de escena minijuego, el minijuego para volver solo tiene que llamar a esta escena (antes tiene que modificar los recursos segun el que afecte... verdura o pescado)
-	_ready() #cuando se conecte el minijuego sacar esto...
+	get_tree().change_scene_to_file("res://minigames/ruleta/RuletaScene.tscn")
 
 func _on_boton_cosecha_pressed() -> void:
 	DiaData.acciones_disponibles -= 1
