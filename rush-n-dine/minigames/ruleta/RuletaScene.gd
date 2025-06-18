@@ -148,7 +148,8 @@ func _on_button_button_upSUMA() -> void:
 	manteniendo_suma = false
 
 func _on_button_button_downRESTA() -> void:
-	apuesta -= 1
+	if apuesta >0:
+		apuesta -= 1
 	manteniendo_resta = true
 
 func _on_button_button_upRESTA() -> void:
