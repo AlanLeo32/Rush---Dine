@@ -38,12 +38,12 @@ func cargar_recetas_iniciales():
 				"res://minigames/ordenar/main.tscn"
 			],
 			"ubi_ing": {
-				"lechuga": Vector2(6813, 174.9),
-				"pescado": Vector2(6862, 340.6),
-				"tomate": Vector2(6829.1, 562),
-				"pepino1": Vector2(7203.6, 533.4),
-				"pepino2": Vector2(7120.7, 600.6),
-				"pepino3": Vector2(7045.6, 637.7)
+				"lechuga": Vector2(292.1+6510, 174.9),
+				"pescado": Vector2(347.9+6510, 340.6),
+				"tomate": Vector2(322.1+6510, 562),
+				"pepino1": Vector2(693.6+6510, 533.4),
+				"pepino2": Vector2(600.7+6510, 600.6),
+				"pepino3": Vector2(493.6+6510, 637.7)
 			}
 		},
 		"pescado_asado2": {
