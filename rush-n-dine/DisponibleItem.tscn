@@ -44,9 +44,9 @@ mouse_filter = 1
 [node name="ImagenReceta" type="TextureRect" parent="CanvasLayer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 0
-offset_left = 9.0
+offset_left = 10.0
 offset_top = 10.0
-offset_right = 159.0
+offset_right = 160.0
 offset_bottom = 160.0
 texture = SubResource("ViewportTexture_rfx5r")
 expand_mode = 1

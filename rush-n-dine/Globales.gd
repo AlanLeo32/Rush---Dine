@@ -29,6 +29,7 @@ func cargar_recetas_iniciales():
 		"pescado_asado1": {
 			"nombre": "Pescado Asado1",
 			"imagen": preload("res://Sprites/ComidaPrueba.png"),
+			"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
 			"precio": 15,
 			"popularidad": 8,
 			"recursos_requeridos": {
@@ -50,6 +51,7 @@ func cargar_recetas_iniciales():
 		"pescado_asado2": {
 			"nombre": "Pescado Asado2",
 			"imagen": preload("res://Sprites/ComidaPrueba.png"),
+			"imagenquemado": preload("res://Sprites/ComidaPrueba.png"),
 			"precio": 15,
 			"popularidad": 8,
 			"recursos_requeridos": {
@@ -66,6 +68,7 @@ func cargar_recetas_iniciales():
 				"pescado_asado3": {
 			"nombre": "Pescado Asado3",
 			"imagen": preload("res://Sprites/ComidaPrueba.png"),
+			"imagenquemado": preload("res://Sprites/ComidaPrueba.png"),
 			"precio": 15,
 			"popularidad": 8,
 			"recursos_requeridos": {
@@ -78,6 +81,7 @@ func cargar_recetas_iniciales():
 				"pescado_asado4": {
 			"nombre": "Pescado Asado4",
 			"imagen": preload("res://Sprites/ComidaPrueba.png"),
+			"imagenquemado": preload("res://Sprites/ComidaPrueba.png"),
 			"precio": 15,
 			"popularidad": 8,
 			"recursos_requeridos": {
@@ -90,6 +94,7 @@ func cargar_recetas_iniciales():
 				"pescado_asado5": {
 			"nombre": "Pescado Asado5",
 			"imagen": preload("res://Sprites/ComidaPrueba.png"),
+			"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
 			"precio": 15,
 			"popularidad": 8,
 			"recursos_requeridos": {
@@ -102,6 +107,7 @@ func cargar_recetas_iniciales():
 				"pescado_asado6": {
 			"nombre": "Pescado Asado6",
 			"imagen": preload("res://Sprites/ComidaPrueba.png"),
+			"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
 			"precio": 15,
 			"popularidad": 8,
 			"recursos_requeridos": {
@@ -114,6 +120,7 @@ func cargar_recetas_iniciales():
 				"pescado_asado7": {
 			"nombre": "Pescado Asado7",
 			"imagen": preload("res://Sprites/ComidaPrueba.png"),
+			"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
 			"precio": 15,
 			"popularidad": 8,
 			"recursos_requeridos": {
@@ -149,6 +156,7 @@ func guardar_estado():
 		save_data["recetas_desbloqueadas"][nombre] = {
 			"nombre": r["nombre"],
 			"imagen_path": r["imagen"].resource_path,
+			"imagenquemado_path": r["imagenquemado"].resource_path,
 			"precio": r["precio"],
 			"popularidad": r["popularidad"],
 			"recursos_requeridos": r["recursos_requeridos"],
@@ -212,6 +220,7 @@ func cargar_estado():
 			recetas_desbloqueadas[nombre] = {
 				"nombre": r["nombre"],
 				"imagen": load(r["imagen_path"]),
+				"imagenquemado": load(r["imagenquemado_path"]),
 				"precio": r["precio"],
 				"popularidad": r["popularidad"],
 				"recursos_requeridos": r["recursos_requeridos"],

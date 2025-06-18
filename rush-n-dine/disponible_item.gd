@@ -19,6 +19,7 @@ func set_data(id, receta_data, cantidad):
 		$CanvasLayer/LbCantidad.visible = false
 		$CanvasLayer/ImagenPrecio.visible = false
 		$CanvasLayer/ImagenPopularidad.visible = false
+		$CanvasLayer/ImagenReceta.position = Vector2(75, 10)
 
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

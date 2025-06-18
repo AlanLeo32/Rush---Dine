@@ -198,7 +198,10 @@ func recibir_plato(plato: Node):
 	var sprite_destino := mesa_asignada.get_node("Plato")
 	# Copiar la textura
 	sprite_destino.texture = sprite_origen.texture
-	sprite_destino.scale = Vector2(0.25, 0.25)
+	if pedido_actual!="agua":
+		sprite_destino.scale = Vector2(0.25, 0.25)
+	else:
+		sprite_destino.scale = Vector2(0.1, 0.1)
 	# Asegurarse que esté visible
 	sprite_destino.visible = true
 	
@@ -212,8 +215,13 @@ func recibir_plato(plato: Node):
 	nube_pedido.visible = false
 	nube_pedido.stop()
 	await get_tree().create_timer(3.0).timeout
-	sprite_destino.texture = load("res://Sprites/plato.png")
-	sprite_destino.scale = Vector2(0.5, 0.4)
+	if pedido_actual!="agua":
+		sprite_destino.texture = load("res://Sprites/plato.png")
+		sprite_destino.scale = Vector2(0.5, 0.4)
+	else:
+		sprite_destino.texture = load("res://Sprites/AguaVacia.png")
+		sprite_destino.scale = Vector2(0.1, 0.1)
+	
 	irse()
 
 func atendido():

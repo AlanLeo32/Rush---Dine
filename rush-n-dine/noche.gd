@@ -79,7 +79,7 @@ func procesar_resultado_minijuego(resultado):
 	var cocinero = get_node_or_null("CharacterBodyCocinero2D")
 	if cocinero:
 		var plato: Node
-		if puntaje >= 1:
+		if puntaje >= 2.5:
 			plato = preload("res://Platos/PlatoBueno.tscn").instantiate()
 		else:
 			plato = preload("res://Platos/PlatoQuemado.tscn").instantiate()
@@ -87,6 +87,7 @@ func procesar_resultado_minijuego(resultado):
 
 		plato.receta = receta
 		plato.clave = ""
+		plato.cambia_imagen()
 		
 		if receta["nombre"] != "Agua":
 			for clave in Globales.recetas_desbloqueadas.keys():
