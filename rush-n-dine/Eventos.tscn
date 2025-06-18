@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyac8mvmiwls5"]
+
+[ext_resource type="Script" uid="uid://c0j60o1wkxqc" path="res://eventos.gd" id="1_26k4f"]
+[ext_resource type="Texture2D" uid="uid://cykkpxkpkmxnb" path="res://Fondos/Dia.png" id="2_0ff6e"]
+[ext_resource type="Texture2D" uid="uid://haqfpe0x7c7n" path="res://Fondos/Noche.png" id="3_xj8er"]
+[ext_resource type="Texture2D" uid="uid://b5gaboradafow" path="res://Fondos/FinJuego.png" id="4_0ff6e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26k4f"]
+bg_color = Color(0, 0, 0.0666667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ff6e"]
+bg_color = Color(0.192157, 0.192157, 0.192157, 0.796078)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xj8er"]
+font_size = 50
+
+[node name="Eventos" type="Node2D"]
+script = ExtResource("1_26k4f")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_26k4f")
+
+[node name="FondoDia" type="TextureRect" parent="Panel"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_0ff6e")
+
+[node name="FondoNoche" type="TextureRect" parent="Panel"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_xj8er")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_0ff6e")
+
+[node name="PanelNotificacion" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -820.0
+offset_top = -287.0
+offset_right = 838.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ff6e")
+
+[node name="LabelResultado" type="Label" parent="Panel/PanelNotificacion"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 1660.0
+offset_bottom = 393.0
+label_settings = SubResource("LabelSettings_xj8er")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonConfirma" type="Button" parent="Panel/PanelNotificacion"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -158.0
+offset_right = 147.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LabelOk" type="Label" parent="Panel/PanelNotificacion/BotonConfirma"]
+layout_mode = 0
+offset_right = 293.0
+offset_bottom = 108.0
+text = "OK"
+label_settings = SubResource("LabelSettings_xj8er")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/PanelNotificacion/BotonConfirma" to="." method="_on_boton_confirma_pressed"]

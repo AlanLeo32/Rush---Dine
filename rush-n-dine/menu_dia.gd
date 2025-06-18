@@ -10,12 +10,25 @@ func _ready():
 	elif DiaData.acciones_disponibles ==0:
 		$TextureRect/BotonPesca.visible=false
 		$TextureRect/BotonCosecha.visible=false
-		$TextureRect/BotonTienda.visible=false
-		$TextureRect/BotonMinijuego3.visible=false
+		$TextureRect/BotonDelivery.visible=false
+		$TextureRect/BotonRuleta.visible=false
 		$TextureRect/PanelAdvertencia.visible=true
 		$TextureRect/PanelAdvertencia/BotonNoAbrir/Label2.text= "Evitaras abrir el restaurante esta noche
 descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
+		DiaData.bloqueoPesca=false
+		DiaData.bloqueoCosecha=false
+		DiaData.bloqueoRuleta=false
+		DiaData.bloqueoDelivery=false
+	if DiaData.bloqueoPesca:
+		$TextureRect/BotonPesca.visible=false
+	if DiaData.bloqueoCosecha:
+		$TextureRect/BotonCosecha.visible=false
+	if DiaData.bloqueoRuleta:
+		$TextureRect/BotonRuleta.visible=false
+	if DiaData.bloqueoDelivery:
+		$TextureRect/BotonDelivery.visible=false
 		
+	
 	var nodo = get_node("TextureRect/Panel/Reloj/ColorRect")
 	var horas_a_pintar: int = cantidad_acciones[Globales.mesas - 1] * 2
 	var angulo_inicio := 150
@@ -63,8 +76,8 @@ func _on_boton_no_abrir_pressed() -> void:
 		DiaData.acciones_disponibles = cantidad_acciones[Globales.mesas-1]
 		$TextureRect/BotonPesca.visible=true
 		$TextureRect/BotonCosecha.visible=true
-		$TextureRect/BotonTienda.visible=true
-		$TextureRect/BotonMinijuego3.visible=true
+		$TextureRect/BotonDelivery.visible=true
+		$TextureRect/BotonRuleta.visible=true
 		$TextureRect/PanelAdvertencia.visible=false
 		_ready()
 	else:
@@ -80,8 +93,8 @@ func _on_boton_confirma_add_pressed() -> void:
 	DiaData.acciones_disponibles = cantidad_acciones[Globales.mesas-1]
 	$TextureRect/BotonPesca.visible=true
 	$TextureRect/BotonCosecha.visible=true
-	$TextureRect/BotonTienda.visible=true
-	$TextureRect/BotonMinijuego3.visible=true
+	$TextureRect/BotonDelivery.visible=true
+	$TextureRect/BotonRuleta.visible=true
 	$TextureRect/PanelAdvertencia.visible=false
 	$TextureRect/PanelAdvertencia2.visible=false
 	_ready()

@@ -42,7 +42,6 @@ var efectos_ruleta := {
 }
 
 func _ready():
-	Globales.dinero=1000
 	randomize()
 	# Colocar texto en cada label de cada sector
 	for area in $SpriteRuleta.get_children():

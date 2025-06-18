@@ -172,7 +172,7 @@ func _on_texture_button_pressed() -> void:
 	DiaData.dia_iniciado=false
 	if Globales.dinero>=0:
 		Globales.guardar_estado()
-		get_tree().change_scene_to_file("res://MenuDia.tscn")
+		get_tree().change_scene_to_file("res://Eventos.tscn")
 	else:
 		$TextureRect/PanelAdvertencia.show()
 
@@ -183,4 +183,4 @@ func _on_boton_confirma_add_pressed() -> void:
 	Globales.dinero=0 #Se deja el dinero en balance 0
 	Globales.guardar_estado()
 	#y luego se pasa al dia
-	get_tree().change_scene_to_file("res://MenuDia.tscn")
+	get_tree().change_scene_to_file("res://Eventos.tscn")

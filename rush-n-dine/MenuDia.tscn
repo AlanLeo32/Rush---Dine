@@ -121,14 +121,14 @@ label_settings = SubResource("LabelSettings_q6w18")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BotonMinijuego3" type="TextureButton" parent="TextureRect"]
+[node name="BotonRuleta" type="TextureButton" parent="TextureRect"]
 layout_mode = 0
 offset_left = 1000.0
 offset_top = 140.0
 offset_right = 1619.0
 offset_bottom = 334.0
 
-[node name="Label" type="Label" parent="TextureRect/BotonMinijuego3"]
+[node name="Label" type="Label" parent="TextureRect/BotonRuleta"]
 custom_minimum_size = Vector2(500, 150)
 layout_mode = 1
 anchors_preset = 8
@@ -147,14 +147,14 @@ label_settings = SubResource("LabelSettings_q6w18")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BotonTienda" type="TextureButton" parent="TextureRect"]
+[node name="BotonDelivery" type="TextureButton" parent="TextureRect"]
 layout_mode = 0
 offset_left = 1000.0
 offset_top = 350.0
 offset_right = 1619.0
 offset_bottom = 544.0
 
-[node name="Label" type="Label" parent="TextureRect/BotonTienda"]
+[node name="Label" type="Label" parent="TextureRect/BotonDelivery"]
 custom_minimum_size = Vector2(500, 150)
 layout_mode = 1
 anchors_preset = 8
@@ -417,8 +417,8 @@ stretch_mode = 5
 
 [connection signal="pressed" from="TextureRect/BotonPesca" to="." method="_on_boton_pesca_pressed"]
 [connection signal="pressed" from="TextureRect/BotonCosecha" to="." method="_on_boton_cosecha_pressed"]
-[connection signal="pressed" from="TextureRect/BotonMinijuego3" to="." method="_on_boton_ruleta_pressed"]
-[connection signal="pressed" from="TextureRect/BotonTienda" to="." method="_on_boton_tienda_pressed"]
+[connection signal="pressed" from="TextureRect/BotonRuleta" to="." method="_on_boton_ruleta_pressed"]
+[connection signal="pressed" from="TextureRect/BotonDelivery" to="." method="_on_boton_tienda_pressed"]
 [connection signal="pressed" from="TextureRect/PanelAdvertencia/BotonAbrir" to="." method="_on_boton_abrir_pressed"]
 [connection signal="pressed" from="TextureRect/PanelAdvertencia/BotonNoAbrir" to="." method="_on_boton_no_abrir_pressed"]
 [connection signal="pressed" from="TextureRect/PanelAdvertencia2/BotonConfirmaAdd" to="." method="_on_boton_confirma_add_pressed"]
