@@ -6,6 +6,8 @@ var costo_apertura_por_mesas := [20,50,100, 150,200, 250,300]
 func _ready():
 	if not Globales.sonido:
 		$MusicaFondo.stop()
+	else:
+		$MusicaFondo.play()
 	if not DiaData.dia_iniciado:
 		DiaData.dia_iniciado=true
 		DiaData.acciones_disponibles = cantidad_acciones[Globales.mesas-1]
