@@ -38,3 +38,13 @@ func _on_texture_rect_pressed() -> void:
 	var path := "user://save_game.json"
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
+
+
+func _on_boton_reinicio_2_pressed() -> void:
+	if Globales.sonido: 
+		$CanvasLayer/BotonReinicio2.texture_normal = preload("res://Sprites/Audio-mute.png")
+
+		Globales.sonido=false
+	else:
+		$CanvasLayer/BotonReinicio2.texture_normal = preload("res://Sprites/Sonido.png")
+		Globales.sonido=true

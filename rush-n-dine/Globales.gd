@@ -1,6 +1,7 @@
 extends Node
 
 var estado_de_carga := false
+var sonido=true
 
 # Variables globales del jugador
 var dinero = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cewp3uhc0y4fy"]
+[gd_scene load_steps=25 format=3 uid="uid://cewp3uhc0y4fy"]
 
 [ext_resource type="Texture2D" uid="uid://dww2jq1qi67d6" path="res://Fondos/FondoMenuDia.png" id="1_apavg"]
 [ext_resource type="Script" uid="uid://befj38fotnjgt" path="res://menu_dia.gd" id="1_q6w18"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="6_fxrog"]
 [ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="7_4t7rl"]
 [ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="8_jcr2j"]
+[ext_resource type="AudioStream" uid="uid://bwr3cvxpy51ey" path="res://Musica/synth-chill-vibes-1-159059.mp3" id="10_dowal"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q6w18"]
 font_size = 100
@@ -414,6 +415,11 @@ action_mode = 0
 texture_normal = ExtResource("5_dowal")
 texture_pressed = ExtResource("6_fxrog")
 stretch_mode = 5
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_dowal")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="TextureRect/BotonPesca" to="." method="_on_boton_pesca_pressed"]
 [connection signal="pressed" from="TextureRect/BotonCosecha" to="." method="_on_boton_cosecha_pressed"]

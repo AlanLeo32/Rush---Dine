@@ -29,6 +29,8 @@ func _ready():
 	ManejoMinijuegos.resetear()
 
 func _process(delta):
+	if not Globales.sonido:
+		$MusicaFondo.stop()
 	var aguja = $CanvasLayer2/Reloj/Aguja
 
 	if tiempo_restante > 0 and not bloquear_cocinero:
