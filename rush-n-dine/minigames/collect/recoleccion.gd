@@ -1,13 +1,20 @@
 extends Node2D
 
 var colectable_scene: PackedScene = load("res://minigames/collect/colectable.tscn")
+var roca_scene: PackedScene = load("res://minigames/collect/roca.tscn")
 var cant_colectables: int = 0
 
 @onready var canasta = $CanastaRecoleccion
 
 func _on_timer_colectable_spawn_timeout() -> void:
-	var colectable = colectable_scene.instantiate()
-	colectable.connect("recolectado", Callable(self, "_on_colectable_recolectado"))
+	var colectable
+	if randf() < 0.75:
+		colectable = colectable_scene.instantiate()
+		colectable.connect("recolectado", Callable(self, "_on_colectable_recolectado"))
+	else:
+		colectable = roca_scene.instantiate()
+		colectable.connect("recolectado_roca", Callable(self, "_on_colectable_recolectado_roca"))
+	
 	$Colectables.add_child(colectable)
 
 
@@ -54,3 +61,7 @@ func _unhandled_input(event):
 
 func _on_colectable_recolectado():
 	cant_colectables += 1
+
+func _on_colectable_recolectado_roca():
+	if cant_colectables > 0:
+		cant_colectables -= 1
