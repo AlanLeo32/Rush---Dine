@@ -18,7 +18,7 @@ var iniciada=false
 @export var _roullete_initial_speed: float = 1000.0  # velocidad inicial real
 @export var _deceleration_rate: float = 150.0         # más alto = frena más rápido
 @export var _min_speed_threshold: float = 10.0        # debajo de esto se frena
-@export var apuesta: int = 0
+@export var apuesta:float= 0
 
 var _roullete_speed: float = 0.0
 var _can_move_roullete: bool = false
@@ -27,21 +27,22 @@ var _extra_rotation: float = 0.0
 
 # Multiplicadores por nombre de área
 var efectos_ruleta := {
-	"1": 10,
+	"1": 5,
 	"2": 0,
-	"3": 3,
-	"4": 1,
+	"3": 1,
+	"4": 2,
 	"5": 0,
-	"6": 2,
-	"7": 5,
+	"6": 1,
+	"7": 2,
 	"8": 0,
-	"9": 1,
-	"10": 3,
+	"9": 0.5,
+	"10": 2,
 	"11": 0,
-	"12": 2
+	"12": 0.5
 }
 
 func _ready():
+	Globales.dinero=1000
 	randomize()
 	# Colocar texto en cada label de cada sector
 	for area in $SpriteRuleta.get_children():
@@ -141,8 +142,9 @@ func _aplicar_resultado():
 	iniciada=false
 
 func _on_button_button_downSUMA() -> void:
-	apuesta += 1
-	manteniendo_suma = true
+	if Globales.dinero >apuesta:
+		apuesta += 1
+		manteniendo_suma = true
 
 func _on_button_button_upSUMA() -> void:
 	manteniendo_suma = false
@@ -172,3 +174,7 @@ func _on_cancelar_pressed() -> void:
 
 func _on_boton_confirma_pressed() -> void:
 	$PanelNotificacion.visible=false
+
+
+func _on_boton_allin_pressed() -> void:
+	apuesta=Globales.dinero
