@@ -99,6 +99,25 @@ func calcular_puntaje(area_resultado):
 
 func terminar_minijuego():
 	print('fin minijuego skillcheck')
+	# Activa la cámara de la noche si existe
+	 # Oculta el cartel ideal si existe
+	if has_node("IdealText"):
+		$IdealText.visible = false
+	var noche = get_tree().get_root().get_node_or_null("Noche")
+	if noche and noche.has_node("Camera2D"):
+		var cam_noche = noche.get_node("Camera2D")
+		if cam_noche is Camera2D:
+			cam_noche.make_current()
+	# Desactiva input del minijuego
+	set_process_input(false)
+	set_process(false)
+	# Limpia cualquier focus de control (por si hay nodos Control con focus)
+	if get_viewport().gui_get_focus_owner():
+		get_viewport().gui_get_focus_owner().release_focus()
+
+	# Libera cualquier captura de mouse
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.action_release("ui_select") # Si usás "ui_select" para drag
 	ManejoMinijuegos.logica_siguiente_minijuego()
 
 

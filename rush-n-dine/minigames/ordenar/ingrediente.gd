@@ -10,7 +10,10 @@ var tam
 
 var dragging: bool = false
 var drag_offset: Vector2
-
+func soltar():
+	# Si usás variables como dragging, ponelas en false
+	dragging = false
+	# Si usás input_event, podés resetear posiciones o estados acá
 func _ready():
 	# Para asegurar que el input se procese para este nodo Control
 	mouse_filter = Control.MOUSE_FILTER_STOP # Captura clicks en este nodo

@@ -71,9 +71,21 @@ func terminar_minijuego():
 		overlay.get_node("ContenedorMinijuego").visible = false
 		noche.set("bloquear_cocinero", false)   
 	print("Llamando a logica_siguiente_minijuego")
-
+	if noche and noche.has_node("Camera2D"):
+		var cam_noche = noche.get_node("Camera2D")
+		if cam_noche is Camera2D:
+			cam_noche.make_current()
+	set_process_input(false)
+	set_process(false)
 	# Si el minijuego debe eliminarse:
 	queue_free()
+	# Limpia cualquier focus de control (por si hay nodos Control con focus)
+	if get_viewport().gui_get_focus_owner():
+		get_viewport().gui_get_focus_owner().release_focus()
+
+	# Libera cualquier captura de mouse
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.action_release("ui_select") # Si usás "ui_select" para drag
 	ManejoMinijuegos.logica_siguiente_minijuego()
 
 

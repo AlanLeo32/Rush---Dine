@@ -60,7 +60,10 @@ func dish_pescado():
 		ing_repetible.append(elem.name)
 		nodo_ing.add_child(elem)
 
-
+func soltar_todos_los_ingredientes():
+	for ingrediente in nodo_ing.get_children():
+		if ingrediente.has_method("soltar"):
+			ingrediente.soltar()
 func terminar_minijuego():
 	
 	#Guardo el resultado
@@ -70,7 +73,24 @@ func terminar_minijuego():
 	#}
 	#Volver al juego principal
 	print('fin minijuego ordenar')
+	soltar_todos_los_ingredientes()
 	calcular_puntaje_final()
+	# Activa la cámara de la noche si existe
+	var noche = get_tree().get_root().get_node_or_null("Noche")
+	if noche and noche.has_node("Camera2D"):
+		var cam_noche = noche.get_node("Camera2D")
+		if cam_noche is Camera2D:
+			cam_noche.make_current()
+	# Desactiva input del minijuego
+	set_process_input(false)
+	set_process(false)
+	# Limpia cualquier focus de control (por si hay nodos Control con focus)
+	if get_viewport().gui_get_focus_owner():
+		get_viewport().gui_get_focus_owner().release_focus()
+
+	# Libera cualquier captura de mouse
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.action_release("ui_select") # Si usás "ui_select" para drag
 	ManejoMinijuegos.logica_siguiente_minijuego()
 
 
