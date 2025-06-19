@@ -70,7 +70,7 @@ config={
 [application]
 
 config/name="Rush n Dine"
-run/main_scene="uid://dwetbwewuxu3f"
+run/main_scene="uid://cewp3uhc0y4fy"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 

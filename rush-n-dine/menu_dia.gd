@@ -157,7 +157,7 @@ func _on_timer_anuncio_timeout():
 		boton_cerrar.text = "Espera... " + str(tiempo_restante_anuncio) + "s"
 	else:
 		boton_cerrar.disabled = false
-		boton_cerrar.icon = preload("C:/Users/lauta/Documents/GitHub/Rush---Dine/rush-n-dine/Sprites/Cruz.png") # Cambia la ruta por la de tu ícono real
+		boton_cerrar.icon = preload("res://Sprites/Cruz.png") # Cambia la ruta por la de tu ícono real
 		boton_cerrar.text = ""
 		timer_anuncio.stop()
 
