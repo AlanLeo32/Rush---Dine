@@ -462,4 +462,3 @@ icon = ExtResource("11_4t7rl")
 [connection signal="pressed" from="LogicaPausa/MenuPausa/VBoxContainer/Configuracion" to="." method="_on_configuracion_pressed"]
 [connection signal="pressed" from="LogicaPausa/MenuPausa/VBoxContainer/MenuPrincipal" to="." method="_on_menu_principal_pressed"]
 [connection signal="pressed" from="LogicaPausa/BotonPausa" to="." method="_on_boton_pausa_pressed"]
-[connection signal="pressed" from="PanelAnuncioSimulado/BotonCerrar" to="." method="_on_boton_cerrar_anuncio"]

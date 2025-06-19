@@ -2,6 +2,11 @@ extends Node2D
 
 var cantidad_acciones := [1,2,3,3,4,4,4]
 var costo_apertura_por_mesas := [20,50,100, 150,200, 250,300]
+@onready var panel_anuncio = $PanelAnuncioSimulado
+@onready var boton_cerrar = $PanelAnuncioSimulado/BotonCerrar
+var timer_anuncio: Timer = null
+var tiempo_restante_anuncio := 10
+var recompensa_pendiente := false
 
 func _ready():
 	if not DiaData.dia_iniciado:
@@ -13,8 +18,7 @@ func _ready():
 		$TextureRect/BotonDelivery.visible=false
 		$TextureRect/BotonRuleta.visible=false
 		$TextureRect/PanelAdvertencia.visible=true
-		$TextureRect/PanelAdvertencia/BotonNoAbrir/Label2.text= "Evitaras abrir el restaurante esta noche
-descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
+		$TextureRect/PanelAdvertencia/BotonNoAbrir/Label2.text= "Evitaras abrir el restaurante esta noche\ndescontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 		DiaData.bloqueoPesca=false
 		DiaData.bloqueoCosecha=false
 		DiaData.bloqueoRuleta=false
@@ -27,7 +31,6 @@ descontara de tu dinero: $" + str(costo_apertura_por_mesas[Globales.mesas-1])
 		$TextureRect/BotonRuleta.visible=false
 	if DiaData.bloqueoDelivery:
 		$TextureRect/BotonDelivery.visible=false
-		
 	
 	var nodo = get_node("TextureRect/Panel/Reloj/ColorRect")
 	var horas_a_pintar: int = cantidad_acciones[Globales.mesas - 1] * 2
@@ -85,9 +88,11 @@ func _on_boton_no_abrir_pressed() -> void:
 
 
 func _on_boton_confirma_add_pressed() -> void:
-	
-	#logica para mostrar el anuncio
-	
+	# Mostrar anuncio simulado y marcar recompensa pendiente
+	recompensa_pendiente = true
+	mostrar_anuncio_simulado()
+
+func otorgar_recompensa():
 	Globales.dinero=0
 	Globales.guardar_estado()
 	DiaData.acciones_disponibles = cantidad_acciones[Globales.mesas-1]
@@ -98,7 +103,6 @@ func _on_boton_confirma_add_pressed() -> void:
 	$TextureRect/PanelAdvertencia.visible=false
 	$TextureRect/PanelAdvertencia2.visible=false
 	_ready()
-
 
 func _on_boton_pausa_pressed() -> void:
 	var textura = $LogicaPausa/BotonPausa.texture_pressed
@@ -112,11 +116,8 @@ func _on_boton_pausa_pressed() -> void:
 func _on_configuracion_pressed() -> void:
 	get_tree().change_scene_to_file("res://pantalla_configuracion.tscn")
 
-
 func _on_menu_principal_pressed() -> void:
 	get_tree().change_scene_to_file("res://menu_principal.tscn")
-
-
 
 func cargar_recursos():
 	for child in $TextureRect/Panel/ScrollRecursos/HBoxRecursos.get_children():
@@ -128,3 +129,51 @@ func cargar_recursos():
 		var recurso_item = preload("res://RecursoItemDia.tscn").instantiate()
 		recurso_item.set_data(recurso_data, cantidad_disponible)
 		$TextureRect/Panel/ScrollRecursos/HBoxRecursos.add_child(recurso_item)
+
+func mostrar_anuncio_simulado():
+	panel_anuncio.visible = true
+	boton_cerrar.disabled = true
+	tiempo_restante_anuncio = 10
+	boton_cerrar.icon = null
+	boton_cerrar.text = "Espera... 10s"
+	# Ocultar UI principal
+	$LogicaPausa/BotonPausa.visible = false
+	$TextureRect/Panel/Reloj.visible = false
+
+	# Si ya hay un timer, lo eliminamos
+	if timer_anuncio:
+		timer_anuncio.queue_free()
+	timer_anuncio = Timer.new()
+	timer_anuncio.wait_time = 1
+	timer_anuncio.one_shot = false
+	timer_anuncio.timeout.connect(_on_timer_anuncio_timeout)
+	add_child(timer_anuncio)
+	timer_anuncio.start()
+
+func _on_timer_anuncio_timeout():
+	tiempo_restante_anuncio -= 1
+	if tiempo_restante_anuncio > 0:
+		boton_cerrar.icon = null
+		boton_cerrar.text = "Espera... " + str(tiempo_restante_anuncio) + "s"
+	else:
+		boton_cerrar.disabled = false
+		boton_cerrar.icon = preload("C:/Users/lauta/Documents/GitHub/Rush---Dine/rush-n-dine/Sprites/Cruz.png") # Cambia la ruta por la de tu ícono real
+		boton_cerrar.text = ""
+		timer_anuncio.stop()
+
+func _on_boton_cerrar_anuncio():
+	print("Botón cerrar presionado. Estado:", boton_cerrar.disabled, tiempo_restante_anuncio)
+	if boton_cerrar.disabled or tiempo_restante_anuncio > 0:
+		return # No hacer nada si no pasaron los 10 segundos o si el botón está deshabilitado
+	panel_anuncio.visible = false
+	# Volver a mostrar la UI principal
+	$LogicaPausa/BotonPausa.visible = true
+	$TextureRect/Panel/Reloj.visible = true
+
+	if timer_anuncio:
+		timer_anuncio.queue_free()
+		timer_anuncio = null
+	# Solo otorgar recompensa si estaba pendiente
+	if recompensa_pendiente:
+		recompensa_pendiente = false
+		otorgar_recompensa()
