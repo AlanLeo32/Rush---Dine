@@ -7,7 +7,7 @@ var tiempo_restante_anuncio := 10
 var recompensa_pendiente := false
 # --- FIN BLOQUE ANUNCIO SIMULADO ---
 var costo_apertura_por_mesas := {
-	1: 0,
+	1: 100,
 	2: 50,
 	3: 100,
 	4: 150,
@@ -180,19 +180,13 @@ func _on_texture_button_pressed() -> void:
 		Globales.guardar_estado()
 		get_tree().change_scene_to_file("res://Eventos.tscn")
 	else:
-		 # Mostrar anuncio en vez de advertencia
-		recompensa_pendiente = true
-		mostrar_anuncio_simulado()
-		#$TextureRect/PanelAdvertencia.show()
+		$TextureRect/PanelAdvertencia.show()
 
 
 
 func _on_boton_confirma_add_pressed() -> void:
-	#LOGICA DE MOSTRAR ANUNCIO...
-	Globales.dinero=0 #Se deja el dinero en balance 0
-	Globales.guardar_estado()
-	#y luego se pasa al dia
-	get_tree().change_scene_to_file("res://Eventos.tscn")
+	recompensa_pendiente = true
+	mostrar_anuncio_simulado()
 
 func mostrar_anuncio_simulado():
 	panel_anuncio.visible = true
@@ -235,4 +229,7 @@ func _on_boton_cerrar_anuncio():
 	if recompensa_pendiente:
 		recompensa_pendiente = false
 		# Lógica de recompensa o pasar de escena
-		_on_boton_confirma_add_pressed()
+		Globales.dinero=0 #Se deja el dinero en balance 0
+		Globales.guardar_estado()
+		#y luego se pasa al dia
+		get_tree().change_scene_to_file("res://Eventos.tscn")
