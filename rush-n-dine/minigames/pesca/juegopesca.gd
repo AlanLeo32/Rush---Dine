@@ -1,6 +1,6 @@
 extends Node2D
 var my_button: Button
-var fishing_game_scene := preload("res://fisihing_game.tscn")
+var fishing_game_scene := preload("res://minigames/pesca/fisihing_game.tscn")
 func _ready():
 	my_button = $JugarButton
 

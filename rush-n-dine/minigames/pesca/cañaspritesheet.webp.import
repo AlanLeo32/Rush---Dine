@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4gsg4ej7xsxh"
-path="res://.godot/imported/SlimSlider_Base.png-226b99e6c73a4e327e3d1af9a2f4f516.ctex"
+uid="uid://chy4di8uxfj0k"
+path="res://.godot/imported/cañaspritesheet.webp-677b0a7caa67bf196c5899677cf1f9c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SlimSlider_Base.png"
-dest_files=["res://.godot/imported/SlimSlider_Base.png-226b99e6c73a4e327e3d1af9a2f4f516.ctex"]
+source_file="res://minigames/pesca/cañaspritesheet.webp"
+dest_files=["res://.godot/imported/cañaspritesheet.webp-677b0a7caa67bf196c5899677cf1f9c9.ctex"]
 
 [params]
 

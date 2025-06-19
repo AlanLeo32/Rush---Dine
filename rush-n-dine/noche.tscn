@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://b56fki7hb1lte" path="res://Sprites/SpriteMesa.png" id="23_sa3a0"]
 [ext_resource type="Texture2D" uid="uid://bmj5ljddx5uc0" path="res://Sprites/SpriteSilla.png" id="24_5s16a"]
 [ext_resource type="PackedScene" uid="uid://bcr3blo5ymt85" path="res://MenuCocinar.tscn" id="24_hj8yk"]
-[ext_resource type="PackedScene" path="res://Sprites/menu_mesada.tscn" id="25_uxnie"]
+[ext_resource type="PackedScene" uid="uid://dvfyli57qjb0d" path="res://Sprites/menu_mesada.tscn" id="25_uxnie"]
 [ext_resource type="Script" uid="uid://cd1ccuogqotin" path="res://mesa.gd" id="30_47dcw"]
 [ext_resource type="AudioStream" uid="uid://bwr3cvxpy51ey" path="res://Musica/synth-chill-vibes-1-159059.mp3" id="34_7577o"]
 

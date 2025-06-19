@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://lvovxkw0v7w"]
+
+[ext_resource type="Script" path="res://minigames/pesca/pescar.gd" id="1_5f8p3"]
+[ext_resource type="Texture2D" uid="uid://dry4v5vpmc2fg" path="res://minigames/pesca/juegopesca.png" id="1_05itq"]
+[ext_resource type="PackedScene" uid="uid://cok0rgquvhkyb" path="res://jugar_button.tscn" id="2_82cmo"]
+[ext_resource type="Script" uid="uid://bccb4otwxg7d7" path="res://minigames/pesca/jugar_button.gd" id="4_4yvxl"]
+[ext_resource type="PackedScene" uid="uid://cbuw7ala81bnn" path="res://minigames/pesca/fisihing_game.tscn" id="5_rlh78"]
+
+[node name="Pescar" type="Node2D"]
+script = ExtResource("1_5f8p3")
+
+[node name="escenario" type="Sprite2D" parent="."]
+position = Vector2(978, 507)
+scale = Vector2(1.26693, 0.989268)
+texture = ExtResource("1_05itq")
+
+[node name="JugarButton" parent="." instance=ExtResource("2_82cmo")]
+offset_left = 876.0
+offset_top = 839.0
+offset_right = 977.0
+offset_bottom = 881.0
+script = ExtResource("4_4yvxl")
+
+[node name="Fisihing_game" parent="." instance=ExtResource("5_rlh78")]
+visible = false

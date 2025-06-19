@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpxva0gk3nxa4"
-path="res://.godot/imported/Orange.png-9b50fa65cea905c635850e9ba08d75d7.ctex"
+uid="uid://cci0yg3ya2sck"
+path="res://.godot/imported/SpriteJugar.png-b259773a6e8c9ba52f30e99f9a663daf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Orange.png"
-dest_files=["res://.godot/imported/Orange.png-9b50fa65cea905c635850e9ba08d75d7.ctex"]
+source_file="res://minigames/pesca/SpriteJugar.png"
+dest_files=["res://.godot/imported/SpriteJugar.png-b259773a6e8c9ba52f30e99f9a663daf.ctex"]
 
 [params]
 

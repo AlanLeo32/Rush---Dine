@@ -90,7 +90,7 @@ window/stretch/scale=0.7
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AdmobPlugin/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

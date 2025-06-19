@@ -9,6 +9,7 @@ var catchingValue := 0.0
 var gameEnded := false
 var total_time = 10
 var remaining_seconds: float
+var cant_recurso: int
 
 func _ready() -> void:
 	catch_bar = %CatchBar  
@@ -34,7 +35,9 @@ func _physics_process(delta: float) -> void:
 	else: catchingValue -= catchSpeed
 
 	if catchingValue < 0.0: catchingValue = 0
-	elif catchingValue >= 100: _game_end()
+	elif catchingValue >= 100:
+		cant_recurso = 1
+		_game_end()
 
 	catch_bar.value = catchingValue
 
@@ -52,6 +55,9 @@ func _game_end() -> void:
 
 	get_tree().paused = false
 	queue_free()
+	var recurso = "pescado"
+	ManejoMinijuegos.actualizar_recursos(recurso, cant_recurso)
+	ManejoMinijuegos.volver_a_dia()
 
 func _on_target_target_entered() -> void:
 	onCatch = true
@@ -62,4 +68,5 @@ func _on_target_target_exited() -> void:
 
 func _on_timeout_timer_timeout() -> void:
 	if not gameEnded:
+		cant_recurso = 0
 		_game_end() # El jugador perdió porque se acabó el tiempo

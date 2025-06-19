@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dry4v5vpmc2fg"
-path="res://.godot/imported/juegopesca.png-148c22e3cf5cac09a32b7148b5867bc7.ctex"
+uid="uid://d1fjxj8oc53i5"
+path="res://.godot/imported/cañaspritesheet - copia.webp-eae66337a889df923757f07d4a293c23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://juegopesca.png"
-dest_files=["res://.godot/imported/juegopesca.png-148c22e3cf5cac09a32b7148b5867bc7.ctex"]
+source_file="res://minigames/pesca/cañaspritesheet - copia.webp"
+dest_files=["res://.godot/imported/cañaspritesheet - copia.webp-eae66337a889df923757f07d4a293c23.ctex"]
 
 [params]
 

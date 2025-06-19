@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cok0rgquvhkyb"]
+
+[node name="JugarButton" type="Button"]
+offset_left = 558.0
+offset_top = 527.0
+offset_right = 607.0
+offset_bottom = 560.0
+text = "Jugar"

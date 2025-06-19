@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1fjxj8oc53i5"
-path="res://.godot/imported/cañaspritesheet - copia.webp-1c17460effc0be42f0f1304a8e3b2de3.ctex"
+uid="uid://6provb34udyw"
+path="res://.godot/imported/pixil-frame-0.png-04cbe121c5c63d0f4bbfefeb896a8e67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cañaspritesheet - copia.webp"
-dest_files=["res://.godot/imported/cañaspritesheet - copia.webp-1c17460effc0be42f0f1304a8e3b2de3.ctex"]
+source_file="res://minigames/pesca/pixil-frame-0.png"
+dest_files=["res://.godot/imported/pixil-frame-0.png-04cbe121c5c63d0f4bbfefeb896a8e67.ctex"]
 
 [params]
 

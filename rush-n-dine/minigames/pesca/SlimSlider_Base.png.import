@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdevnok7x70k2"
-path="res://.godot/imported/crosshair026.png-e3294e9bc8922601830f933d6fe0f284.ctex"
+uid="uid://d4gsg4ej7xsxh"
+path="res://.godot/imported/SlimSlider_Base.png-cd2db5825013d4d84c2364843c492619.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://crosshair026.png"
-dest_files=["res://.godot/imported/crosshair026.png-e3294e9bc8922601830f933d6fe0f284.ctex"]
+source_file="res://minigames/pesca/SlimSlider_Base.png"
+dest_files=["res://.godot/imported/SlimSlider_Base.png-cd2db5825013d4d84c2364843c492619.ctex"]
 
 [params]
 

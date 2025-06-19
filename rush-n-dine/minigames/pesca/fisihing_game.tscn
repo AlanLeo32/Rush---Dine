@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cbuw7ala81bnn"]
 
-[ext_resource type="Texture2D" uid="uid://uj6ik6tusqaq" path="res://Box_Orange_Square.png" id="1_hsmb5"]
-[ext_resource type="Script" uid="uid://0io2xv4ugq6d" path="res://fishing_game.gd" id="1_onr0m"]
-[ext_resource type="Texture2D" uid="uid://d4gsg4ej7xsxh" path="res://SlimSlider_Base.png" id="2_ggkbf"]
-[ext_resource type="PackedScene" uid="uid://7qnod3wl4rgd" path="res://Fish.tscn" id="3_ggkbf"]
-[ext_resource type="PackedScene" uid="uid://cmqdvorkg7i3i" path="res://target.tscn" id="4_d3cdb"]
+[ext_resource type="Texture2D" uid="uid://uj6ik6tusqaq" path="res://minigames/pesca/Box_Orange_Square.png" id="1_hsmb5"]
+[ext_resource type="Script" uid="uid://0io2xv4ugq6d" path="res://minigames/pesca/fishing_game.gd" id="1_onr0m"]
+[ext_resource type="Texture2D" uid="uid://d4gsg4ej7xsxh" path="res://minigames/pesca/SlimSlider_Base.png" id="2_ggkbf"]
+[ext_resource type="PackedScene" uid="uid://7qnod3wl4rgd" path="res://minigames/pesca/Fish.tscn" id="3_ggkbf"]
+[ext_resource type="PackedScene" uid="uid://cmqdvorkg7i3i" path="res://minigames/pesca/target.tscn" id="4_d3cdb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d3cdb"]
 texture = ExtResource("1_hsmb5")
@@ -34,10 +34,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
+offset_left = -82.0
+offset_top = 46.0
+offset_right = 218.0
+offset_bottom = 346.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_onr0m")
@@ -81,16 +81,16 @@ wait_time = 10.0
 one_shot = true
 
 [node name="TimerLabel" type="Label" parent="FishingGame/PanelContainer/MarginContainer/VBoxContainer/TimeoutTimer"]
-offset_left = 1027.0
-offset_top = 14.0
-offset_right = 1141.0
-offset_bottom = 61.0
+offset_left = 1482.0
+offset_top = 18.0
+offset_right = 1689.0
+offset_bottom = 101.0
 
 [node name="Fish" parent="." instance=ExtResource("3_ggkbf")]
-position = Vector2(554, 352)
+position = Vector2(700, 547)
 
 [node name="Target" parent="." instance=ExtResource("4_d3cdb")]
-position = Vector2(552, 352)
+position = Vector2(732, 586)
 
 [connection signal="timeout" from="FishingGame/PanelContainer/MarginContainer/VBoxContainer/TimeoutTimer" to="FishingGame" method="_on_timeout_timer_timeout"]
 [connection signal="target_entered" from="Target" to="FishingGame" method="_on_target_target_entered"]

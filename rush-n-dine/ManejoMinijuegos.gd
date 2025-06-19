@@ -117,7 +117,7 @@ func minijuego_recolectar():
 	get_tree().change_scene_to_file("res://minigames/collect/recoleccion.tscn")
 
 func minijuego_pescado():
-	get_tree().change_scene_to_file("res://minigames/juegopesca/juegopesca.tscn")
+	get_tree().change_scene_to_file("res://minigames/pesca/juegopesca.tscn")
 
 func minijuego_verdura_random():
 	if randi() % 2 == 0:

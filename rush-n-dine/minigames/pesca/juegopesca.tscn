@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci1fijeeij86m"]
+
+[ext_resource type="Texture2D" uid="uid://dry4v5vpmc2fg" path="res://minigames/pesca/juegopesca.png" id="1_5ayr7"]
+[ext_resource type="Script" uid="uid://coguw61jfb00x" path="res://minigames/pesca/juegopesca.gd" id="1_tgi3h"]
+[ext_resource type="PackedScene" uid="uid://cbuw7ala81bnn" path="res://minigames/pesca/fisihing_game.tscn" id="5_l86mm"]
+
+[node name="FishingSystem" type="Node2D"]
+position = Vector2(-40, -29)
+script = ExtResource("1_tgi3h")
+
+[node name="Escenario" type="Sprite2D" parent="."]
+position = Vector2(1024, 540)
+scale = Vector2(1.27767, 0.976341)
+texture = ExtResource("1_5ayr7")
+
+[node name="fishing_game" parent="." instance=ExtResource("5_l86mm")]
+visible = false
+
+[node name="JugarButton" type="Button" parent="."]
+offset_left = 959.0
+offset_top = 888.0
+offset_right = 1054.0
+offset_bottom = 939.0
+text = "Jugar"
+
+[connection signal="pressed" from="JugarButton" to="." method="_on_jugar_button_pressed"]
