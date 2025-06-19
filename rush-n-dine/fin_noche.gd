@@ -1,7 +1,13 @@
 extends Node2D
-
+# --- BLOQUE ANUNCIO SIMULADO ---
+@onready var panel_anuncio = $PanelAnuncioSimulado
+@onready var boton_cerrar = $PanelAnuncioSimulado/BotonCerrar
+var timer_anuncio: Timer = null
+var tiempo_restante_anuncio := 10
+var recompensa_pendiente := false
+# --- FIN BLOQUE ANUNCIO SIMULADO ---
 var costo_apertura_por_mesas := {
-	1: 0,
+	1: 100,
 	2: 50,
 	3: 100,
 	4: 150,
@@ -179,8 +185,51 @@ func _on_texture_button_pressed() -> void:
 
 
 func _on_boton_confirma_add_pressed() -> void:
-	#LOGICA DE MOSTRAR ANUNCIO...
-	Globales.dinero=0 #Se deja el dinero en balance 0
-	Globales.guardar_estado()
-	#y luego se pasa al dia
-	get_tree().change_scene_to_file("res://Eventos.tscn")
+	recompensa_pendiente = true
+	mostrar_anuncio_simulado()
+
+func mostrar_anuncio_simulado():
+	panel_anuncio.visible = true
+	boton_cerrar.disabled = true
+	tiempo_restante_anuncio = 10
+	boton_cerrar.icon = null
+	boton_cerrar.text = "Espera... 10s"
+	# Ocultá otros elementos de UI si querés, por ejemplo:
+	#$TextureRect/Panel.visible = false
+
+	if timer_anuncio:
+		timer_anuncio.queue_free()
+	timer_anuncio = Timer.new()
+	timer_anuncio.wait_time = 1
+	timer_anuncio.one_shot = false
+	timer_anuncio.timeout.connect(_on_timer_anuncio_timeout)
+	add_child(timer_anuncio)
+	timer_anuncio.start()
+
+func _on_timer_anuncio_timeout():
+	tiempo_restante_anuncio -= 1
+	if tiempo_restante_anuncio > 0:
+		boton_cerrar.icon = null
+		boton_cerrar.text = "Espera... " + str(tiempo_restante_anuncio) + "s"
+	else:
+		boton_cerrar.disabled = false
+		boton_cerrar.icon = preload("res://Sprites/Cruz.png") # Cambia la ruta si es necesario
+		boton_cerrar.text = ""
+		timer_anuncio.stop()
+
+func _on_boton_cerrar_anuncio():
+	if boton_cerrar.disabled or tiempo_restante_anuncio > 0:
+		return
+	panel_anuncio.visible = false
+	#$TextureRect/Panel.visible = true # Si ocultaste el panel principal, mostralo de nuevo
+
+	if timer_anuncio:
+		timer_anuncio.queue_free()
+		timer_anuncio = null
+	if recompensa_pendiente:
+		recompensa_pendiente = false
+		# Lógica de recompensa o pasar de escena
+		Globales.dinero=0 #Se deja el dinero en balance 0
+		Globales.guardar_estado()
+		#y luego se pasa al dia
+		get_tree().change_scene_to_file("res://Eventos.tscn")

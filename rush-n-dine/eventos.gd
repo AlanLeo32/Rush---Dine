@@ -1,5 +1,10 @@
 extends Node2D  # o Control si estás usando UI
 var anuncio=false
+@onready var panel_anuncio = $PanelAnuncioSimulado
+@onready var boton_cerrar = $PanelAnuncioSimulado/BotonCerrar
+var timer_anuncio: Timer = null
+var tiempo_restante_anuncio := 10
+var recompensa_pendiente := false
 # Diccionario de eventos
 var eventos := [
 	{
@@ -199,7 +204,10 @@ func _ready():
 func _on_boton_confirma_pressed() -> void:
 	if (anuncio):
 		#LOGICA DE MOSTRAR ANUNCIO...
-		Globales.dinero=0 #Se deja el dinero en balance 0
+		recompensa_pendiente = true
+		mostrar_anuncio_simulado()
+		anuncio = false
+		return
 	Globales.guardar_estado()
 	get_tree().change_scene_to_file("res://MenuDia.tscn")
 
@@ -211,4 +219,49 @@ func fin_del_juego():
 	var tween = create_tween()
 	tween.tween_property($Panel/TextureRect, "modulate:a", 1.0, 2.5)  # Fade in en 2.5 segundos
 
-	# Podés agregar más cosas después, como un botón para continuar
+func mostrar_anuncio_simulado():
+	panel_anuncio.visible = true
+	boton_cerrar.disabled = true
+	tiempo_restante_anuncio = 10
+	boton_cerrar.icon = null
+	boton_cerrar.text = "Espera... 10s"
+	# Ocultá otros elementos de UI si querés, por ejemplo:
+	#$Panel/PanelNotificacion.visible = false
+
+	# Si ya hay un timer, lo eliminamos
+	if timer_anuncio:
+		timer_anuncio.queue_free()
+	timer_anuncio = Timer.new()
+	timer_anuncio.wait_time = 1
+	timer_anuncio.one_shot = false
+	timer_anuncio.timeout.connect(_on_timer_anuncio_timeout)
+	add_child(timer_anuncio)
+	timer_anuncio.start()
+
+func _on_timer_anuncio_timeout():
+	tiempo_restante_anuncio -= 1
+	if tiempo_restante_anuncio > 0:
+		boton_cerrar.icon = null
+		boton_cerrar.text = "Espera... " + str(tiempo_restante_anuncio) + "s"
+	else:
+		boton_cerrar.disabled = false
+		boton_cerrar.icon = preload("res://Sprites/Cruz.png") # Cambia la ruta por la de tu ícono real
+		boton_cerrar.text = ""
+		timer_anuncio.stop()
+
+func _on_boton_cerrar_anuncio():
+	print("Botón cerrar presionado. Estado:", boton_cerrar.disabled, tiempo_restante_anuncio)
+	if boton_cerrar.disabled or tiempo_restante_anuncio > 0:
+		return
+	panel_anuncio.visible = false
+	# Volvé a mostrar la UI principal si la ocultaste
+	#$Panel/PanelNotificacion.visible = true
+
+	if timer_anuncio:
+		timer_anuncio.queue_free()
+		timer_anuncio = null
+	# Si querés otorgar recompensa, llamá acá a tu función
+	if recompensa_pendiente:
+		recompensa_pendiente = false
+		Globales.guardar_estado()
+		get_tree().change_scene_to_file("res://MenuDia.tscn")

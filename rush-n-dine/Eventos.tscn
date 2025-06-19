@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyac8mvmiwls5"]
+[gd_scene load_steps=10 format=3 uid="uid://dx3ty2sm6ipb2"]
 
 [ext_resource type="Script" uid="uid://c0j60o1wkxqc" path="res://eventos.gd" id="1_26k4f"]
 [ext_resource type="Texture2D" uid="uid://cykkpxkpkmxnb" path="res://Fondos/Dia.png" id="2_0ff6e"]
 [ext_resource type="Texture2D" uid="uid://haqfpe0x7c7n" path="res://Fondos/Noche.png" id="3_xj8er"]
 [ext_resource type="Texture2D" uid="uid://b5gaboradafow" path="res://Fondos/FinJuego.png" id="4_0ff6e"]
+[ext_resource type="Texture2D" uid="uid://gtu717g3nxkj" path="res://AnuncioCocaCola.jpg" id="5_pmgvv"]
+[ext_resource type="Texture2D" uid="uid://8wff15gmvtph" path="res://Sprites/Cruz.png" id="6_h2xio"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26k4f"]
 bg_color = Color(0, 0, 0.0666667, 1)
@@ -23,11 +25,13 @@ offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_26k4f")
 
 [node name="FondoDia" type="TextureRect" parent="Panel"]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_0ff6e")
 
 [node name="FondoNoche" type="TextureRect" parent="Panel"]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("3_xj8er")
@@ -85,4 +89,40 @@ label_settings = SubResource("LabelSettings_xj8er")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PanelAnuncioSimulado" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelAnuncioSimulado"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_pmgvv")
+
+[node name="BotonCerrar" type="Button" parent="PanelAnuncioSimulado"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.6
+offset_right = 518.4
+offset_bottom = 648.0
+grow_horizontal = 0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-50, 10)
+icon = ExtResource("6_h2xio")
+
 [connection signal="pressed" from="Panel/PanelNotificacion/BotonConfirma" to="." method="_on_boton_confirma_pressed"]
+[connection signal="pressed" from="PanelAnuncioSimulado/BotonCerrar" to="." method="_on_boton_cerrar_anuncio"]

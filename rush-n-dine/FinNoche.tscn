@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://gomivhyxfycl"]
+[gd_scene load_steps=14 format=3 uid="uid://gomivhyxfycl"]
 
 [ext_resource type="Script" uid="uid://psxo5j4x21mr" path="res://fin_noche.gd" id="1_pcgb3"]
 [ext_resource type="Texture2D" uid="uid://b0a0ecm570cu1" path="res://Fondos/Fondo_ResultadosNoche.png" id="1_wg5k1"]
 [ext_resource type="Texture2D" uid="uid://c1lvfe6plxgu0" path="res://Sprites/BotonPasoADia.png" id="3_e5kb4"]
+[ext_resource type="Texture2D" uid="uid://gtu717g3nxkj" path="res://AnuncioCocaCola.jpg" id="4_eb86j"]
+[ext_resource type="Texture2D" uid="uid://8wff15gmvtph" path="res://Sprites/Cruz.png" id="5_rnwki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb86j"]
 bg_color = Color(1, 1, 0.866667, 1)
@@ -323,5 +325,41 @@ text = "OK"
 label_settings = SubResource("LabelSettings_e5kb4")
 horizontal_alignment = 1
 
+[node name="PanelAnuncioSimulado" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelAnuncioSimulado"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_eb86j")
+
+[node name="BotonCerrar" type="Button" parent="PanelAnuncioSimulado"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.6
+offset_right = 518.4
+offset_bottom = 648.0
+grow_horizontal = 0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-50, 10)
+icon = ExtResource("5_rnwki")
+
 [connection signal="pressed" from="TextureRect/Panel/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureRect/PanelAdvertencia/BotonConfirmaAdd" to="." method="_on_boton_confirma_add_pressed"]
+[connection signal="pressed" from="PanelAnuncioSimulado/BotonCerrar" to="." method="_on_boton_cerrar_anuncio"]
