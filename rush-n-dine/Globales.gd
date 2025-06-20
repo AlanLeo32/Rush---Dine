@@ -21,6 +21,7 @@ func _ready():
 		cargar_recetas_iniciales()
 		cargar_recursos_iniciales()
 	estado_de_carga = true
+	Globales.dinero=100000
 
 
 

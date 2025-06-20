@@ -3,7 +3,7 @@ extends Node2D
 var items_tienda := {
 	"sillas": {
 		"Mesa": {
-			"precio": [1,2,3,4,5,6,7],	#DEFINIR EL PRECIO DE VENTA A CADA NIVEL
+			"precio": [2,3,4,5,6,7],	#DEFINIR EL PRECIO DE VENTA A CADA NIVEL
 			"nivel_requerido": 1,
 			"datos": {  # estructura que se agrega a Globales.recetas_desbloqueadas
 				"imagen": preload("res://Sprites/SpriteMesa.png"),
@@ -57,6 +57,8 @@ var items_tienda := {
 func _ready():
 	generar_items()
 	$TextureRect/Panel/Panel/Saldo.text= "Saldo: $"+str(Globales.dinero)
+	if Globales.mesas==1 or DiaData.bajarnivel:
+		$TextureRect/Panel/Panel/BajarNivel.visible=false
 
 func actualizar():
 	
@@ -82,3 +84,9 @@ func _on_cancelar_pressed() -> void:
 
 func fondos_insuficientes():
 	$TextureRect/Panel/ErrorPopup.show()
+
+
+func _on_bajar_nivel_pressed() -> void:
+	if Globales.mesas>1:
+		DiaData.bajarnivel=true
+		$TextureRect/Panel/Panel/BajarNivel.visible=false
