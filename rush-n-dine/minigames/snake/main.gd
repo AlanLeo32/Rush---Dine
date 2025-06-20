@@ -5,10 +5,11 @@ extends Node2D
 var score : int
 var game_started : bool = false
 
-# grid variables
-var cells : int = 21
-var cells_y : int = 12
-var cell_size : int = 80
+var cells = 20
+var cells_y = 12
+var cell_size = 90
+var margin = Vector2(60, 0)
+
 
 #food variables
 var food_pos : Vector2
@@ -28,8 +29,6 @@ var right = Vector2(1, 0)
 var move_direction : Vector2
 var can_move: bool
 
-# Definí el margen deseado (en píxeles)
-var margin = Vector2(120, 78) # Cambiá estos valores según el padding que quieras
 
 # Función para convertir coordenadas de celda a posición en pantalla con margen
 func cell_to_screen(cell: Vector2) -> Vector2:
