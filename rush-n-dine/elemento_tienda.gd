@@ -47,8 +47,6 @@ func _gui_input(event):
 							DiaData.mejoranivel=true
 						"recetas":
 							Globales.recetas_desbloqueadas[producto.datos.nombre] = producto.datos
-							tienda.items_tienda[tipo].erase(nombre)
-
 						"recursos":
 							if Globales.recursos_disponibles.has(producto.datos.nombre):
 								Globales.recursos_disponibles[producto.datos.nombre].cantidad += producto.datos.cantidad[Globales.mesas-1]

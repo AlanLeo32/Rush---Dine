@@ -1,0 +1,147 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwnk5ao2dsg3"]
+
+[ext_resource type="Texture2D" uid="uid://b77rhmmb47ieh" path="res://Fondos/FondoTienda.png" id="1_l7we4"]
+[ext_resource type="Script" uid="uid://ylljombijnpj" path="res://tienda.gd" id="1_uxwke"]
+[ext_resource type="Texture2D" uid="uid://7n4syjfc0f5h" path="res://Fondos/RebordeFondoTienda.png" id="2_prnr6"]
+[ext_resource type="Texture2D" uid="uid://8wff15gmvtph" path="res://Sprites/Cruz.png" id="3_eg8s3"]
+[ext_resource type="Texture2D" uid="uid://sp3i3oj6hhyh" path="res://Sprites/BotonBajarNivel.png" id="5_gpjk8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eg8s3"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 0.956863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uxwke"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_prnr6"]
+font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxwke"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpjk8"]
+font_size = 40
+font_color = Color(0.705666, 0.0161533, 0.227384, 1)
+
+[node name="Tienda" type="Node2D"]
+script = ExtResource("1_uxwke")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_l7we4")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="TextureRect"]
+layout_mode = 0
+offset_left = -3.0
+offset_right = 1919.0
+offset_bottom = 1108.0
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -887.5
+offset_top = -593.5
+offset_right = 887.5
+offset_bottom = 593.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_prnr6")
+
+[node name="Panel" type="Panel" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 113.0
+offset_right = 1730.0
+offset_bottom = 996.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eg8s3")
+
+[node name="Titulo" type="Label" parent="TextureRect/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -129.5
+offset_top = 16.0
+offset_right = 130.5
+offset_bottom = 112.0
+grow_horizontal = 2
+text = "TIENDA"
+label_settings = SubResource("LabelSettings_uxwke")
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -743.5
+offset_top = -265.5
+offset_right = 743.5
+offset_bottom = 400.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect/Panel/Panel/ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Saldo" type="Label" parent="TextureRect/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -712.5
+offset_top = 58.0
+offset_right = -493.5
+offset_bottom = 127.0
+grow_horizontal = 2
+text = "Saldo: $"
+label_settings = SubResource("LabelSettings_prnr6")
+horizontal_alignment = 1
+
+[node name="Cancelar" type="TextureButton" parent="TextureRect/Panel/Panel"]
+layout_mode = 0
+offset_left = 1376.0
+offset_top = 37.0
+offset_right = 1470.0
+offset_bottom = 130.0
+texture_normal = ExtResource("3_eg8s3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BajarNivel" type="TextureButton" parent="TextureRect/Panel/Panel"]
+offset_left = 1119.0
+offset_top = 6.0
+offset_right = 1284.0
+offset_bottom = 165.0
+texture_normal = ExtResource("5_gpjk8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ErrorPopup" type="PopupPanel" parent="TextureRect/Panel"]
+auto_translate_mode = 1
+position = Vector2i(30, 50)
+size = Vector2i(700, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_uxwke")
+
+[node name="Label" type="Label" parent="TextureRect/Panel/ErrorPopup"]
+offset_right = 700.0
+offset_bottom = 100.0
+text = "¡Cantidad de recursos insuficiente!"
+label_settings = SubResource("LabelSettings_gpjk8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="TextureRect/Panel/Panel/Cancelar" to="." method="_on_cancelar_pressed"]
+[connection signal="pressed" from="TextureRect/Panel/Panel/BajarNivel" to="." method="_on_bajar_nivel_pressed"]

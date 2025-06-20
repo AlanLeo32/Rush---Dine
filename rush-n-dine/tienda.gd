@@ -19,6 +19,7 @@ var items_tienda := {
 			"datos": {  # estructura que se agrega a Globales.recetas_desbloqueadas
 				"nombre": "hamburguesa",
 				"imagen": preload("res://Sprites/ComidaPrueba.png"),
+				"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
 				"precio": 15,
 				"popularidad": 8,
 				"recursos_requeridos": {"pescado": 1,},
@@ -74,9 +75,15 @@ func generar_items():
 			var datos = items_tienda[tipo][clave]
 			# Filtrado por nivel
 			if Globales.mesas >= datos.nivel_requerido and not(tipo=="sillas" and (DiaData.mejoranivel or Globales.mesas>=7)):
-				var boton = BotonTienda.instantiate()
-				boton.set_data(tipo,clave, datos)
-				contenedor_tienda.add_child(boton)
+				if (tipo=="recetas"):
+					if(not Globales.recetas_desbloqueadas.has(clave)):
+						var boton = BotonTienda.instantiate()
+						boton.set_data(tipo,clave, datos)
+						contenedor_tienda.add_child(boton)
+				else:
+					var boton = BotonTienda.instantiate()
+					boton.set_data(tipo,clave, datos)
+					contenedor_tienda.add_child(boton)
 
 func _on_cancelar_pressed() -> void:
 	get_tree().change_scene_to_file("res://MenuDia.tscn")
