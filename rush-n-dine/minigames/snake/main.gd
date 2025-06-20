@@ -145,7 +145,7 @@ func check_food_eaten():
 		$Hud.get_node("ScoreLabel").text = "PUNTAJE: " + str(score)
 		add_segment(old_data[-1])
 		move_food()
-		if score >= 15:
+		if score >= 10:
 			end_game()
 
 	
@@ -164,7 +164,7 @@ func end_game():
 	print("Juego snake terminado")
 	$MoveTimer.stop()
 	game_started = false
-	var cant_recursos = int(score / 3)
+	var cant_recursos = int(score / 2)
 	var recurso = "verdura"
 	ManejoMinijuegos.actualizar_recursos(recurso, cant_recursos)
 	ManejoMinijuegos.volver_a_dia()
