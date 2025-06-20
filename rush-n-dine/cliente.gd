@@ -19,11 +19,11 @@ var esperando_pedido: bool = false
 var esperando_atencion: bool = false
 
 var tiempos_espera_por_popularidad := {
-	"S": 13,
-	"A": 11,
-	"B": 9,
-	"C": 7,
-	"D": 5
+	"S": 15,
+	"A": 13.33,
+	"B": 11.67,
+	"C": 10,
+	"D": 8.3
 }
 
 
@@ -191,11 +191,22 @@ func asignar_mesa(mesa: Node) -> void:
 
 func recibir_plato(plato: Node):
 	print("Cliente recibió su pedido correcto")
-	
+	if plato == null:
+		push_warning("El nodo 'plato' es null")
+		return
+	if mesa_asignada == null:
+		push_warning("La 'mesa_asignada' es null")
+		return
 	# Obtener el sprite del nodo que recibió
-	var sprite_origen := plato.get_node("Sprite")
+	var sprite_origen := plato.get_node_or_null("Sprite")
+	if sprite_origen == null:
+		push_warning("No se encontró el Sprite en el plato")
+		return
 	# Obtener el Sprite de la mesa asignada
 	var sprite_destino := mesa_asignada.get_node("Plato")
+	if sprite_destino == null:
+		push_warning("No se encontró el Sprite en la mesa asignada")
+		return
 	# Copiar la textura
 	sprite_destino.texture = sprite_origen.texture
 	if pedido_actual!="agua":

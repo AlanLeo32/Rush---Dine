@@ -7,11 +7,11 @@ var bloquear_cocinero = false
 var tiempo_restante: float
 
 var tiempos_por_popularidad := {
-	"S": [2, 4],
-	"A": [4, 8],
-	"B": [8, 12],
-	"C": [12, 15],
-	"D": [15, 20]
+	"S": [3, 6],
+	"A": [5, 8],
+	"B": [6, 10],
+	"C": [8, 12],
+	"D": [1, 15]
 }
 
 func is_minijuego_activo():

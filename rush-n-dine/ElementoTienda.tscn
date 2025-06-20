@@ -17,9 +17,11 @@ font_size = 50
 custom_minimum_size = Vector2(475, 330)
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("1_yishy")
 
 [node name="CanvasLayer" type="Panel" parent="."]
+layout_mode = 0
 mouse_filter = 1
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]

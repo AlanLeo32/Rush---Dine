@@ -7,31 +7,31 @@ var tiempo_restante_anuncio := 10
 var recompensa_pendiente := false
 # --- FIN BLOQUE ANUNCIO SIMULADO ---
 var costo_apertura_por_mesas := {
-	1: 100,
-	2: 50,
-	3: 100,
-	4: 150,
-	5: 200,
-	6: 250,
-	7: 300
+	1: 30,
+	2: 75,
+	3: 150,
+	4: 250,
+	5: 340,
+	6: 475,
+	7: 550
 }
 
 # Factores que afectan reputación por nivel (pesos por evento)
 # Se espera que todos los valores sumen a un rango lógico (-100 a 100)
 var factores_reputacion := {
-	"7": {
+	"1": {
 		"atendidos": 5.0,
 		"aguas_servidas": -1.0,
 		"no_atendidos": -4.0,
 		"entregas_erroneas": -6.0
 	},
-	"6": {
+	"2": {
 		"atendidos": 4.5,
 		"aguas_servidas": -0.9,
 		"no_atendidos": -3.6,
 		"entregas_erroneas": -5.4
 	},
-	"5": {
+	"3": {
 		"atendidos": 4.0,
 		"aguas_servidas": -0.8,
 		"no_atendidos": -3.2,
@@ -43,19 +43,19 @@ var factores_reputacion := {
 		"no_atendidos": -2.8,
 		"entregas_erroneas": -4.2
 	},
-	"3": {
+	"5": {
 		"atendidos": 3.0,
 		"aguas_servidas": -0.6,
 		"no_atendidos": -2.4,
 		"entregas_erroneas": -3.6
 	},
-	"2": {
+	"6": {
 		"atendidos": 2.5,
 		"aguas_servidas": -0.5,
 		"no_atendidos": -2.0,
 		"entregas_erroneas": -3.0
 	},
-	"1": {
+	"7": {
 		"atendidos": 2.0,
 		"aguas_servidas": -0.4,
 		"no_atendidos": -1.6,

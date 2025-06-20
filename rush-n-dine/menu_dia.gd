@@ -1,6 +1,6 @@
 extends Node2D
 
-var cantidad_acciones := [1,2,3,3,4,4,4]
+var cantidad_acciones := [1,2,2,3,3,4,4]
 var costo_apertura_por_mesas := [20,50,100, 150,200, 250,300]
 @onready var panel_anuncio = $PanelAnuncioSimulado
 @onready var boton_cerrar = $PanelAnuncioSimulado/BotonCerrar

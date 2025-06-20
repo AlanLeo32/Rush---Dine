@@ -101,7 +101,6 @@ func terminar_minijuego():
 func calcular_puntaje_final():
 	var puntaje_total = 0
 	var ingredientes_colocados = nodo_ing.get_children()
-	ManejoMinijuegos.receta_actual = Globales.recetas_desbloqueadas["pescado_asado1"]
 	var posiciones_ideales_pescado = ManejoMinijuegos.receta_actual["ubi_ing"] # devuelve diccionario con "lechuga": Vector2(292.1, 174.9),
 
 	var puntos = 0

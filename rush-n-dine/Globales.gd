@@ -21,123 +21,49 @@ func _ready():
 		cargar_recetas_iniciales()
 		cargar_recursos_iniciales()
 	estado_de_carga = true
+	Globales.dinero=10000
+	Globales.reputacion_categoria="S"
+	Globales.mesas=7
 
 
 
 func cargar_recetas_iniciales():
 	recetas_desbloqueadas = {
-		"pescado_asado1": {
-			"nombre": "Pescado Asado1",
-			"imagen": preload("res://Sprites/ComidaPrueba.png"),
-			"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
-			"precio": 15,
-			"popularidad": 8,
+		"Ensalada verde": {
+			"nombre": "Ensalada verde",
+			"imagen": preload("res://Sprites/Comidas/SpriteEnsalada.png"),
+			"imagenquemado":preload("res://Sprites/Comidas/ensaladaMala.png"),
+			"precio": 12,
+			"popularidad": 1,
 			"recursos_requeridos": {
-				"pescado": 1,
+				"verdura": 1,
 			},
 			"minijuegos": [
 				"res://minigames/slicing/main.tscn",
-				"res://minigames/ordenar/main.tscn"
 			],
-			"ubi_ing": {
-				"lechuga": Vector2(292.1+6510, 174.9),
-				"pescado": Vector2(347.9+6510, 340.6),
-				"tomate": Vector2(322.1+6510, 562),
-				"pepino1": Vector2(693.6+6510, 533.4),
-				"pepino2": Vector2(600.7+6510, 600.6),
-				"pepino3": Vector2(493.6+6510, 637.7)
-			}
 		},
-		"pescado_asado2": {
-			"nombre": "Pescado Asado2",
-			"imagen": preload("res://Sprites/ComidaPrueba.png"),
-			"imagenquemado": preload("res://Sprites/ComidaPrueba.png"),
-			"precio": 15,
-			"popularidad": 8,
+		" pescado a la plancha": {
+			"nombre": " pescado a la plancha",
+			"imagen": preload("res://Sprites/Comidas/SpritePescadoAsadoSolo.png"),
+			"imagenquemado": preload("res://Sprites/Comidas/SpritePescadoQuemadoSolo.png"),
+			"precio": 14,
+			"popularidad": 1.5,
 			"recursos_requeridos": {
 				"pescado": 1,
 			},
 			"minijuegos": [
-				"res://minigames/slicing/main.tscn",
 				"res://minigames/cooking/SkillCheck.tscn"
 			],
 			# El punto de coccion es necesario para
 			# el minijuego del horno (skillcheck)
 			"coccion": 2
 		},
-				"pescado_asado3": {
-			"nombre": "Pescado Asado3",
-			"imagen": preload("res://Sprites/ComidaPrueba.png"),
-			"imagenquemado": preload("res://Sprites/ComidaPrueba.png"),
-			"precio": 15,
-			"popularidad": 8,
-			"recursos_requeridos": {
-				"pescado": 1,
-			},
-			"minijuegos": [
-				"res://minigames/slicing/main.tscn"
-			]
-		},
-				"pescado_asado4": {
-			"nombre": "Pescado Asado4",
-			"imagen": preload("res://Sprites/ComidaPrueba.png"),
-			"imagenquemado": preload("res://Sprites/ComidaPrueba.png"),
-			"precio": 15,
-			"popularidad": 8,
-			"recursos_requeridos": {
-				"pescado": 1,
-			},
-			"minijuegos": [
-				"res://minigames/slicing/main.tscn"
-			]
-		},
-				"pescado_asado5": {
-			"nombre": "Pescado Asado5",
-			"imagen": preload("res://Sprites/ComidaPrueba.png"),
-			"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
-			"precio": 15,
-			"popularidad": 8,
-			"recursos_requeridos": {
-				"pescado": 1,
-			},
-			"minijuegos": [
-				"res://minigames/slicing/main.tscn"
-			]
-		},
-				"pescado_asado6": {
-			"nombre": "Pescado Asado6",
-			"imagen": preload("res://Sprites/ComidaPrueba.png"),
-			"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
-			"precio": 15,
-			"popularidad": 8,
-			"recursos_requeridos": {
-				"pescado": 1,
-			},
-			"minijuegos": [
-				"res://minigames/slicing/main.tscn"
-			]
-		},
-				"pescado_asado7": {
-			"nombre": "Pescado Asado7",
-			"imagen": preload("res://Sprites/ComidaPrueba.png"),
-			"imagenquemado":preload("res://Sprites/ComidaPrueba.png"),
-			"precio": 15,
-			"popularidad": 8,
-			"recursos_requeridos": {
-				"pescado": 1,
-			},
-			"minijuegos": [
-				"res://minigames/slicing/main.tscn"
-			]
-		}
 	}
 
 func cargar_recursos_iniciales():
 	recursos_disponibles = {
-		"pescado": {"nombre": "Pescado", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
-		"verdura": {"nombre": "Verdura", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
-		"pescado3": {"nombre": "Pescado3", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
-		"pescado4": {"nombre": "Pescado4", "cantidad": 3, "imagen": preload("res://Sprites/RecursoPrueba.jpg")},
+		"pescado": {"nombre": "Pescado", "cantidad": 0, "imagen": preload("res://Sprites/Pescado.png")},
+		"verdura": {"nombre": "Verdura", "cantidad": 0, "imagen": preload("res://Sprites/Verduras.png")},
 	}
 
 func guardar_estado():
