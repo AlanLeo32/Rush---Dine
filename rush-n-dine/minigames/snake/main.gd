@@ -140,12 +140,14 @@ func check_self_eaten():
 			end_game()
 			
 func check_food_eaten():
-	#if snake eats the food, add a segment and move the food
 	if snake_data[0] == food_pos:
 		score += 1
 		$Hud.get_node("ScoreLabel").text = "PUNTAJE: " + str(score)
 		add_segment(old_data[-1])
 		move_food()
+		if score >= 15:
+			end_game()
+
 	
 func move_food():
 	while regen_food:
@@ -162,7 +164,7 @@ func end_game():
 	print("Juego snake terminado")
 	$MoveTimer.stop()
 	game_started = false
-	var cant_recursos = int(score / 5)
+	var cant_recursos = int(score / 3)
 	var recurso = "verdura"
 	ManejoMinijuegos.actualizar_recursos(recurso, cant_recursos)
 	ManejoMinijuegos.volver_a_dia()
