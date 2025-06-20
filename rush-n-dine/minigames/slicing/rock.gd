@@ -8,9 +8,9 @@ func _ready():
 	var ejex = randi_range(100, 1800)
 	position = Vector2(ejex, 800)
 	if ejex>900:
-		impulse = Vector2(randf_range(-400, -700), randf_range(-920, -740))
+		impulse = Vector2(randf_range(-400, -700) * (0.5+ManejoMinijuegos.dificultad*0.5), randf_range(-920, -740) * (0.5+ManejoMinijuegos.dificultad*0.5))
 	else:
-		impulse = Vector2(randf_range(400, 720), randf_range(-920, -740))
+		impulse = Vector2(randf_range(400, 720) * (0.5+ManejoMinijuegos.dificultad*0.5), randf_range(-920, -740) * (0.5+ManejoMinijuegos.dificultad*0.5))
 	print(impulse)
 	apply_impulse(impulse)
 	add_to_group("Roca")

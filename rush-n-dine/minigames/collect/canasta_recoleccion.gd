@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 500.0
+var SPEED = 500.0 * (0.5 + ManejoMinijuegos.dificultad*0.5)
 
 var direccion_manual := 0
 

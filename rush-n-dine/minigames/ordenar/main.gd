@@ -8,10 +8,14 @@ const ING_SCENE = preload("res://minigames/ordenar/ingrediente.tscn")
 var ubi_elem = []
 var ing_repetible = []
 var platoEs = ""
+var tiempo_primer_etapa
 
 func _ready():
 	print("Instancia escena main del ordenar...")
 	ing_repetible = []
+	var tiempo_timer = 20 - (ManejoMinijuegos.dificultad*6) # Arranca en 2 - 1 y va hasta 2 - 1.6
+	$MinigameTimer.start(tiempo_timer)
+	tiempo_primer_etapa = 15 - (ManejoMinijuegos.dificultad*6)
 	#aca habria que hacer la logica que elige el PLATO A ORDENAR
 	dish_pescado()
 
@@ -19,8 +23,8 @@ func _ready():
 func _process(delta):
 	var tiempo_restante = int($MinigameTimer.time_left)
 	$TimeLeftLabel.text = "%d" % tiempo_restante
-	$CountdownLabel.text = "%d" % (tiempo_restante-10)
-	if tiempo_restante>10:
+	$CountdownLabel.text = "%d" % (tiempo_restante-tiempo_primer_etapa)
+	if tiempo_restante>tiempo_primer_etapa:
 		$TimeLeftLabel.visible = false
 		$CountdownLabel.visible = true
 	else:

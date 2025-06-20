@@ -1,5 +1,6 @@
 extends Node
 
+var dificultad = 0.9 + Globales.mesas*0.1 # Valores entre 1 y 1.6
 var cant_colectables: int = 0
 var receta_actual = null
 var resultado_minijuego = {

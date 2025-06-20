@@ -11,6 +11,7 @@ const ROCK_SCENE = preload("rock.tscn")
 
 func _ready():
 	print("Instancia escena main del slice")
+	ManejoMinijuegos.dificultad = 1.6
 	#aca habria que hacer la logica que elige los INGREDIENTES del PLATO a CORTAR
 	ings = ['tomate', 'pepino'] #plato pescado
 	spawn_timer.start()
