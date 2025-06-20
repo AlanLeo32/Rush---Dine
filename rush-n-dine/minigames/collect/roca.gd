@@ -15,7 +15,7 @@ func _ready():
 	var pos_y = 0 
 	position = Vector2(random_x, pos_y)
 	
-	speed = randi_range(300, 450)
+	speed = randi_range(300, 450) * ManejoMinijuegos.dificultad
 	
 func _process(delta):
 	position += Vector2(0, 1.0) * speed * delta   # movemos la fruta con "gravedad"

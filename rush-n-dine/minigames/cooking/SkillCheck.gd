@@ -7,7 +7,7 @@ extends Control
 @onready var ideal_text = $IdealText
 
 var angle = 0
-var speed = 30.0 # grados por segundo
+var speed = 30.0 * ManejoMinijuegos.dificultad # grados por segundo
 var rotating = false
 var center = Vector2.ZERO
 #var radius = 100.0  # ajustá esto al tamaño de tu círculo

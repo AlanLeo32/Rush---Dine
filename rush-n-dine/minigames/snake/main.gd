@@ -110,7 +110,9 @@ func add_segment(pos):
 #
 func start_game():
 	game_started = true
-	$MoveTimer.start()
+	var factor = ((ManejoMinijuegos.dificultad - 1.0) / (1.6 - 1.0))
+	var tiempo_moveTimer = 0.135 - (0.135-0.11) * factor
+	$MoveTimer.start(tiempo_moveTimer)
 
 
 func _on_move_timer_timeout():
