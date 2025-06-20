@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b06ljh2ch6dgm"]
+[gd_scene load_steps=59 format=3 uid="uid://b06ljh2ch6dgm"]
 
 [ext_resource type="Texture2D" uid="uid://bw1drquylkwba" path="res://Fondos/FondoRestaurante.png" id="1_82aaw"]
 [ext_resource type="Script" uid="uid://c6fpr68adxcdy" path="res://noche.gd" id="1_sa3a0"]
@@ -18,8 +18,8 @@
 [ext_resource type="Script" uid="uid://b5kucshdplq2e" path="res://tacho.gd" id="14_5lbuo"]
 [ext_resource type="Texture2D" uid="uid://y0qom7iku66k" path="res://Sprites/TachoCerrado.png" id="15_l2i0l"]
 [ext_resource type="Script" uid="uid://b327unn4ut4i2" path="res://BotonPausa.gd" id="16_lvlro"]
+[ext_resource type="Texture2D" uid="uid://c7kgjporkyvhq" path="res://Sprites/BotonInteractuar.png" id="16_roqkp"]
 [ext_resource type="Texture2D" uid="uid://cau2iartj02r2" path="res://Sprites/BotonPausa.png" id="17_1ji4q"]
-[ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="18_lvlro"]
 [ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="18_nhjf1"]
 [ext_resource type="Script" uid="uid://bx46tre684s0p" path="res://panel_2.gd" id="19_0hmx4"]
 [ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="19_1ji4q"]
@@ -87,18 +87,6 @@ font_size = 50
 font_size = 50
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ubrrc"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ji4q"]
-texture = ExtResource("18_lvlro")
-region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhjf1"]
-texture = ExtResource("18_lvlro")
-region_rect = Rect2(58.3948, 400.284, 1416.16, 234.165)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s073x"]
-texture = ExtResource("18_lvlro")
-region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upk0d"]
 texture = ExtResource("19_1ji4q")
@@ -286,18 +274,21 @@ shape = SubResource("RectangleShape2D_5lbuo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Interactuar" type="Button" parent="CanvasLayer"]
+[node name="Interactuar" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -373.672
-offset_top = -295.8
-offset_right = -239.672
-offset_bottom = -156.8
+offset_left = -415.0
+offset_top = -425.0
+offset_right = -131.0
+offset_bottom = -157.0
 grow_horizontal = 0
-grow_vertical = 2
+grow_vertical = 0
+texture_normal = ExtResource("16_roqkp")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Tacho" type="Area2D" parent="."]
 z_index = 1500
@@ -499,13 +490,6 @@ offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
-
-[node name="Configuracion" type="Button" parent="CanvasLayer2/MenuPausa/VBoxContainer"]
-custom_minimum_size = Vector2(882, 200)
-layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_1ji4q")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_nhjf1")
-theme_override_styles/normal = SubResource("StyleBoxTexture_s073x")
 
 [node name="MenuPrincipal" type="Button" parent="CanvasLayer2/MenuPausa/VBoxContainer"]
 custom_minimum_size = Vector2(882, 200)
@@ -854,6 +838,5 @@ parameters/looping = true
 
 [connection signal="body_entered" from="Almacenamiento" to="Tacho" method="_on_mesada_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Interactuar" to="CharacterBodyCocinero2D" method="_on_interactuar_pressed"]
-[connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/Configuracion" to="CanvasLayer2" method="_on_configuracion_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MenuPausa/VBoxContainer/MenuPrincipal" to="CanvasLayer2" method="_on_menu_principal_pressed"]
 [connection signal="pressed" from="CanvasLayer2/LogicaPausa" to="CanvasLayer2" method="_on_logica_pausa_pressed"]

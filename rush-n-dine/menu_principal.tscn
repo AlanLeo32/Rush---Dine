@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bs6blxd0qjuxx" path="res://Fondos/FondoDia.png" id="1_bj1uy"]
 [ext_resource type="Script" uid="uid://ilyfxnj55qam" path="res://ControlMenu.gd" id="1_gmcsc"]
 [ext_resource type="Texture2D" uid="uid://cxbgv7eff6px6" path="res://Sprites/SpriteJugar.png" id="3_fa1tu"]
-[ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="4_a6518"]
+[ext_resource type="Texture2D" uid="uid://cdmbfno2pngn5" path="res://Sprites/SpriteAyuda.png" id="4_yxm4i"]
 [ext_resource type="Texture2D" uid="uid://brg76p06pjxb1" path="res://Sprites/SpriteCreditos.png" id="5_yxm4i"]
 [ext_resource type="Texture2D" uid="uid://eaeap4eqwew6" path="res://Sprites/reinicio.png" id="6_a6518"]
 [ext_resource type="Texture2D" uid="uid://cdovy7066y37x" path="res://Sprites/Sonido.png" id="7_yxm4i"]
@@ -25,15 +25,12 @@ region_rect = Rect2(289.909, 347.261, 947.535, 330.028)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6518"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a6518"]
-texture = ExtResource("4_a6518")
 region_rect = Rect2(57.451, 399.988, 1418.55, 235.975)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b574n"]
-texture = ExtResource("4_a6518")
 region_rect = Rect2(57.451, 399.988, 1418.55, 235.975)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dcvsf"]
-texture = ExtResource("4_a6518")
 region_rect = Rect2(57.451, 399.988, 1418.55, 235.975)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxm4i"]
@@ -61,6 +58,21 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -402.0
+offset_top = -375.0
+offset_right = 420.0
+offset_bottom = 412.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_yxm4i")
+expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(882, 700)

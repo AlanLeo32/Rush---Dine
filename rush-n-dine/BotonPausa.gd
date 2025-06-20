@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var boton := $LogicaPausa/BotonPausa
-@onready var boton_config := $MenuPausa/VBoxContainer/Configuracion
 @onready var boton_menu_principal := $MenuPausa/VBoxContainer/MenuPrincipal
 @onready var menu_pausa := $MenuPausa
 @onready var icono :=boton
@@ -13,7 +12,6 @@ var textura_play := preload("res://Sprites/BotonDesapausar.png")
 
 func _ready():
 	# Asignamos la textura inicial
-	boton_config.disabled = false
 	boton_menu_principal.disabled = false
 	# Aseguramos la textura inicial del ícono
 	icono.texture_normal = textura_pausa

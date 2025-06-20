@@ -65,6 +65,9 @@ func _on_boton_abrir_pressed() -> void:
 	if DiaData.mejoranivel:
 		Globales.mesas+=1
 		DiaData.mejoranivel=false
+	if DiaData.bajarnivel:
+		Globales.mesas-=1
+		DiaData.bajarnivel=false
 	Globales.dia=false
 	Globales.guardar_estado()
 	get_tree().change_scene_to_file("res://noche.tscn")
@@ -74,6 +77,9 @@ func _on_boton_no_abrir_pressed() -> void:
 	if DiaData.mejoranivel:
 		Globales.mesas+=1
 		DiaData.mejoranivel=false
+	if DiaData.bajarnivel:
+		Globales.mesas-=1
+		DiaData.bajarnivel=false
 	if Globales.dinero>=0:
 		Globales.guardar_estado()
 		DiaData.acciones_disponibles = cantidad_acciones[Globales.mesas-1]
