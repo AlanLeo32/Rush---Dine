@@ -29,15 +29,9 @@ process_mode = 3
 [node name="FishingGame" type="Control" parent="."]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = 46.0
-offset_right = 218.0
-offset_bottom = 346.0
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_onr0m")
@@ -47,6 +41,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 549.0
+offset_top = 347.0
+offset_right = 549.0
+offset_bottom = 347.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_d3cdb")
@@ -87,10 +85,10 @@ offset_right = 1689.0
 offset_bottom = 101.0
 
 [node name="Fish" parent="." instance=ExtResource("3_ggkbf")]
-position = Vector2(700, 547)
+position = Vector2(668, 487)
 
 [node name="Target" parent="." instance=ExtResource("4_d3cdb")]
-position = Vector2(732, 586)
+position = Vector2(969, 535)
 
 [connection signal="timeout" from="FishingGame/PanelContainer/MarginContainer/VBoxContainer/TimeoutTimer" to="FishingGame" method="_on_timeout_timer_timeout"]
 [connection signal="target_entered" from="Target" to="FishingGame" method="_on_target_target_entered"]

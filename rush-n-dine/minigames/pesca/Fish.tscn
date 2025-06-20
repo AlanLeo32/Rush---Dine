@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://7qnod3wl4rgd"]
 
-[ext_resource type="Script" uid="uid://bga44i8powjts" path="res://fish.gd" id="1_j2ykt"]
-[ext_resource type="Texture2D" uid="uid://cpxva0gk3nxa4" path="res://Orange.png" id="2_8ijwk"]
+[ext_resource type="Script" uid="uid://bga44i8powjts" path="res://minigames/pesca/fish.gd" id="1_j2ykt"]
+[ext_resource type="Texture2D" uid="uid://cpxva0gk3nxa4" path="res://minigames/pesca/Orange.png" id="2_8ijwk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6575"]
 atlas = ExtResource("2_8ijwk")
