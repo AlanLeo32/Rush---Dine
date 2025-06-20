@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cewp3uhc0y4fy"]
+[gd_scene load_steps=22 format=3 uid="uid://cewp3uhc0y4fy"]
 
 [ext_resource type="Texture2D" uid="uid://dww2jq1qi67d6" path="res://Fondos/FondoMenuDia.png" id="1_apavg"]
 [ext_resource type="Script" uid="uid://befj38fotnjgt" path="res://menu_dia.gd" id="1_q6w18"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://3x1rqkqq7v0g" path="res://relojDia.gd" id="4_dowal"]
 [ext_resource type="Texture2D" uid="uid://cau2iartj02r2" path="res://Sprites/BotonPausa.png" id="5_dowal"]
 [ext_resource type="Texture2D" uid="uid://dnmxqmk3m7uoh" path="res://Sprites/BotonDesapausar.png" id="6_fxrog"]
-[ext_resource type="Texture2D" uid="uid://bbeivy4krqftu" path="res://Sprites/SpriteConfiguracion.png" id="7_4t7rl"]
 [ext_resource type="Texture2D" uid="uid://8nhr5ai416u" path="res://Sprites/SpriteMenuPrincipal.png" id="8_jcr2j"]
 [ext_resource type="Texture2D" uid="uid://gtu717g3nxkj" path="res://AnuncioCocaCola.jpg" id="10_fxrog"]
 [ext_resource type="Texture2D" uid="uid://8wff15gmvtph" path="res://Sprites/Cruz.png" id="11_4t7rl"]
@@ -36,18 +35,6 @@ bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.537255)
 
 [sub_resource type="LabelSettings" id="LabelSettings_43cuw"]
 font_size = 60
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q06ed"]
-texture = ExtResource("7_4t7rl")
-region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6vlw"]
-texture = ExtResource("7_4t7rl")
-region_rect = Rect2(58.3948, 400.284, 1416.16, 234.165)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3mjl"]
-texture = ExtResource("7_4t7rl")
-region_rect = Rect2(58.395, 400.284, 1416.16, 234.165)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dhwnv"]
 texture = ExtResource("8_jcr2j")
@@ -390,13 +377,6 @@ grow_vertical = 2
 scale = Vector2(0.7, 0.7)
 mouse_filter = 0
 
-[node name="Configuracion" type="Button" parent="LogicaPausa/MenuPausa/VBoxContainer"]
-custom_minimum_size = Vector2(882, 200)
-layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_q06ed")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_l6vlw")
-theme_override_styles/normal = SubResource("StyleBoxTexture_p3mjl")
-
 [node name="MenuPrincipal" type="Button" parent="LogicaPausa/MenuPausa/VBoxContainer"]
 custom_minimum_size = Vector2(882, 200)
 layout_mode = 2
@@ -459,7 +439,6 @@ icon = ExtResource("11_4t7rl")
 [connection signal="pressed" from="TextureRect/PanelAdvertencia/BotonAbrir" to="." method="_on_boton_abrir_pressed"]
 [connection signal="pressed" from="TextureRect/PanelAdvertencia/BotonNoAbrir" to="." method="_on_boton_no_abrir_pressed"]
 [connection signal="pressed" from="TextureRect/PanelAdvertencia2/BotonConfirmaAdd" to="." method="_on_boton_confirma_add_pressed"]
-[connection signal="pressed" from="LogicaPausa/MenuPausa/VBoxContainer/Configuracion" to="." method="_on_configuracion_pressed"]
 [connection signal="pressed" from="LogicaPausa/MenuPausa/VBoxContainer/MenuPrincipal" to="." method="_on_menu_principal_pressed"]
 [connection signal="pressed" from="LogicaPausa/BotonPausa" to="." method="_on_boton_pausa_pressed"]
 [connection signal="pressed" from="PanelAnuncioSimulado/BotonCerrar" to="." method="_on_boton_cerrar_anuncio"]

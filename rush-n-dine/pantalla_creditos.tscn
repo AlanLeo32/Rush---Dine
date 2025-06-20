@@ -1,3 +1,29 @@
-[gd_scene format=3 uid="uid://btq3dfhb73nek"]
+[gd_scene load_steps=4 format=3 uid="uid://btq3dfhb73nek"]
+
+[ext_resource type="Script" uid="uid://cp8uyj41r5mp6" path="res://pantalla_creditos.gd" id="1_er28u"]
+[ext_resource type="Texture2D" uid="uid://byeeapjgt7xw0" path="res://Fondos/FondoCreditos.jpg" id="2_a6enw"]
+[ext_resource type="Texture2D" uid="uid://8wff15gmvtph" path="res://Sprites/Cruz.png" id="2_gd3gd"]
 
 [node name="Pantalla creditos" type="Node2D"]
+script = ExtResource("1_er28u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_a6enw")
+
+[node name="Cancelar" type="TextureButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_top = 29.0
+offset_right = -61.0
+offset_bottom = 161.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_gd3gd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="TextureRect/Cancelar" to="." method="_on_cancelar_pressed"]

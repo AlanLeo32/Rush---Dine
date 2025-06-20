@@ -18,7 +18,7 @@ func _on_boton_jugar_pressed() -> void:
 
 
 func _on_boton_configuracion_pressed() -> void:
-	get_tree().change_scene_to_file("res://pantalla_configuracion.tscn")
+	get_tree().change_scene_to_file("res://Ayuda.tscn")
 
 
 func _on_boton_creditos_pressed() -> void:
