@@ -21,10 +21,6 @@ func _ready():
 		cargar_recetas_iniciales()
 		cargar_recursos_iniciales()
 	estado_de_carga = true
-	Globales.dinero=10000
-	Globales.reputacion_categoria="S"
-	Globales.mesas=7
-
 
 
 func cargar_recetas_iniciales():
